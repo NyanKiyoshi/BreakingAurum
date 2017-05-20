@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Text;
 using System.Windows.Forms;
+using MetroFramework;
 using Kerido.Controls;
 
 namespace BreakingBudget
@@ -33,7 +34,9 @@ namespace BreakingBudget
             this.SidebarTopFlowLayout.FlowDirection = FlowDirection.TopDown;
             this.SidebarBottomFlowLayout.FlowDirection = FlowDirection.BottomUp;
 
-            GenerateSidebarContent();
+            GenerateSidebarContent(this.SidebarTopFlowLayout, this.TopSidebarEntries);
+            GenerateSidebarContent(this.SidebarBottomFlowLayout, this.BottomSidebarEntries);
+
             UpdateSidebar();
         }
 
@@ -52,10 +55,10 @@ namespace BreakingBudget
          *   + + ----------------------------------------------- + +
          *   + --------------------------------------------------- +
          */
-        private void GenerateSidebarContent()
+        private void GenerateSidebarContent(FlowLayoutPanel TargetLayout, SidebarEntry[] RootEntries)
         {
-            Label entry_icon;
-            Label entry_text;
+            Label EntryIcon;
+            Label EntryText;
 
             // future lambda event handlers
             EventHandler OnMouseLeave;
@@ -67,7 +70,7 @@ namespace BreakingBudget
             Color ActiveColor = Color.FromArgb(0, 0, 0);
 
             // we now start to append every entry from the attribute `SidebarEntries`
-            foreach (SidebarEntry e in this.SidebarEntries)
+            foreach (SidebarEntry e in RootEntries)
             {
                 // Declare and create the entry's container
                 // Warning: we MUST put the declaration here to make the bellow
@@ -75,8 +78,8 @@ namespace BreakingBudget
                 FlowLayoutPanel entry_layout = new FlowLayoutPanel();
 
                 // init the entry labels
-                entry_icon = new Label();
-                entry_text = new Label();
+                EntryIcon = new Label();
+                EntryText = new Label();
 
                 // create the mouse events (hover and release/ leave)
                 OnMouseEnter = (s, ev) =>
@@ -102,13 +105,13 @@ namespace BreakingBudget
                 entry_layout.MouseLeave += OnMouseLeave;
                 entry_layout.Click += OnMouseClick;
 
-                entry_icon.MouseEnter += OnMouseEnter;
-                entry_icon.MouseLeave += OnMouseLeave;
-                entry_icon.Click += OnMouseClick;
+                EntryIcon.MouseEnter += OnMouseEnter;
+                EntryIcon.MouseLeave += OnMouseLeave;
+                EntryIcon.Click += OnMouseClick;
 
-                entry_text.MouseEnter += OnMouseEnter;
-                entry_text.MouseLeave += OnMouseLeave;
-                entry_text.Click += OnMouseClick;
+                EntryText.MouseEnter += OnMouseEnter;
+                EntryText.MouseLeave += OnMouseLeave;
+                EntryText.Click += OnMouseClick;
                 // ----
 
                 // The inner layout is gonna contain in the following order:
@@ -117,37 +120,39 @@ namespace BreakingBudget
                 entry_layout.FlowDirection = FlowDirection.LeftToRight;
 
                 // [Label: ICON] [Label: Text]
-                entry_layout.Controls.Add(entry_icon);
-                entry_layout.Controls.Add(entry_text);
+                entry_layout.Controls.Add(EntryIcon);
+                entry_layout.Controls.Add(EntryText);
 
                 // spacing between every entry is of 15px (margin bottom = 15)
                 entry_layout.Margin = new Padding(0, 0, 0, 15);
 
                 // the icon's label is a square of 30x30
-                entry_icon.AutoSize = false;
-                entry_icon.Height = entry_icon.Width = 30;
+                EntryIcon.AutoSize = false;
+                EntryIcon.Height = EntryIcon.Width = 30;
+
+                EntryText.AutoSize = true;
 
                 // align everything on top-left
-                entry_text.TextAlign = entry_icon.TextAlign = ContentAlignment.TopLeft;
+                EntryText.TextAlign = EntryIcon.TextAlign = ContentAlignment.TopLeft;
 
                 // XXX: we probably don't need this line anymore
-                entry_text.Height = entry_icon.Height;
+                EntryText.Height = EntryIcon.Height;
 
                 // set the icon's label in MaterialFont
-                entry_icon.Font = this.IconFont;
+                EntryIcon.Font = this.IconFont;
 
                 // Convert the UTF-8 byte array to String
-                entry_icon.Text = Encoding.UTF8.GetString(e.Icon);
+                EntryIcon.Text = Encoding.UTF8.GetString(e.Icon);
 
                 // Make the entry's text (entry name) label bigger
-                entry_text.Font = new Font("Microsoft Sans Serif", 14.0f, FontStyle.Regular, GraphicsUnit.Point);
-                entry_text.Text = e.Text;
+                EntryText.Font = new Font("Microsoft Sans Serif", 14.0f, FontStyle.Regular, GraphicsUnit.Point);
+                EntryText.Text = e.Text;
 
                 // set the layout's height at the same height of the icon
-                entry_layout.Height = entry_icon.Height;
+                entry_layout.Height = EntryIcon.Height;
 
                 // append the entry to the sidebar
-                this.SidebarTopFlowLayout.Controls.Add(entry_layout);
+                TargetLayout.Controls.Add(entry_layout);
             }
         }
 
@@ -160,7 +165,7 @@ namespace BreakingBudget
             // TODO: go through the sidebar content
             //       -> isActive()
             UpdateSidebar();
-            this.Text = this.BaseName + " - " + ((MultiPaneControl)sender).SelectedPage.Name;
+            this.Text = this.BaseName + " - " + ((MultiPaneControl)sender).SelectedPage.AccessibleName;
             this.Refresh();
         }
     }

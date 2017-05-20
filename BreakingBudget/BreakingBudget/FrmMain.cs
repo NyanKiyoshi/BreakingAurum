@@ -9,7 +9,8 @@ namespace BreakingBudget
 {
     public partial class FrmMain : MetroForm
     {
-        private readonly SidebarEntry[] SidebarEntries;
+        private readonly SidebarEntry[] TopSidebarEntries;
+        private readonly SidebarEntry[] BottomSidebarEntries;
 
         public readonly string BaseName;
         public readonly MultiPanePage DefaultPage;
@@ -22,15 +23,21 @@ namespace BreakingBudget
             this.BaseName = this.Text;
 
             // set the default page and switch to it
-            this.DefaultPage = this.Meow;
+            this.DefaultPage = this.TrackerPage;
             this.SwitchPanel(this.DefaultPage);
 
             this.Font = new Font("Arial", 11f, FontStyle.Regular, GraphicsUnit.Pixel);
-            this.SidebarEntries = new SidebarEntry[] 
+
+            this.TopSidebarEntries = new SidebarEntry[]
             {
-                new SidebarEntry(this.Meow, new byte[] { 0xEE, 0xA1, 0xA8 }, "Meow"),
-                new SidebarEntry(this.OwO, new byte[] { 0xEE, 0xA1, 0xA9 }, "OwO"),
-                new SidebarEntry(this.OmO, new byte[] { 0xEE, 0x90, 0xA0 }, "OmO")
+                new SidebarEntry(this.HomePage, new byte[] { 0xEE, 0xA2, 0x8A }, "Accueil")
+            };
+
+            this.BottomSidebarEntries = new SidebarEntry[]
+            {
+                new SidebarEntry(this.TrackerPage, new byte[] { 0xEE, 0xA1, 0xA8 }, "Tracker"),
+                new SidebarEntry(this.SettingsPage, new byte[] { 0xEE, 0xA1, 0xA9 }, "Paramètres"),
+                new SidebarEntry(this.LicensesPage, new byte[] { 0xEE, 0x90, 0xA0 }, "Licenses")
             };
 
             AutoCompleter.ImplementCompleter(textBox1, 2);
