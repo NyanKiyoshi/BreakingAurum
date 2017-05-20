@@ -145,75 +145,79 @@ namespace Kerido.Controls.Design
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.myCtlLblSwitchPage = new System.Windows.Forms.Label();
-			this.myCtlCmbItems = new System.Windows.Forms.ComboBox();
-			this.myCtlChkSetSelectedPage = new System.Windows.Forms.CheckBox();
-			this.myCtlBtnOK = new System.Windows.Forms.Button();
-			this.myCtlBtnCancel = new System.Windows.Forms.Button();
-			this.SuspendLayout();
-			// 
-			// myCtlLblSwitchPage
-			// 
-			this.myCtlLblSwitchPage.AutoSize = true;
-			this.myCtlLblSwitchPage.Location = new System.Drawing.Point(9, 9);
-			this.myCtlLblSwitchPage.Name = "myCtlLblSwitchPage";
-			this.myCtlLblSwitchPage.TabIndex = 0;
-			this.myCtlLblSwitchPage.Text = "Switch the page to:";
-			// 
-			// myCtlCmbItems
-			// 
-			this.myCtlCmbItems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.myCtlCmbItems.Location = new System.Drawing.Point(12, 25);
-			this.myCtlCmbItems.Name = "myCtlCmbItems";
-			this.myCtlCmbItems.Size = new System.Drawing.Size(227, 21);
-			this.myCtlCmbItems.TabIndex = 1;
-			// 
-			// myCtlChkSetSelectedPage
-			// 
-			this.myCtlChkSetSelectedPage.Location = new System.Drawing.Point(12, 61);
-			this.myCtlChkSetSelectedPage.Name = "myCtlChkSetSelectedPage";
-			this.myCtlChkSetSelectedPage.Size = new System.Drawing.Size(220, 17);
-			this.myCtlChkSetSelectedPage.TabIndex = 2;
-			this.myCtlChkSetSelectedPage.Text = "Also set the SelectedPage property";
-			// 
-			// myCtlBtnOK
-			// 
-			this.myCtlBtnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.myCtlBtnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.myCtlBtnOK.Location = new System.Drawing.Point(77, 97);
-			this.myCtlBtnOK.Name = "myCtlBtnOK";
-			this.myCtlBtnOK.TabIndex = 3;
-			this.myCtlBtnOK.Text = "OK";
-			this.myCtlBtnOK.Click += new System.EventHandler(this.Handler_OK);
-			// 
-			// myCtlBtnCancel
-			// 
-			this.myCtlBtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.myCtlBtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.myCtlBtnCancel.Location = new System.Drawing.Point(164, 97);
-			this.myCtlBtnCancel.Name = "myCtlBtnCancel";
-			this.myCtlBtnCancel.TabIndex = 4;
-			this.myCtlBtnCancel.Text = "Cancel";
-			// 
-			// frmSwitchPages
-			// 
-			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(251, 132);
-			this.Controls.Add(this.myCtlLblSwitchPage);
-			this.Controls.Add(this.myCtlCmbItems);
-			this.Controls.Add(this.myCtlChkSetSelectedPage);
-			this.Controls.Add(this.myCtlBtnCancel);
-			this.Controls.Add(this.myCtlBtnOK);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.MaximizeBox = false;
-			this.MinimizeBox = false;
-			this.Name = "frmSwitchPages";
-			this.ShowInTaskbar = false;
-			this.Text = "Switch Pages";
-			this.ResumeLayout(false);
+            this.myCtlLblSwitchPage = new System.Windows.Forms.Label();
+            this.myCtlCmbItems = new System.Windows.Forms.ComboBox();
+            this.myCtlChkSetSelectedPage = new System.Windows.Forms.CheckBox();
+            this.myCtlBtnOK = new System.Windows.Forms.Button();
+            this.myCtlBtnCancel = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // myCtlLblSwitchPage
+            // 
+            this.myCtlLblSwitchPage.AutoSize = true;
+            this.myCtlLblSwitchPage.Location = new System.Drawing.Point(9, 9);
+            this.myCtlLblSwitchPage.Name = "myCtlLblSwitchPage";
+            this.myCtlLblSwitchPage.Size = new System.Drawing.Size(99, 13);
+            this.myCtlLblSwitchPage.TabIndex = 0;
+            this.myCtlLblSwitchPage.Text = "Switch the page to:";
+            // 
+            // myCtlCmbItems
+            // 
+            this.myCtlCmbItems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.myCtlCmbItems.Location = new System.Drawing.Point(12, 25);
+            this.myCtlCmbItems.Name = "myCtlCmbItems";
+            this.myCtlCmbItems.Size = new System.Drawing.Size(227, 21);
+            this.myCtlCmbItems.TabIndex = 1;
+            // 
+            // myCtlChkSetSelectedPage
+            // 
+            this.myCtlChkSetSelectedPage.Location = new System.Drawing.Point(12, 61);
+            this.myCtlChkSetSelectedPage.Name = "myCtlChkSetSelectedPage";
+            this.myCtlChkSetSelectedPage.Size = new System.Drawing.Size(220, 17);
+            this.myCtlChkSetSelectedPage.TabIndex = 2;
+            this.myCtlChkSetSelectedPage.Text = "Also set the SelectedPage property";
+            // 
+            // myCtlBtnOK
+            // 
+            this.myCtlBtnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.myCtlBtnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.myCtlBtnOK.Location = new System.Drawing.Point(77, 97);
+            this.myCtlBtnOK.Name = "myCtlBtnOK";
+            this.myCtlBtnOK.Size = new System.Drawing.Size(75, 23);
+            this.myCtlBtnOK.TabIndex = 3;
+            this.myCtlBtnOK.Text = "OK";
+            this.myCtlBtnOK.Click += new System.EventHandler(this.Handler_OK);
+            // 
+            // myCtlBtnCancel
+            // 
+            this.myCtlBtnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.myCtlBtnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.myCtlBtnCancel.Location = new System.Drawing.Point(164, 97);
+            this.myCtlBtnCancel.Name = "myCtlBtnCancel";
+            this.myCtlBtnCancel.Size = new System.Drawing.Size(75, 23);
+            this.myCtlBtnCancel.TabIndex = 4;
+            this.myCtlBtnCancel.Text = "Cancel";
+            // 
+            // frmSwitchPages
+            // 
+            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            this.ClientSize = new System.Drawing.Size(251, 132);
+            this.Controls.Add(this.myCtlLblSwitchPage);
+            this.Controls.Add(this.myCtlCmbItems);
+            this.Controls.Add(this.myCtlChkSetSelectedPage);
+            this.Controls.Add(this.myCtlBtnCancel);
+            this.Controls.Add(this.myCtlBtnOK);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmSwitchPages";
+            this.ShowInTaskbar = false;
+            this.Text = "Switch Pages";
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
 
-		#endregion
-	}
+        #endregion
+    }
 }

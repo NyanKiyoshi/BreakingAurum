@@ -35,9 +35,16 @@
             this.ContentPanel = new Kerido.Controls.MultiPaneControl();
             this.multiPanePage1 = new Kerido.Controls.MultiPanePage();
             this.multiPanePage2 = new Kerido.Controls.MultiPanePage();
+            this.multiPanePage3 = new Kerido.Controls.MultiPanePage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SidebarTable.SuspendLayout();
             this.ContentPanel.SuspendLayout();
+            this.multiPanePage1.SuspendLayout();
+            this.multiPanePage2.SuspendLayout();
+            this.multiPanePage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -95,6 +102,7 @@
             this.ContentPanel.BackColor = System.Drawing.Color.White;
             this.ContentPanel.Controls.Add(this.multiPanePage1);
             this.ContentPanel.Controls.Add(this.multiPanePage2);
+            this.ContentPanel.Controls.Add(this.multiPanePage3);
             this.ContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContentPanel.Location = new System.Drawing.Point(198, 0);
             this.ContentPanel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
@@ -107,15 +115,50 @@
             // 
             // multiPanePage1
             // 
+            this.multiPanePage1.Controls.Add(this.label1);
             this.multiPanePage1.Name = "multiPanePage1";
             this.multiPanePage1.Size = new System.Drawing.Size(528, 358);
             this.multiPanePage1.TabIndex = 0;
             // 
             // multiPanePage2
             // 
+            this.multiPanePage2.Controls.Add(this.label2);
             this.multiPanePage2.Name = "multiPanePage2";
             this.multiPanePage2.Size = new System.Drawing.Size(528, 358);
             this.multiPanePage2.TabIndex = 1;
+            // 
+            // multiPanePage3
+            // 
+            this.multiPanePage3.Controls.Add(this.label3);
+            this.multiPanePage3.Name = "multiPanePage3";
+            this.multiPanePage3.Size = new System.Drawing.Size(528, 358);
+            this.multiPanePage3.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(272, 95);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(415, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "label2";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(350, 62);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "label3";
             // 
             // FrmMain
             // 
@@ -125,13 +168,18 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmMain";
-            this.Text = "Form1";
+            this.Text = "Breaking Budget";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.SidebarTable.ResumeLayout(false);
             this.ContentPanel.ResumeLayout(false);
+            this.multiPanePage1.ResumeLayout(false);
+            this.multiPanePage2.ResumeLayout(false);
+            this.multiPanePage2.PerformLayout();
+            this.multiPanePage3.ResumeLayout(false);
+            this.multiPanePage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -145,6 +193,10 @@
         private Kerido.Controls.MultiPaneControl ContentPanel;
         private Kerido.Controls.MultiPanePage multiPanePage1;
         private Kerido.Controls.MultiPanePage multiPanePage2;
+        private Kerido.Controls.MultiPanePage multiPanePage3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

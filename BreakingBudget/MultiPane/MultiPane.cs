@@ -77,8 +77,9 @@ namespace Kerido.Controls
 
 			set
 			{
-				if (mySelectedPage == value)
-					return;
+                // EDIT: change the page even if it is the current one, we don't care.
+				//if (mySelectedPage == value)
+				//	return;
 
 				// fire the event before switching
 				if (SelectedPageChanging != null)

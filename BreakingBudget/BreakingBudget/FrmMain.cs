@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using MetroFramework;
+using Kerido.Controls;
 
 namespace BreakingBudget
 {
@@ -13,20 +14,30 @@ namespace BreakingBudget
         PrivateFontCollection CustomFonts = new PrivateFontCollection();
         Font IconFont;
 
-        SidebarEntry[] SidebarEntries = new SidebarEntry[]
-        {
-            new SidebarEntry(new byte[] { 0xEE, 0xA1, 0xA8 }, "Meow"),
-            new SidebarEntry(new byte[] { 0xEE, 0xA1, 0xA9 }, "OwO"),
-            new SidebarEntry(new byte[] { 0xEE, 0x90, 0xA0 }, "OmO")
-        };
+        SidebarEntry[] SidebarEntries;
 
+        public readonly string BaseName;
+        public readonly MultiPanePage DefaultPage;
 
         public FrmMain()
         {
             InitializeComponent();
             InitFonts();
 
+            // set the base name (used later to rename the form)
+            this.BaseName = this.Text;
+
+            // set the default page and switch to it
+            this.DefaultPage = this.multiPanePage1;
+            this.SwitchPanel(this.DefaultPage);
+
             this.Font = new Font("Arial", 11f, FontStyle.Regular, GraphicsUnit.Pixel);
+            this.SidebarEntries = new SidebarEntry[] 
+            {
+                new SidebarEntry(this.multiPanePage1, new byte[] { 0xEE, 0xA1, 0xA8 }, "Meow"),
+                new SidebarEntry(this.multiPanePage2, new byte[] { 0xEE, 0xA1, 0xA9 }, "OwO"),
+                new SidebarEntry(this.multiPanePage3, new byte[] { 0xEE, 0x90, 0xA0 }, "OmO")
+            };
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -69,6 +80,11 @@ namespace BreakingBudget
             UpdateSidebar();
         }
 
+        private void SwitchPanel(MultiPanePage target)
+        {
+            this.ContentPanel.SelectedPage = target;
+        }
+
         /*
          * Generates the sidebar using the following design:
          *   + ------ [FlowLayoutPanel -> From Top to Down] ------ +
@@ -87,6 +103,7 @@ namespace BreakingBudget
             // future lambda event handlers
             EventHandler OnMouseLeave;
             EventHandler OnMouseEnter;
+            EventHandler OnMouseClick;
 
             // the default text color and the active & hover one
             Color BaseColor = Color.FromArgb(117, 117, 117);
@@ -115,18 +132,26 @@ namespace BreakingBudget
                     entry_layout.ForeColor = BaseColor;
                 };
 
+                OnMouseClick = (s, ev) =>
+                {
+                    SwitchPanel(e.Target);
+                };
+
                 // set the inactive color to the whole container
                 entry_layout.ForeColor = BaseColor;
 
                 // assign the events to EVERY component of the entry
                 entry_layout.MouseEnter += OnMouseEnter;
                 entry_layout.MouseLeave += OnMouseLeave;
+                entry_layout.Click      += OnMouseClick;
 
-                entry_icon.MouseEnter += OnMouseEnter;
-                entry_icon.MouseLeave += OnMouseLeave;
+                entry_icon.MouseEnter   += OnMouseEnter;
+                entry_icon.MouseLeave   += OnMouseLeave;
+                entry_icon.Click        += OnMouseClick;
 
-                entry_text.MouseEnter += OnMouseEnter;
-                entry_text.MouseLeave += OnMouseLeave;
+                entry_text.MouseEnter   += OnMouseEnter;
+                entry_text.MouseLeave   += OnMouseLeave;
+                entry_text.Click        += OnMouseClick;
                 // ----
 
                 // The inner layout is gonna contain in the following order:
@@ -178,6 +203,8 @@ namespace BreakingBudget
             // TODO: go through the sidebar content
             //       -> isActive()
             UpdateSidebar();
+            this.Text = this.BaseName + " - " + ((MultiPaneControl)sender).SelectedPage.Name;
+            this.Refresh();
         }
     }
 }
