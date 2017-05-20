@@ -1,0 +1,7 @@
+# VS backups
+Backup/*
+
+# VS generated folders
+bin/*
+obj/*
+.vs/*
