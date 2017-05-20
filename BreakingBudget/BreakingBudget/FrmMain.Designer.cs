@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.SidebarTable = new System.Windows.Forms.TableLayoutPanel();
             this.SidebarBottomFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
@@ -40,8 +41,8 @@
             this.SettingsPage = new Kerido.Controls.MultiPanePage();
             this.label2 = new System.Windows.Forms.Label();
             this.LicensesPage = new Kerido.Controls.MultiPanePage();
-            this.label3 = new System.Windows.Forms.Label();
             this.HomePage = new Kerido.Controls.MultiPanePage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SidebarTable.SuspendLayout();
             this.ContentPanel.SuspendLayout();
@@ -178,25 +179,29 @@
             // LicensesPage
             // 
             this.LicensesPage.AccessibleName = "Licenses";
-            this.LicensesPage.Controls.Add(this.label3);
+            this.LicensesPage.Controls.Add(this.richTextBox1);
             this.LicensesPage.Name = "LicensesPage";
             this.LicensesPage.Size = new System.Drawing.Size(528, 358);
             this.LicensesPage.TabIndex = 2;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(350, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "label3";
-            // 
             // HomePage
             // 
+            this.HomePage.AccessibleName = "Accueil";
             this.HomePage.Name = "HomePage";
             this.HomePage.Size = new System.Drawing.Size(528, 358);
             this.HomePage.TabIndex = 3;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.Color.White;
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(528, 358);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // FrmMain
             // 
@@ -221,7 +226,6 @@
             this.SettingsPage.ResumeLayout(false);
             this.SettingsPage.PerformLayout();
             this.LicensesPage.ResumeLayout(false);
-            this.LicensesPage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -238,10 +242,10 @@
         private Kerido.Controls.MultiPanePage LicensesPage;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TextBox textBox1;
         private Kerido.Controls.MultiPanePage HomePage;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

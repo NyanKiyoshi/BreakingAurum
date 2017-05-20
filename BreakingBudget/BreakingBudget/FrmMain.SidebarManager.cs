@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Text;
 using System.Windows.Forms;
-using MetroFramework;
 using Kerido.Controls;
 
 namespace BreakingBudget
@@ -92,10 +92,22 @@ namespace BreakingBudget
                     entry_layout.ForeColor = BaseColor;
                 };
 
-                OnMouseClick = (s, ev) =>
+                // if the target is a web link -> open it when the user clicks on it
+                if (e.TargetLink != null)
                 {
-                    SwitchPanel(e.Target);
-                };
+                    OnMouseClick = (s, ev) =>
+                    {
+                        ProcessStartInfo sInfo = new ProcessStartInfo(e.TargetLink);
+                        Process.Start(sInfo);
+                    };
+                }
+                else
+                {
+                    OnMouseClick = (s, ev) =>
+                    {
+                        SwitchPanel(e.Target);
+                    };
+                }
 
                 // set the inactive color to the whole container
                 entry_layout.ForeColor = BaseColor;
@@ -130,6 +142,7 @@ namespace BreakingBudget
                 EntryIcon.AutoSize = false;
                 EntryIcon.Height = EntryIcon.Width = 30;
 
+                // Auto resize the text label
                 EntryText.AutoSize = true;
 
                 // align everything on top-left

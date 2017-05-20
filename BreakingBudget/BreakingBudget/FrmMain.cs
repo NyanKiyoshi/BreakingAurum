@@ -23,7 +23,7 @@ namespace BreakingBudget
             this.BaseName = this.Text;
 
             // set the default page and switch to it
-            this.DefaultPage = this.TrackerPage;
+            this.DefaultPage = this.HomePage;
             this.SwitchPanel(this.DefaultPage);
 
             this.Font = new Font("Arial", 11f, FontStyle.Regular, GraphicsUnit.Pixel);
@@ -35,7 +35,7 @@ namespace BreakingBudget
 
             this.BottomSidebarEntries = new SidebarEntry[]
             {
-                new SidebarEntry(this.TrackerPage, new byte[] { 0xEE, 0xA1, 0xA8 }, "Tracker"),
+                new SidebarEntry("http://github.com", new byte[] { 0xEE, 0xA1, 0xA8 }, "Tracker"),
                 new SidebarEntry(this.SettingsPage, new byte[] { 0xEE, 0xA1, 0xA9 }, "Paramètres"),
                 new SidebarEntry(this.LicensesPage, new byte[] { 0xEE, 0x90, 0xA0 }, "Licenses")
             };

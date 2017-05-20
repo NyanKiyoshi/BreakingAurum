@@ -11,9 +11,23 @@ namespace BreakingBudget
     {
         private static byte[] DEFAULT_ICON = new byte[] { 0xEE, 0x97, 0x90 };
 
-        public SidebarEntry(MultiPanePage target, string text)
+        public SidebarEntry(string text)
         {
             this.Text = text;
+        }
+
+        public SidebarEntry(string url, string text) : this(text)
+        {
+            this.TargetLink = url;
+        }
+
+        public SidebarEntry(string url, byte[] icon, string text) : this(url, text)
+        {
+            this.Icon = icon;
+        }
+
+        public SidebarEntry(MultiPanePage target, string text) : this(text)
+        {
             this.Target = target;
         }
 
@@ -40,6 +54,9 @@ namespace BreakingBudget
 
         // The entry's target
         public MultiPanePage Target { get; set; }
+
+        // The entry's target url
+        public string TargetLink { get; set; }
 
         // The children nodes.
         public SidebarEntry[] children { get; set; }
