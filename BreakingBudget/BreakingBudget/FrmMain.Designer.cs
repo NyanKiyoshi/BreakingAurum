@@ -33,18 +33,21 @@
             this.SidebarBottomFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.SidebarTopFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.ContentPanel = new Kerido.Controls.MultiPaneControl();
-            this.multiPanePage1 = new Kerido.Controls.MultiPanePage();
-            this.multiPanePage2 = new Kerido.Controls.MultiPanePage();
-            this.multiPanePage3 = new Kerido.Controls.MultiPanePage();
+            this.Meow = new Kerido.Controls.MultiPanePage();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.OwO = new Kerido.Controls.MultiPanePage();
             this.label2 = new System.Windows.Forms.Label();
+            this.OmO = new Kerido.Controls.MultiPanePage();
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SidebarTable.SuspendLayout();
             this.ContentPanel.SuspendLayout();
-            this.multiPanePage1.SuspendLayout();
-            this.multiPanePage2.SuspendLayout();
-            this.multiPanePage3.SuspendLayout();
+            this.Meow.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.OwO.SuspendLayout();
+            this.OmO.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -100,39 +103,45 @@
             // ContentPanel
             // 
             this.ContentPanel.BackColor = System.Drawing.Color.White;
-            this.ContentPanel.Controls.Add(this.multiPanePage1);
-            this.ContentPanel.Controls.Add(this.multiPanePage2);
-            this.ContentPanel.Controls.Add(this.multiPanePage3);
+            this.ContentPanel.Controls.Add(this.Meow);
+            this.ContentPanel.Controls.Add(this.OwO);
+            this.ContentPanel.Controls.Add(this.OmO);
             this.ContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContentPanel.Location = new System.Drawing.Point(198, 0);
             this.ContentPanel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.ContentPanel.Name = "ContentPanel";
-            this.ContentPanel.SelectedPage = this.multiPanePage1;
+            this.ContentPanel.SelectedPage = this.Meow;
             this.ContentPanel.Size = new System.Drawing.Size(528, 358);
             this.ContentPanel.TabIndex = 7;
-            this.ContentPanel.Text = "multiPaneControl1";
+            this.ContentPanel.Text = "Meow";
             this.ContentPanel.SelectedPageChanged += new System.EventHandler(this.ContentPanel_SelectedPageChanged);
             // 
-            // multiPanePage1
+            // Meow
             // 
-            this.multiPanePage1.Controls.Add(this.label1);
-            this.multiPanePage1.Name = "Meow";
-            this.multiPanePage1.Size = new System.Drawing.Size(528, 358);
-            this.multiPanePage1.TabIndex = 0;
+            this.Meow.Controls.Add(this.flowLayoutPanel1);
+            this.Meow.Controls.Add(this.label1);
+            this.Meow.Name = "Meow";
+            this.Meow.Size = new System.Drawing.Size(528, 358);
+            this.Meow.TabIndex = 0;
             // 
-            // multiPanePage2
+            // flowLayoutPanel1
             // 
-            this.multiPanePage2.Controls.Add(this.label2);
-            this.multiPanePage2.Name = "OwO";
-            this.multiPanePage2.Size = new System.Drawing.Size(528, 358);
-            this.multiPanePage2.TabIndex = 1;
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Silver;
+            this.flowLayoutPanel1.Controls.Add(this.textBox1);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(157, 184);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 100);
+            this.flowLayoutPanel1.TabIndex = 2;
             // 
-            // multiPanePage3
+            // textBox1
             // 
-            this.multiPanePage3.Controls.Add(this.label3);
-            this.multiPanePage3.Name = "OmO";
-            this.multiPanePage3.Size = new System.Drawing.Size(528, 358);
-            this.multiPanePage3.TabIndex = 2;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.textBox1.Location = new System.Drawing.Point(3, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 0;
             // 
             // label1
             // 
@@ -142,6 +151,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             // 
+            // OwO
+            // 
+            this.OwO.Controls.Add(this.label2);
+            this.OwO.Name = "OwO";
+            this.OwO.Size = new System.Drawing.Size(528, 358);
+            this.OwO.TabIndex = 1;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -150,6 +166,13 @@
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "label2";
+            // 
+            // OmO
+            // 
+            this.OmO.Controls.Add(this.label3);
+            this.OmO.Name = "OmO";
+            this.OmO.Size = new System.Drawing.Size(528, 358);
+            this.OmO.TabIndex = 2;
             // 
             // label3
             // 
@@ -175,11 +198,14 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.SidebarTable.ResumeLayout(false);
             this.ContentPanel.ResumeLayout(false);
-            this.multiPanePage1.ResumeLayout(false);
-            this.multiPanePage2.ResumeLayout(false);
-            this.multiPanePage2.PerformLayout();
-            this.multiPanePage3.ResumeLayout(false);
-            this.multiPanePage3.PerformLayout();
+            this.Meow.ResumeLayout(false);
+            this.Meow.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.OwO.ResumeLayout(false);
+            this.OwO.PerformLayout();
+            this.OmO.ResumeLayout(false);
+            this.OmO.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -191,12 +217,14 @@
         private System.Windows.Forms.FlowLayoutPanel SidebarBottomFlowLayout;
         private System.Windows.Forms.FlowLayoutPanel SidebarTopFlowLayout;
         private Kerido.Controls.MultiPaneControl ContentPanel;
-        private Kerido.Controls.MultiPanePage multiPanePage1;
-        private Kerido.Controls.MultiPanePage multiPanePage2;
-        private Kerido.Controls.MultiPanePage multiPanePage3;
+        private Kerido.Controls.MultiPanePage Meow;
+        private Kerido.Controls.MultiPanePage OwO;
+        private Kerido.Controls.MultiPanePage OmO;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

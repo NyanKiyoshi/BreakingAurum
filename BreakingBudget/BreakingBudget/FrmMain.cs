@@ -22,16 +22,18 @@ namespace BreakingBudget
             this.BaseName = this.Text;
 
             // set the default page and switch to it
-            this.DefaultPage = this.multiPanePage1;
+            this.DefaultPage = this.Meow;
             this.SwitchPanel(this.DefaultPage);
 
             this.Font = new Font("Arial", 11f, FontStyle.Regular, GraphicsUnit.Pixel);
             this.SidebarEntries = new SidebarEntry[] 
             {
-                new SidebarEntry(this.multiPanePage1, new byte[] { 0xEE, 0xA1, 0xA8 }, "Meow"),
-                new SidebarEntry(this.multiPanePage2, new byte[] { 0xEE, 0xA1, 0xA9 }, "OwO"),
-                new SidebarEntry(this.multiPanePage3, new byte[] { 0xEE, 0x90, 0xA0 }, "OmO")
+                new SidebarEntry(this.Meow, new byte[] { 0xEE, 0xA1, 0xA8 }, "Meow"),
+                new SidebarEntry(this.OwO, new byte[] { 0xEE, 0xA1, 0xA9 }, "OwO"),
+                new SidebarEntry(this.OmO, new byte[] { 0xEE, 0x90, 0xA0 }, "OmO")
             };
+
+            AutoCompleter.ImplementCompleter(textBox1, 2);
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
