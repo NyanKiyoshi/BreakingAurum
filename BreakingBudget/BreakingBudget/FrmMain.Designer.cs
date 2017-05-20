@@ -116,21 +116,21 @@
             // multiPanePage1
             // 
             this.multiPanePage1.Controls.Add(this.label1);
-            this.multiPanePage1.Name = "multiPanePage1";
+            this.multiPanePage1.Name = "Meow";
             this.multiPanePage1.Size = new System.Drawing.Size(528, 358);
             this.multiPanePage1.TabIndex = 0;
             // 
             // multiPanePage2
             // 
             this.multiPanePage2.Controls.Add(this.label2);
-            this.multiPanePage2.Name = "multiPanePage2";
+            this.multiPanePage2.Name = "OwO";
             this.multiPanePage2.Size = new System.Drawing.Size(528, 358);
             this.multiPanePage2.TabIndex = 1;
             // 
             // multiPanePage3
             // 
             this.multiPanePage3.Controls.Add(this.label3);
-            this.multiPanePage3.Name = "multiPanePage3";
+            this.multiPanePage3.Name = "OmO";
             this.multiPanePage3.Size = new System.Drawing.Size(528, 358);
             this.multiPanePage3.TabIndex = 2;
             // 
