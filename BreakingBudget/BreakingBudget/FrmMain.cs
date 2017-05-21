@@ -19,15 +19,6 @@ namespace BreakingBudget
         {
             InitializeComponent();
 
-            // set the base name (used later to rename the form)
-            this.BaseName = this.Text;
-
-            // set the default page and switch to it
-            this.DefaultPage = this.HomePage;
-            this.SwitchPanel(this.DefaultPage);
-
-            this.Font = new Font("Arial", 11f, FontStyle.Regular, GraphicsUnit.Pixel);
-
             this.TopSidebarEntries = new SidebarEntry[]
             {
                 new SidebarEntry(this.HomePage, new byte[] { 0xEE, 0xA2, 0x8A }, "Accueil")
@@ -40,12 +31,21 @@ namespace BreakingBudget
                 new SidebarEntry(this.LicensesPage, new byte[] { 0xEE, 0x90, 0xA0 }, "Licenses")
             };
 
+            // set the base name (used later to rename the form)
+            this.BaseName = this.Text;
+
+            // set the default page and switch to it
+            this.DefaultPage = this.HomePage;
+
+            this.Font = new Font("Arial", 11f, FontStyle.Regular, GraphicsUnit.Pixel);
+
             AutoCompleter.ImplementCompleter(textBox1, 2);
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
             GenerateSidebar();
+            this.SwitchPanel(this.DefaultPage);
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
