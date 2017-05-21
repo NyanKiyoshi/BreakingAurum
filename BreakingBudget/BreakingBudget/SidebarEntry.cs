@@ -60,5 +60,10 @@ namespace BreakingBudget
 
         // The children nodes.
         public SidebarEntry[] children { get; set; }
+
+        public bool IsActive { get; set; }
+
+        // The controller storing/ using the data
+        public object _OwnerController { get; set; }
     }
 }

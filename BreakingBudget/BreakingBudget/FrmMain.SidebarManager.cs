@@ -13,6 +13,10 @@ namespace BreakingBudget
         private PrivateFontCollection CustomFonts = new PrivateFontCollection();
         private Font IconFont;
 
+        // the default text color and the active & hover one
+        Color BaseSidebarEntryColor = Color.FromArgb(117, 117, 117);
+        Color ActiveBaseSidebarEntryColor = Color.FromArgb(0, 0, 0);
+
         private void InitFonts()
         {
             this.CustomFonts = new PrivateFontCollection();
@@ -36,8 +40,6 @@ namespace BreakingBudget
 
             GenerateSidebarContent(this.SidebarTopFlowLayout, this.TopSidebarEntries);
             GenerateSidebarContent(this.SidebarBottomFlowLayout, this.BottomSidebarEntries);
-
-            UpdateSidebar();
         }
 
         private void SwitchPanel(MultiPanePage target)
@@ -65,10 +67,6 @@ namespace BreakingBudget
             EventHandler OnMouseEnter;
             EventHandler OnMouseClick;
 
-            // the default text color and the active & hover one
-            Color BaseColor = Color.FromArgb(117, 117, 117);
-            Color ActiveColor = Color.FromArgb(0, 0, 0);
-
             // we now start to append every entry from the attribute `SidebarEntries`
             foreach (SidebarEntry e in RootEntries)
             {
@@ -84,12 +82,15 @@ namespace BreakingBudget
                 // create the mouse events (hover and release/ leave)
                 OnMouseEnter = (s, ev) =>
                 {
-                    entry_layout.ForeColor = ActiveColor;
+                    entry_layout.ForeColor = this.ActiveBaseSidebarEntryColor;
                 };
 
                 OnMouseLeave = (s, ev) =>
                 {
-                    entry_layout.ForeColor = BaseColor;
+                    if (e.IsActive != true)
+                    {
+                        entry_layout.ForeColor = this.BaseSidebarEntryColor;
+                    }
                 };
 
                 // if the target is a web link -> open it when the user clicks on it
@@ -110,7 +111,7 @@ namespace BreakingBudget
                 }
 
                 // set the inactive color to the whole container
-                entry_layout.ForeColor = BaseColor;
+                entry_layout.ForeColor = this.BaseSidebarEntryColor;
 
                 // assign the events to EVERY component of the entry
                 entry_layout.MouseEnter += OnMouseEnter;
@@ -166,19 +167,43 @@ namespace BreakingBudget
 
                 // append the entry to the sidebar
                 TargetLayout.Controls.Add(entry_layout);
+                e._OwnerController = entry_layout;
             }
         }
 
-        private void UpdateSidebar()
+        private void UpdateSidebar(MultiPaneControl sender, SidebarEntry[] entries)
         {
+            if (entries == null)
+            {
+                return;
+            }
+
+            foreach (SidebarEntry e in entries)
+            {
+                if (e.Target != null && e._OwnerController.GetType() == typeof(FlowLayoutPanel))
+                {
+                    if (sender.SelectedPage == e.Target)
+                    {
+                        ((FlowLayoutPanel)e._OwnerController).ForeColor = this.ActiveBaseSidebarEntryColor;
+                        e.IsActive = true;
+                    }
+                    else
+                    {
+                        ((FlowLayoutPanel)e._OwnerController).ForeColor = this.BaseSidebarEntryColor;
+                        e.IsActive = false;
+                    }
+                }
+            }
         }
 
-        private void ContentPanel_SelectedPageChanged(object sender, EventArgs e)
+        private void ContentPanel_SelectedPageChanged(object _s, EventArgs e)
         {
-            // TODO: go through the sidebar content
-            //       -> isActive()
-            UpdateSidebar();
-            this.Text = this.BaseName + " - " + ((MultiPaneControl)sender).SelectedPage.AccessibleName;
+            MultiPaneControl sender = _s as MultiPaneControl;
+
+            UpdateSidebar(sender, this.TopSidebarEntries);
+            UpdateSidebar(sender, this.BottomSidebarEntries);
+
+            this.Text = this.BaseName + " - " + sender.SelectedPage.AccessibleName;
             this.Refresh();
         }
     }
