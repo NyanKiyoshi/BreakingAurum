@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Kerido.Controls;
+﻿using Kerido.Controls;
 
 namespace BreakingBudget
 {
@@ -26,6 +21,11 @@ namespace BreakingBudget
             this.Icon = icon;
         }
 
+        public SidebarEntry(string url, byte[] icon, string text, SidebarEntry[] children) : this(url, icon, text)
+        {
+            this.children = children;
+        }
+
         public SidebarEntry(MultiPanePage target, string text) : this(text)
         {
             this.Target = target;
@@ -36,17 +36,60 @@ namespace BreakingBudget
             this.Icon = icon;
         }
 
+        public SidebarEntry(MultiPanePage target, byte[] icon, string text, SidebarEntry[] children) : this(target, icon, text)
+        {
+            this.children = children;
+        }
+
         // A UTF8 char array representing a Google Material icon
-        private byte[] _icon;
-        public byte[] Icon {
-            get
+        public byte[] Icon;
+
+        public SidebarEntry AddChild(SidebarEntry child)
+        {
+            if (this.children != null)
             {
-                return (this._icon != null) ? this._icon : SidebarEntry.DEFAULT_ICON;
+                // expand the children array and put the new child to it
+                SidebarEntry[] children = new SidebarEntry[this.children.Length];
+                this.children.CopyTo(children, 0);
+                children[children.Length - 1] = child;
             }
-            set
+            else
             {
-                this._icon = value;
+                SidebarEntry[] children = new SidebarEntry[] { child };
             }
+
+            // the child's parent to this instance
+            child._parent = this;
+
+            // commit
+            this.children = children;
+            return child;
+        }
+
+        public void AddChildren(SidebarEntry[] to_insert_children)
+        {
+            int InsertPos;
+            if (this.children != null)
+            {
+                // expand the children array and put the new child to it
+                SidebarEntry[] children = new SidebarEntry[(this.children.Length + to_insert_children.Length) - 2];
+                this.children.CopyTo(children, 0);
+                InsertPos = this.children.Length;
+            }
+            else
+            {
+                InsertPos = 0;
+                SidebarEntry[] children = new SidebarEntry[to_insert_children.Length - 1];
+            }
+
+            foreach(SidebarEntry child in to_insert_children)
+            {
+                children[InsertPos++] = child;
+                child._parent = this;
+            }
+
+            // commit
+            this.children = children;
         }
 
         // The entry's name
@@ -59,9 +102,25 @@ namespace BreakingBudget
         public string TargetLink { get; set; }
 
         // The children nodes.
-        public SidebarEntry[] children { get; set; }
+        private SidebarEntry[] _children;
+        public SidebarEntry[] children
+        {
+            get { return this._children; }
+            set
+            {
+                foreach (SidebarEntry child in value)
+                {
+                    child._parent = this;
+                }
+                this._children = value;
+            }
+        }
 
         public bool IsActive { get; set; }
+        public bool IsExpanded = false;
+
+        private SidebarEntry _parent;
+        public SidebarEntry parent { get { return this._parent; } }
 
         // The controller storing/ using the data
         public object _OwnerController { get; set; }

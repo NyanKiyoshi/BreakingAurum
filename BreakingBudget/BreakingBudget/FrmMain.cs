@@ -21,7 +21,9 @@ namespace BreakingBudget
 
             this.TopSidebarEntries = new SidebarEntry[]
             {
-                new SidebarEntry(this.HomePage, new byte[] { 0xEE, 0xA2, 0x8A }, "Accueil")
+                new SidebarEntry(this.HomePage, new byte[] { 0xEE, 0xA2, 0x8A }, "Accueil", new SidebarEntry[] {
+                    new SidebarEntry(this.multiPanePage1, "Now")
+                })
             };
 
             this.BottomSidebarEntries = new SidebarEntry[]
@@ -44,7 +46,7 @@ namespace BreakingBudget
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            GenerateSidebar();
+            GenerateSidebar(new SidebarEntry[][] { this.TopSidebarEntries, this.BottomSidebarEntries });
             this.SwitchPanel(this.DefaultPage);
         }
 

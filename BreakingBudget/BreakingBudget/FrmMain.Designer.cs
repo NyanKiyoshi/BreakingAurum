@@ -41,8 +41,9 @@
             this.SettingsPage = new Kerido.Controls.MultiPanePage();
             this.label2 = new System.Windows.Forms.Label();
             this.LicensesPage = new Kerido.Controls.MultiPanePage();
-            this.HomePage = new Kerido.Controls.MultiPanePage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.HomePage = new Kerido.Controls.MultiPanePage();
+            this.multiPanePage1 = new Kerido.Controls.MultiPanePage();
             this.tableLayoutPanel1.SuspendLayout();
             this.SidebarTable.SuspendLayout();
             this.ContentPanel.SuspendLayout();
@@ -113,6 +114,7 @@
             this.ContentPanel.Controls.Add(this.SettingsPage);
             this.ContentPanel.Controls.Add(this.LicensesPage);
             this.ContentPanel.Controls.Add(this.HomePage);
+            this.ContentPanel.Controls.Add(this.multiPanePage1);
             this.ContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContentPanel.Location = new System.Drawing.Point(198, 0);
             this.ContentPanel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
@@ -184,13 +186,6 @@
             this.LicensesPage.Size = new System.Drawing.Size(528, 358);
             this.LicensesPage.TabIndex = 2;
             // 
-            // HomePage
-            // 
-            this.HomePage.AccessibleName = "Accueil";
-            this.HomePage.Name = "HomePage";
-            this.HomePage.Size = new System.Drawing.Size(528, 358);
-            this.HomePage.TabIndex = 3;
-            // 
             // richTextBox1
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.White;
@@ -202,6 +197,20 @@
             this.richTextBox1.Size = new System.Drawing.Size(528, 358);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
+            // HomePage
+            // 
+            this.HomePage.AccessibleName = "Accueil";
+            this.HomePage.Name = "HomePage";
+            this.HomePage.Size = new System.Drawing.Size(528, 358);
+            this.HomePage.TabIndex = 3;
+            // 
+            // multiPanePage1
+            // 
+            this.multiPanePage1.AccessibleName = "Expanded Test";
+            this.multiPanePage1.Name = "multiPanePage1";
+            this.multiPanePage1.Size = new System.Drawing.Size(528, 358);
+            this.multiPanePage1.TabIndex = 4;
             // 
             // FrmMain
             // 
@@ -246,6 +255,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private Kerido.Controls.MultiPanePage HomePage;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private Kerido.Controls.MultiPanePage multiPanePage1;
     }
 }
 

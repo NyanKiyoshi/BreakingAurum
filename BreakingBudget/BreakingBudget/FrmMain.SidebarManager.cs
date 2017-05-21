@@ -17,6 +17,8 @@ namespace BreakingBudget
         Color BaseSidebarEntryColor = Color.FromArgb(117, 117, 117);
         Color ActiveBaseSidebarEntryColor = Color.FromArgb(0, 0, 0);
 
+        SidebarEntry[][] SidebarsRootEntries;
+
         private void InitFonts()
         {
             this.CustomFonts = new PrivateFontCollection();
@@ -24,9 +26,11 @@ namespace BreakingBudget
             this.IconFont = new Font(this.CustomFonts.Families[0], 19.0f, FontStyle.Regular, GraphicsUnit.Point);  // FIXME: dynamic value (23)
         }
 
-        private void GenerateSidebar()
+        private void GenerateSidebar(SidebarEntry[][] SidebarsRootEntries)
         {
             InitFonts();
+
+            this.SidebarsRootEntries = SidebarsRootEntries;
 
             this.SidebarTable.BackColor = this.BackColor;
             this.SidebarTopFlowLayout.BackColor = this.BackColor;
@@ -47,6 +51,157 @@ namespace BreakingBudget
             this.ContentPanel.SelectedPage = target;
         }
 
+        private void ToggleSidebarChildren(SidebarEntry[] children, bool Visible)
+        {
+            foreach (SidebarEntry child in children)
+            {
+                if (child._OwnerController.GetType() == typeof(FlowLayoutPanel))
+                {
+                    ((FlowLayoutPanel)child._OwnerController).Visible = Visible;
+                }
+            }
+        }
+
+        private void UnexpandSidebarEntries()
+        {
+            foreach (SidebarEntry[] SidebarRootEntries in this.SidebarsRootEntries)
+            {
+                foreach (SidebarEntry ParentEntry in SidebarRootEntries)
+                {
+                    if (ParentEntry.children != null)
+                    {
+                        ToggleSidebarChildren(ParentEntry.children, false);
+                    }
+                    ParentEntry.IsExpanded = false;
+                }
+            }
+        }
+
+        private FlowLayoutPanel GenerateSidebarEntry(SidebarEntry e)
+        {
+            Label EntryIcon;
+            Label EntryText;
+
+            // future lambda event handlers
+            EventHandler OnMouseLeave;
+            EventHandler OnMouseEnter;
+            EventHandler OnMouseClick;
+
+            // Declare and create the entry's container
+            // Warning: we MUST put the declaration here to make the bellow
+            //          lambda functions point on the right container.
+            FlowLayoutPanel entry_layout = new FlowLayoutPanel();
+
+            // init the entry labels
+            EntryIcon = new Label();
+            EntryText = new Label();
+
+            // create the mouse events (hover and release/ leave)
+            OnMouseEnter = (s, ev) =>
+            {
+                entry_layout.ForeColor = this.ActiveBaseSidebarEntryColor;
+            };
+
+            OnMouseLeave = (s, ev) =>
+            {
+                if (e.IsActive != true)
+                {
+                    entry_layout.ForeColor = this.BaseSidebarEntryColor;
+                }
+            };
+
+            // if the target is a web link -> open it when the user clicks on it
+            if (e.TargetLink != null)
+            {
+                OnMouseClick = (s, ev) =>
+                {
+                    ProcessStartInfo sInfo = new ProcessStartInfo(e.TargetLink);
+                    Process.Start(sInfo);
+                };
+            }
+            else
+            {
+                OnMouseClick = (s, ev) =>
+                {
+                    // Swith to the target
+                    SwitchPanel(e.Target);
+
+                    // if the entry is not a child: unexpand everything
+                    if (!e.IsExpanded && e.parent == null)
+                    {
+                        // close everything opened on the sidebar
+                        // (we don't care if the entry has children or not, close anyway)
+                        UnexpandSidebarEntries();
+                    }
+
+                    if (e.children != null && e.children.Length > 0)
+                    {
+                        // set the children visible
+                        e.IsExpanded = !e.IsExpanded;
+                        ToggleSidebarChildren(e.children, e.IsExpanded);
+                    }
+                };
+            }
+
+            // set the inactive color to the whole container
+            entry_layout.ForeColor = this.BaseSidebarEntryColor;
+
+            // assign the events to EVERY component of the entry
+            entry_layout.MouseEnter += OnMouseEnter;
+            entry_layout.MouseLeave += OnMouseLeave;
+            entry_layout.Click += OnMouseClick;
+
+            EntryIcon.MouseEnter += OnMouseEnter;
+            EntryIcon.MouseLeave += OnMouseLeave;
+            EntryIcon.Click += OnMouseClick;
+
+            EntryText.MouseEnter += OnMouseEnter;
+            EntryText.MouseLeave += OnMouseLeave;
+            EntryText.Click += OnMouseClick;
+            // ----
+
+            // The inner layout is gonna contain in the following order:
+            // [Label: ICON] [Label: Text]
+            // So we put the layout's direction in Left to Right
+            entry_layout.FlowDirection = FlowDirection.LeftToRight;
+
+            // [Label: ICON] [Label: Text]
+            entry_layout.Controls.Add(EntryIcon);
+            entry_layout.Controls.Add(EntryText);
+
+            // spacing between every entry is of 15px (margin bottom = 15)
+            entry_layout.Margin = new Padding(0, 0, 0, 15);
+
+            // the icon's label is a square of 30x30
+            EntryIcon.AutoSize = false;
+            EntryIcon.Height = EntryIcon.Width = 30;
+
+            // Auto resize the text label
+            EntryText.AutoSize = true;
+
+            // align everything on top-left
+            EntryText.TextAlign = EntryIcon.TextAlign = ContentAlignment.TopLeft;
+
+            // XXX: we probably don't need this line anymore
+            EntryText.Height = EntryIcon.Height;
+
+            // set the icon's label in MaterialFont
+            EntryIcon.Font = this.IconFont;
+
+            // Convert the UTF-8 byte array to String
+            EntryIcon.Text = e.Icon != null ? Encoding.UTF8.GetString(e.Icon) : "";
+
+            // Make the entry's text (entry name) label bigger
+            EntryText.Font = new Font("Microsoft Sans Serif", 14.0f, FontStyle.Regular, GraphicsUnit.Point);
+            EntryText.Text = e.Text;
+
+            // set the layout's height at the same height of the icon
+            entry_layout.Height = EntryIcon.Height;
+            e._OwnerController = entry_layout;
+
+            return entry_layout;
+        }
+
         /*
          * Generates the sidebar using the following design:
          *   + ------ [FlowLayoutPanel -> From Top to Down] ------ +
@@ -59,115 +214,27 @@ namespace BreakingBudget
          */
         private void GenerateSidebarContent(FlowLayoutPanel TargetLayout, SidebarEntry[] RootEntries)
         {
-            Label EntryIcon;
-            Label EntryText;
-
-            // future lambda event handlers
-            EventHandler OnMouseLeave;
-            EventHandler OnMouseEnter;
-            EventHandler OnMouseClick;
+            FlowLayoutPanel child;
 
             // we now start to append every entry from the attribute `SidebarEntries`
-            foreach (SidebarEntry e in RootEntries)
+            foreach (SidebarEntry ParentEntry in RootEntries)
             {
-                // Declare and create the entry's container
-                // Warning: we MUST put the declaration here to make the bellow
-                //          lambda functions point on the right container.
-                FlowLayoutPanel entry_layout = new FlowLayoutPanel();
-
-                // init the entry labels
-                EntryIcon = new Label();
-                EntryText = new Label();
-
-                // create the mouse events (hover and release/ leave)
-                OnMouseEnter = (s, ev) =>
-                {
-                    entry_layout.ForeColor = this.ActiveBaseSidebarEntryColor;
-                };
-
-                OnMouseLeave = (s, ev) =>
-                {
-                    if (e.IsActive != true)
-                    {
-                        entry_layout.ForeColor = this.BaseSidebarEntryColor;
-                    }
-                };
-
-                // if the target is a web link -> open it when the user clicks on it
-                if (e.TargetLink != null)
-                {
-                    OnMouseClick = (s, ev) =>
-                    {
-                        ProcessStartInfo sInfo = new ProcessStartInfo(e.TargetLink);
-                        Process.Start(sInfo);
-                    };
-                }
-                else
-                {
-                    OnMouseClick = (s, ev) =>
-                    {
-                        SwitchPanel(e.Target);
-                    };
-                }
-
-                // set the inactive color to the whole container
-                entry_layout.ForeColor = this.BaseSidebarEntryColor;
-
-                // assign the events to EVERY component of the entry
-                entry_layout.MouseEnter += OnMouseEnter;
-                entry_layout.MouseLeave += OnMouseLeave;
-                entry_layout.Click += OnMouseClick;
-
-                EntryIcon.MouseEnter += OnMouseEnter;
-                EntryIcon.MouseLeave += OnMouseLeave;
-                EntryIcon.Click += OnMouseClick;
-
-                EntryText.MouseEnter += OnMouseEnter;
-                EntryText.MouseLeave += OnMouseLeave;
-                EntryText.Click += OnMouseClick;
-                // ----
-
-                // The inner layout is gonna contain in the following order:
-                // [Label: ICON] [Label: Text]
-                // So we put the layout's direction in Left to Right
-                entry_layout.FlowDirection = FlowDirection.LeftToRight;
-
-                // [Label: ICON] [Label: Text]
-                entry_layout.Controls.Add(EntryIcon);
-                entry_layout.Controls.Add(EntryText);
-
-                // spacing between every entry is of 15px (margin bottom = 15)
-                entry_layout.Margin = new Padding(0, 0, 0, 15);
-
-                // the icon's label is a square of 30x30
-                EntryIcon.AutoSize = false;
-                EntryIcon.Height = EntryIcon.Width = 30;
-
-                // Auto resize the text label
-                EntryText.AutoSize = true;
-
-                // align everything on top-left
-                EntryText.TextAlign = EntryIcon.TextAlign = ContentAlignment.TopLeft;
-
-                // XXX: we probably don't need this line anymore
-                EntryText.Height = EntryIcon.Height;
-
-                // set the icon's label in MaterialFont
-                EntryIcon.Font = this.IconFont;
-
-                // Convert the UTF-8 byte array to String
-                EntryIcon.Text = Encoding.UTF8.GetString(e.Icon);
-
-                // Make the entry's text (entry name) label bigger
-                EntryText.Font = new Font("Microsoft Sans Serif", 14.0f, FontStyle.Regular, GraphicsUnit.Point);
-                EntryText.Text = e.Text;
-
-                // set the layout's height at the same height of the icon
-                entry_layout.Height = EntryIcon.Height;
-
                 // append the entry to the sidebar
-                TargetLayout.Controls.Add(entry_layout);
-                e._OwnerController = entry_layout;
+                TargetLayout.Controls.Add(this.GenerateSidebarEntry(ParentEntry));
+
+                if (ParentEntry.children != null)
+                {
+                    // generate the children
+                    foreach (SidebarEntry ChildEntry in ParentEntry.children)
+                    {
+                        // put the child's container invisible (not expanded)
+                        child = this.GenerateSidebarEntry(ChildEntry);
+                        child.Visible = false;
+
+                        // append the child to the main container
+                        TargetLayout.Controls.Add(child);
+                    }
+                }
             }
         }
 
@@ -199,6 +266,10 @@ namespace BreakingBudget
         private void ContentPanel_SelectedPageChanged(object _s, EventArgs e)
         {
             MultiPaneControl sender = _s as MultiPaneControl;
+            if (sender.SelectedPage == null)
+            {
+                return;
+            }
 
             UpdateSidebar(sender, this.TopSidebarEntries);
             UpdateSidebar(sender, this.BottomSidebarEntries);
