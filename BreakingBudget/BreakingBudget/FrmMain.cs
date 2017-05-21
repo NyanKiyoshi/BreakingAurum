@@ -21,16 +21,20 @@ namespace BreakingBudget
 
             this.TopSidebarEntries = new SidebarEntry[]
             {
+                // To have a parent that do nothing: pass as first parameter: `(MultiPanePage)null`
                 new SidebarEntry(this.HomePage, new byte[] { 0xEE, 0xA2, 0x8A }, "Accueil", new SidebarEntry[] {
-                    new SidebarEntry(this.multiPanePage1, "Now")
-                })
+                    new SidebarEntry(this.multiPanePage1, "Now"),
+                    new SidebarEntry(this.multiPanePage1, "Now"),
+                    new SidebarEntry(this.multiPanePage1, "Now"),
+                    new SidebarEntry(this.multiPanePage1, "Now"),
+                }),
             };
 
             this.BottomSidebarEntries = new SidebarEntry[]
             {
-                new SidebarEntry("http://github.com", new byte[] { 0xEE, 0xA1, 0xA8 }, "Tracker"),
+                //new SidebarEntry("http://github.com", new byte[] { 0xEE, 0xA1, 0xA8 }, "Tracker"),
                 new SidebarEntry(this.SettingsPage, new byte[] { 0xEE, 0xA1, 0xA9 }, "Paramètres"),
-                new SidebarEntry(this.LicensesPage, new byte[] { 0xEE, 0x90, 0xA0 }, "Licenses")
+                new SidebarEntry(this.LicensesPage, new byte[] { 0xEE, 0x90, 0xA0 }, "Licences")
             };
 
             // set the base name (used later to rename the form)
@@ -52,6 +56,7 @@ namespace BreakingBudget
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // TODO: replace this by a check if data were edited or not
             if (
                 MetroMessageBox.Show(this,
                     "Êtes-vous sûr de vouloir quitter ?",

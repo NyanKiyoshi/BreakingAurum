@@ -13,12 +13,17 @@ namespace BreakingBudget
         private PrivateFontCollection CustomFonts = new PrivateFontCollection();
         private Font IconFont;
 
+        private readonly Padding BaseEntryMargin = new Padding(0, 0, 0, 15);
+        //private readonly int ChildEntryMarginDivider = 3;
+
         // the default text color and the active & hover one
         Color BaseSidebarEntryColor = Color.FromArgb(117, 117, 117);
         Color ActiveBaseSidebarEntryColor = Color.FromArgb(0, 0, 0);
 
+        // List of the sub-sidebars (FIXME: should take a FlowLayout this.SidebarTopFlowLayout, ...)
         SidebarEntry[][] SidebarsRootEntries;
 
+        // Load the icon font from the embedded resources
         private void InitFonts()
         {
             this.CustomFonts = new PrivateFontCollection();
@@ -32,6 +37,7 @@ namespace BreakingBudget
 
             this.SidebarsRootEntries = SidebarsRootEntries;
 
+            // Set the sidebar background as the same as the form's one
             this.SidebarTable.BackColor = this.BackColor;
             this.SidebarTopFlowLayout.BackColor = this.BackColor;
             this.SidebarBottomFlowLayout.BackColor = this.BackColor;
@@ -42,15 +48,18 @@ namespace BreakingBudget
             this.SidebarTopFlowLayout.FlowDirection = FlowDirection.TopDown;
             this.SidebarBottomFlowLayout.FlowDirection = FlowDirection.BottomUp;
 
+            // Generate every sub-sidebar
             GenerateSidebarContent(this.SidebarTopFlowLayout, this.TopSidebarEntries);
             GenerateSidebarContent(this.SidebarBottomFlowLayout, this.BottomSidebarEntries);
         }
 
+        // Change the form's current page
         private void SwitchPanel(MultiPanePage target)
         {
             this.ContentPanel.SelectedPage = target;
         }
 
+        // Toggle every child visibility
         private void ToggleSidebarChildren(SidebarEntry[] children, bool Visible)
         {
             foreach (SidebarEntry child in children)
@@ -62,16 +71,22 @@ namespace BreakingBudget
             }
         }
 
+        // Hide every root's children
         private void UnexpandSidebarEntries()
         {
+            // Process every sub-sidebar
             foreach (SidebarEntry[] SidebarRootEntries in this.SidebarsRootEntries)
             {
+                // Process every entry
                 foreach (SidebarEntry ParentEntry in SidebarRootEntries)
                 {
+                    // If the entry has children
                     if (ParentEntry.children != null)
                     {
+                        // Set every child as hidden
                         ToggleSidebarChildren(ParentEntry.children, false);
                     }
+                    // Mark the entry as unexpanded
                     ParentEntry.IsExpanded = false;
                 }
             }
@@ -99,11 +114,14 @@ namespace BreakingBudget
             // create the mouse events (hover and release/ leave)
             OnMouseEnter = (s, ev) =>
             {
+                // change the entry color to the active one
                 entry_layout.ForeColor = this.ActiveBaseSidebarEntryColor;
             };
 
             OnMouseLeave = (s, ev) =>
             {
+                // put the inactive color on mouse leave if and only if
+                //   the entry is not marked as active
                 if (e.IsActive != true)
                 {
                     entry_layout.ForeColor = this.BaseSidebarEntryColor;
@@ -134,6 +152,7 @@ namespace BreakingBudget
                         UnexpandSidebarEntries();
                     }
 
+                    // if the entry has children: toggle the children' visibility
                     if (e.children != null && e.children.Length > 0)
                     {
                         // set the children visible
@@ -170,7 +189,8 @@ namespace BreakingBudget
             entry_layout.Controls.Add(EntryText);
 
             // spacing between every entry is of 15px (margin bottom = 15)
-            entry_layout.Margin = new Padding(0, 0, 0, 15);
+            entry_layout.Margin = new Padding(this.BaseEntryMargin.Left, this.BaseEntryMargin.Top,
+                                              this.BaseEntryMargin.Right, this.BaseEntryMargin.Bottom);
 
             // the icon's label is a square of 30x30
             EntryIcon.AutoSize = false;
@@ -214,7 +234,7 @@ namespace BreakingBudget
          */
         private void GenerateSidebarContent(FlowLayoutPanel TargetLayout, SidebarEntry[] RootEntries)
         {
-            FlowLayoutPanel child;
+            FlowLayoutPanel ChildLayout;
 
             // we now start to append every entry from the attribute `SidebarEntries`
             foreach (SidebarEntry ParentEntry in RootEntries)
@@ -228,11 +248,11 @@ namespace BreakingBudget
                     foreach (SidebarEntry ChildEntry in ParentEntry.children)
                     {
                         // put the child's container invisible (not expanded)
-                        child = this.GenerateSidebarEntry(ChildEntry);
-                        child.Visible = false;
+                        ChildLayout = this.GenerateSidebarEntry(ChildEntry);
+                        ChildLayout.Visible = false;
 
                         // append the child to the main container
-                        TargetLayout.Controls.Add(child);
+                        TargetLayout.Controls.Add(ChildLayout);
                     }
                 }
             }
@@ -240,20 +260,29 @@ namespace BreakingBudget
 
         private void UpdateSidebar(MultiPaneControl sender, SidebarEntry[] entries)
         {
+            // If the sub-sidebar is empty => there nothing to update, do nothing
             if (entries == null)
             {
                 return;
             }
 
+            // Update every entry of the given sub-sidebar
             foreach (SidebarEntry e in entries)
             {
+                // if the sub-sidebar entry has attached page
                 if (e.Target != null && e._OwnerController.GetType() == typeof(FlowLayoutPanel))
                 {
+                    // if the new page is same page than the attached one:
+                    //   -> change its color to the active one
+                    //   -> mark the entry has active
                     if (sender.SelectedPage == e.Target)
                     {
                         ((FlowLayoutPanel)e._OwnerController).ForeColor = this.ActiveBaseSidebarEntryColor;
                         e.IsActive = true;
                     }
+                    // else:
+                    //   -> put the inactive color
+                    //   -> mark it as inactive
                     else
                     {
                         ((FlowLayoutPanel)e._OwnerController).ForeColor = this.BaseSidebarEntryColor;
@@ -263,17 +292,23 @@ namespace BreakingBudget
             }
         }
 
-        private void ContentPanel_SelectedPageChanged(object _s, EventArgs e)
+        private void ContentPanel_SelectedPageChanged(object _s, EventArgs _e)
         {
             MultiPaneControl sender = _s as MultiPaneControl;
+
+            // if the page didn't change: do nothing
             if (sender.SelectedPage == null)
             {
                 return;
             }
 
-            UpdateSidebar(sender, this.TopSidebarEntries);
-            UpdateSidebar(sender, this.BottomSidebarEntries);
+            // Update each sidebar is content
+            foreach (SidebarEntry[] e in this.SidebarsRootEntries)
+            {
+                UpdateSidebar(sender, e);
+            }
 
+            // Update the form's title and force the repaint
             this.Text = this.BaseName + " - " + sender.SelectedPage.AccessibleName;
             this.Refresh();
         }
