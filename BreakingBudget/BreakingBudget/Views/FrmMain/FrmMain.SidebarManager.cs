@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Text;
 using System.Text;
 using System.Windows.Forms;
 using Kerido.Controls;
 using System.Collections.Generic;
+using BreakingBudget.Services;
 using BreakingBudget.Structural;
 
 namespace BreakingBudget.Views.FrmMain
 {
     partial class FrmMain
     {
-        private PrivateFontCollection CustomFonts = new PrivateFontCollection();
-        private Font IconFont;
-
         private readonly Padding BaseEntryMargin = new Padding(0, 0, 0, 15);
 
         // the default text color and the active & hover one
@@ -24,18 +21,8 @@ namespace BreakingBudget.Views.FrmMain
         // List of the sub-sidebars (FIXME: should take a FlowLayout this.SidebarTopFlowLayout, ...)
         SidebarEntry[][] SidebarsRootEntries;
 
-        // Load the icon font from the embedded resources
-        private void InitFonts()
-        {
-            this.CustomFonts = new PrivateFontCollection();
-            this.CustomFonts.AddFontFile("MaterialIcons-Regular.ttf");
-            this.IconFont = new Font(this.CustomFonts.Families[0], 17.0f, FontStyle.Regular, GraphicsUnit.Point);  // FIXME: dynamic value (23)
-        }
-
         private void GenerateSidebar(SidebarEntry[][] SidebarsRootEntries)
         {
-            InitFonts();
-
             this.SidebarsRootEntries = SidebarsRootEntries;
 
             // Set the sidebar background as the same as the form's one

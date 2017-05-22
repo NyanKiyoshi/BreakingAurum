@@ -2,24 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.OleDb;
-using System.Text;
-using System.Threading.Tasks;
 using BreakingBudget.Services;
 
 namespace BreakingBudget.Repositories
 {
-    static class PosteRepository
+    static class PeriodiciteRepository
     {
-        public const string TABLE_NAME = "Poste";
+        public const string TABLE_NAME = "Periodicite";
 
-        public class PosteModel
+        public class PeriodiciteModel
         {
-            public int codePoste { get; set; }
-            public string libPoste { get; set; }
+            public int codePer { get; set; }
+            public string libPer { get; set; }
 
             override public string ToString()
             {
-                return this.libPoste;
+                return this.libPer;
             }
         }
 
@@ -28,7 +26,7 @@ namespace BreakingBudget.Repositories
             return (int)DatabaseManager.GetFirstRaw("SELECT COUNT(*) FROM " + TABLE_NAME);
         }
 
-        public static PosteModel[] List()
+        public static PeriodiciteModel[] List()
         {
             OleDbConnection conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING);
             OleDbCommand cmd = conn.CreateCommand();
@@ -36,7 +34,7 @@ namespace BreakingBudget.Repositories
             cmd.CommandText = "SELECT * FROM " + TABLE_NAME;
 
             conn.Open();
-            PosteModel[] data = DataAdapter.OleDbDataReaderToStruct<PosteRepository.PosteModel>(cmd.ExecuteReader()).ToArray();
+            PeriodiciteModel[] data = DataAdapter.OleDbDataReaderToStruct<PeriodiciteModel>(cmd.ExecuteReader()).ToArray();
             conn.Close();
 
             return data;

@@ -14,11 +14,13 @@ namespace BreakingBudget.Views.FrmMain
 {
     public partial class FrmMain : MetroForm
     {
+        private Font IconFont = IconFonts.GetFont(IconFonts.FONT_FAMILY.MaterialIcons, 17.0f);
+
         private readonly SidebarEntry[] TopSidebarEntries;
         private readonly SidebarEntry[] BottomSidebarEntries;
 
-        public readonly string BaseName;
-        public readonly MultiPanePage DefaultPage;
+        private readonly string BaseName;
+        private readonly MultiPanePage DefaultPage;
 
         public FrmMain()
         {
@@ -51,6 +53,8 @@ namespace BreakingBudget.Views.FrmMain
             this.Font = new Font("Arial", 11f, FontStyle.Regular, GraphicsUnit.Pixel);
 
             AutoCompleter.ImplementCompleter(textBox1, 2);
+
+            InitializePostesFixes();
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -96,6 +100,20 @@ namespace BreakingBudget.Views.FrmMain
                 MessageBox.Show(dc.ColumnName.ToString());
                 MessageBox.Show(dc.DataType.ToString());
             }
+        }
+
+        private void HelpPosteLabel_Click(object sender, EventArgs e)
+        {
+            MetroMessageBox.Show(this,
+                "Choisissez un poste existant ou tapez-le directement à l'intérieur du champ pour en créer un nouveau.",
+                "Aide sur les postes",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+
+        private void PagePostesFixes_AutoSizeChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(this.PagePostesFixes.Size.Width.ToString());
         }
     }
 }

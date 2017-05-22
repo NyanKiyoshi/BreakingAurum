@@ -55,7 +55,7 @@ namespace BreakingBudget.Services
             return DatabaseManager._CachedSchemaTable.Tables;
         }
 
-        public static OleDbDataReader ExecuteCommand(OleDbCommand Command)
+        public static OleDbDataReader IterCommand(OleDbCommand Command)
         {
             using (OleDbConnection db_conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING))
             {
@@ -70,7 +70,7 @@ namespace BreakingBudget.Services
 
         public static OleDbDataReader ExecuteRawSQL(string RawSQLCommand)
         {
-            return DatabaseManager.ExecuteCommand(new OleDbCommand(RawSQLCommand));
+            return DatabaseManager.IterCommand(new OleDbCommand(RawSQLCommand));
         }
 
         public static object GetFirst(OleDbCommand Command)
