@@ -46,6 +46,7 @@
             this.HomePage = new Kerido.Controls.MultiPanePage();
             this.PageRevenus = new Kerido.Controls.MultiPanePage();
             this.multiPanePage3 = new Kerido.Controls.MultiPanePage();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SidebarTable.SuspendLayout();
             this.ContentPanel.SuspendLayout();
@@ -53,6 +54,7 @@
             this.flowLayoutPanel1.SuspendLayout();
             this.SettingsPage.SuspendLayout();
             this.LicensesPage.SuspendLayout();
+            this.HomePage.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -213,6 +215,7 @@
             // HomePage
             // 
             this.HomePage.AccessibleName = "Accueil";
+            this.HomePage.Controls.Add(this.button1);
             this.HomePage.Name = "HomePage";
             this.HomePage.Size = new System.Drawing.Size(711, 358);
             this.HomePage.TabIndex = 3;
@@ -228,6 +231,16 @@
             this.multiPanePage3.Name = "multiPanePage3";
             this.multiPanePage3.Size = new System.Drawing.Size(711, 358);
             this.multiPanePage3.TabIndex = 6;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(453, 121);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmMain
             // 
@@ -253,6 +266,7 @@
             this.SettingsPage.ResumeLayout(false);
             this.SettingsPage.PerformLayout();
             this.LicensesPage.ResumeLayout(false);
+            this.HomePage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -276,6 +290,7 @@
         private Kerido.Controls.MultiPanePage PagePostesPonctuels;
         private Kerido.Controls.MultiPanePage PageRevenus;
         private Kerido.Controls.MultiPanePage multiPanePage3;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BreakingBudget.Views.FrmMain;
 using BreakingBudget.Repositories;
+using BreakingBudget.Services;
 
 namespace BreakingBudget
 {
@@ -17,6 +18,9 @@ namespace BreakingBudget
             Application.SetCompatibleTextRenderingDefault(false);
 
             UserCreation CreationForm;
+
+            // Cache the database's scheme
+            DatabaseManager.GenerateDatabaseCache();
 
             // If there is nobody in the database, open the creation form
             while (PersonneRepository.CountRows() == 0)

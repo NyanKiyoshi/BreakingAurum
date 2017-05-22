@@ -79,7 +79,9 @@
   <ItemGroup>
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\PersonneRepository.cs" />
+    <Compile Include="Repositories\PosteRepository.cs" />
     <Compile Include="Services\AutoCompleter.cs" />
+    <Compile Include="Services\DataAdapter.cs" />
     <Compile Include="Services\DatabaseManager.cs" />
     <Compile Include="Views\FrmMain\FrmMain.cs">
       <SubType>Form</SubType>

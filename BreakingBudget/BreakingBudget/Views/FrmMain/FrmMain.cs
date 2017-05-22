@@ -6,6 +6,9 @@ using MetroFramework;
 using Kerido.Controls;
 using BreakingBudget.Services;
 using BreakingBudget.Structural;
+using BreakingBudget.Repositories;
+using System.Data;
+using System.Data.OleDb;
 
 namespace BreakingBudget.Views.FrmMain
 {
@@ -67,6 +70,31 @@ namespace BreakingBudget.Views.FrmMain
                 ) != DialogResult.Yes)
             {
                 e.Cancel = true;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OleDbConnection conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING);
+            OleDbCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = "SELECT * FROM Poste;";
+
+            //DataAdapter.OleDbDataReaderToStruct<PosteRepository.PosteModel>(DatabaseManager.ExecuteRawSQL("SELECT * FROM Poste;"));
+
+            conn.Open();
+            foreach (PosteRepository.PosteModel p in DataAdapter.OleDbDataReaderToStruct<PosteRepository.PosteModel>(cmd.ExecuteReader()))
+            {
+                MessageBox.Show(p.ToString());
+            }
+            conn.Close();
+
+            return;
+
+            foreach (DataColumn dc in DatabaseManager.GetCachedTableSchema()["Poste"].Columns)
+            {
+                MessageBox.Show(dc.ColumnName.ToString());
+                MessageBox.Show(dc.DataType.ToString());
             }
         }
     }
