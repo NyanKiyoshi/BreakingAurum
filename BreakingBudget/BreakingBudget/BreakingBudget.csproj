@@ -89,7 +89,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\FrmMain\SidebarEntry.cs" />
+    <Compile Include="Structural\SidebarEntry.cs" />
     <Compile Include="Views\FrmMain\FrmMain.SidebarManager.cs">
       <SubType>Form</SubType>
     </Compile>

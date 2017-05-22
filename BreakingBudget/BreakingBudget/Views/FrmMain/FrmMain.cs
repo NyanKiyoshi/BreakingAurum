@@ -5,7 +5,7 @@ using MetroFramework.Forms;
 using MetroFramework;
 using Kerido.Controls;
 using BreakingBudget.Services;
-using BreakingBudget.Repositories;
+using BreakingBudget.Structural;
 
 namespace BreakingBudget.Views.FrmMain
 {

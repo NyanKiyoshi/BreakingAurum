@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using Kerido.Controls;
 using System.Collections.Generic;
+using BreakingBudget.Structural;
 
 namespace BreakingBudget.Views.FrmMain
 {
@@ -15,7 +16,6 @@ namespace BreakingBudget.Views.FrmMain
         private Font IconFont;
 
         private readonly Padding BaseEntryMargin = new Padding(0, 0, 0, 15);
-        //private readonly int ChildEntryMarginDivider = 3;
 
         // the default text color and the active & hover one
         Color BaseSidebarEntryColor = Color.FromArgb(117, 117, 117);
