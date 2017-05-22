@@ -32,8 +32,8 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.SidebarTable = new System.Windows.Forms.TableLayoutPanel();
-            this.SidebarTopFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.SidebarBottomFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
+            this.SidebarTopFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ContentPanel = new Kerido.Controls.MultiPaneControl();
@@ -118,8 +118,19 @@
             this.SidebarTable.RowCount = 2;
             this.SidebarTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.SidebarTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.SidebarTable.Size = new System.Drawing.Size(6, 389);
+            this.SidebarTable.Size = new System.Drawing.Size(6, 426);
             this.SidebarTable.TabIndex = 6;
+            // 
+            // SidebarBottomFlowLayout
+            // 
+            this.SidebarBottomFlowLayout.AutoSize = true;
+            this.SidebarBottomFlowLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.SidebarBottomFlowLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.SidebarBottomFlowLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SidebarBottomFlowLayout.Location = new System.Drawing.Point(3, 9);
+            this.SidebarBottomFlowLayout.Name = "SidebarBottomFlowLayout";
+            this.SidebarBottomFlowLayout.Size = new System.Drawing.Size(1, 414);
+            this.SidebarBottomFlowLayout.TabIndex = 2;
             // 
             // SidebarTopFlowLayout
             // 
@@ -131,17 +142,6 @@
             this.SidebarTopFlowLayout.Name = "SidebarTopFlowLayout";
             this.SidebarTopFlowLayout.Size = new System.Drawing.Size(1, 1);
             this.SidebarTopFlowLayout.TabIndex = 1;
-            // 
-            // SidebarBottomFlowLayout
-            // 
-            this.SidebarBottomFlowLayout.AutoSize = true;
-            this.SidebarBottomFlowLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.SidebarBottomFlowLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.SidebarBottomFlowLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SidebarBottomFlowLayout.Location = new System.Drawing.Point(3, 9);
-            this.SidebarBottomFlowLayout.Name = "SidebarBottomFlowLayout";
-            this.SidebarBottomFlowLayout.Size = new System.Drawing.Size(1, 377);
-            this.SidebarBottomFlowLayout.TabIndex = 2;
             // 
             // tableLayoutPanel1
             // 
@@ -159,7 +159,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(685, 395);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(685, 432);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -170,7 +170,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(15, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(667, 389);
+            this.panel1.Size = new System.Drawing.Size(667, 426);
             this.panel1.TabIndex = 0;
             // 
             // ContentPanel
@@ -189,7 +189,7 @@
             this.ContentPanel.Name = "ContentPanel";
             this.ContentPanel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.ContentPanel.SelectedPage = this.PagePostesFixes;
-            this.ContentPanel.Size = new System.Drawing.Size(667, 389);
+            this.ContentPanel.Size = new System.Drawing.Size(667, 426);
             this.ContentPanel.TabIndex = 9;
             this.ContentPanel.Text = "Meow";
             this.ContentPanel.SelectedPageChanged += new System.EventHandler(this.ContentPanel_SelectedPageChanged);
@@ -201,7 +201,7 @@
             this.PagePostesFixes.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PagePostesFixes.Controls.Add(this.panel2);
             this.PagePostesFixes.Name = "PagePostesFixes";
-            this.PagePostesFixes.Size = new System.Drawing.Size(667, 389);
+            this.PagePostesFixes.Size = new System.Drawing.Size(667, 426);
             this.PagePostesFixes.TabIndex = 0;
             // 
             // panel2
@@ -213,9 +213,9 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(667, 389);
+            this.panel2.Padding = new System.Windows.Forms.Padding(10);
+            this.panel2.Size = new System.Drawing.Size(667, 426);
             this.panel2.TabIndex = 0;
-            this.panel2.Visible = false;
             // 
             // panel3
             // 
@@ -224,18 +224,19 @@
             this.panel3.Controls.Add(this.metroButton1);
             this.panel3.Controls.Add(this.metroButton2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 321);
+            this.panel3.Location = new System.Drawing.Point(10, 386);
+            this.panel3.MinimumSize = new System.Drawing.Size(0, 30);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(667, 68);
+            this.panel3.Size = new System.Drawing.Size(647, 30);
             this.panel3.TabIndex = 2;
             // 
             // metroButton1
             // 
             this.metroButton1.AutoSize = true;
             this.metroButton1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.metroButton1.Location = new System.Drawing.Point(587, 0);
+            this.metroButton1.Location = new System.Drawing.Point(567, 0);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(80, 68);
+            this.metroButton1.Size = new System.Drawing.Size(80, 30);
             this.metroButton1.TabIndex = 5;
             this.metroButton1.Text = "Valider";
             this.metroButton1.UseSelectable = true;
@@ -243,7 +244,8 @@
             // metroButton2
             // 
             this.metroButton2.AutoSize = true;
-            this.metroButton2.Location = new System.Drawing.Point(5, 35);
+            this.metroButton2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.metroButton2.Location = new System.Drawing.Point(0, 0);
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(93, 30);
             this.metroButton2.TabIndex = 6;
@@ -261,12 +263,11 @@
             this.PosteFixeFlowLayoutPanel.Controls.Add(this.flowLayoutPanel5);
             this.PosteFixeFlowLayoutPanel.Controls.Add(this.metroLabel3);
             this.PosteFixeFlowLayoutPanel.Controls.Add(this.flowLayoutPanel6);
-            this.PosteFixeFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PosteFixeFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PosteFixeFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.PosteFixeFlowLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.PosteFixeFlowLayoutPanel.Location = new System.Drawing.Point(10, 10);
             this.PosteFixeFlowLayoutPanel.Name = "PosteFixeFlowLayoutPanel";
-            this.PosteFixeFlowLayoutPanel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.PosteFixeFlowLayoutPanel.Size = new System.Drawing.Size(667, 249);
+            this.PosteFixeFlowLayoutPanel.Size = new System.Drawing.Size(647, 406);
             this.PosteFixeFlowLayoutPanel.TabIndex = 1;
             this.PosteFixeFlowLayoutPanel.WrapContents = false;
             // 
@@ -274,7 +275,7 @@
             // 
             this.labelCmbPostes.AutoSize = true;
             this.labelCmbPostes.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelCmbPostes.Location = new System.Drawing.Point(13, 0);
+            this.labelCmbPostes.Location = new System.Drawing.Point(3, 0);
             this.labelCmbPostes.Name = "labelCmbPostes";
             this.labelCmbPostes.Size = new System.Drawing.Size(43, 19);
             this.labelCmbPostes.TabIndex = 7;
@@ -287,11 +288,12 @@
             this.flowLayoutPanel3.Controls.Add(this.ComboxBoxListePostes);
             this.flowLayoutPanel3.Controls.Add(this.HelpPosteLabel);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(13, 22);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 22);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(391, 35);
             this.flowLayoutPanel3.TabIndex = 4;
+            this.flowLayoutPanel3.WrapContents = false;
             // 
             // ComboxBoxListePostes
             // 
@@ -323,7 +325,7 @@
             // 
             this.labelCmbPeriodicite.AutoSize = true;
             this.labelCmbPeriodicite.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelCmbPeriodicite.Location = new System.Drawing.Point(13, 72);
+            this.labelCmbPeriodicite.Location = new System.Drawing.Point(3, 72);
             this.labelCmbPeriodicite.Name = "labelCmbPeriodicite";
             this.labelCmbPeriodicite.Size = new System.Drawing.Size(72, 19);
             this.labelCmbPeriodicite.TabIndex = 7;
@@ -335,7 +337,7 @@
             this.flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel4.Controls.Add(this.ComboxBoxListePeriodicites);
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(13, 94);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 94);
             this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(391, 35);
@@ -361,7 +363,7 @@
             this.flowLayoutPanel5.Controls.Add(this.metroTextBox1);
             this.flowLayoutPanel5.Controls.Add(this.metroLabel2);
             this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(13, 147);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 147);
             this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
             this.flowLayoutPanel5.Size = new System.Drawing.Size(391, 25);
@@ -429,7 +431,7 @@
             // 
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel3.Location = new System.Drawing.Point(13, 187);
+            this.metroLabel3.Location = new System.Drawing.Point(3, 187);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(63, 19);
             this.metroLabel3.TabIndex = 10;
@@ -441,7 +443,7 @@
             this.flowLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel6.Controls.Add(this.metroTextBox2);
             this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(13, 209);
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 209);
             this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
             this.flowLayoutPanel6.Size = new System.Drawing.Size(391, 25);
@@ -487,7 +489,7 @@
             this.SettingsPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.SettingsPage.Controls.Add(this.label2);
             this.SettingsPage.Name = "SettingsPage";
-            this.SettingsPage.Size = new System.Drawing.Size(667, 389);
+            this.SettingsPage.Size = new System.Drawing.Size(667, 426);
             this.SettingsPage.TabIndex = 1;
             // 
             // label2
@@ -506,7 +508,7 @@
             this.LicensesPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.LicensesPage.Controls.Add(this.richTextBox1);
             this.LicensesPage.Name = "LicensesPage";
-            this.LicensesPage.Size = new System.Drawing.Size(667, 389);
+            this.LicensesPage.Size = new System.Drawing.Size(667, 426);
             this.LicensesPage.TabIndex = 2;
             // 
             // richTextBox1
@@ -517,7 +519,7 @@
             this.richTextBox1.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(667, 389);
+            this.richTextBox1.Size = new System.Drawing.Size(667, 426);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
@@ -528,7 +530,7 @@
             this.HomePage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.HomePage.Controls.Add(this.button1);
             this.HomePage.Name = "HomePage";
-            this.HomePage.Size = new System.Drawing.Size(667, 389);
+            this.HomePage.Size = new System.Drawing.Size(667, 426);
             this.HomePage.TabIndex = 3;
             // 
             // button1
@@ -546,7 +548,7 @@
             this.PagePostesPonctuels.AutoSize = true;
             this.PagePostesPonctuels.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PagePostesPonctuels.Name = "PagePostesPonctuels";
-            this.PagePostesPonctuels.Size = new System.Drawing.Size(667, 389);
+            this.PagePostesPonctuels.Size = new System.Drawing.Size(667, 426);
             this.PagePostesPonctuels.TabIndex = 4;
             // 
             // PageRevenus
@@ -554,7 +556,7 @@
             this.PageRevenus.AutoSize = true;
             this.PageRevenus.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PageRevenus.Name = "PageRevenus";
-            this.PageRevenus.Size = new System.Drawing.Size(667, 389);
+            this.PageRevenus.Size = new System.Drawing.Size(667, 426);
             this.PageRevenus.TabIndex = 5;
             // 
             // multiPanePage3
@@ -562,17 +564,18 @@
             this.multiPanePage3.AutoSize = true;
             this.multiPanePage3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.multiPanePage3.Name = "multiPanePage3";
-            this.multiPanePage3.Size = new System.Drawing.Size(667, 389);
+            this.multiPanePage3.Size = new System.Drawing.Size(667, 426);
             this.multiPanePage3.TabIndex = 6;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(725, 475);
+            this.ClientSize = new System.Drawing.Size(725, 512);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(725, 512);
             this.Name = "FrmMain";
             this.Text = "Breaking Budget";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;

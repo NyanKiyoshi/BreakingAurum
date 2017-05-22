@@ -30,7 +30,7 @@ namespace BreakingBudget.Views.FrmMain
             this.SidebarTopFlowLayout.BackColor = this.BackColor;
             this.SidebarBottomFlowLayout.BackColor = this.BackColor;
 
-            this.SidebarTable.Padding = new Padding(0);
+            this.SidebarTable.Padding = new Padding(0, 0, 10, 0);
             this.SidebarTable.Margin = new Padding(0);
 
             this.SidebarTopFlowLayout.FlowDirection = FlowDirection.TopDown;

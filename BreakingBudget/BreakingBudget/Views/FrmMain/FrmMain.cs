@@ -30,7 +30,7 @@ namespace BreakingBudget.Views.FrmMain
             {
                 // To have a parent that do nothing: pass as first parameter: `(MultiPanePage)null`
                 new SidebarEntry(this.HomePage, new byte[] { 0xEE, 0xA2, 0x8A }, "Accueil"),
-                new SidebarEntry((MultiPanePage)null, new byte[] { 0xEE, 0xA2, 0x8A }, "Budget Prévisionnel", new SidebarEntry[] {
+                new SidebarEntry((MultiPanePage)null, new byte[] { 0xEE, 0xA2, 0xA1 }, "Budget Prévisionnel", new SidebarEntry[] {
                     new SidebarEntry(this.PagePostesFixes, "Postes Fixes"),
                     new SidebarEntry(this.PagePostesPonctuels, "Postes Ponctuels"),
                     new SidebarEntry(this.PageRevenus, "Revenus"),
