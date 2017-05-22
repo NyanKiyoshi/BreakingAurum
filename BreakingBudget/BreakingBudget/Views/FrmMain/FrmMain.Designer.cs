@@ -34,7 +34,7 @@
             this.SidebarBottomFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.SidebarTopFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.ContentPanel = new Kerido.Controls.MultiPaneControl();
-            this.TrackerPage = new Kerido.Controls.MultiPanePage();
+            this.PagePostesFixes = new Kerido.Controls.MultiPanePage();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,12 +42,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.LicensesPage = new Kerido.Controls.MultiPanePage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.PagePostesPonctuels = new Kerido.Controls.MultiPanePage();
             this.HomePage = new Kerido.Controls.MultiPanePage();
-            this.multiPanePage1 = new Kerido.Controls.MultiPanePage();
+            this.PageRevenus = new Kerido.Controls.MultiPanePage();
+            this.multiPanePage3 = new Kerido.Controls.MultiPanePage();
             this.tableLayoutPanel1.SuspendLayout();
             this.SidebarTable.SuspendLayout();
             this.ContentPanel.SuspendLayout();
-            this.TrackerPage.SuspendLayout();
+            this.PagePostesFixes.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SettingsPage.SuspendLayout();
             this.LicensesPage.SuspendLayout();
@@ -57,7 +59,7 @@
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Silver;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 195F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.SidebarTable, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.ContentPanel, 1, 0);
@@ -72,6 +74,7 @@
             // 
             // SidebarTable
             // 
+            this.SidebarTable.AutoSize = true;
             this.SidebarTable.ColumnCount = 1;
             this.SidebarTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.SidebarTable.Controls.Add(this.SidebarBottomFlowLayout, 0, 1);
@@ -82,7 +85,7 @@
             this.SidebarTable.RowCount = 2;
             this.SidebarTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.SidebarTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.SidebarTable.Size = new System.Drawing.Size(189, 352);
+            this.SidebarTable.Size = new System.Drawing.Size(6, 352);
             this.SidebarTable.TabIndex = 6;
             // 
             // SidebarBottomFlowLayout
@@ -93,7 +96,7 @@
             this.SidebarBottomFlowLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SidebarBottomFlowLayout.Location = new System.Drawing.Point(3, 9);
             this.SidebarBottomFlowLayout.Name = "SidebarBottomFlowLayout";
-            this.SidebarBottomFlowLayout.Size = new System.Drawing.Size(183, 340);
+            this.SidebarBottomFlowLayout.Size = new System.Drawing.Size(1, 340);
             this.SidebarBottomFlowLayout.TabIndex = 2;
             // 
             // SidebarTopFlowLayout
@@ -104,35 +107,37 @@
             this.SidebarTopFlowLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SidebarTopFlowLayout.Location = new System.Drawing.Point(3, 3);
             this.SidebarTopFlowLayout.Name = "SidebarTopFlowLayout";
-            this.SidebarTopFlowLayout.Size = new System.Drawing.Size(183, 1);
+            this.SidebarTopFlowLayout.Size = new System.Drawing.Size(1, 1);
             this.SidebarTopFlowLayout.TabIndex = 1;
             // 
             // ContentPanel
             // 
             this.ContentPanel.BackColor = System.Drawing.Color.White;
-            this.ContentPanel.Controls.Add(this.TrackerPage);
+            this.ContentPanel.Controls.Add(this.PagePostesFixes);
             this.ContentPanel.Controls.Add(this.SettingsPage);
             this.ContentPanel.Controls.Add(this.LicensesPage);
+            this.ContentPanel.Controls.Add(this.PagePostesPonctuels);
             this.ContentPanel.Controls.Add(this.HomePage);
-            this.ContentPanel.Controls.Add(this.multiPanePage1);
+            this.ContentPanel.Controls.Add(this.PageRevenus);
+            this.ContentPanel.Controls.Add(this.multiPanePage3);
             this.ContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContentPanel.Location = new System.Drawing.Point(198, 0);
+            this.ContentPanel.Location = new System.Drawing.Point(15, 0);
             this.ContentPanel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.ContentPanel.Name = "ContentPanel";
-            this.ContentPanel.SelectedPage = this.TrackerPage;
-            this.ContentPanel.Size = new System.Drawing.Size(528, 358);
+            this.ContentPanel.SelectedPage = this.PagePostesFixes;
+            this.ContentPanel.Size = new System.Drawing.Size(711, 358);
             this.ContentPanel.TabIndex = 7;
             this.ContentPanel.Text = "Meow";
             this.ContentPanel.SelectedPageChanged += new System.EventHandler(this.ContentPanel_SelectedPageChanged);
             // 
-            // TrackerPage
+            // PagePostesFixes
             // 
-            this.TrackerPage.AccessibleName = "Tracker";
-            this.TrackerPage.Controls.Add(this.flowLayoutPanel1);
-            this.TrackerPage.Controls.Add(this.label1);
-            this.TrackerPage.Name = "TrackerPage";
-            this.TrackerPage.Size = new System.Drawing.Size(528, 358);
-            this.TrackerPage.TabIndex = 0;
+            this.PagePostesFixes.AccessibleName = "Tracker";
+            this.PagePostesFixes.Controls.Add(this.flowLayoutPanel1);
+            this.PagePostesFixes.Controls.Add(this.label1);
+            this.PagePostesFixes.Name = "PagePostesFixes";
+            this.PagePostesFixes.Size = new System.Drawing.Size(711, 358);
+            this.PagePostesFixes.TabIndex = 0;
             // 
             // flowLayoutPanel1
             // 
@@ -166,7 +171,7 @@
             this.SettingsPage.AccessibleName = "Paramètres";
             this.SettingsPage.Controls.Add(this.label2);
             this.SettingsPage.Name = "SettingsPage";
-            this.SettingsPage.Size = new System.Drawing.Size(528, 358);
+            this.SettingsPage.Size = new System.Drawing.Size(711, 358);
             this.SettingsPage.TabIndex = 1;
             // 
             // label2
@@ -183,7 +188,7 @@
             this.LicensesPage.AccessibleName = "Licenses";
             this.LicensesPage.Controls.Add(this.richTextBox1);
             this.LicensesPage.Name = "LicensesPage";
-            this.LicensesPage.Size = new System.Drawing.Size(528, 358);
+            this.LicensesPage.Size = new System.Drawing.Size(711, 358);
             this.LicensesPage.TabIndex = 2;
             // 
             // richTextBox1
@@ -194,23 +199,35 @@
             this.richTextBox1.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(528, 358);
+            this.richTextBox1.Size = new System.Drawing.Size(711, 358);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            // 
+            // PagePostesPonctuels
+            // 
+            this.PagePostesPonctuels.AccessibleName = "Expanded Test";
+            this.PagePostesPonctuels.Name = "PagePostesPonctuels";
+            this.PagePostesPonctuels.Size = new System.Drawing.Size(711, 358);
+            this.PagePostesPonctuels.TabIndex = 4;
             // 
             // HomePage
             // 
             this.HomePage.AccessibleName = "Accueil";
             this.HomePage.Name = "HomePage";
-            this.HomePage.Size = new System.Drawing.Size(528, 358);
+            this.HomePage.Size = new System.Drawing.Size(711, 358);
             this.HomePage.TabIndex = 3;
             // 
-            // multiPanePage1
+            // PageRevenus
             // 
-            this.multiPanePage1.AccessibleName = "Expanded Test";
-            this.multiPanePage1.Name = "multiPanePage1";
-            this.multiPanePage1.Size = new System.Drawing.Size(528, 358);
-            this.multiPanePage1.TabIndex = 4;
+            this.PageRevenus.Name = "PageRevenus";
+            this.PageRevenus.Size = new System.Drawing.Size(711, 358);
+            this.PageRevenus.TabIndex = 5;
+            // 
+            // multiPanePage3
+            // 
+            this.multiPanePage3.Name = "multiPanePage3";
+            this.multiPanePage3.Size = new System.Drawing.Size(711, 358);
+            this.multiPanePage3.TabIndex = 6;
             // 
             // FrmMain
             // 
@@ -225,11 +242,12 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.SidebarTable.ResumeLayout(false);
             this.SidebarTable.PerformLayout();
             this.ContentPanel.ResumeLayout(false);
-            this.TrackerPage.ResumeLayout(false);
-            this.TrackerPage.PerformLayout();
+            this.PagePostesFixes.ResumeLayout(false);
+            this.PagePostesFixes.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.SettingsPage.ResumeLayout(false);
@@ -246,7 +264,7 @@
         private System.Windows.Forms.FlowLayoutPanel SidebarBottomFlowLayout;
         private System.Windows.Forms.FlowLayoutPanel SidebarTopFlowLayout;
         private Kerido.Controls.MultiPaneControl ContentPanel;
-        private Kerido.Controls.MultiPanePage TrackerPage;
+        private Kerido.Controls.MultiPanePage PagePostesFixes;
         private Kerido.Controls.MultiPanePage SettingsPage;
         private Kerido.Controls.MultiPanePage LicensesPage;
         private System.Windows.Forms.Label label1;
@@ -255,7 +273,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private Kerido.Controls.MultiPanePage HomePage;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private Kerido.Controls.MultiPanePage multiPanePage1;
+        private Kerido.Controls.MultiPanePage PagePostesPonctuels;
+        private Kerido.Controls.MultiPanePage PageRevenus;
+        private Kerido.Controls.MultiPanePage multiPanePage3;
     }
 }
 

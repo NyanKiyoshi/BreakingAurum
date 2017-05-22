@@ -1,4 +1,5 @@
-﻿using Kerido.Controls;
+﻿using System.Windows.Forms;
+using Kerido.Controls;
 
 namespace BreakingBudget
 {
@@ -75,6 +76,6 @@ namespace BreakingBudget
         public SidebarEntry parent { get { return this._parent; } }
 
         // The controller storing/ using the data
-        public object _OwnerController { get; set; }
+        public FlowLayoutPanel _OwnerController { get; set; }
     }
 }

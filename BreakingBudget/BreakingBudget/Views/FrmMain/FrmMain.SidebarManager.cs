@@ -5,6 +5,7 @@ using System.Drawing.Text;
 using System.Text;
 using System.Windows.Forms;
 using Kerido.Controls;
+using System.Collections.Generic;
 
 namespace BreakingBudget.Views.FrmMain
 {
@@ -28,7 +29,7 @@ namespace BreakingBudget.Views.FrmMain
         {
             this.CustomFonts = new PrivateFontCollection();
             this.CustomFonts.AddFontFile("MaterialIcons-Regular.ttf");
-            this.IconFont = new Font(this.CustomFonts.Families[0], 19.0f, FontStyle.Regular, GraphicsUnit.Point);  // FIXME: dynamic value (23)
+            this.IconFont = new Font(this.CustomFonts.Families[0], 17.0f, FontStyle.Regular, GraphicsUnit.Point);  // FIXME: dynamic value (23)
         }
 
         private void GenerateSidebar(SidebarEntry[][] SidebarsRootEntries)
@@ -64,10 +65,7 @@ namespace BreakingBudget.Views.FrmMain
         {
             foreach (SidebarEntry child in children)
             {
-                if (child._OwnerController.GetType() == typeof(FlowLayoutPanel))
-                {
-                    ((FlowLayoutPanel)child._OwnerController).Visible = Visible;
-                }
+                child._OwnerController.Visible = Visible;
             }
         }
 
@@ -78,7 +76,7 @@ namespace BreakingBudget.Views.FrmMain
             foreach (SidebarEntry[] SidebarRootEntries in this.SidebarsRootEntries)
             {
                 // Process every entry
-                foreach (SidebarEntry ParentEntry in SidebarRootEntries)
+                foreach (SidebarEntry ParentEntry in this.GoThroughEntries(SidebarRootEntries))
                 {
                     // If the entry has children
                     if (ParentEntry.children != null)
@@ -162,6 +160,11 @@ namespace BreakingBudget.Views.FrmMain
                 };
             }
 
+            // Set the container layout to AutoSize to allow the sidebar to be able to resize itself
+            // + disallow content wrapping to force the layout to resize itself, provoking the sidebar to grow
+            entry_layout.AutoSize = true;
+            entry_layout.WrapContents = false;
+            
             // set the inactive color to the whole container
             entry_layout.ForeColor = this.BaseSidebarEntryColor;
 
@@ -212,7 +215,7 @@ namespace BreakingBudget.Views.FrmMain
             EntryIcon.Text = e.Icon != null ? Encoding.UTF8.GetString(e.Icon) : "";
 
             // Make the entry's text (entry name) label bigger
-            EntryText.Font = new Font("Microsoft Sans Serif", 14.0f, FontStyle.Regular, GraphicsUnit.Point);
+            EntryText.Font = new Font("Microsoft Sans Serif", 13.0f, FontStyle.Regular, GraphicsUnit.Point);
             EntryText.Text = e.Text;
 
             // set the layout's height at the same height of the icon
@@ -258,6 +261,52 @@ namespace BreakingBudget.Views.FrmMain
             }
         }
 
+        // Toggle the active state of a given entry and thus the color
+        private void ToggleEntryActive(SidebarEntry e, bool active)
+        {
+            e._OwnerController.ForeColor = active ? this.ActiveBaseSidebarEntryColor : this.BaseSidebarEntryColor;
+            e.IsActive = active;
+        }
+
+        /* Goes through every child of a given array of `SidebarEntry` following the bellow pattern.
+         *  (---> / <---) (in / out)
+         *  ++++++++++++++++++++++++++++++++++
+         *  | <--- RootEntry1                +
+         *  | ---> Children                  +
+         *  |   | <--- Children1             +
+         *  |   | ---> Sub-Children          +
+         *  |   |   | <--- Sub-Children1     +
+         *  |   |   | <--- Sub-Children2     +
+         *  |   |   | <---    ...            +
+         *  |   |   | <--- Sub-Children{n}   +
+         *  |   |   |    | ---> ...          +
+         *  |   | <--- Children2             +
+         *  |   | <--- ...                   +
+         *  |   | <--- Children{n}           +
+         *  | <--- RootEntry2                +
+         *  | ---> Children                  +
+         *  |   | ...                        +
+         *  | ...                            +
+         *  ++++++++++++++++++++++++++++++++++
+         */
+        private IEnumerable<SidebarEntry> GoThroughEntries(SidebarEntry[] entries)
+        {
+            SidebarEntry[] CurrentEntries = entries;
+            foreach(SidebarEntry e in entries)
+            {
+                yield return e;
+
+                // if there are children into the current entry, proceed them
+                if (e.children != null)
+                {
+                    foreach(SidebarEntry child in GoThroughEntries(e.children))
+                    {
+                        yield return child;
+                    }
+                }
+            }
+        }
+
         private void UpdateSidebar(MultiPaneControl sender, SidebarEntry[] entries)
         {
             // If the sub-sidebar is empty => there nothing to update, do nothing
@@ -266,28 +315,48 @@ namespace BreakingBudget.Views.FrmMain
                 return;
             }
 
+            // Will be used to update independently the entry's parents from the entrie
+            // to avoid having its newly assigned status being overridden
+            SidebarEntry ActiveEntry = null;
+
+            // Will be used to go through the active entry's parents
+            SidebarEntry ParentEntry;
+
+            // Is the entry active?
+            bool ActiveState;
+
             // Update every entry of the given sub-sidebar
-            foreach (SidebarEntry e in entries)
+            // (disclamer: we don't use a while loop there to disable every inactive state)
+            foreach (SidebarEntry e in this.GoThroughEntries(entries))
             {
+                ActiveState = false;
                 // if the sub-sidebar entry has attached page
-                if (e.Target != null && e._OwnerController.GetType() == typeof(FlowLayoutPanel))
+                if (e.Target != null)
                 {
+                    ActiveState = sender.SelectedPage == e.Target;
                     // if the new page is same page than the attached one:
                     //   -> change its color to the active one
                     //   -> mark the entry has active
-                    if (sender.SelectedPage == e.Target)
-                    {
-                        ((FlowLayoutPanel)e._OwnerController).ForeColor = this.ActiveBaseSidebarEntryColor;
-                        e.IsActive = true;
-                    }
                     // else:
                     //   -> put the inactive color
                     //   -> mark it as inactive
-                    else
+                    if (ActiveState)
                     {
-                        ((FlowLayoutPanel)e._OwnerController).ForeColor = this.BaseSidebarEntryColor;
-                        e.IsActive = false;
+                        ActiveEntry = e;
                     }
+                }
+                ToggleEntryActive(e, ActiveState);
+            }
+
+            // Proceed the active entry and its parents (if there was one)
+            if (ActiveEntry != null)
+            {
+                // Mark the parent as active as well
+                ParentEntry = ActiveEntry.parent;
+                while (ParentEntry != null)
+                {
+                    ToggleEntryActive(ParentEntry, true);
+                    ParentEntry = ParentEntry.parent;
                 }
             }
         }
