@@ -126,8 +126,11 @@ namespace BreakingBudget.Views.FrmMain
             {
                 OnMouseClick = (s, ev) =>
                 {
-                    // Swith to the target
-                    SwitchPanel(e.Target);
+                    if (e.Target != null)
+                    {
+                        // Swith to the target
+                        SwitchPanel(e.Target);
+                    }
 
                     // if the entry is not a child: unexpand everything
                     if (!e.IsExpanded && e.parent == null)
