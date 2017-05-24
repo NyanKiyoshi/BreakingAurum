@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.OleDb;
 
 namespace BreakingBudget.Services.SQL
 {
@@ -15,20 +16,39 @@ namespace BreakingBudget.Services.SQL
 
         private string fieldname;
         private object _value;
-        private object value
+        private object value;
+        //{
+        //    get
+        //    {
+        //        return SQLUtils.SanitizeValue(this._value);
+        //    }
+
+        //    set
+        //    {
+        //        this._value = value;
+        //    }
+        //}
+
+        private int _currentParamNum = 0;
+        public int currentParamNum
         {
             get
             {
-                return SQLUtils.SanitizeValue(this._value);
-            }
-
-            set
-            {
-                this._value = value;
+                return this._currentParamNum;
             }
         }
 
-        public SQLClause(E_SQL_CLAUSE_SEP? SQL_SEP, string fieldname, E_SQL_OPERATION SQL_OPERATION, object value)
+        private SQLClause root;
+        private List<OleDbParameter> _parameters;
+        public List<OleDbParameter> DBParameters
+        {
+            get
+            {
+                return this._parameters;
+            }
+        }
+
+        public SQLClause(E_SQL_CLAUSE_SEP? SQL_SEP, string fieldname, E_SQL_OPERATION SQL_OPERATION, object value, SQLClause root)
         {
             this.SQL_OPERATION = SQL_OPERATION;
             this.SubClauses = new List<SQLClause>();
@@ -36,16 +56,36 @@ namespace BreakingBudget.Services.SQL
 
             this.fieldname = fieldname;
             this.value = value;
+
+            // if root wasn't supplied, we suppose that the root is the instance itself
+            if (root != null)
+            {
+                this.root = root;
+            } else
+            {
+                this.root = this;
+                this._parameters = new List<OleDbParameter>();
+            }
         }
 
-        public SQLClause(string fieldname, E_SQL_OPERATION SQL_OPERATION, object value)
-            : this(null, fieldname, SQL_OPERATION, value)
+        public SQLClause(string fieldname, E_SQL_OPERATION SQL_OPERATION, object value, SQLClause root)
+            : this(null, fieldname, SQL_OPERATION, value, root) { }
+
+        public string ROOT_AddParam(object value)
         {
+            string key = "@__p" + ++this._currentParamNum;
+            this._parameters.Add(new OleDbParameter(key, value));
+            return key;
+        }
+
+        public string AddParam(object value)
+        {
+            return this.root.ROOT_AddParam(value);
         }
 
         public SQLClause AddClause(E_SQL_CLAUSE_SEP? SQL_SEP, string fieldname, E_SQL_OPERATION SqlOperation, object value)
         {
-            SQLClause clause = new SQLClause(SQL_SEP, fieldname, SqlOperation, value);
+            SQLClause clause = new SQLClause(SQL_SEP, fieldname, SqlOperation, value, this.root);
             this.SubClauses.Add(clause);
             return clause;
         }
@@ -63,6 +103,7 @@ namespace BreakingBudget.Services.SQL
         public string ClauseToString()
         {
             string s;
+            string fieldname = "[" + this.fieldname + "]";
 
             switch (this.SQL_OPERATION)
             {
@@ -89,7 +130,7 @@ namespace BreakingBudget.Services.SQL
                     break;
             }
 
-            return String.Format(s, this.fieldname, this.value);
+            return String.Format(s, fieldname, this.AddParam(this.value));
         }
 
         private string BuildFromThere()

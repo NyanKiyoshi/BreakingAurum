@@ -128,7 +128,7 @@ namespace BreakingBudget.Views.FrmMain
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            SelectBuilder sql = new SelectBuilder("Test");
+            SelectBuilder sql = new SelectBuilder("Test", new string[] { "Cat", "PasCat", "téki   space space ki ki h1"});
             sql.AddClause(E_SQL_CLAUSE_SEP.AND, "Meow", E_SQL_OPERATION.GREATER_OR_EQUAL_THAN, 156);
 
             sql.AddClause("username", E_SQL_OPERATION.EQUAL_TO, "15521")
