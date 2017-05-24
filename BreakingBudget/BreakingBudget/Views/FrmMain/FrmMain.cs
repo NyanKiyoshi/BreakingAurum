@@ -126,16 +126,24 @@ namespace BreakingBudget.Views.FrmMain
             MessageBox.Show(this.PagePostesFixes.Size.Width.ToString());
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs ___e)
         {
-            SelectBuilder sql = new SelectBuilder("Test", new string[] { "Cat", "PasCat", "téki   space space ki ki h1"});
-            sql.AddClause(E_SQL_CLAUSE_SEP.AND, "Meow", E_SQL_OPERATION.GREATER_OR_EQUAL_THAN, 156);
-
-            sql.AddClause("username", E_SQL_OPERATION.EQUAL_TO, "15521")
-                .AddClause(E_SQL_CLAUSE_SEP.AND, "Hello", E_SQL_OPERATION.EQUAL_TO, "Hlee")
-                .AddClause(E_SQL_CLAUSE_SEP.OR, "val", E_SQL_OPERATION.LESS_OR_EQUAL_THAN, 12.25);
+            SelectBuilder sql = new SelectBuilder("Personne", new string[] { "codePersonne", "nomPersonne", "pnPersonne"});
+            sql.AddClause(E_SQL_CLAUSE_SEP.AND, "codePersonne", E_SQL_OPERATION.GREATER_THAN, 3);
+            sql.AddClause(E_SQL_CLAUSE_SEP.OR, "codePersonne", E_SQL_OPERATION.EQUAL_TO, 1).
+                AddClause(E_SQL_CLAUSE_SEP.AND, "pnPersonne", E_SQL_OPERATION.LIKE, "%iche%");
 
             MessageBox.Show(sql.ToString());
+
+            OleDbCommand cmd = sql.GetCommand(new OleDbConnection(DatabaseManager.CONNEXION_STRING));
+            cmd.Connection.Open();
+            foreach (PersonneRepository.PersonneModel e
+                        in DataAdapter.OleDbDataReaderToStruct<PersonneRepository.PersonneModel>(cmd.ExecuteReader()))
+            {
+                MessageBox.Show(e.codePersonne.ToString());
+            }
+
+            cmd.Connection.Close();
         }
 
         private bool IsTextBoxKeyPressNumber(MetroTextBox sender, char KeyChar)

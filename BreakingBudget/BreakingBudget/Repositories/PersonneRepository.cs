@@ -11,6 +11,19 @@ namespace BreakingBudget.Repositories
     {
         public const string TABLE_NAME = "Personne";
 
+        public class PersonneModel
+        {
+            public int codePersonne { get; set; }
+            public string nomPersonne { get; set; }
+            public string pnPersonne { get; set; }
+            public string telMobile { get; set; }
+
+            override public string ToString()
+            {
+                return this.nomPersonne;
+            }
+        }
+
         public static int CountRows()
         {
             return (int)DatabaseManager.GetFirstRaw("SELECT COUNT(*) FROM " + TABLE_NAME);

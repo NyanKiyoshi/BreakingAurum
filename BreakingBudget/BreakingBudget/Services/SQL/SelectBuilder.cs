@@ -27,7 +27,7 @@ namespace BreakingBudget.Services.SQL
             {
                 this.clause = new SQLClause(SQL_SEP, fieldname, SqlOperation, value, null);
             }
-            return this.clause;
+            return this.clause.AddClause(SQL_SEP, fieldname, SqlOperation, value);
         }
 
         public SQLClause AddClause(string fieldname, E_SQL_OPERATION SqlOperation, object value)
@@ -35,9 +35,15 @@ namespace BreakingBudget.Services.SQL
             return this.AddClause(null, fieldname, SqlOperation, value);
         }
 
-        public string BuildToString()
+        public string BuildWhereClauses()
         {
             return "WHERE " + this.clause.ToString();
+        }
+
+        public string BuildToString()
+        {
+            return string.Format("SELECT {0} FROM [{1}] {2}",
+                JoinFields(), this.TableName, this.BuildWhereClauses());
         }
 
         public string JoinFields()
@@ -58,10 +64,23 @@ namespace BreakingBudget.Services.SQL
             return s.ToString();
         }
 
+        public OleDbCommand GetCommand(OleDbConnection db_conn)
+        {
+            OleDbCommand cmd = GetCommand();
+            cmd.Connection = db_conn;
+            return cmd;
+        }
+
+        public OleDbCommand GetCommand()
+        {
+            OleDbCommand cmd = new OleDbCommand(this.BuildToString());
+            cmd.Parameters.AddRange(this.clause.DBParameters.ToArray());
+            return cmd;
+        }
+
         override public string ToString()
         {
-            return string.Format("SELECT {0} FROM [{1}] {2}",
-                JoinFields(), this.TableName, this.BuildToString());
+            return this.BuildToString();
         }
     }
 }
