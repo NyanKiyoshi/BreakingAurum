@@ -6,12 +6,10 @@ D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\obj\Deb
 D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\obj\Debug\BreakingBudget.csproj.GenerateResource.Cache
 D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\obj\Debug\BreakingBudget.exe
 D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\obj\Debug\BreakingBudget.pdb
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\bin\Debug\MaterialSkin.dll
 D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\bin\Debug\ControlLibrary.dll
 D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\bin\Debug\MetroFramework.Design.dll
 D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\bin\Debug\MetroFramework.dll
 D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\bin\Debug\ControlLibrary.pdb
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\bin\Debug\MaterialSkin.pdb
 D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\bin\Debug\MetroFramework.pdb
 D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\bin\Debug\MetroFramework.Design.pdb
 D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\bin\Debug\MaterialSidebar.dll

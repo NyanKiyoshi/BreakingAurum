@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using MetroFramework.Forms;
+using MetroFramework.Controls;
 using MetroFramework;
 using Kerido.Controls;
 using BreakingBudget.Services;
@@ -135,6 +136,40 @@ namespace BreakingBudget.Views.FrmMain
                 .AddClause(E_SQL_CLAUSE_SEP.OR, "val", E_SQL_OPERATION.LESS_OR_EQUAL_THAN, 12.25);
 
             MessageBox.Show(sql.ToString());
+        }
+
+        private bool IsTextBoxKeyPressNumber(MetroTextBox sender, char KeyChar)
+        {
+            if (
+                (
+                    // is the char (not) a number?
+                    char.IsNumber(KeyChar)
+
+                    // or (not) a backspace?
+                    || KeyChar == (char)Keys.Back
+
+                    // or (not) a unique dot?
+                    || (KeyChar == '.' && (!sender.Text.Contains(".")))
+
+                    // ...or (not) a unique minus at the beginning of the line? (is the cursor not at the beginning)
+                    || (KeyChar == '-' && (!sender.Text.Contains("-")) && sender.SelectionStart == 0)
+                )
+            )
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void TxtBoxTousLesXMois_KeyPress(object _s, KeyPressEventArgs e)
+        {
+            int val;
+            MetroTextBox sender = (MetroTextBox)_s;
+
+            if (!IsTextBoxKeyPressNumber(sender, e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -178,4 +178,32 @@ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
 OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</value>
   </data>
+  <metadata name="errorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="errorProvider.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABMLAAATCwAAAAAAAAAA
+        AAD//////////////////////////8XFxf+cnJz/jY2N/42Njf+qqqr/6enp////////////////////
+        ////////////////////////xcXF/1hYWP8AAAD/AAAA/wAAAP8AAAD/AAAA/yYmJv+NjY3/9PT0////
+        ////////////////////////qqqq/wAAAP8mJib/qqqq/9HR0f/p6en/6enp/7i4uP9ra2v/AAAA/0JC
+        Qv/p6en/////////////////uLi4/wAAAP9CQkL/6enp/////////////////////////////////6qq
+        qv8AAAD/WFhY////////////9PT0/yYmJv9CQkL/6enp////////////9PT0/0JCQv+qqqr/////////
+        ////////qqqq/wAAAP+qqqr//////6qqqv8AAAD/uLi4//////////////////T09P9CQkL/qqqq////
+        //////////////////9YWFj/JiYm//T09P9ra2v/JiYm//T09P//////////////////////////////
+        ////////////////////////nJyc/wAAAP/R0dH/QkJC/0JCQv//////////////////////9PT0/0JC
+        Qv+qqqr//////////////////////7i4uP8AAAD/uLi4/0JCQv9CQkL//////////////////////+np
+        6f8AAAD/jY2N//////////////////////+4uLj/AAAA/7i4uP9ra2v/JiYm//T09P//////////////
+        ///p6en/AAAA/42Njf//////////////////////nJyc/wAAAP/d3d3/qqqq/wAAAP+4uLj/////////
+        ////////6enp/wAAAP+NjY3//////////////////////1hYWP9CQkL///////T09P8mJib/QkJC/+np
+        6f////////////T09P9CQkL/qqqq/////////////////6qqqv8AAAD/qqqq////////////uLi4/wAA
+        AP9CQkL/6enp/////////////////////////////////6qqqv8AAAD/WFhY////////////////////
+        //+qqqr/AAAA/yYmJv+qqqr/0dHR/+np6f/p6en/uLi4/2tra/8AAAD/QkJC/+np6f//////////////
+        /////////////8XFxf9YWFj/AAAA/wAAAP8AAAD/AAAA/wAAAP8mJib/jY2N//T09P//////////////
+        /////////////////////////////9HR0f+qqqr/jY2N/42Njf+qqqr/6enp////////////////////
+        ////////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAA==
+</value>
+  </data>
 </root>

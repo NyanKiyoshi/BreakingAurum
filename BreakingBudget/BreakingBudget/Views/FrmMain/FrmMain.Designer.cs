@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -40,23 +41,23 @@
             this.PagePostesFixes = new Kerido.Controls.MultiPanePage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.BtnValiderBudgetFixe = new MetroFramework.Controls.MetroButton();
+            this.btnGererPostes = new MetroFramework.Controls.MetroButton();
             this.PosteFixeFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.labelCmbPostes = new MetroFramework.Controls.MetroLabel();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.PanelPostes = new System.Windows.Forms.FlowLayoutPanel();
             this.ComboxBoxListePostes = new MetroFramework.Controls.MetroComboBox();
             this.HelpPosteLabel = new System.Windows.Forms.Label();
             this.labelCmbPeriodicite = new MetroFramework.Controls.MetroLabel();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.PanelPeriodicite = new System.Windows.Forms.FlowLayoutPanel();
             this.ComboxBoxListePeriodicites = new MetroFramework.Controls.MetroComboBox();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.PanelTousLesXMois = new System.Windows.Forms.FlowLayoutPanel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.TxtBoxTousLesXMois = new MetroFramework.Controls.MetroTextBox();
+            this.lblDuMois = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
+            this.PanelMontant = new System.Windows.Forms.FlowLayoutPanel();
+            this.TxtBoxMontantPosteFixe = new MetroFramework.Controls.MetroTextBox();
             this.SettingsPage = new Kerido.Controls.MultiPanePage();
             this.label2 = new System.Windows.Forms.Label();
             this.LicensesPage = new Kerido.Controls.MultiPanePage();
@@ -66,6 +67,7 @@
             this.PagePostesPonctuels = new Kerido.Controls.MultiPanePage();
             this.PageRevenus = new Kerido.Controls.MultiPanePage();
             this.multiPanePage3 = new Kerido.Controls.MultiPanePage();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.SidebarTable.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -75,13 +77,14 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.PosteFixeFlowLayoutPanel.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
-            this.flowLayoutPanel5.SuspendLayout();
-            this.flowLayoutPanel6.SuspendLayout();
+            this.PanelPostes.SuspendLayout();
+            this.PanelPeriodicite.SuspendLayout();
+            this.PanelTousLesXMois.SuspendLayout();
+            this.PanelMontant.SuspendLayout();
             this.SettingsPage.SuspendLayout();
             this.LicensesPage.SuspendLayout();
             this.HomePage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -221,8 +224,8 @@
             // 
             this.panel3.AutoSize = true;
             this.panel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel3.Controls.Add(this.metroButton1);
-            this.panel3.Controls.Add(this.metroButton2);
+            this.panel3.Controls.Add(this.BtnValiderBudgetFixe);
+            this.panel3.Controls.Add(this.btnGererPostes);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(10, 386);
             this.panel3.MinimumSize = new System.Drawing.Size(0, 30);
@@ -230,39 +233,41 @@
             this.panel3.Size = new System.Drawing.Size(647, 30);
             this.panel3.TabIndex = 2;
             // 
-            // metroButton1
+            // BtnValiderBudgetFixe
             // 
-            this.metroButton1.AutoSize = true;
-            this.metroButton1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.metroButton1.Location = new System.Drawing.Point(567, 0);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(80, 30);
-            this.metroButton1.TabIndex = 5;
-            this.metroButton1.Text = "Valider";
-            this.metroButton1.UseSelectable = true;
+            this.BtnValiderBudgetFixe.AutoSize = true;
+            this.BtnValiderBudgetFixe.Dock = System.Windows.Forms.DockStyle.Right;
+            this.BtnValiderBudgetFixe.Location = new System.Drawing.Point(567, 0);
+            this.BtnValiderBudgetFixe.Name = "BtnValiderBudgetFixe";
+            this.BtnValiderBudgetFixe.Size = new System.Drawing.Size(80, 30);
+            this.BtnValiderBudgetFixe.TabIndex = 5;
+            this.BtnValiderBudgetFixe.Text = "Valider";
+            this.BtnValiderBudgetFixe.UseSelectable = true;
+            this.BtnValiderBudgetFixe.Click += new System.EventHandler(this.BtnValiderBudgetFixe_Click);
             // 
-            // metroButton2
+            // btnGererPostes
             // 
-            this.metroButton2.AutoSize = true;
-            this.metroButton2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.metroButton2.Location = new System.Drawing.Point(0, 0);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(93, 30);
-            this.metroButton2.TabIndex = 6;
-            this.metroButton2.Text = "Gérer les postes";
-            this.metroButton2.UseSelectable = true;
+            this.btnGererPostes.AutoSize = true;
+            this.btnGererPostes.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnGererPostes.Location = new System.Drawing.Point(0, 0);
+            this.btnGererPostes.Name = "btnGererPostes";
+            this.btnGererPostes.Size = new System.Drawing.Size(93, 30);
+            this.btnGererPostes.TabIndex = 6;
+            this.btnGererPostes.Text = "Gérer les postes";
+            this.btnGererPostes.UseSelectable = true;
+            this.btnGererPostes.Click += new System.EventHandler(this.btnGererPostes_Click);
             // 
             // PosteFixeFlowLayoutPanel
             // 
             this.PosteFixeFlowLayoutPanel.AutoSize = true;
             this.PosteFixeFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PosteFixeFlowLayoutPanel.Controls.Add(this.labelCmbPostes);
-            this.PosteFixeFlowLayoutPanel.Controls.Add(this.flowLayoutPanel3);
+            this.PosteFixeFlowLayoutPanel.Controls.Add(this.PanelPostes);
             this.PosteFixeFlowLayoutPanel.Controls.Add(this.labelCmbPeriodicite);
-            this.PosteFixeFlowLayoutPanel.Controls.Add(this.flowLayoutPanel4);
-            this.PosteFixeFlowLayoutPanel.Controls.Add(this.flowLayoutPanel5);
+            this.PosteFixeFlowLayoutPanel.Controls.Add(this.PanelPeriodicite);
+            this.PosteFixeFlowLayoutPanel.Controls.Add(this.PanelTousLesXMois);
             this.PosteFixeFlowLayoutPanel.Controls.Add(this.metroLabel3);
-            this.PosteFixeFlowLayoutPanel.Controls.Add(this.flowLayoutPanel6);
+            this.PosteFixeFlowLayoutPanel.Controls.Add(this.PanelMontant);
             this.PosteFixeFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PosteFixeFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.PosteFixeFlowLayoutPanel.Location = new System.Drawing.Point(10, 10);
@@ -281,24 +286,23 @@
             this.labelCmbPostes.TabIndex = 7;
             this.labelCmbPostes.Text = "Poste";
             // 
-            // flowLayoutPanel3
+            // PanelPostes
             // 
-            this.flowLayoutPanel3.AutoSize = true;
-            this.flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel3.Controls.Add(this.ComboxBoxListePostes);
-            this.flowLayoutPanel3.Controls.Add(this.HelpPosteLabel);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 22);
-            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(383, 35);
-            this.flowLayoutPanel3.TabIndex = 4;
-            this.flowLayoutPanel3.WrapContents = false;
+            this.PanelPostes.AutoSize = true;
+            this.PanelPostes.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.PanelPostes.Controls.Add(this.ComboxBoxListePostes);
+            this.PanelPostes.Controls.Add(this.HelpPosteLabel);
+            this.PanelPostes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelPostes.Location = new System.Drawing.Point(3, 22);
+            this.PanelPostes.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.PanelPostes.Name = "PanelPostes";
+            this.PanelPostes.Size = new System.Drawing.Size(383, 35);
+            this.PanelPostes.TabIndex = 4;
+            this.PanelPostes.WrapContents = false;
             // 
             // ComboxBoxListePostes
             // 
             this.ComboxBoxListePostes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ComboxBoxListePostes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.ComboxBoxListePostes.FormattingEnabled = true;
             this.ComboxBoxListePostes.ItemHeight = 23;
             this.ComboxBoxListePostes.Location = new System.Drawing.Point(3, 3);
@@ -320,6 +324,7 @@
             this.HelpPosteLabel.TabIndex = 6;
             this.HelpPosteLabel.Text = "";
             this.HelpPosteLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.HelpPosteLabel.Visible = false;
             this.HelpPosteLabel.Click += new System.EventHandler(this.HelpPosteLabel_Click);
             // 
             // labelCmbPeriodicite
@@ -332,17 +337,17 @@
             this.labelCmbPeriodicite.TabIndex = 7;
             this.labelCmbPeriodicite.Text = "Périodicité";
             // 
-            // flowLayoutPanel4
+            // PanelPeriodicite
             // 
-            this.flowLayoutPanel4.AutoSize = true;
-            this.flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel4.Controls.Add(this.ComboxBoxListePeriodicites);
-            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 94);
-            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(383, 35);
-            this.flowLayoutPanel4.TabIndex = 6;
+            this.PanelPeriodicite.AutoSize = true;
+            this.PanelPeriodicite.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.PanelPeriodicite.Controls.Add(this.ComboxBoxListePeriodicites);
+            this.PanelPeriodicite.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelPeriodicite.Location = new System.Drawing.Point(3, 94);
+            this.PanelPeriodicite.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.PanelPeriodicite.Name = "PanelPeriodicite";
+            this.PanelPeriodicite.Size = new System.Drawing.Size(383, 35);
+            this.PanelPeriodicite.TabIndex = 6;
             // 
             // ComboxBoxListePeriodicites
             // 
@@ -356,19 +361,19 @@
             this.ComboxBoxListePeriodicites.TabIndex = 3;
             this.ComboxBoxListePeriodicites.UseSelectable = true;
             // 
-            // flowLayoutPanel5
+            // PanelTousLesXMois
             // 
-            this.flowLayoutPanel5.AutoSize = true;
-            this.flowLayoutPanel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel5.Controls.Add(this.metroLabel1);
-            this.flowLayoutPanel5.Controls.Add(this.metroTextBox1);
-            this.flowLayoutPanel5.Controls.Add(this.metroLabel2);
-            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 147);
-            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(383, 25);
-            this.flowLayoutPanel5.TabIndex = 8;
+            this.PanelTousLesXMois.AutoSize = true;
+            this.PanelTousLesXMois.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.PanelTousLesXMois.Controls.Add(this.metroLabel1);
+            this.PanelTousLesXMois.Controls.Add(this.TxtBoxTousLesXMois);
+            this.PanelTousLesXMois.Controls.Add(this.lblDuMois);
+            this.PanelTousLesXMois.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelTousLesXMois.Location = new System.Drawing.Point(3, 147);
+            this.PanelTousLesXMois.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.PanelTousLesXMois.Name = "PanelTousLesXMois";
+            this.PanelTousLesXMois.Size = new System.Drawing.Size(383, 25);
+            this.PanelTousLesXMois.TabIndex = 8;
             // 
             // metroLabel1
             // 
@@ -382,51 +387,53 @@
             this.metroLabel1.Text = "Tous les";
             this.metroLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // metroTextBox1
+            // TxtBoxTousLesXMois
             // 
             // 
             // 
             // 
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(22, 1);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(17, 17);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(67, 3);
-            this.metroTextBox1.MaxLength = 2;
-            this.metroTextBox1.MinimumSize = new System.Drawing.Size(29, 0);
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.PromptText = "...";
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(40, 19);
-            this.metroTextBox1.TabIndex = 11;
-            this.metroTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMark = "...";
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.TxtBoxTousLesXMois.CustomButton.Image = null;
+            this.TxtBoxTousLesXMois.CustomButton.Location = new System.Drawing.Point(22, 1);
+            this.TxtBoxTousLesXMois.CustomButton.Name = "";
+            this.TxtBoxTousLesXMois.CustomButton.Size = new System.Drawing.Size(17, 17);
+            this.TxtBoxTousLesXMois.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.TxtBoxTousLesXMois.CustomButton.TabIndex = 1;
+            this.TxtBoxTousLesXMois.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.TxtBoxTousLesXMois.CustomButton.UseSelectable = true;
+            this.TxtBoxTousLesXMois.CustomButton.Visible = false;
+            this.TxtBoxTousLesXMois.Lines = new string[0];
+            this.TxtBoxTousLesXMois.Location = new System.Drawing.Point(67, 3);
+            this.TxtBoxTousLesXMois.MaxLength = 2;
+            this.TxtBoxTousLesXMois.MinimumSize = new System.Drawing.Size(29, 0);
+            this.TxtBoxTousLesXMois.Name = "TxtBoxTousLesXMois";
+            this.TxtBoxTousLesXMois.PasswordChar = '\0';
+            this.TxtBoxTousLesXMois.PromptText = "...";
+            this.TxtBoxTousLesXMois.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TxtBoxTousLesXMois.SelectedText = "";
+            this.TxtBoxTousLesXMois.SelectionLength = 0;
+            this.TxtBoxTousLesXMois.SelectionStart = 0;
+            this.TxtBoxTousLesXMois.ShortcutsEnabled = true;
+            this.TxtBoxTousLesXMois.Size = new System.Drawing.Size(40, 19);
+            this.TxtBoxTousLesXMois.TabIndex = 11;
+            this.TxtBoxTousLesXMois.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TxtBoxTousLesXMois.UseSelectable = true;
+            this.TxtBoxTousLesXMois.WaterMark = "...";
+            this.TxtBoxTousLesXMois.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.TxtBoxTousLesXMois.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.TxtBoxTousLesXMois.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtBoxTousLesXMois_KeyPress);
+            this.TxtBoxTousLesXMois.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtBoxTousLesXMois_KeyUp);
             // 
-            // metroLabel2
+            // lblDuMois
             // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel2.Location = new System.Drawing.Point(113, 0);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(58, 25);
-            this.metroLabel2.TabIndex = 12;
-            this.metroLabel2.Text = "du mois";
-            this.metroLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDuMois.AutoSize = true;
+            this.lblDuMois.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblDuMois.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblDuMois.Location = new System.Drawing.Point(113, 0);
+            this.lblDuMois.Name = "lblDuMois";
+            this.lblDuMois.Size = new System.Drawing.Size(58, 25);
+            this.lblDuMois.TabIndex = 12;
+            this.lblDuMois.Text = "du mois";
+            this.lblDuMois.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // metroLabel3
             // 
@@ -438,50 +445,51 @@
             this.metroLabel3.TabIndex = 10;
             this.metroLabel3.Text = "Montant";
             // 
-            // flowLayoutPanel6
+            // PanelMontant
             // 
-            this.flowLayoutPanel6.AutoSize = true;
-            this.flowLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel6.Controls.Add(this.metroTextBox2);
-            this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 209);
-            this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(383, 25);
-            this.flowLayoutPanel6.TabIndex = 9;
+            this.PanelMontant.AutoSize = true;
+            this.PanelMontant.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.PanelMontant.Controls.Add(this.TxtBoxMontantPosteFixe);
+            this.PanelMontant.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelMontant.Location = new System.Drawing.Point(3, 209);
+            this.PanelMontant.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.PanelMontant.Name = "PanelMontant";
+            this.PanelMontant.Size = new System.Drawing.Size(383, 25);
+            this.PanelMontant.TabIndex = 9;
             // 
-            // metroTextBox2
-            // 
-            // 
+            // TxtBoxMontantPosteFixe
             // 
             // 
-            this.metroTextBox2.CustomButton.Image = null;
-            this.metroTextBox2.CustomButton.Location = new System.Drawing.Point(328, 1);
-            this.metroTextBox2.CustomButton.Name = "";
-            this.metroTextBox2.CustomButton.Size = new System.Drawing.Size(17, 17);
-            this.metroTextBox2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox2.CustomButton.TabIndex = 1;
-            this.metroTextBox2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox2.CustomButton.UseSelectable = true;
-            this.metroTextBox2.CustomButton.Visible = false;
-            this.metroTextBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.metroTextBox2.Lines = new string[0];
-            this.metroTextBox2.Location = new System.Drawing.Point(3, 3);
-            this.metroTextBox2.MaxLength = 10;
-            this.metroTextBox2.Name = "metroTextBox2";
-            this.metroTextBox2.PasswordChar = '\0';
-            this.metroTextBox2.PromptText = "Entrez le montant à payer chaque mois";
-            this.metroTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox2.SelectedText = "";
-            this.metroTextBox2.SelectionLength = 0;
-            this.metroTextBox2.SelectionStart = 0;
-            this.metroTextBox2.ShortcutsEnabled = true;
-            this.metroTextBox2.Size = new System.Drawing.Size(346, 19);
-            this.metroTextBox2.TabIndex = 4;
-            this.metroTextBox2.UseSelectable = true;
-            this.metroTextBox2.WaterMark = "Entrez le montant à payer chaque mois";
-            this.metroTextBox2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // 
+            this.TxtBoxMontantPosteFixe.CustomButton.Image = null;
+            this.TxtBoxMontantPosteFixe.CustomButton.Location = new System.Drawing.Point(328, 1);
+            this.TxtBoxMontantPosteFixe.CustomButton.Name = "";
+            this.TxtBoxMontantPosteFixe.CustomButton.Size = new System.Drawing.Size(17, 17);
+            this.TxtBoxMontantPosteFixe.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.TxtBoxMontantPosteFixe.CustomButton.TabIndex = 1;
+            this.TxtBoxMontantPosteFixe.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.TxtBoxMontantPosteFixe.CustomButton.UseSelectable = true;
+            this.TxtBoxMontantPosteFixe.CustomButton.Visible = false;
+            this.TxtBoxMontantPosteFixe.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TxtBoxMontantPosteFixe.Lines = new string[0];
+            this.TxtBoxMontantPosteFixe.Location = new System.Drawing.Point(3, 3);
+            this.TxtBoxMontantPosteFixe.MaxLength = 10;
+            this.TxtBoxMontantPosteFixe.Name = "TxtBoxMontantPosteFixe";
+            this.TxtBoxMontantPosteFixe.PasswordChar = '\0';
+            this.TxtBoxMontantPosteFixe.PromptText = "Entrez le montant à payer chaque mois";
+            this.TxtBoxMontantPosteFixe.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TxtBoxMontantPosteFixe.SelectedText = "";
+            this.TxtBoxMontantPosteFixe.SelectionLength = 0;
+            this.TxtBoxMontantPosteFixe.SelectionStart = 0;
+            this.TxtBoxMontantPosteFixe.ShortcutsEnabled = true;
+            this.TxtBoxMontantPosteFixe.Size = new System.Drawing.Size(346, 19);
+            this.TxtBoxMontantPosteFixe.TabIndex = 4;
+            this.TxtBoxMontantPosteFixe.UseSelectable = true;
+            this.TxtBoxMontantPosteFixe.WaterMark = "Entrez le montant à payer chaque mois";
+            this.TxtBoxMontantPosteFixe.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.TxtBoxMontantPosteFixe.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBoxMontantPosteFixe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtBoxMontantPosteFixe_KeyPress);
             // 
             // SettingsPage
             // 
@@ -569,6 +577,12 @@
             this.multiPanePage3.Size = new System.Drawing.Size(667, 426);
             this.multiPanePage3.TabIndex = 6;
             // 
+            // errorProvider
+            // 
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider.ContainerControl = this;
+            this.errorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider.Icon")));
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -600,16 +614,17 @@
             this.panel3.PerformLayout();
             this.PosteFixeFlowLayoutPanel.ResumeLayout(false);
             this.PosteFixeFlowLayoutPanel.PerformLayout();
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel5.ResumeLayout(false);
-            this.flowLayoutPanel5.PerformLayout();
-            this.flowLayoutPanel6.ResumeLayout(false);
+            this.PanelPostes.ResumeLayout(false);
+            this.PanelPostes.PerformLayout();
+            this.PanelPeriodicite.ResumeLayout(false);
+            this.PanelTousLesXMois.ResumeLayout(false);
+            this.PanelTousLesXMois.PerformLayout();
+            this.PanelMontant.ResumeLayout(false);
             this.SettingsPage.ResumeLayout(false);
             this.SettingsPage.PerformLayout();
             this.LicensesPage.ResumeLayout(false);
             this.HomePage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -627,23 +642,23 @@
         private Kerido.Controls.MultiPanePage PagePostesFixes;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private MetroFramework.Controls.MetroButton metroButton1;
-        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroButton BtnValiderBudgetFixe;
+        private MetroFramework.Controls.MetroButton btnGererPostes;
         private System.Windows.Forms.FlowLayoutPanel PosteFixeFlowLayoutPanel;
         private MetroFramework.Controls.MetroLabel labelCmbPostes;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel PanelPostes;
         private MetroFramework.Controls.MetroComboBox ComboxBoxListePostes;
         private System.Windows.Forms.Label HelpPosteLabel;
         private MetroFramework.Controls.MetroLabel labelCmbPeriodicite;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel PanelPeriodicite;
         private MetroFramework.Controls.MetroComboBox ComboxBoxListePeriodicites;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.FlowLayoutPanel PanelTousLesXMois;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroTextBox TxtBoxTousLesXMois;
+        private MetroFramework.Controls.MetroLabel lblDuMois;
         private MetroFramework.Controls.MetroLabel metroLabel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
-        private MetroFramework.Controls.MetroTextBox metroTextBox2;
+        private System.Windows.Forms.FlowLayoutPanel PanelMontant;
+        private MetroFramework.Controls.MetroTextBox TxtBoxMontantPosteFixe;
         private Kerido.Controls.MultiPanePage SettingsPage;
         private System.Windows.Forms.Label label2;
         private Kerido.Controls.MultiPanePage LicensesPage;
@@ -653,6 +668,7 @@
         private Kerido.Controls.MultiPanePage PagePostesPonctuels;
         private Kerido.Controls.MultiPanePage PageRevenus;
         private Kerido.Controls.MultiPanePage multiPanePage3;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
 
