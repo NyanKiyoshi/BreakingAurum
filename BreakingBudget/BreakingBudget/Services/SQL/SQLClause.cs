@@ -64,23 +64,33 @@ namespace BreakingBudget.Services.SQL
             } else
             {
                 this.root = this;
-                this._parameters = new List<OleDbParameter>();
+                this._ROOT_RESET();
             }
         }
 
         public SQLClause(string fieldname, E_SQL_OPERATION SQL_OPERATION, object value, SQLClause root)
             : this(null, fieldname, SQL_OPERATION, value, root) { }
 
-        public string ROOT_AddParam(object value)
+        public string _ROOT_AddParam(object value)
         {
-            string key = "@__p" + ++this._currentParamNum;
+            string key = "@__p" + this.DBParameters.Count;
             this._parameters.Add(new OleDbParameter(key, value));
             return key;
         }
 
+        public void _ROOT_RESET()
+        {
+            this._parameters = new List<OleDbParameter>();
+        }
+
+        public void ResetRoot()
+        {
+            this.root._ROOT_RESET();
+        }
+
         public string AddParam(object value)
         {
-            return this.root.ROOT_AddParam(value);
+            return this.root._ROOT_AddParam(value);
         }
 
         public SQLClause AddClause(E_SQL_CLAUSE_SEP? SQL_SEP, string fieldname, E_SQL_OPERATION SqlOperation, object value)
@@ -90,12 +100,12 @@ namespace BreakingBudget.Services.SQL
             return clause;
         }
 
-        public SQLClause And(E_SQL_OPERATION SqlOperation, string fieldname, object value)
+        public SQLClause And(string fieldname, E_SQL_OPERATION SqlOperation, object value)
         {
             return AddClause(E_SQL_CLAUSE_SEP.AND, fieldname, SqlOperation, value);
         }
 
-        public SQLClause Or(E_SQL_OPERATION SqlOperation, string fieldname, object value)
+        public SQLClause Or(string fieldname, E_SQL_OPERATION SqlOperation, object value)
         {
             return AddClause(E_SQL_CLAUSE_SEP.OR, fieldname, SqlOperation, value);
         }
@@ -133,7 +143,7 @@ namespace BreakingBudget.Services.SQL
             return String.Format(s, fieldname, this.AddParam(this.value));
         }
 
-        private string BuildFromThere()
+        public string BuildFromThere()
         {
             string s = this.ClauseToString();
             string sub_clause = "";
@@ -158,9 +168,9 @@ namespace BreakingBudget.Services.SQL
             return s + sub_clause;
         }
 
-        override public string ToString()
-        {
-            return this.BuildFromThere();
-        }
+        //override public string ToString()
+        //{
+        //    return this.BuildFromThere();
+        //}
     }
 }

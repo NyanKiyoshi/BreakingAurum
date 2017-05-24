@@ -128,15 +128,24 @@ namespace BreakingBudget.Views.FrmMain
 
         private void button1_Click_1(object sender, EventArgs ___e)
         {
-            SelectBuilder sql = new SelectBuilder("Personne", new string[] { "codePersonne", "nomPersonne", "pnPersonne"});
-            sql.AddClause(E_SQL_CLAUSE_SEP.AND, "codePersonne", E_SQL_OPERATION.GREATER_THAN, 3);
-            sql.AddClause(E_SQL_CLAUSE_SEP.OR, "codePersonne", E_SQL_OPERATION.EQUAL_TO, 1).
-                AddClause(E_SQL_CLAUSE_SEP.AND, "pnPersonne", E_SQL_OPERATION.LIKE, "%iche%");
+            SelectBuilder sql = new SelectBuilder(
+                // Table "Personne" (required)
+                PersonneRepository.TABLE_NAME,
 
-            MessageBox.Show(sql.ToString());
+                // The selected fields (optional)
+                new string[] { "codePersonne", "nomPersonne", "pnPersonne"}
+            );
+
+            sql.AddClause(E_SQL_CLAUSE_SEP.AND, "codePersonne", E_SQL_OPERATION.GREATER_THAN,   3);
+            sql.Or ("codePersonne", E_SQL_OPERATION.EQUAL_TO,  1).
+                And("pnPersonne",   E_SQL_OPERATION.LIKE,      "%iche%");
+
+
+            MessageBox.Show(sql.ToRawSQL());
 
             OleDbCommand cmd = sql.GetCommand(new OleDbConnection(DatabaseManager.CONNEXION_STRING));
             cmd.Connection.Open();
+
             foreach (PersonneRepository.PersonneModel e
                         in DataAdapter.OleDbDataReaderToStruct<PersonneRepository.PersonneModel>(cmd.ExecuteReader()))
             {

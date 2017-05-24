@@ -26,18 +26,31 @@ namespace BreakingBudget.Services.SQL
             if (this.clause == null)
             {
                 this.clause = new SQLClause(SQL_SEP, fieldname, SqlOperation, value, null);
+                return this.clause;
             }
             return this.clause.AddClause(SQL_SEP, fieldname, SqlOperation, value);
         }
 
+        // XXX
         public SQLClause AddClause(string fieldname, E_SQL_OPERATION SqlOperation, object value)
         {
             return this.AddClause(null, fieldname, SqlOperation, value);
         }
 
+        public SQLClause And(string fieldname, E_SQL_OPERATION SqlOperation, object value)
+        {
+            return this.AddClause(E_SQL_CLAUSE_SEP.AND, fieldname, SqlOperation, value);
+        }
+
+        public SQLClause Or(string fieldname, E_SQL_OPERATION SqlOperation, object value)
+        {
+            return this.AddClause(E_SQL_CLAUSE_SEP.OR, fieldname, SqlOperation, value);
+        }
+
         public string BuildWhereClauses()
         {
-            return "WHERE " + this.clause.ToString();
+            this.clause._ROOT_RESET();
+            return "WHERE " + this.clause.BuildFromThere();
         }
 
         public string BuildToString()
@@ -78,7 +91,7 @@ namespace BreakingBudget.Services.SQL
             return cmd;
         }
 
-        override public string ToString()
+        public string ToRawSQL()
         {
             return this.BuildToString();
         }

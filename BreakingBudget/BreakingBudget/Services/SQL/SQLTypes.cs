@@ -18,6 +18,7 @@ namespace BreakingBudget.Services.SQL
 
         public enum E_SQL_CLAUSE_SEP
         {
+            NULL,
             OR,
             AND
         }
