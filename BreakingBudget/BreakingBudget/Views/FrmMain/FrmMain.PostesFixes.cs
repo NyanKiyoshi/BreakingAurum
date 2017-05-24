@@ -16,8 +16,8 @@ namespace BreakingBudget.Views.FrmMain
         {
             FillPostesComboBox();
             FillePeriodicitesComboBox();
-            //this.HelpPosteLabel.Font = this.IconFont;
-            //this.HelpPosteLabel.Text = Encoding.UTF8.GetString(ICON_HELP_MARK);
+            this.HelpPosteLabel.Font = this.IconFont;
+            this.HelpPosteLabel.Text = Encoding.UTF8.GetString(ICON_HELP_MARK);
         }
 
         private void FillPostesComboBox()

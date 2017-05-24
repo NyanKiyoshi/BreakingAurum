@@ -291,7 +291,7 @@
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 22);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(391, 35);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(383, 35);
             this.flowLayoutPanel3.TabIndex = 4;
             this.flowLayoutPanel3.WrapContents = false;
             // 
@@ -312,14 +312,15 @@
             // 
             this.HelpPosteLabel.AutoSize = true;
             this.HelpPosteLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.HelpPosteLabel.Font = new System.Drawing.Font("Material Icons", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpPosteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HelpPosteLabel.Location = new System.Drawing.Point(355, 3);
             this.HelpPosteLabel.Margin = new System.Windows.Forms.Padding(3);
             this.HelpPosteLabel.Name = "HelpPosteLabel";
-            this.HelpPosteLabel.Size = new System.Drawing.Size(33, 29);
+            this.HelpPosteLabel.Size = new System.Drawing.Size(25, 29);
             this.HelpPosteLabel.TabIndex = 6;
             this.HelpPosteLabel.Text = "";
             this.HelpPosteLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.HelpPosteLabel.Click += new System.EventHandler(this.HelpPosteLabel_Click);
             // 
             // labelCmbPeriodicite
             // 
@@ -340,7 +341,7 @@
             this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 94);
             this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(391, 35);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(383, 35);
             this.flowLayoutPanel4.TabIndex = 6;
             // 
             // ComboxBoxListePeriodicites
@@ -366,7 +367,7 @@
             this.flowLayoutPanel5.Location = new System.Drawing.Point(3, 147);
             this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(391, 25);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(383, 25);
             this.flowLayoutPanel5.TabIndex = 8;
             // 
             // metroLabel1
@@ -446,7 +447,7 @@
             this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 209);
             this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
-            this.flowLayoutPanel6.Size = new System.Drawing.Size(391, 25);
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(383, 25);
             this.flowLayoutPanel6.TabIndex = 9;
             // 
             // metroTextBox2
@@ -541,6 +542,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // PagePostesPonctuels
             // 

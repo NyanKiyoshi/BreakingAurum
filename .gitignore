@@ -5,3 +5,7 @@ Backup/*
 bin/*
 obj/*
 .vs/*
+
+*.exe
+*.cache
+*.pdb

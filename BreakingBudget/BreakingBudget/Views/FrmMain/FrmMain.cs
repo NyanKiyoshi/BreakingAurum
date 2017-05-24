@@ -5,6 +5,7 @@ using MetroFramework.Forms;
 using MetroFramework;
 using Kerido.Controls;
 using BreakingBudget.Services;
+using BreakingBudget.Services.SQL;
 using BreakingBudget.Structural;
 using BreakingBudget.Repositories;
 using System.Data;
@@ -14,7 +15,8 @@ namespace BreakingBudget.Views.FrmMain
 {
     public partial class FrmMain : MetroForm
     {
-        private Font IconFont = IconFonts.GetFont(IconFonts.FONT_FAMILY.MaterialIcons, 17.0f);
+        private readonly IconFonts IconFontManager;
+        private readonly Font IconFont;
 
         private readonly SidebarEntry[] TopSidebarEntries;
         private readonly SidebarEntry[] BottomSidebarEntries;
@@ -26,6 +28,9 @@ namespace BreakingBudget.Views.FrmMain
         {
             InitializeComponent();
 
+            this.IconFontManager = (new IconFonts());
+            this.IconFont = this.IconFontManager.GetFont(IconFonts.FONT_FAMILY.MaterialIcons, 17.0f);
+
             this.TopSidebarEntries = new SidebarEntry[]
             {
                 // To have a parent that do nothing: pass as first parameter: `(MultiPanePage)null`
@@ -34,6 +39,10 @@ namespace BreakingBudget.Views.FrmMain
                     new SidebarEntry(this.PagePostesFixes, "Postes Fixes"),
                     new SidebarEntry(this.PagePostesPonctuels, "Postes Ponctuels"),
                     new SidebarEntry(this.PageRevenus, "Revenus"),
+                }),
+                new SidebarEntry((MultiPanePage)null, new byte[] { 0xEE, 0xA1, 0xAC }, "Budget du Mois", new SidebarEntry[] {
+                    new SidebarEntry(this.PagePostesFixes, "Ajouter Transaction"),
+                    new SidebarEntry(this.PagePostesPonctuels, "Lister Transactions"),
                 }),
             };
 
@@ -114,6 +123,18 @@ namespace BreakingBudget.Views.FrmMain
         private void PagePostesFixes_AutoSizeChanged(object sender, EventArgs e)
         {
             MessageBox.Show(this.PagePostesFixes.Size.Width.ToString());
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            SelectBuilder sql = new SelectBuilder("Test");
+            sql.AddClause(E_SQL_CLAUSE_SEP.AND, "Meow", E_SQL_OPERATION.GREATER_OR_EQUAL_THAN, 156);
+
+            sql.AddClause("username", E_SQL_OPERATION.EQUAL_TO, "15521")
+                .AddClause(E_SQL_CLAUSE_SEP.AND, "Hello", E_SQL_OPERATION.EQUAL_TO, "Hlee")
+                .AddClause(E_SQL_CLAUSE_SEP.OR, "val", E_SQL_OPERATION.LESS_OR_EQUAL_THAN, 12.25);
+
+            MessageBox.Show(sql.ToString());
         }
     }
 }
