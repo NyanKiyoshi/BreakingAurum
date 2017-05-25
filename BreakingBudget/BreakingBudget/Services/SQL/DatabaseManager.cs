@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 
@@ -55,20 +56,18 @@ namespace BreakingBudget.Services.SQL
             return DatabaseManager._CachedSchemaTable.Tables;
         }
 
-        public static OleDbDataReader IterCommand(OleDbCommand Command)
+        public static OleDbCommand IterCommand(OleDbCommand Command)
         {
-            using (OleDbConnection db_conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING))
+            OleDbConnection db_conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING);
             {
                 Command.Connection = db_conn;
 
-                db_conn.Open();
-
                 // FIXME: should iter
-                return Command.ExecuteReader();
+                return Command;
             }
         }
 
-        public static OleDbDataReader ExecuteRawSQL(string RawSQLCommand)
+        public static OleDbCommand CmdFromRawSQL(string RawSQLCommand)
         {
             return DatabaseManager.IterCommand(new OleDbCommand(RawSQLCommand));
         }
@@ -88,6 +87,49 @@ namespace BreakingBudget.Services.SQL
         public static object GetFirstRaw(string RawSQLCommand)
         {
             return DatabaseManager.GetFirst(new OleDbCommand(RawSQLCommand));
+        }
+
+        public static OleDbCommand InsertInto(string TableName, OleDbConnection DBConn,
+            params KeyValuePair<String, Object>[] parameters)
+        {
+            OleDbCommand cmd = InsertInto(TableName, parameters);
+            cmd.Connection = DBConn;
+
+            return cmd;
+        }
+
+        public static OleDbCommand InsertInto(string TableName,
+            params KeyValuePair<String, Object>[] parameters)
+        {
+            OleDbCommand cmd = new OleDbCommand();
+
+            List<OleDbParameter> DBParameters = new List<OleDbParameter>();
+            KeyValuePair<String, Object> parameter;
+
+            int i = 0;
+            string ParamKey;
+
+            string Fields = "";
+            string Values = "";
+
+            while (i < parameters.Length)
+            {
+                if (i > 0)
+                {
+                    Fields += ",";
+                    Values += ",";
+                }
+                parameter = parameters[i++];
+                ParamKey = "@__p" + DBParameters.Count;
+
+                DBParameters.Add(new OleDbParameter(ParamKey, parameter.Value));
+                Fields += "[" + parameter.Key + "]";
+                Values += ParamKey;
+            }
+            cmd.CommandText = String.Format("INSERT INTO {0} ({1}) VALUES ({2})", TableName, Fields, Values);
+            cmd.Parameters.AddRange(DBParameters.ToArray());
+
+            return cmd;
         }
     }
 }

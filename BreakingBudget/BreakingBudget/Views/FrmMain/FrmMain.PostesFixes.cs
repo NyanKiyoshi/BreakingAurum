@@ -2,10 +2,12 @@
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.OleDb;
 using System.Text;
 using System.Drawing.Text;
 using System.Threading.Tasks;
 using BreakingBudget.Repositories;
+using BreakingBudget.Services.SQL;
 using MetroFramework;
 using MetroFramework.Forms;
 using MetroFramework.Controls;
@@ -26,22 +28,45 @@ namespace BreakingBudget.Views.FrmMain
 
         private void FillPostesComboBox()
         {
+            // empty the ComboBox
             this.ComboxBoxListePostes.Items.Clear();
-            this.ComboxBoxListePostes.Items.AddRange(PosteRepository.List());
+
+            // Reset the selection
+            this.ComboxBoxListePostes.ResetText();
+
+            // Add every item that is not already used by PostePeriodique
+            OleDbCommand cmd = DatabaseManager.CmdFromRawSQL(
+                "SELECT * FROM Poste WHERE codePoste NOT IN (SELECT codePoste FROM PostePeriodique WHERE codePoste IS NOT NULL)"
+            );
+
+            cmd.Connection.Open();
+            foreach (PosteRepository.PosteModel e in
+                DataAdapter.OleDbDataReaderToStruct<PosteRepository.PosteModel>(cmd.ExecuteReader()))
+            {
+                this.ComboxBoxListePostes.Items.Add(e);
+            }
+            cmd.Connection.Close();
         }
 
         private void FillePeriodicitesComboBox()
         {
+            // empty the ComboBox
             this.ComboxBoxListePeriodicites.Items.Clear();
+
+            // Add every item
             this.ComboxBoxListePeriodicites.Items.AddRange(PeriodiciteRepository.List());
         }
 
-        private void BtnValiderBudgetFixe_Click(object sender, EventArgs e)
+        private void BtnValiderBudgetFixe_Click(object _s, EventArgs e)
         {
+            MetroButton sender = (MetroButton)_s;
             PosteRepository.PosteModel SelectedPoste;
             PeriodiciteRepository.PeriodiciteModel SelectedPeriode;
             decimal montant;
             int TousLesXDuMois;
+
+            // disable submit button
+            sender.Enabled = false;
 
             // Check if every field was filled
             if (
@@ -55,34 +80,40 @@ namespace BreakingBudget.Views.FrmMain
                     "Veuillez remplir et selectionner tous les champs.",
                     "Données manquantes",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
             }
-
             // try to convert the decimals and integers
-            if (!(decimal.TryParse(TxtBoxMontantPosteFixe.Text, out montant)
+            else if (!(decimal.TryParse(TxtBoxMontantPosteFixe.Text, out montant)
                   && int.TryParse(TxtBoxTousLesXMois.Text, out TousLesXDuMois)))
             {
                 MetroMessageBox.Show(this,
                     "Le jour du mois et le montant doivent être un nombre.",
                     "Uh oh.",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+            }
+            else
+            {
+                // retrieve the selected items
+                SelectedPoste = (PosteRepository.PosteModel)this.ComboxBoxListePostes.SelectedItem;
+                SelectedPeriode = (PeriodiciteRepository.PeriodiciteModel)this.ComboxBoxListePeriodicites.SelectedItem;
+
+                OleDbCommand cmd = DatabaseManager.InsertInto("PostePeriodique",
+                    new OleDbConnection(DatabaseManager.CONNEXION_STRING),
+                    new KeyValuePair<string, object>("codePoste", SelectedPoste.codePoste),
+                    new KeyValuePair<string, object>("typePer", SelectedPeriode.codePer),
+                    new KeyValuePair<string, object>("montant", montant),
+                    new KeyValuePair<string, object>("jourDuMois", TousLesXDuMois)
+                );
+
+                // TODO: try-catch
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();  // insert data
+                cmd.Connection.Close();
+
+                this.FillPostesComboBox();
             }
 
-            // retrieve the selected items
-            SelectedPoste = (PosteRepository.PosteModel)this.ComboxBoxListePostes.SelectedItem;
-            SelectedPeriode = (PeriodiciteRepository.PeriodiciteModel)this.ComboxBoxListePeriodicites.SelectedItem;
-
-            // insert the data to the database
-            MessageBox.Show(
-                SelectedPoste.ToString()
-                + " *** " + SelectedPeriode.ToString()
-                + " *** " + montant
-                + " *** " + TousLesXDuMois
-            );
-
-            // update the panel's data
-            this.FillPostesComboBox();
+            // re-enable the submit button
+            sender.Enabled = true;
         }
 
         private void btnGererPostes_Click(object sender, EventArgs e)
