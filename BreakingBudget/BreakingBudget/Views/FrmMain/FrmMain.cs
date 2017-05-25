@@ -114,6 +114,8 @@ namespace BreakingBudget.Views.FrmMain
                 this.settings = new Settings();
             }
 
+            MetroFramework.Localization.MetroLocalize.CurrentLanguage = this.settings.TwoLetterISOLanguage;
+
             this.StyleManager.Theme = this.settings.MetroTheme;
             this.StyleManager.Style = this.settings.MetroColorStyle;
 
@@ -131,8 +133,8 @@ namespace BreakingBudget.Views.FrmMain
             // TODO: replace this by a check if data were edited or not
             if (
                 MetroMessageBox.Show(this,
-                    "Êtes-vous sûr de vouloir quitter ?",
-                    "Confirmation",
+                    this.Localize.Translate("quit_confirmation"),
+                    this.Localize.Translate("requires_confirmation"),
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question
                 ) != DialogResult.Yes)
             {
