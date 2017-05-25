@@ -17,6 +17,8 @@ namespace BreakingBudget.Views.FrmMain
 {
     public partial class FrmMain : MetroForm
     {
+        private Settings settings;
+
         private readonly IconFonts IconFontManager;
         private readonly Font IconFont;
 
@@ -39,12 +41,31 @@ namespace BreakingBudget.Views.FrmMain
         {
             InitializeComponent();
 
-            this.Localize = new LocalizationManager(this.Name, "es");
-            this.Localize.ImportResourceLocalization("Sidebar");
-            //MessageBox.Show(this.Localize.Translate("BreakingBudget"));
+            // set the form's style manager to the control `metroStyleManager`
+            // it will allow to propagate the theme selection
+            this.StyleManager = this.metroStyleManager;
 
+            // Create the fonts icons collection & set the default one (MaterialIcons)
             this.IconFontManager = (new IconFonts());
             this.IconFont = this.IconFontManager.GetFont(IconFonts.FONT_FAMILY.MaterialIcons, 17.0f);
+
+            // set the base name (used later to rename the form)
+            this.BaseName = this.Text;
+
+            // set the default page and switch to it
+            this.DefaultPage = this.HomePage;
+
+            this.Font = new Font("Arial", 11f, FontStyle.Regular, GraphicsUnit.Pixel);
+
+            AutoCompleter.ImplementCompleter(textBox1, 2);
+
+            // ----
+            // Load the user's preferences
+            LoadSettings();
+
+            // Load the LocalizationManager that will provide the localization system
+            this.Localize = new LocalizationManager(this.Name, this.settings.TwoLetterISOLanguage);
+            this.Localize.ImportResourceLocalization("Sidebar");  // load the sidebar's localization data
 
             // create the sidebar's top entries
             this.TopSidebarEntries = new SidebarEntry[]
@@ -80,18 +101,23 @@ namespace BreakingBudget.Views.FrmMain
                 new SidebarEntry(this.LicensesPage, new byte[] { 0xEE, 0x90, 0xA0 }, this.Localize.Translate("sidebar_page_licenses"))
             };
 
-            // set the base name (used later to rename the form)
-            this.BaseName = this.Text;
-
-            // set the default page and switch to it
-            this.DefaultPage = this.HomePage;
-
-            this.Font = new Font("Arial", 11f, FontStyle.Regular, GraphicsUnit.Pixel);
-
-            AutoCompleter.ImplementCompleter(textBox1, 2);
-
             InitializePostesFixes();
             InitSettingsPage();
+        }
+
+        private void LoadSettings()
+        {
+            // load settings from saved data if available. Otherwise: create settings
+            this.settings = Settings.Load();
+            if (this.settings == null)
+            {
+                this.settings = new Settings();
+            }
+
+            this.StyleManager.Theme = this.settings.MetroTheme;
+            this.StyleManager.Style = this.settings.MetroColorStyle;
+
+            FrmMain_StyleChanged(null, null);
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -112,6 +138,7 @@ namespace BreakingBudget.Views.FrmMain
             {
                 e.Cancel = true;
             }
+            this.settings.Save();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -213,6 +240,25 @@ namespace BreakingBudget.Views.FrmMain
             if (!IsTextBoxKeyPressNumber(sender, e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void FrmMain_StyleChanged(object sender, EventArgs e)
+        {
+            this.ContentPanel.BackColor = this.BackColor;
+            if (this.isSidebarInitialized)
+            {
+                InitializeSidebarColors();
+                ContentPanel_SelectedPageChanged(this.ContentPanel, null);
+            }
+
+            if (this.Theme != MetroThemeStyle.Dark)
+            {
+                this.BaseContainer.BackColor = Color.Silver;
+            }
+            else
+            {
+                this.BaseContainer.BackColor = Color.FromArgb(0x29, 0x29, 0x29);
             }
         }
     }

@@ -15,20 +15,19 @@ namespace BreakingBudget.Views.FrmMain
         private readonly Padding BaseEntryMargin = new Padding(0, 0, 0, 15);
 
         // the default text color and the active & hover one
-        Color BaseSidebarEntryColor = Color.FromArgb(117, 117, 117);
-        Color ActiveBaseSidebarEntryColor = Color.FromArgb(0, 0, 0);
+        Color BaseSidebarEntryColor;
+        Color ActiveBaseSidebarEntryColor;
 
         // List of the sub-sidebars (FIXME: should take a FlowLayout this.SidebarTopFlowLayout, ...)
         SidebarEntry[][] SidebarsRootEntries;
+
+        bool isSidebarInitialized = false;
 
         private void GenerateSidebar(SidebarEntry[][] SidebarsRootEntries)
         {
             this.SidebarsRootEntries = SidebarsRootEntries;
 
-            // Set the sidebar background as the same as the form's one
-            this.SidebarTable.BackColor = this.BackColor;
-            this.SidebarTopFlowLayout.BackColor = this.BackColor;
-            this.SidebarBottomFlowLayout.BackColor = this.BackColor;
+            InitializeSidebarColors();
 
             this.SidebarTable.Padding = new Padding(0, 0, 10, 0);
             this.SidebarTable.Margin = new Padding(0);
@@ -39,6 +38,27 @@ namespace BreakingBudget.Views.FrmMain
             // Generate every sub-sidebar
             GenerateSidebarContent(this.SidebarTopFlowLayout, this.TopSidebarEntries);
             GenerateSidebarContent(this.SidebarBottomFlowLayout, this.BottomSidebarEntries);
+
+            this.isSidebarInitialized = true;
+        }
+
+        private void InitializeSidebarColors()
+        {
+            // Set the sidebar background as the same as the form's one
+            this.SidebarTable.BackColor = this.BackColor;
+            this.SidebarTopFlowLayout.BackColor = this.BackColor;
+            this.SidebarBottomFlowLayout.BackColor = this.BackColor;
+
+            if (this.Theme != MetroFramework.MetroThemeStyle.Dark)
+            {
+                BaseSidebarEntryColor = Color.FromArgb(117, 117, 117);
+                ActiveBaseSidebarEntryColor = Color.FromArgb(0, 0, 0);
+            }
+            else
+            {
+                BaseSidebarEntryColor = Color.FromArgb(156, 156, 156);
+                ActiveBaseSidebarEntryColor = Color.FromArgb(205, 205, 205);
+            }
         }
 
         // Change the form's current page

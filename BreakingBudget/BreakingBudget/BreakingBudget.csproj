@@ -90,6 +90,7 @@
     <Compile Include="Services\SQL\SQLClause.cs" />
     <Compile Include="Services\SQL\SQLUtils.cs" />
     <Compile Include="Services\SQL\SQLTypes.cs" />
+    <Compile Include="Services\Settings.cs" />
     <Compile Include="Views\FrmMain\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,7 +99,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Structural\SidebarEntry.cs" />
+    <Compile Include="StructuralData\SidebarEntry.cs" />
     <Compile Include="Views\FrmMain\FrmMain.PostesFixes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +164,12 @@
     <EmbeddedResource Include="Localization\es\Sidebar.xml" />
     <EmbeddedResource Include="Localization\fr\Sidebar.xml" />
     <EmbeddedResource Include="Localization\fr\FrmMain.xml" />
+    <EmbeddedResource Include="Localization\en\FrmMain.xml" />
+    <EmbeddedResource Include="Localization\de\FrmMain.xml" />
+    <EmbeddedResource Include="Localization\tr\FrmMain.xml" />
+    <EmbeddedResource Include="Localization\en\Sidebar.xml" />
+    <EmbeddedResource Include="Localization\de\Sidebar.xml" />
+    <EmbeddedResource Include="Localization\tr\Sidebar.xml" />
     <Content Include="Resources\budget1.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
