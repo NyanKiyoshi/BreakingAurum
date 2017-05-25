@@ -118,7 +118,8 @@ namespace BreakingBudget.Views.FrmMain
 
         private void btnGererPostes_Click(object sender, EventArgs e)
         {
-
+            GererPostes InstanceGererPostes = new GererPostes();
+            InstanceGererPostes.ShowDialog();
         }
 
         private void TxtBoxMontantPosteFixe_KeyPress(object _s, KeyPressEventArgs e)

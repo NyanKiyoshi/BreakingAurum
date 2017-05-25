@@ -17,6 +17,7 @@ namespace BreakingBudget
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            FrmMain MainForm;
             UserCreation CreationForm;
 
             // Cache the database's scheme
@@ -35,7 +36,12 @@ namespace BreakingBudget
                 }
             }
 
-            Application.Run(new FrmMain());
+            // run the Main form and restart it if it asks so
+            do
+            {
+                MainForm = new FrmMain();
+                Application.Run(MainForm);
+            } while (MainForm.WaitsForRestart);
         }
     }
 }

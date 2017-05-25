@@ -78,11 +78,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\PersonneRepository.cs" />
     <Compile Include="Repositories\PeriodiciteRepository.cs" />
     <Compile Include="Repositories\PosteRepository.cs" />
     <Compile Include="Services\AutoCompleter.cs" />
+    <Compile Include="Services\Lang\LocalizationManager.cs" />
     <Compile Include="Services\SQL\DataAdapter.cs" />
     <Compile Include="Services\SQL\DatabaseManager.cs" />
     <Compile Include="Services\IconFonts.cs" />
@@ -107,6 +107,12 @@
     </Compile>
     <Compile Include="Views\FrmMain\FrmMain.Settings.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\GererPostes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\GererPostes.Designer.cs">
+      <DependentUpon>GererPostes.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserCreation.cs">
       <SubType>Form</SubType>
@@ -147,6 +153,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Localization\en\MetroToggle.xml" />
+    <EmbeddedResource Include="Localization\de\MetroToggle.xml" />
+    <EmbeddedResource Include="Localization\es\MetroMessageBoxControl.xml" />
+    <EmbeddedResource Include="Localization\es\MetroToggle.xml" />
+    <EmbeddedResource Include="Localization\tr\MetroMessageBoxControl.xml" />
+    <EmbeddedResource Include="Localization\tr\MetroToggle.xml" />
+    <EmbeddedResource Include="Localization\es\FrmMain.xml" />
+    <EmbeddedResource Include="Localization\es\Sidebar.xml" />
+    <EmbeddedResource Include="Localization\fr\Sidebar.xml" />
+    <EmbeddedResource Include="Localization\fr\FrmMain.xml" />
     <Content Include="Resources\budget1.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -161,6 +177,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

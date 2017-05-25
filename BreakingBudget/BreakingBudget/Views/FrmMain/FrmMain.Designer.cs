@@ -39,8 +39,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.ContentPanel = new Kerido.Controls.MultiPaneControl();
             this.PagePostesFixes = new Kerido.Controls.MultiPanePage();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.ContainerPosteFixePage = new System.Windows.Forms.Panel();
+            this.ContainerButtonsPosteFixePage = new System.Windows.Forms.Panel();
             this.BtnValiderBudgetFixe = new MetroFramework.Controls.MetroButton();
             this.btnGererPostes = new MetroFramework.Controls.MetroButton();
             this.PosteFixeFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -59,7 +59,18 @@
             this.PanelMontant = new System.Windows.Forms.FlowLayoutPanel();
             this.TxtBoxMontantPosteFixe = new MetroFramework.Controls.MetroTextBox();
             this.SettingsPage = new Kerido.Controls.MultiPanePage();
-            this.label2 = new System.Windows.Forms.Label();
+            this.ContainerSettingsPage = new System.Windows.Forms.Panel();
+            this.ContainerSettingsFields = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblTheme = new MetroFramework.Controls.MetroLabel();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.ThemeStyleComboBox = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.VariantStyleComboBox = new MetroFramework.Controls.MetroComboBox();
+            this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblLangue = new MetroFramework.Controls.MetroLabel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.LanguageComboBox = new MetroFramework.Controls.MetroComboBox();
             this.LicensesPage = new Kerido.Controls.MultiPanePage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.HomePage = new Kerido.Controls.MultiPanePage();
@@ -68,23 +79,30 @@
             this.PageRevenus = new Kerido.Controls.MultiPanePage();
             this.multiPanePage3 = new Kerido.Controls.MultiPanePage();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.SidebarTable.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             this.PagePostesFixes.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.ContainerPosteFixePage.SuspendLayout();
+            this.ContainerButtonsPosteFixePage.SuspendLayout();
             this.PosteFixeFlowLayoutPanel.SuspendLayout();
             this.PanelPostes.SuspendLayout();
             this.PanelPeriodicite.SuspendLayout();
             this.PanelTousLesXMois.SuspendLayout();
             this.PanelMontant.SuspendLayout();
             this.SettingsPage.SuspendLayout();
+            this.ContainerSettingsPage.SuspendLayout();
+            this.ContainerSettingsFields.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.LicensesPage.SuspendLayout();
             this.HomePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -202,36 +220,36 @@
             this.PagePostesFixes.AccessibleName = "Tracker";
             this.PagePostesFixes.AutoSize = true;
             this.PagePostesFixes.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.PagePostesFixes.Controls.Add(this.panel2);
+            this.PagePostesFixes.Controls.Add(this.ContainerPosteFixePage);
             this.PagePostesFixes.Name = "PagePostesFixes";
             this.PagePostesFixes.Size = new System.Drawing.Size(667, 426);
             this.PagePostesFixes.TabIndex = 0;
             // 
-            // panel2
+            // ContainerPosteFixePage
             // 
-            this.panel2.AutoSize = true;
-            this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.PosteFixeFlowLayoutPanel);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(10);
-            this.panel2.Size = new System.Drawing.Size(667, 426);
-            this.panel2.TabIndex = 0;
+            this.ContainerPosteFixePage.AutoSize = true;
+            this.ContainerPosteFixePage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ContainerPosteFixePage.Controls.Add(this.ContainerButtonsPosteFixePage);
+            this.ContainerPosteFixePage.Controls.Add(this.PosteFixeFlowLayoutPanel);
+            this.ContainerPosteFixePage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ContainerPosteFixePage.Location = new System.Drawing.Point(0, 0);
+            this.ContainerPosteFixePage.Name = "ContainerPosteFixePage";
+            this.ContainerPosteFixePage.Padding = new System.Windows.Forms.Padding(10);
+            this.ContainerPosteFixePage.Size = new System.Drawing.Size(667, 426);
+            this.ContainerPosteFixePage.TabIndex = 0;
             // 
-            // panel3
+            // ContainerButtonsPosteFixePage
             // 
-            this.panel3.AutoSize = true;
-            this.panel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel3.Controls.Add(this.BtnValiderBudgetFixe);
-            this.panel3.Controls.Add(this.btnGererPostes);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(10, 386);
-            this.panel3.MinimumSize = new System.Drawing.Size(0, 30);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(647, 30);
-            this.panel3.TabIndex = 2;
+            this.ContainerButtonsPosteFixePage.AutoSize = true;
+            this.ContainerButtonsPosteFixePage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ContainerButtonsPosteFixePage.Controls.Add(this.BtnValiderBudgetFixe);
+            this.ContainerButtonsPosteFixePage.Controls.Add(this.btnGererPostes);
+            this.ContainerButtonsPosteFixePage.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ContainerButtonsPosteFixePage.Location = new System.Drawing.Point(10, 386);
+            this.ContainerButtonsPosteFixePage.MinimumSize = new System.Drawing.Size(0, 30);
+            this.ContainerButtonsPosteFixePage.Name = "ContainerButtonsPosteFixePage";
+            this.ContainerButtonsPosteFixePage.Size = new System.Drawing.Size(647, 30);
+            this.ContainerButtonsPosteFixePage.TabIndex = 2;
             // 
             // BtnValiderBudgetFixe
             // 
@@ -496,19 +514,155 @@
             this.SettingsPage.AccessibleName = "Paramètres";
             this.SettingsPage.AutoSize = true;
             this.SettingsPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.SettingsPage.Controls.Add(this.label2);
+            this.SettingsPage.Controls.Add(this.ContainerSettingsPage);
             this.SettingsPage.Name = "SettingsPage";
             this.SettingsPage.Size = new System.Drawing.Size(667, 426);
             this.SettingsPage.TabIndex = 1;
             // 
-            // label2
+            // ContainerSettingsPage
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(41, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "label2";
+            this.ContainerSettingsPage.AutoSize = true;
+            this.ContainerSettingsPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ContainerSettingsPage.Controls.Add(this.ContainerSettingsFields);
+            this.ContainerSettingsPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ContainerSettingsPage.Location = new System.Drawing.Point(0, 0);
+            this.ContainerSettingsPage.Name = "ContainerSettingsPage";
+            this.ContainerSettingsPage.Padding = new System.Windows.Forms.Padding(10);
+            this.ContainerSettingsPage.Size = new System.Drawing.Size(667, 426);
+            this.ContainerSettingsPage.TabIndex = 1;
+            // 
+            // ContainerSettingsFields
+            // 
+            this.ContainerSettingsFields.AutoSize = true;
+            this.ContainerSettingsFields.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ContainerSettingsFields.Controls.Add(this.lblTheme);
+            this.ContainerSettingsFields.Controls.Add(this.flowLayoutPanel3);
+            this.ContainerSettingsFields.Controls.Add(this.metroLabel4);
+            this.ContainerSettingsFields.Controls.Add(this.flowLayoutPanel4);
+            this.ContainerSettingsFields.Controls.Add(this.flowLayoutPanel6);
+            this.ContainerSettingsFields.Controls.Add(this.lblLangue);
+            this.ContainerSettingsFields.Controls.Add(this.flowLayoutPanel2);
+            this.ContainerSettingsFields.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ContainerSettingsFields.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.ContainerSettingsFields.Location = new System.Drawing.Point(10, 10);
+            this.ContainerSettingsFields.Name = "ContainerSettingsFields";
+            this.ContainerSettingsFields.Size = new System.Drawing.Size(647, 406);
+            this.ContainerSettingsFields.TabIndex = 1;
+            this.ContainerSettingsFields.WrapContents = false;
+            // 
+            // lblTheme
+            // 
+            this.lblTheme.AutoSize = true;
+            this.lblTheme.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblTheme.Location = new System.Drawing.Point(3, 0);
+            this.lblTheme.Name = "lblTheme";
+            this.lblTheme.Size = new System.Drawing.Size(38, 19);
+            this.lblTheme.TabIndex = 7;
+            this.lblTheme.Text = "Style";
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.AutoSize = true;
+            this.flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel3.Controls.Add(this.ThemeStyleComboBox);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 22);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(352, 35);
+            this.flowLayoutPanel3.TabIndex = 4;
+            this.flowLayoutPanel3.WrapContents = false;
+            // 
+            // ThemeStyleComboBox
+            // 
+            this.ThemeStyleComboBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ThemeStyleComboBox.FormattingEnabled = true;
+            this.ThemeStyleComboBox.ItemHeight = 23;
+            this.ThemeStyleComboBox.Location = new System.Drawing.Point(3, 3);
+            this.ThemeStyleComboBox.Name = "ThemeStyleComboBox";
+            this.ThemeStyleComboBox.Size = new System.Drawing.Size(346, 29);
+            this.ThemeStyleComboBox.Sorted = true;
+            this.ThemeStyleComboBox.TabIndex = 3;
+            this.ThemeStyleComboBox.UseSelectable = true;
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel4.Location = new System.Drawing.Point(3, 72);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(93, 19);
+            this.metroLabel4.TabIndex = 7;
+            this.metroLabel4.Text = "Style Variante";
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.AutoSize = true;
+            this.flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel4.Controls.Add(this.VariantStyleComboBox);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 94);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(352, 35);
+            this.flowLayoutPanel4.TabIndex = 6;
+            // 
+            // VariantStyleComboBox
+            // 
+            this.VariantStyleComboBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.VariantStyleComboBox.FormattingEnabled = true;
+            this.VariantStyleComboBox.ItemHeight = 23;
+            this.VariantStyleComboBox.Location = new System.Drawing.Point(3, 3);
+            this.VariantStyleComboBox.Name = "VariantStyleComboBox";
+            this.VariantStyleComboBox.Size = new System.Drawing.Size(346, 29);
+            this.VariantStyleComboBox.Sorted = true;
+            this.VariantStyleComboBox.TabIndex = 3;
+            this.VariantStyleComboBox.UseSelectable = true;
+            // 
+            // flowLayoutPanel6
+            // 
+            this.flowLayoutPanel6.AutoSize = true;
+            this.flowLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(3, 135);
+            this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.flowLayoutPanel6.Name = "flowLayoutPanel6";
+            this.flowLayoutPanel6.Size = new System.Drawing.Size(352, 0);
+            this.flowLayoutPanel6.TabIndex = 9;
+            // 
+            // lblLangue
+            // 
+            this.lblLangue.AutoSize = true;
+            this.lblLangue.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblLangue.Location = new System.Drawing.Point(3, 150);
+            this.lblLangue.Name = "lblLangue";
+            this.lblLangue.Size = new System.Drawing.Size(54, 19);
+            this.lblLangue.TabIndex = 11;
+            this.lblLangue.Text = "Langue";
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoSize = true;
+            this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel2.Controls.Add(this.LanguageComboBox);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 172);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(352, 35);
+            this.flowLayoutPanel2.TabIndex = 10;
+            // 
+            // LanguageComboBox
+            // 
+            this.LanguageComboBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.LanguageComboBox.FormattingEnabled = true;
+            this.LanguageComboBox.ItemHeight = 23;
+            this.LanguageComboBox.Location = new System.Drawing.Point(3, 3);
+            this.LanguageComboBox.Name = "LanguageComboBox";
+            this.LanguageComboBox.Size = new System.Drawing.Size(346, 29);
+            this.LanguageComboBox.Sorted = true;
+            this.LanguageComboBox.TabIndex = 3;
+            this.LanguageComboBox.UseSelectable = true;
+            this.LanguageComboBox.SelectedIndexChanged += new System.EventHandler(this.LanguageComboBox_SelectedIndexChanged);
             // 
             // LicensesPage
             // 
@@ -583,6 +737,10 @@
             this.errorProvider.ContainerControl = this;
             this.errorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider.Icon")));
             // 
+            // metroStyleManager
+            // 
+            this.metroStyleManager.Owner = null;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -608,10 +766,10 @@
             this.ContentPanel.PerformLayout();
             this.PagePostesFixes.ResumeLayout(false);
             this.PagePostesFixes.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.ContainerPosteFixePage.ResumeLayout(false);
+            this.ContainerPosteFixePage.PerformLayout();
+            this.ContainerButtonsPosteFixePage.ResumeLayout(false);
+            this.ContainerButtonsPosteFixePage.PerformLayout();
             this.PosteFixeFlowLayoutPanel.ResumeLayout(false);
             this.PosteFixeFlowLayoutPanel.PerformLayout();
             this.PanelPostes.ResumeLayout(false);
@@ -622,9 +780,17 @@
             this.PanelMontant.ResumeLayout(false);
             this.SettingsPage.ResumeLayout(false);
             this.SettingsPage.PerformLayout();
+            this.ContainerSettingsPage.ResumeLayout(false);
+            this.ContainerSettingsPage.PerformLayout();
+            this.ContainerSettingsFields.ResumeLayout(false);
+            this.ContainerSettingsFields.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.LicensesPage.ResumeLayout(false);
             this.HomePage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -640,8 +806,18 @@
         private System.Windows.Forms.Panel panel1;
         private Kerido.Controls.MultiPaneControl ContentPanel;
         private Kerido.Controls.MultiPanePage PagePostesFixes;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
+        private Kerido.Controls.MultiPanePage SettingsPage;
+        private Kerido.Controls.MultiPanePage LicensesPage;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private Kerido.Controls.MultiPanePage HomePage;
+        private System.Windows.Forms.Button button1;
+        private Kerido.Controls.MultiPanePage PagePostesPonctuels;
+        private Kerido.Controls.MultiPanePage PageRevenus;
+        private Kerido.Controls.MultiPanePage multiPanePage3;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private MetroFramework.Components.MetroStyleManager metroStyleManager;
+        private System.Windows.Forms.Panel ContainerPosteFixePage;
+        private System.Windows.Forms.Panel ContainerButtonsPosteFixePage;
         private MetroFramework.Controls.MetroButton BtnValiderBudgetFixe;
         private MetroFramework.Controls.MetroButton btnGererPostes;
         private System.Windows.Forms.FlowLayoutPanel PosteFixeFlowLayoutPanel;
@@ -659,16 +835,18 @@
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private System.Windows.Forms.FlowLayoutPanel PanelMontant;
         private MetroFramework.Controls.MetroTextBox TxtBoxMontantPosteFixe;
-        private Kerido.Controls.MultiPanePage SettingsPage;
-        private System.Windows.Forms.Label label2;
-        private Kerido.Controls.MultiPanePage LicensesPage;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private Kerido.Controls.MultiPanePage HomePage;
-        private System.Windows.Forms.Button button1;
-        private Kerido.Controls.MultiPanePage PagePostesPonctuels;
-        private Kerido.Controls.MultiPanePage PageRevenus;
-        private Kerido.Controls.MultiPanePage multiPanePage3;
-        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.Panel ContainerSettingsPage;
+        private System.Windows.Forms.FlowLayoutPanel ContainerSettingsFields;
+        private MetroFramework.Controls.MetroLabel lblTheme;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private MetroFramework.Controls.MetroComboBox ThemeStyleComboBox;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private MetroFramework.Controls.MetroComboBox VariantStyleComboBox;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private MetroFramework.Controls.MetroLabel lblLangue;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private MetroFramework.Controls.MetroComboBox LanguageComboBox;
     }
 }
 

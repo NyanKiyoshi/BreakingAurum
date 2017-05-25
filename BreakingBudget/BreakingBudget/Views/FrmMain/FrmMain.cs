@@ -6,6 +6,7 @@ using MetroFramework.Controls;
 using MetroFramework;
 using Kerido.Controls;
 using BreakingBudget.Services;
+using BreakingBudget.Services.Lang;
 using BreakingBudget.Services.SQL;
 using BreakingBudget.Structural;
 using BreakingBudget.Repositories;
@@ -25,33 +26,58 @@ namespace BreakingBudget.Views.FrmMain
         private readonly string BaseName;
         private readonly MultiPanePage DefaultPage;
 
+        private readonly LocalizationManager Localize;
+
+        // used by Program.cs to know if it must restart the form or not
+        public bool WaitsForRestart
+        {
+            get;
+            set;
+        }
+
         public FrmMain()
         {
             InitializeComponent();
 
+            this.Localize = new LocalizationManager(this.Name, "es");
+            this.Localize.ImportResourceLocalization("Sidebar");
+            //MessageBox.Show(this.Localize.Translate("BreakingBudget"));
+
             this.IconFontManager = (new IconFonts());
             this.IconFont = this.IconFontManager.GetFont(IconFonts.FONT_FAMILY.MaterialIcons, 17.0f);
 
+            // create the sidebar's top entries
             this.TopSidebarEntries = new SidebarEntry[]
             {
                 // To have a parent that do nothing: pass as first parameter: `(MultiPanePage)null`
-                new SidebarEntry(this.HomePage, new byte[] { 0xEE, 0xA2, 0x8A }, "Accueil"),
-                new SidebarEntry((MultiPanePage)null, new byte[] { 0xEE, 0xA2, 0xA1 }, "Budget Prévisionnel", new SidebarEntry[] {
-                    new SidebarEntry(this.PagePostesFixes, "Postes Fixes"),
-                    new SidebarEntry(this.PagePostesPonctuels, "Postes Ponctuels"),
-                    new SidebarEntry(this.PageRevenus, "Revenus"),
-                }),
-                new SidebarEntry((MultiPanePage)null, new byte[] { 0xEE, 0xA1, 0xAC }, "Budget du Mois", new SidebarEntry[] {
-                    new SidebarEntry(this.PagePostesFixes, "Ajouter Transaction"),
-                    new SidebarEntry(this.PagePostesPonctuels, "Lister Transactions"),
+                new SidebarEntry(this.HomePage, new byte[] { 0xEE, 0xA2, 0x8A }, this.Localize.Translate("sidebar_page_home")),
+
+                // budget previsonnel
+                new SidebarEntry((MultiPanePage)null, new byte[] { 0xEE, 0xA2, 0xA1 },
+                    this.Localize.Translate("sidebar_page_budget_previsionnel"),
+                    
+                    new SidebarEntry[] {
+                        new SidebarEntry(this.PagePostesFixes,     this.Localize.Translate("sidebar_page_poste_fixe")),
+                        new SidebarEntry(this.PagePostesPonctuels, this.Localize.Translate("sidebar_page_poste_ponctuel")),
+                        new SidebarEntry(this.PageRevenus,         this.Localize.Translate("sidebar_page_revenu")),
+                    }
+                ),
+
+                // budget du mois
+                new SidebarEntry((MultiPanePage)null, new byte[] { 0xEE, 0xA1, 0xAC },
+                    this.Localize.Translate("sidebar_page_budget_mois"),
+                    
+                    new SidebarEntry[] {
+                        new SidebarEntry(this.PagePostesFixes,     this.Localize.Translate("sidebar_page_ajouter_transaction")),
+                        new SidebarEntry(this.PagePostesPonctuels, this.Localize.Translate("sidebar_page_lister_transactions")),
                 }),
             };
 
+            // create the sidebar's bottom entries
             this.BottomSidebarEntries = new SidebarEntry[]
             {
-                //new SidebarEntry("http://github.com", new byte[] { 0xEE, 0xA1, 0xA8 }, "Tracker"),
-                new SidebarEntry(this.SettingsPage, new byte[] { 0xEE, 0xA1, 0xA9 }, "Paramètres"),
-                new SidebarEntry(this.LicensesPage, new byte[] { 0xEE, 0x90, 0xA0 }, "Licences")
+                new SidebarEntry(this.SettingsPage, new byte[] { 0xEE, 0xA1, 0xA9 }, this.Localize.Translate("sidebar_page_settings")),
+                new SidebarEntry(this.LicensesPage, new byte[] { 0xEE, 0x90, 0xA0 }, this.Localize.Translate("sidebar_page_licenses"))
             };
 
             // set the base name (used later to rename the form)
@@ -65,6 +91,7 @@ namespace BreakingBudget.Views.FrmMain
             AutoCompleter.ImplementCompleter(textBox1, 2);
 
             InitializePostesFixes();
+            InitSettingsPage();
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
