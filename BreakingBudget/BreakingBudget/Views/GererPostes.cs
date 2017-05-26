@@ -54,6 +54,9 @@ namespace BreakingBudget.Views
         public GererPostes()
         {
             InitializeComponent();
+
+            this.Text = Program.settings.localize.Translate("btnGererPostes");
+
             EnableStyling();
 
             this.dbConn = DatabaseManager.GetConnection();
@@ -134,7 +137,7 @@ namespace BreakingBudget.Views
                     this,
                     Program.settings.localize.Translate("err_operation_requires_commit"),
                     Program.settings.localize.Translate("err_operation_failed_caption"),
-                    MessageBoxButtons.AbortRetryIgnore,
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
                 return true;
