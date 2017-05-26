@@ -78,7 +78,7 @@ namespace BreakingBudget.Views.FrmMain
                     
                     new SidebarEntry[] {
                         new SidebarEntry(this.PagePostesFixes,     Program.settings.localize.Translate("sidebar_page_poste_fixe")),
-                        new SidebarEntry(this.PagePostesPonctuels, Program.settings.localize.Translate("sidebar_page_poste_ponctuel")),
+                        new SidebarEntry(this.PagePostesPonctuel,  Program.settings.localize.Translate("sidebar_page_poste_ponctuel")),
                         new SidebarEntry(this.PageRevenus,         Program.settings.localize.Translate("sidebar_page_revenu")),
                     }
                 ),
