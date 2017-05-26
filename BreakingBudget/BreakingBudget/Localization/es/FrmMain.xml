@@ -174,4 +174,12 @@
     <Key>placeholder_amount_to_pay_monthly</Key>
     <Value>Cantidad a pagar mensualmente</Value>
   </Localization>
+  <Localization>
+    <Key>err_not_a_number</Key>
+    <Value>No un número.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_must_be_between_1_and_31</Key>
+    <Value>Debe estar entre 1 y 31.</Value>
+  </Localization>
 </root>

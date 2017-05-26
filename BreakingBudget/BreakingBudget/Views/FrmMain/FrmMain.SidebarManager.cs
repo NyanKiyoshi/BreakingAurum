@@ -23,6 +23,7 @@ namespace BreakingBudget.Views.FrmMain
 
         bool isSidebarInitialized = false;
 
+        // TODO: be able to switch between entry using CTRL[+SHIFT] + TAB
         private void GenerateSidebar(SidebarEntry[][] SidebarsRootEntries)
         {
             this.SidebarsRootEntries = SidebarsRootEntries;

@@ -20,8 +20,8 @@ namespace BreakingBudget.Views.FrmMain
 
             this.FillSettingsThemingComoboxes();
 
-            this.ThemeStyleComboBox.SelectedIndex = (int)settings.MetroTheme;
-            this.VariantStyleComboBox.SelectedIndex = (int)settings.MetroColorStyle;
+            this.ThemeStyleComboBox.SelectedIndex = (int)Program.settings.MetroTheme;
+            this.VariantStyleComboBox.SelectedIndex = (int)Program.settings.MetroColorStyle;
         }
 
         void FillSettingsThemingComoboxes()
@@ -30,21 +30,21 @@ namespace BreakingBudget.Views.FrmMain
             {
                 this.ThemeStyleComboBox.Items.Add(
                     new KeyValuePair<string, MetroThemeStyle>(
-                        this.Localize.Translate(e.ToString()), e)
+                        Program.settings.localize.Translate(e.ToString()), e)
                 );
             }
             foreach (MetroColorStyle e in Enum.GetValues(typeof(MetroColorStyle)))
             {
                 this.VariantStyleComboBox.Items.Add(
                     new KeyValuePair<string, MetroColorStyle>(
-                        this.Localize.Translate(e.ToString()), e)
+                        Program.settings.localize.Translate(e.ToString()), e)
                 );
             }
         }
 
         void FillLanguageComboBox() {
             CultureInfo c;
-            string[] availableLangs = this.Localize.RetrieveAvailableLanguages();
+            string[] availableLangs = Program.settings.localize.RetrieveAvailableLanguages();
 
             this.LanguageComboBox.Items.Clear();
             this.LanguageComboBox.ResetText();
@@ -56,7 +56,7 @@ namespace BreakingBudget.Views.FrmMain
                 c = new CultureInfo(availableLangs[i]);
                 this.LanguageComboBox.Items.Add(c);
 
-                if (c.TwoLetterISOLanguageName == this.Localize.currentLanguage)
+                if (c.TwoLetterISOLanguageName == Program.settings.localize.currentLanguage)
                 {
                     this.LanguageComboBox.SelectedItem = c;
                 }
@@ -67,7 +67,7 @@ namespace BreakingBudget.Views.FrmMain
         {
             if (ThemeStyleComboBox.SelectedItem != null)
             {
-                this.settings.MetroTheme = this.metroStyleManager.Theme = 
+                Program.settings.MetroTheme = this.metroStyleManager.Theme = 
                     ((KeyValuePair<string, MetroThemeStyle>)ThemeStyleComboBox.SelectedItem).Value;
             }
             FrmMain_StyleChanged(null, null);
@@ -77,7 +77,7 @@ namespace BreakingBudget.Views.FrmMain
         {
             if (VariantStyleComboBox.SelectedItem != null)
             {
-                this.settings.MetroColorStyle =  this.metroStyleManager.Style =
+                Program.settings.MetroColorStyle =  this.metroStyleManager.Style =
                     ((KeyValuePair<string, MetroColorStyle>)VariantStyleComboBox.SelectedItem).Value;
             }
             FrmMain_StyleChanged(null, null);
@@ -88,9 +88,9 @@ namespace BreakingBudget.Views.FrmMain
             MetroComboBox comboBox = (MetroComboBox)sender;
             if (comboBox.SelectedItem != null)
             {
-                this.settings.TwoLetterISOLanguage = ((CultureInfo)comboBox.SelectedItem).TwoLetterISOLanguageName;
+                Program.settings.TwoLetterISOLanguage = ((CultureInfo)comboBox.SelectedItem).TwoLetterISOLanguageName;
                 if (MetroMessageBox.Show(this,
-                    this.Localize.Translate("requires_restart"), this.Localize.Translate("requires_confirmation"),
+                    Program.settings.localize.Translate("requires_restart"), Program.settings.localize.Translate("requires_confirmation"),
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
                     this.WaitsForRestart = true;

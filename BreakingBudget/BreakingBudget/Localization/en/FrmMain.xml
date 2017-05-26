@@ -168,4 +168,12 @@
     <Key>placeholder_amount_to_pay_monthly</Key>
     <Value>Amount to pay monthly</Value>
   </Localization>
+  <Localization>
+    <Key>err_not_a_number</Key>
+    <Value>Not a number.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_must_be_between_1_and_31</Key>
+    <Value>Must be between 1 and 31.</Value>
+  </Localization>
 </root>

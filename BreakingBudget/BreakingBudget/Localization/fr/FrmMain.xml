@@ -72,8 +72,6 @@
     <Key>btnGererPostes</Key>
     <Value>Gérer les postes</Value>
   </Localization>
-  
-  
   <Localization>
     <Key>hebdomadaire</Key>
     <Value>hebdomadaire</Value>
@@ -173,5 +171,13 @@
   <Localization>
     <Key>placeholder_amount_to_pay_monthly</Key>
     <Value>Entrez le montant à payer chaque mois</Value>
+  </Localization>
+  <Localization>
+    <Key>err_not_a_number</Key>
+    <Value>Ce n'est pas un nombre.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_must_be_between_1_and_31</Key>
+    <Value>La valeur doit être entre 1 et 31.</Value>
   </Localization>
 </root>

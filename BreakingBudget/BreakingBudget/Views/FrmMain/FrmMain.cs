@@ -17,8 +17,6 @@ namespace BreakingBudget.Views.FrmMain
 {
     public partial class FrmMain : MetroForm
     {
-        private Settings settings;
-
         private readonly IconFonts IconFontManager;
         private readonly Font IconFont;
 
@@ -27,8 +25,6 @@ namespace BreakingBudget.Views.FrmMain
 
         private readonly string BaseName;
         private readonly MultiPanePage DefaultPage;
-
-        private readonly LocalizationManager Localize;
 
         // used by Program.cs to know if it must restart the form or not
         public bool WaitsForRestart
@@ -64,44 +60,44 @@ namespace BreakingBudget.Views.FrmMain
             LoadSettings();
 
             // Load the LocalizationManager that will provide the localization system
-            this.Localize = new LocalizationManager(this.Name, this.settings.TwoLetterISOLanguage);
-            this.Localize.ImportResourceLocalization("Sidebar");  // load the sidebar's localization data
+            Program.settings.localize.ImportResourceLocalization(this.Name);  // load the form's localization data
+            Program.settings.localize.ImportResourceLocalization("Sidebar");  // load the sidebar's localization data
 
             // try to localize every sub-control
-            this.Localize.ControlerTranslator(this);
+            Program.settings.localize.ControlerTranslator(this);
 
             // create the sidebar's top entries
             this.TopSidebarEntries = new SidebarEntry[]
             {
                 // To have a parent that do nothing: pass as first parameter: `(MultiPanePage)null`
-                new SidebarEntry(this.HomePage, new byte[] { 0xEE, 0xA2, 0x8A }, this.Localize.Translate("sidebar_page_home")),
+                new SidebarEntry(this.HomePage, new byte[] { 0xEE, 0xA2, 0x8A }, Program.settings.localize.Translate("sidebar_page_home")),
 
                 // budget previsonnel
                 new SidebarEntry((MultiPanePage)null, new byte[] { 0xEE, 0xA2, 0xA1 },
-                    this.Localize.Translate("sidebar_page_budget_previsionnel"),
+                    Program.settings.localize.Translate("sidebar_page_budget_previsionnel"),
                     
                     new SidebarEntry[] {
-                        new SidebarEntry(this.PagePostesFixes,     this.Localize.Translate("sidebar_page_poste_fixe")),
-                        new SidebarEntry(this.PagePostesPonctuels, this.Localize.Translate("sidebar_page_poste_ponctuel")),
-                        new SidebarEntry(this.PageRevenus,         this.Localize.Translate("sidebar_page_revenu")),
+                        new SidebarEntry(this.PagePostesFixes,     Program.settings.localize.Translate("sidebar_page_poste_fixe")),
+                        new SidebarEntry(this.PagePostesPonctuels, Program.settings.localize.Translate("sidebar_page_poste_ponctuel")),
+                        new SidebarEntry(this.PageRevenus,         Program.settings.localize.Translate("sidebar_page_revenu")),
                     }
                 ),
 
                 // budget du mois
                 new SidebarEntry((MultiPanePage)null, new byte[] { 0xEE, 0xA1, 0xAC },
-                    this.Localize.Translate("sidebar_page_budget_mois"),
+                    Program.settings.localize.Translate("sidebar_page_budget_mois"),
                     
                     new SidebarEntry[] {
-                        new SidebarEntry((MultiPanePage)null,      this.Localize.Translate("sidebar_page_ajouter_transaction")),
-                        new SidebarEntry((MultiPanePage)null,      this.Localize.Translate("sidebar_page_lister_transactions")),
+                        new SidebarEntry((MultiPanePage)null,      Program.settings.localize.Translate("sidebar_page_ajouter_transaction")),
+                        new SidebarEntry((MultiPanePage)null,      Program.settings.localize.Translate("sidebar_page_lister_transactions")),
                 }),
             };
 
             // create the sidebar's bottom entries
             this.BottomSidebarEntries = new SidebarEntry[]
             {
-                new SidebarEntry(this.SettingsPage, new byte[] { 0xEE, 0xA1, 0xA9 }, this.Localize.Translate("sidebar_page_settings")),
-                new SidebarEntry(this.LicensesPage, new byte[] { 0xEE, 0x90, 0xA0 }, this.Localize.Translate("sidebar_page_licenses"))
+                new SidebarEntry(this.SettingsPage, new byte[] { 0xEE, 0xA1, 0xA9 }, Program.settings.localize.Translate("sidebar_page_settings")),
+                new SidebarEntry(this.LicensesPage, new byte[] { 0xEE, 0x90, 0xA0 }, Program.settings.localize.Translate("sidebar_page_licenses"))
             };
 
             InitializePostesFixes();
@@ -110,17 +106,10 @@ namespace BreakingBudget.Views.FrmMain
 
         private void LoadSettings()
         {
-            // load settings from saved data if available. Otherwise: create settings
-            this.settings = Settings.Load();
-            if (this.settings == null)
-            {
-                this.settings = new Settings();
-            }
+            MetroFramework.Localization.MetroLocalize.CurrentLanguage = Program.settings.TwoLetterISOLanguage;
 
-            MetroFramework.Localization.MetroLocalize.CurrentLanguage = this.settings.TwoLetterISOLanguage;
-
-            this.StyleManager.Theme = this.settings.MetroTheme;
-            this.StyleManager.Style = this.settings.MetroColorStyle;
+            this.StyleManager.Theme = Program.settings.MetroTheme;
+            this.StyleManager.Style = Program.settings.MetroColorStyle;
 
             FrmMain_StyleChanged(null, null);
         }
@@ -136,14 +125,14 @@ namespace BreakingBudget.Views.FrmMain
             // TODO: replace this by a check if data were edited or not
             if (
                 MetroMessageBox.Show(this,
-                    this.Localize.Translate("quit_confirmation"),
-                    this.Localize.Translate("requires_confirmation"),
+                    Program.settings.localize.Translate("quit_confirmation"),
+                    Program.settings.localize.Translate("requires_confirmation"),
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question
                 ) != DialogResult.Yes)
             {
                 e.Cancel = true;
             }
-            this.settings.Save();
+            Program.settings.Save();
         }
 
         private void button1_Click(object sender, EventArgs e)

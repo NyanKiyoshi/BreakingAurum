@@ -449,7 +449,8 @@
             this.lblDuMois.AutoSize = true;
             this.lblDuMois.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblDuMois.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblDuMois.Location = new System.Drawing.Point(107, 0);
+            this.lblDuMois.Location = new System.Drawing.Point(104, 0);
+            this.lblDuMois.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.lblDuMois.Name = "lblDuMois";
             this.lblDuMois.Size = new System.Drawing.Size(58, 25);
             this.lblDuMois.TabIndex = 12;

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Localization>
+    <Key>Cancel</Key>
+    <Value>&amp;Cancelar</Value>
+  </Localization>
+  <Localization>
+    <Key>Submit</Key>
+    <Value>&amp;Enviar</Value>
+  </Localization>
+  <Localization>
+    <Key>Add</Key>
+    <Value>&amp;Añadir</Value>
+  </Localization>
+</root>

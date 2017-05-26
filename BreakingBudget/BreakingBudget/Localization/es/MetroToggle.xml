@@ -2,10 +2,10 @@
 <root>
   <Localization>
     <Key>StatusOn</Key>
-    <Value>Sí</Value>
+    <Value>&amp;Sí</Value>
   </Localization>
   <Localization>
     <Key>StatusOff</Key>
-    <Value>No</Value>
+    <Value>&amp;No</Value>
   </Localization>
 </root>

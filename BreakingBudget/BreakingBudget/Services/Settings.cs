@@ -9,6 +9,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using BreakingBudget.Services.Lang;
 
 namespace BreakingBudget.Services
 {
@@ -23,6 +24,9 @@ namespace BreakingBudget.Services
 
         [NonSerialized]
         public const string OUTPUT_FILE = "Settings.dat";
+
+        [NonSerialized]
+        public LocalizationManager localize;
 
         public static Settings Load()
         {
@@ -51,6 +55,7 @@ namespace BreakingBudget.Services
                 stream.Close();
             }
 
+            instance.localize = new LocalizationManager("Commons", instance.TwoLetterISOLanguage);
             return instance;
         }
 

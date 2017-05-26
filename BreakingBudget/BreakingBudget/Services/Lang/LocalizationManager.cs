@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace BreakingBudget.Services.Lang
 {
-    class LocalizationManager
+    public class LocalizationManager
     {
         private Assembly callingAssembly;
         readonly string LOCALIZATION_FOLDER;
@@ -34,8 +34,6 @@ namespace BreakingBudget.Services.Lang
                 this._currentLanguage = value;
             }
         }
-
-        public LocalizationManager(string resourceName) : this(resourceName, null) { }
 
         public LocalizationManager(string resourceName, string language)
         {

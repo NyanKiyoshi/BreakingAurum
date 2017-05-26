@@ -36,7 +36,7 @@ namespace BreakingBudget.Views.FrmMain
 
             // localize placeholders
             this.TxtBoxMontantPosteFixe.WaterMark =
-                this.Localize.Translate(this.TxtBoxMontantPosteFixe.WaterMark);
+                Program.settings.localize.Translate(this.TxtBoxMontantPosteFixe.WaterMark);
 
             // Add every item that is not already used by PostePeriodique
             OleDbCommand cmd = DatabaseManager.CmdFromRawSQL(
@@ -61,7 +61,7 @@ namespace BreakingBudget.Views.FrmMain
             foreach (PeriodiciteRepository.PeriodiciteModel e in
                 PeriodiciteRepository.List())
             {
-                e.libPer = this.Localize.Translate(e.libPer);
+                e.libPer = Program.settings.localize.Translate(e.libPer);
                 this.ComboxBoxListePeriodicites.Items.Add(e);
             }
         }
@@ -86,8 +86,8 @@ namespace BreakingBudget.Views.FrmMain
                 )
             {
                 MetroMessageBox.Show(this,
-                    this.Localize.Translate("err_missing_fields_msg"),
-                    this.Localize.Translate("err_missing_fields_caption"),
+                    Program.settings.localize.Translate("err_missing_fields_msg"),
+                    Program.settings.localize.Translate("err_missing_fields_caption"),
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             // try to convert the decimals and integers
@@ -95,8 +95,8 @@ namespace BreakingBudget.Views.FrmMain
                   && int.TryParse(TxtBoxTousLesXMois.Text, out TousLesXDuMois)))
             {
                 MetroMessageBox.Show(this,
-                    this.Localize.Translate("err_day_of_month_and_sum_not_number"),
-                    this.Localize.Translate("err_uh_oh_caption"),
+                    Program.settings.localize.Translate("err_day_of_month_and_sum_not_number"),
+                    Program.settings.localize.Translate("err_uh_oh_caption"),
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
@@ -146,11 +146,11 @@ namespace BreakingBudget.Views.FrmMain
             MetroTextBox sender = (MetroTextBox)_s;
             if (!int.TryParse(sender.Text, out val))
             {
-                errorProvider.SetError(lblDuMois, "Ouch ! Bien essayé ! Mais ce n'est pas un nombre.");
+                errorProvider.SetError(lblDuMois, Program.settings.localize.Translate("err_not_a_number"));
             }
             else
             {
-                errorProvider.SetError(lblDuMois, (val > 0 && val < 32) ? null : "La valeur doit être entre 1 et 31");
+                errorProvider.SetError(lblDuMois, (val > 0 && val < 32) ? null : Program.settings.localize.Translate("err_must_be_between_1_and_31"));
             }
         }
     }
