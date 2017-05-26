@@ -129,6 +129,9 @@ namespace BreakingBudget.Views.FrmMain
         {
             GererPostes InstanceGererPostes = new GererPostes();
             InstanceGererPostes.ShowDialog();
+
+            // update the postes's ComboBox
+            this.FillPostesComboBox();
         }
 
         private void TxtBoxMontantPosteFixe_KeyPress(object _s, KeyPressEventArgs e)

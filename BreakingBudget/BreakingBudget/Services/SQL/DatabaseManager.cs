@@ -56,6 +56,11 @@ namespace BreakingBudget.Services.SQL
             return DatabaseManager._CachedSchemaTable.Tables;
         }
 
+        public static OleDbConnection GetConnection()
+        {
+            return new OleDbConnection(DatabaseManager.CONNEXION_STRING);
+        }
+
         public static OleDbCommand IterCommand(OleDbCommand Command)
         {
             OleDbConnection db_conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING);

@@ -28,6 +28,12 @@ namespace BreakingBudget.Repositories
             return (int)DatabaseManager.GetFirstRaw("SELECT COUNT(*) FROM " + TABLE_NAME);
         }
 
+        public static int BiggestID()
+        {
+            object biggestId = DatabaseManager.GetFirstRaw("SELECT MAX(codePoste) FROM " + TABLE_NAME);
+            return (biggestId.GetType() != typeof(DBNull)) ? (int)biggestId : 0;
+        }
+
         public static PosteModel[] List()
         {
             OleDbConnection conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING);

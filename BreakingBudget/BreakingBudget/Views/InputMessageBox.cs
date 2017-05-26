@@ -29,12 +29,24 @@ namespace BreakingBudget.Views
             }
         }
 
+        public void EnableStyling()
+        {
+            this.metroStyleExtender.StyleManager = Program.settings.styleManager;
+            this.StyleManager = this.metroStyleManager;
+
+            this.StyleManager.Theme = Program.settings.styleManager.Theme;
+            this.StyleManager.Style = Program.settings.styleManager.Style;
+
+            this.Refresh();
+        }
+
         public InputMessageBox(string caption, string text, string placeholder)
         {
             InitializeComponent();
+            EnableStyling();
 
-            this.SubmitBtn.Text = Program.settings.localize.Translate("Cancel");
-            this.cancelBtn.Text = Program.settings.localize.Translate("Submit");
+            this.cancelBtn.Text = Program.settings.localize.Translate("Cancel");
+            this.SubmitBtn.Text = Program.settings.localize.Translate("Submit");
 
             this.Text = caption;
 

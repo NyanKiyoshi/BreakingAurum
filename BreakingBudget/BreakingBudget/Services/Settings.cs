@@ -28,6 +28,9 @@ namespace BreakingBudget.Services
         [NonSerialized]
         public LocalizationManager localize;
 
+        [NonSerialized]
+        public MetroFramework.Components.MetroStyleManager styleManager;
+
         public static Settings Load()
         {
             if (!File.Exists(Settings.OUTPUT_FILE))

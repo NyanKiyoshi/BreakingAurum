@@ -12,4 +12,56 @@
     <Key>Add</Key>
     <Value>&amp;Ajouter</Value>
   </Localization>
+  <Localization>
+    <Key>&amp;Delete</Key>
+    <Value>&amp;Supprimer</Value>
+  </Localization>
+  <Localization>
+    <Key>&amp;Add</Key>
+    <Value>&amp;Ajouter</Value>
+  </Localization>
+  <Localization>
+    <Key>&amp;Undo</Key>
+    <Value>&amp;Revenir en arrière</Value>
+  </Localization>
+  <Localization>
+    <Key>Co&amp;mmit</Key>
+    <Value>Sou&amp;mettre</Value>
+  </Localization>
+  <Localization>
+    <Key>quit_confirmation_requires_commit</Key>
+    <Value>Êtes-vous sûr de vouloir quitter ? Il y a encore des données qui attendent pour être envoyées ou annulées.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_operation_failed_caption</Key>
+    <Value>Échec de l'opération</Value>
+  </Localization>
+  <Localization>
+    <Key>err_operation_requires_commit</Key>
+    <Value>L'opération nécessite la soumission des données avant de procéder.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_deletion_failed: {0}, {1}</Key>
+    <Value>La suppression de {0} a échouée. {1}</Value>
+  </Localization>
+  <Localization>
+    <Key>err_insertion_failed: {0}, {1}</Key>
+    <Value>L'insertion de {0} a échouée. {1}</Value>
+  </Localization>
+  <Localization>
+    <Key>err_invalid_input_empty</Key>
+    <Value>La valeur ne peut pas être vide.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_invalid_input_caption</Key>
+    <Value>Valeur invalide</Value>
+  </Localization>
+  <Localization>
+    <Key>err_duplicate_value</Key>
+    <Value>La valeur doit être unique.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_duplicate_value_caption</Key>
+    <Value>Valeur dupliquée</Value>
+  </Localization>
 </root>

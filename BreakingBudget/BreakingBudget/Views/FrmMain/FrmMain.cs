@@ -111,6 +111,8 @@ namespace BreakingBudget.Views.FrmMain
             this.StyleManager.Theme = Program.settings.MetroTheme;
             this.StyleManager.Style = Program.settings.MetroColorStyle;
 
+            Program.settings.styleManager = this.metroStyleManager;
+
             FrmMain_StyleChanged(null, null);
         }
 
@@ -252,7 +254,7 @@ namespace BreakingBudget.Views.FrmMain
             }
             else
             {
-                this.BaseContainer.BackColor = Color.FromArgb(0x29, 0x29, 0x29);
+                this.BaseContainer.BackColor = Color.FromArgb(0x45, 0x45, 0x45);
             }
         }
     }
