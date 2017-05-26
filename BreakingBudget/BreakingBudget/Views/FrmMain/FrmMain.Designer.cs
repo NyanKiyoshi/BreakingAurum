@@ -44,18 +44,18 @@
             this.BtnValiderBudgetFixe = new MetroFramework.Controls.MetroButton();
             this.btnGererPostes = new MetroFramework.Controls.MetroButton();
             this.PosteFixeFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelCmbPostes = new MetroFramework.Controls.MetroLabel();
+            this.lblCmbPostes = new MetroFramework.Controls.MetroLabel();
             this.PanelPostes = new System.Windows.Forms.FlowLayoutPanel();
             this.ComboxBoxListePostes = new MetroFramework.Controls.MetroComboBox();
             this.HelpPosteLabel = new System.Windows.Forms.Label();
-            this.labelCmbPeriodicite = new MetroFramework.Controls.MetroLabel();
+            this.lblCmbPeriodicite = new MetroFramework.Controls.MetroLabel();
             this.PanelPeriodicite = new System.Windows.Forms.FlowLayoutPanel();
             this.ComboxBoxListePeriodicites = new MetroFramework.Controls.MetroComboBox();
             this.PanelTousLesXMois = new System.Windows.Forms.FlowLayoutPanel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.lblTousLes = new MetroFramework.Controls.MetroLabel();
             this.TxtBoxTousLesXMois = new MetroFramework.Controls.MetroTextBox();
             this.lblDuMois = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.lblMontant = new MetroFramework.Controls.MetroLabel();
             this.PanelMontant = new System.Windows.Forms.FlowLayoutPanel();
             this.TxtBoxMontantPosteFixe = new MetroFramework.Controls.MetroTextBox();
             this.SettingsPage = new Kerido.Controls.MultiPanePage();
@@ -64,7 +64,7 @@
             this.lblTheme = new MetroFramework.Controls.MetroLabel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.ThemeStyleComboBox = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.lblStyleColor = new MetroFramework.Controls.MetroLabel();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.VariantStyleComboBox = new MetroFramework.Controls.MetroComboBox();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
@@ -219,7 +219,7 @@
             // 
             // PagePostesFixes
             // 
-            this.PagePostesFixes.AccessibleName = "Tracker";
+            this.PagePostesFixes.AccessibleName = "";
             this.PagePostesFixes.AutoSize = true;
             this.PagePostesFixes.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PagePostesFixes.Controls.Add(this.ContainerPosteFixePage);
@@ -281,12 +281,12 @@
             // 
             this.PosteFixeFlowLayoutPanel.AutoSize = true;
             this.PosteFixeFlowLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.PosteFixeFlowLayoutPanel.Controls.Add(this.labelCmbPostes);
+            this.PosteFixeFlowLayoutPanel.Controls.Add(this.lblCmbPostes);
             this.PosteFixeFlowLayoutPanel.Controls.Add(this.PanelPostes);
-            this.PosteFixeFlowLayoutPanel.Controls.Add(this.labelCmbPeriodicite);
+            this.PosteFixeFlowLayoutPanel.Controls.Add(this.lblCmbPeriodicite);
             this.PosteFixeFlowLayoutPanel.Controls.Add(this.PanelPeriodicite);
             this.PosteFixeFlowLayoutPanel.Controls.Add(this.PanelTousLesXMois);
-            this.PosteFixeFlowLayoutPanel.Controls.Add(this.metroLabel3);
+            this.PosteFixeFlowLayoutPanel.Controls.Add(this.lblMontant);
             this.PosteFixeFlowLayoutPanel.Controls.Add(this.PanelMontant);
             this.PosteFixeFlowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PosteFixeFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -296,15 +296,15 @@
             this.PosteFixeFlowLayoutPanel.TabIndex = 1;
             this.PosteFixeFlowLayoutPanel.WrapContents = false;
             // 
-            // labelCmbPostes
+            // lblCmbPostes
             // 
-            this.labelCmbPostes.AutoSize = true;
-            this.labelCmbPostes.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelCmbPostes.Location = new System.Drawing.Point(3, 0);
-            this.labelCmbPostes.Name = "labelCmbPostes";
-            this.labelCmbPostes.Size = new System.Drawing.Size(43, 19);
-            this.labelCmbPostes.TabIndex = 7;
-            this.labelCmbPostes.Text = "Poste";
+            this.lblCmbPostes.AutoSize = true;
+            this.lblCmbPostes.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblCmbPostes.Location = new System.Drawing.Point(3, 0);
+            this.lblCmbPostes.Name = "lblCmbPostes";
+            this.lblCmbPostes.Size = new System.Drawing.Size(43, 19);
+            this.lblCmbPostes.TabIndex = 7;
+            this.lblCmbPostes.Text = "Poste";
             // 
             // PanelPostes
             // 
@@ -347,15 +347,15 @@
             this.HelpPosteLabel.Visible = false;
             this.HelpPosteLabel.Click += new System.EventHandler(this.HelpPosteLabel_Click);
             // 
-            // labelCmbPeriodicite
+            // lblCmbPeriodicite
             // 
-            this.labelCmbPeriodicite.AutoSize = true;
-            this.labelCmbPeriodicite.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.labelCmbPeriodicite.Location = new System.Drawing.Point(3, 72);
-            this.labelCmbPeriodicite.Name = "labelCmbPeriodicite";
-            this.labelCmbPeriodicite.Size = new System.Drawing.Size(72, 19);
-            this.labelCmbPeriodicite.TabIndex = 7;
-            this.labelCmbPeriodicite.Text = "Périodicité";
+            this.lblCmbPeriodicite.AutoSize = true;
+            this.lblCmbPeriodicite.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblCmbPeriodicite.Location = new System.Drawing.Point(3, 72);
+            this.lblCmbPeriodicite.Name = "lblCmbPeriodicite";
+            this.lblCmbPeriodicite.Size = new System.Drawing.Size(72, 19);
+            this.lblCmbPeriodicite.TabIndex = 7;
+            this.lblCmbPeriodicite.Text = "Périodicité";
             // 
             // PanelPeriodicite
             // 
@@ -385,7 +385,7 @@
             // 
             this.PanelTousLesXMois.AutoSize = true;
             this.PanelTousLesXMois.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.PanelTousLesXMois.Controls.Add(this.metroLabel1);
+            this.PanelTousLesXMois.Controls.Add(this.lblTousLes);
             this.PanelTousLesXMois.Controls.Add(this.TxtBoxTousLesXMois);
             this.PanelTousLesXMois.Controls.Add(this.lblDuMois);
             this.PanelTousLesXMois.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -395,17 +395,18 @@
             this.PanelTousLesXMois.Size = new System.Drawing.Size(383, 25);
             this.PanelTousLesXMois.TabIndex = 8;
             // 
-            // metroLabel1
+            // lblTousLes
             // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(3, 0);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(58, 25);
-            this.metroLabel1.TabIndex = 9;
-            this.metroLabel1.Text = "Tous les";
-            this.metroLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTousLes.AutoSize = true;
+            this.lblTousLes.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblTousLes.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblTousLes.Location = new System.Drawing.Point(0, 0);
+            this.lblTousLes.Margin = new System.Windows.Forms.Padding(0);
+            this.lblTousLes.Name = "lblTousLes";
+            this.lblTousLes.Size = new System.Drawing.Size(58, 25);
+            this.lblTousLes.TabIndex = 9;
+            this.lblTousLes.Text = "Tous les";
+            this.lblTousLes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TxtBoxTousLesXMois
             // 
@@ -422,7 +423,7 @@
             this.TxtBoxTousLesXMois.CustomButton.UseSelectable = true;
             this.TxtBoxTousLesXMois.CustomButton.Visible = false;
             this.TxtBoxTousLesXMois.Lines = new string[0];
-            this.TxtBoxTousLesXMois.Location = new System.Drawing.Point(67, 3);
+            this.TxtBoxTousLesXMois.Location = new System.Drawing.Point(61, 3);
             this.TxtBoxTousLesXMois.MaxLength = 2;
             this.TxtBoxTousLesXMois.MinimumSize = new System.Drawing.Size(29, 0);
             this.TxtBoxTousLesXMois.Name = "TxtBoxTousLesXMois";
@@ -448,22 +449,22 @@
             this.lblDuMois.AutoSize = true;
             this.lblDuMois.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblDuMois.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblDuMois.Location = new System.Drawing.Point(113, 0);
+            this.lblDuMois.Location = new System.Drawing.Point(107, 0);
             this.lblDuMois.Name = "lblDuMois";
             this.lblDuMois.Size = new System.Drawing.Size(58, 25);
             this.lblDuMois.TabIndex = 12;
             this.lblDuMois.Text = "du mois";
             this.lblDuMois.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // metroLabel3
+            // lblMontant
             // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel3.Location = new System.Drawing.Point(3, 187);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(63, 19);
-            this.metroLabel3.TabIndex = 10;
-            this.metroLabel3.Text = "Montant";
+            this.lblMontant.AutoSize = true;
+            this.lblMontant.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblMontant.Location = new System.Drawing.Point(3, 187);
+            this.lblMontant.Name = "lblMontant";
+            this.lblMontant.Size = new System.Drawing.Size(63, 19);
+            this.lblMontant.TabIndex = 10;
+            this.lblMontant.Text = "Montant";
             // 
             // PanelMontant
             // 
@@ -497,7 +498,7 @@
             this.TxtBoxMontantPosteFixe.MaxLength = 10;
             this.TxtBoxMontantPosteFixe.Name = "TxtBoxMontantPosteFixe";
             this.TxtBoxMontantPosteFixe.PasswordChar = '\0';
-            this.TxtBoxMontantPosteFixe.PromptText = "Entrez le montant à payer chaque mois";
+            this.TxtBoxMontantPosteFixe.PromptText = "placeholder_amount_to_pay_monthly";
             this.TxtBoxMontantPosteFixe.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.TxtBoxMontantPosteFixe.SelectedText = "";
             this.TxtBoxMontantPosteFixe.SelectionLength = 0;
@@ -506,14 +507,14 @@
             this.TxtBoxMontantPosteFixe.Size = new System.Drawing.Size(346, 19);
             this.TxtBoxMontantPosteFixe.TabIndex = 4;
             this.TxtBoxMontantPosteFixe.UseSelectable = true;
-            this.TxtBoxMontantPosteFixe.WaterMark = "Entrez le montant à payer chaque mois";
+            this.TxtBoxMontantPosteFixe.WaterMark = "placeholder_amount_to_pay_monthly";
             this.TxtBoxMontantPosteFixe.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.TxtBoxMontantPosteFixe.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtBoxMontantPosteFixe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtBoxMontantPosteFixe_KeyPress);
             // 
             // SettingsPage
             // 
-            this.SettingsPage.AccessibleName = "Paramètres";
+            this.SettingsPage.AccessibleName = "";
             this.SettingsPage.AutoSize = true;
             this.SettingsPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.SettingsPage.Controls.Add(this.ContainerSettingsPage);
@@ -539,7 +540,7 @@
             this.ContainerSettingsFields.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ContainerSettingsFields.Controls.Add(this.lblTheme);
             this.ContainerSettingsFields.Controls.Add(this.flowLayoutPanel3);
-            this.ContainerSettingsFields.Controls.Add(this.metroLabel4);
+            this.ContainerSettingsFields.Controls.Add(this.lblStyleColor);
             this.ContainerSettingsFields.Controls.Add(this.flowLayoutPanel4);
             this.ContainerSettingsFields.Controls.Add(this.flowLayoutPanel6);
             this.ContainerSettingsFields.Controls.Add(this.lblLangue);
@@ -587,15 +588,15 @@
             this.ThemeStyleComboBox.UseSelectable = true;
             this.ThemeStyleComboBox.SelectionChangeCommitted += new System.EventHandler(this.ThemeStyleComboBox_SelectionChangeCommitted);
             // 
-            // metroLabel4
+            // lblStyleColor
             // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel4.Location = new System.Drawing.Point(3, 72);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(93, 19);
-            this.metroLabel4.TabIndex = 7;
-            this.metroLabel4.Text = "Style Variante";
+            this.lblStyleColor.AutoSize = true;
+            this.lblStyleColor.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblStyleColor.Location = new System.Drawing.Point(3, 72);
+            this.lblStyleColor.Name = "lblStyleColor";
+            this.lblStyleColor.Size = new System.Drawing.Size(93, 19);
+            this.lblStyleColor.TabIndex = 7;
+            this.lblStyleColor.Text = "Style Variante";
             // 
             // flowLayoutPanel4
             // 
@@ -668,7 +669,7 @@
             // 
             // LicensesPage
             // 
-            this.LicensesPage.AccessibleName = "Licenses";
+            this.LicensesPage.AccessibleName = "";
             this.LicensesPage.AutoSize = true;
             this.LicensesPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.LicensesPage.Controls.Add(this.richTextBox1);
@@ -710,7 +711,7 @@
             // 
             // PagePostesPonctuels
             // 
-            this.PagePostesPonctuels.AccessibleName = "Expanded Test";
+            this.PagePostesPonctuels.AccessibleName = "";
             this.PagePostesPonctuels.AutoSize = true;
             this.PagePostesPonctuels.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PagePostesPonctuels.Name = "PagePostesPonctuels";
@@ -824,18 +825,18 @@
         private MetroFramework.Controls.MetroButton BtnValiderBudgetFixe;
         private MetroFramework.Controls.MetroButton btnGererPostes;
         private System.Windows.Forms.FlowLayoutPanel PosteFixeFlowLayoutPanel;
-        private MetroFramework.Controls.MetroLabel labelCmbPostes;
+        private MetroFramework.Controls.MetroLabel lblCmbPostes;
         private System.Windows.Forms.FlowLayoutPanel PanelPostes;
         private MetroFramework.Controls.MetroComboBox ComboxBoxListePostes;
         private System.Windows.Forms.Label HelpPosteLabel;
-        private MetroFramework.Controls.MetroLabel labelCmbPeriodicite;
+        private MetroFramework.Controls.MetroLabel lblCmbPeriodicite;
         private System.Windows.Forms.FlowLayoutPanel PanelPeriodicite;
         private MetroFramework.Controls.MetroComboBox ComboxBoxListePeriodicites;
         private System.Windows.Forms.FlowLayoutPanel PanelTousLesXMois;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel lblTousLes;
         private MetroFramework.Controls.MetroTextBox TxtBoxTousLesXMois;
         private MetroFramework.Controls.MetroLabel lblDuMois;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel lblMontant;
         private System.Windows.Forms.FlowLayoutPanel PanelMontant;
         private MetroFramework.Controls.MetroTextBox TxtBoxMontantPosteFixe;
         private System.Windows.Forms.Panel ContainerSettingsPage;
@@ -843,7 +844,7 @@
         private MetroFramework.Controls.MetroLabel lblTheme;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private MetroFramework.Controls.MetroComboBox ThemeStyleComboBox;
-        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroLabel lblStyleColor;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private MetroFramework.Controls.MetroComboBox VariantStyleComboBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;

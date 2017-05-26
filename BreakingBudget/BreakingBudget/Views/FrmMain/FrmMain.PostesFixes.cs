@@ -34,6 +34,10 @@ namespace BreakingBudget.Views.FrmMain
             // Reset the selection
             this.ComboxBoxListePostes.ResetText();
 
+            // localize placeholders
+            this.TxtBoxMontantPosteFixe.WaterMark =
+                this.Localize.Translate(this.TxtBoxMontantPosteFixe.WaterMark);
+
             // Add every item that is not already used by PostePeriodique
             OleDbCommand cmd = DatabaseManager.CmdFromRawSQL(
                 "SELECT * FROM Poste WHERE codePoste NOT IN (SELECT codePoste FROM PostePeriodique WHERE codePoste IS NOT NULL)"
@@ -53,8 +57,13 @@ namespace BreakingBudget.Views.FrmMain
             // empty the ComboBox
             this.ComboxBoxListePeriodicites.Items.Clear();
 
-            // Add every item
-            this.ComboxBoxListePeriodicites.Items.AddRange(PeriodiciteRepository.List());
+            // Translate and add every item
+            foreach (PeriodiciteRepository.PeriodiciteModel e in
+                PeriodiciteRepository.List())
+            {
+                e.libPer = this.Localize.Translate(e.libPer);
+                this.ComboxBoxListePeriodicites.Items.Add(e);
+            }
         }
 
         private void BtnValiderBudgetFixe_Click(object _s, EventArgs e)
@@ -77,8 +86,8 @@ namespace BreakingBudget.Views.FrmMain
                 )
             {
                 MetroMessageBox.Show(this,
-                    "Veuillez remplir et selectionner tous les champs.",
-                    "Données manquantes",
+                    this.Localize.Translate("err_missing_fields_msg"),
+                    this.Localize.Translate("err_missing_fields_caption"),
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             // try to convert the decimals and integers
@@ -86,8 +95,8 @@ namespace BreakingBudget.Views.FrmMain
                   && int.TryParse(TxtBoxTousLesXMois.Text, out TousLesXDuMois)))
             {
                 MetroMessageBox.Show(this,
-                    "Le jour du mois et le montant doivent être un nombre.",
-                    "Uh oh.",
+                    this.Localize.Translate("err_day_of_month_and_sum_not_number"),
+                    this.Localize.Translate("err_uh_oh_caption"),
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else

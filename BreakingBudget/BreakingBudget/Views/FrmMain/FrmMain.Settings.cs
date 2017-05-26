@@ -13,13 +13,33 @@ namespace BreakingBudget.Views.FrmMain
     partial class FrmMain
     {
         void InitSettingsPage() {
+            this.VariantStyleComboBox.DisplayMember = 
+                this.ThemeStyleComboBox.DisplayMember = "Key";
+
             FillLanguageComboBox();
 
-            this.ThemeStyleComboBox.DataSource = Enum.GetValues(typeof(MetroThemeStyle));
-            this.VariantStyleComboBox.DataSource = Enum.GetValues(typeof(MetroColorStyle));
+            this.FillSettingsThemingComoboxes();
 
             this.ThemeStyleComboBox.SelectedIndex = (int)settings.MetroTheme;
             this.VariantStyleComboBox.SelectedIndex = (int)settings.MetroColorStyle;
+        }
+
+        void FillSettingsThemingComoboxes()
+        {
+            foreach (MetroThemeStyle e in Enum.GetValues(typeof(MetroThemeStyle)))
+            {
+                this.ThemeStyleComboBox.Items.Add(
+                    new KeyValuePair<string, MetroThemeStyle>(
+                        this.Localize.Translate(e.ToString()), e)
+                );
+            }
+            foreach (MetroColorStyle e in Enum.GetValues(typeof(MetroColorStyle)))
+            {
+                this.VariantStyleComboBox.Items.Add(
+                    new KeyValuePair<string, MetroColorStyle>(
+                        this.Localize.Translate(e.ToString()), e)
+                );
+            }
         }
 
         void FillLanguageComboBox() {
@@ -45,20 +65,20 @@ namespace BreakingBudget.Views.FrmMain
 
         private void ThemeStyleComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            MetroThemeStyle selectedTheme;
-            if (Enum.TryParse(ThemeStyleComboBox.SelectedItem.ToString(), out selectedTheme))
+            if (ThemeStyleComboBox.SelectedItem != null)
             {
-                this.settings.MetroTheme = this.metroStyleManager.Theme = selectedTheme;
+                this.settings.MetroTheme = this.metroStyleManager.Theme = 
+                    ((KeyValuePair<string, MetroThemeStyle>)ThemeStyleComboBox.SelectedItem).Value;
             }
             FrmMain_StyleChanged(null, null);
         }
 
         private void VariantStyleComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            MetroColorStyle selectedColor;
-            if (Enum.TryParse(VariantStyleComboBox.SelectedItem.ToString(), out selectedColor))
+            if (VariantStyleComboBox.SelectedItem != null)
             {
-                this.settings.MetroColorStyle =  this.metroStyleManager.Style = selectedColor;
+                this.settings.MetroColorStyle =  this.metroStyleManager.Style =
+                    ((KeyValuePair<string, MetroColorStyle>)VariantStyleComboBox.SelectedItem).Value;
             }
             FrmMain_StyleChanged(null, null);
         }
@@ -69,7 +89,8 @@ namespace BreakingBudget.Views.FrmMain
             if (comboBox.SelectedItem != null)
             {
                 this.settings.TwoLetterISOLanguage = ((CultureInfo)comboBox.SelectedItem).TwoLetterISOLanguageName;
-                if (MetroMessageBox.Show(this, this.Localize.Translate("requires_restart"), this.Localize.Translate("requires_confirmation"),
+                if (MetroMessageBox.Show(this,
+                    this.Localize.Translate("requires_restart"), this.Localize.Translate("requires_confirmation"),
                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
                     this.WaitsForRestart = true;

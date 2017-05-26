@@ -353,6 +353,7 @@ namespace BreakingBudget.Views.FrmMain
                     if (ActiveState)
                     {
                         ActiveEntry = e;
+                        this.Text = this.BaseName + " - " + e.Text;
                     }
                 }
                 ToggleEntryActive(e, ActiveState);
@@ -388,7 +389,6 @@ namespace BreakingBudget.Views.FrmMain
             }
 
             // Update the form's title and force the repaint
-            this.Text = this.BaseName + " - " + sender.SelectedPage.AccessibleName;
             this.Refresh();
         }
     }

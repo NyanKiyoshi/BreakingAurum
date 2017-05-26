@@ -67,6 +67,9 @@ namespace BreakingBudget.Views.FrmMain
             this.Localize = new LocalizationManager(this.Name, this.settings.TwoLetterISOLanguage);
             this.Localize.ImportResourceLocalization("Sidebar");  // load the sidebar's localization data
 
+            // try to localize every sub-control
+            this.Localize.ControlerTranslator(this);
+
             // create the sidebar's top entries
             this.TopSidebarEntries = new SidebarEntry[]
             {
@@ -89,8 +92,8 @@ namespace BreakingBudget.Views.FrmMain
                     this.Localize.Translate("sidebar_page_budget_mois"),
                     
                     new SidebarEntry[] {
-                        new SidebarEntry(this.PagePostesFixes,     this.Localize.Translate("sidebar_page_ajouter_transaction")),
-                        new SidebarEntry(this.PagePostesPonctuels, this.Localize.Translate("sidebar_page_lister_transactions")),
+                        new SidebarEntry((MultiPanePage)null,      this.Localize.Translate("sidebar_page_ajouter_transaction")),
+                        new SidebarEntry((MultiPanePage)null,      this.Localize.Translate("sidebar_page_lister_transactions")),
                 }),
             };
 
