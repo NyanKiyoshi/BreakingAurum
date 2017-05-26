@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Localization>
+    <Key>BreakingBudget</Key>
+    <Value>Los Pollos Hermanos</Value>
+  </Localization>
+  <Localization>
+    <Key>requires_restart</Key>
+    <Value>Esta solicitud de cambio para reiniciar la aplicación. ¿Quieres reiniciar ahora?</Value>
+  </Localization>
+  <Localization>
+    <Key>quit_confirmation</Key>
+    <Value>¿Realmente quieres cerrar?</Value>
+  </Localization>
+  <Localization>
+    <Key>requires_confirmation</Key>
+    <Value>Confirmación</Value>
+  </Localization>
+
+
+  <Localization>
+    <Key>lblCmbPostes</Key>
+    <Value>Posición</Value>
+  </Localization>
+  <Localization>
+    <Key>lblCmbPeriodicite</Key>
+    <Value>Período</Value>
+  </Localization>
+  <Localization>
+    <Key>lblTousLes</Key>
+    <Value>Cada</Value>
+  </Localization>
+  <Localization>
+    <Key>lblDuMois</Key>
+    <Value>del mes</Value>
+  </Localization>
+  <Localization>
+    <Key>lblMontant</Key>
+    <Value>Suma</Value>
+  </Localization>
+  <Localization>
+    <Key>lblTheme</Key>
+    <Value>Tema</Value>
+  </Localization>
+  <Localization>
+    <Key>lblLangue</Key>
+    <Value>Lengua</Value>
+  </Localization>
+  <Localization>
+    <Key>lblStyleColor</Key>
+    <Value>Color primario</Value>
+  </Localization>
+  <Localization>
+    <Key>err_missing_fields_msg</Key>
+    <Value>Por favor rellene y seleccione todos los campos.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_missing_fields_caption</Key>
+    <Value>Datos perdidos</Value>
+  </Localization>
+  <Localization>
+    <Key>err_day_of_month_and_sum_not_number</Key>
+    <Value>El día del mes y la suma debe ser un número.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_uh_oh_caption</Key>
+    <Value>¡Ay!</Value>
+  </Localization>
+  <Localization>
+    <Key>BtnValiderBudgetFixe</Key>
+    <Value>Validar</Value>
+  </Localization>
+  <Localization>
+    <Key>btnGererPostes</Key>
+    <Value>Administrar posiciones</Value>
+  </Localization>
+  <Localization>
+    <Key>hebdomadaire</Key>
+    <Value>diariamente</Value>
+  </Localization>
+  <Localization>
+    <Key>mensuel</Key>
+    <Value>mensual</Value>
+  </Localization>
+  <Localization>
+    <Key>bimestriel</Key>
+    <Value>bimensual</Value>
+  </Localization>
+  <Localization>
+    <Key>trimestriel</Key>
+    <Value>trimestral</Value>
+  </Localization>
+  <Localization>
+    <Key>semestriel</Key>
+    <Value>medio año</Value>
+  </Localization>
+  <Localization>
+    <Key>annuel</Key>
+    <Value>anual</Value>
+  </Localization>
+  <Localization>
+    <Key>Default</Key>
+    <Value>Defecto</Value>
+  </Localization>
+  <Localization>
+    <Key>Light</Key>
+    <Value>Claro</Value>
+  </Localization>
+  <Localization>
+    <Key>Dark</Key>
+    <Value>Oscuro</Value>
+  </Localization>
+  <Localization>
+    <Key>Black</Key>
+    <Value>Negro</Value>
+  </Localization>
+  <Localization>
+    <Key>White</Key>
+    <Value>Blanco</Value>
+  </Localization>
+  <Localization>
+    <Key>Silver</Key>
+    <Value>Plateado</Value>
+  </Localization>
+  <Localization>
+    <Key>Blue</Key>
+    <Value>Azul</Value>
+  </Localization>
+  <Localization>
+    <Key>Green</Key>
+    <Value>Verde</Value>
+  </Localization>
+  <Localization>
+    <Key>Lime</Key>
+    <Value>Lima</Value>
+  </Localization>
+  <Localization>
+    <Key>Teal</Key>
+    <Value>Teal</Value>
+  </Localization>
+  <Localization>
+    <Key>Orange</Key>
+    <Value>Naranja</Value>
+  </Localization>
+  <Localization>
+    <Key>Brown</Key>
+    <Value>Marrón</Value>
+  </Localization>
+  <Localization>
+    <Key>Pink</Key>
+    <Value>Rosado</Value>
+  </Localization>
+  <Localization>
+    <Key>Magenta</Key>
+    <Value>Magenta</Value>
+  </Localization>
+  <Localization>
+    <Key>Purple</Key>
+    <Value>Púrpura</Value>
+  </Localization>
+  <Localization>
+    <Key>Red</Key>
+    <Value>Rojo</Value>
+  </Localization>
+  <Localization>
+    <Key>Yellow</Key>
+    <Value>Amarillo</Value>
+  </Localization>
+  <Localization>
+    <Key>Custom</Key>
+    <Value>Especial</Value>
+  </Localization>
+  <Localization>
+    <Key>placeholder_amount_to_pay_monthly</Key>
+    <Value>Cantidad a pagar mensualmente</Value>
+  </Localization>
+</root>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Localization>
+    <Key>Ok</Key>
+    <Value>Tamam</Value>
+  </Localization>
+  <Localization>
+    <Key>No</Key>
+    <Value>Hayir</Value>
+  </Localization>
+  <Localization>
+    <Key>Cancel</Key>
+    <Value>İptal</Value>
+  </Localization>
+  <Localization>
+    <Key>Retry</Key>
+    <Value>Tekrar dene</Value>
+  </Localization>
+  <Localization>
+    <Key>Yes</Key>
+    <Value>Evet</Value>
+  </Localization>
+  <Localization>
+    <Key>Abort</Key>
+    <Value>Iptal etmek</Value>
+  </Localization>
+  <Localization>
+    <Key>Ignore</Key>
+    <Value>Aldırmamak</Value>
+  </Localization>
+</root>

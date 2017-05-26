@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Localization>
+    <Key>sidebar_page_home</Key>
+    <Value>Los Pollos Hermanos</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_budget_previsionnel</Key>
+    <Value>Presupuesto estimado</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_poste_fixe</Key>
+    <Value>Posición fija</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_poste_ponctuel</Key>
+    <Value>Posición periódica</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_revenu</Key>
+    <Value>Ingresos</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_budget_mois</Key>
+    <Value>Presupuesto mensual</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_ajouter_transaction</Key>
+    <Value>Agregar transacción</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_lister_transactions</Key>
+    <Value>Enumerar transacciones</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_settings</Key>
+    <Value>Preferencias</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_licenses</Key>
+    <Value>Licencias</Value>
+  </Localization>
+</root>
