@@ -234,7 +234,7 @@ namespace MetroFramework.Drawing
             public static Color Form(MetroThemeStyle theme)
             {
                 if (theme == MetroThemeStyle.Dark)
-                    return Color.FromArgb(17, 17, 17);
+                    return Color.FromArgb(45, 46, 47);
 
                 return Color.FromArgb(255, 255, 255);
             }
@@ -244,7 +244,7 @@ namespace MetroFramework.Drawing
                 public static Color Normal(MetroThemeStyle theme)
                 {
                     if (theme == MetroThemeStyle.Dark)
-                        return Color.FromArgb(34, 34, 34);
+                        return Color.FromArgb(0x28, 0x28, 0x28);
 
                     return Color.FromArgb(238, 238, 238);
                 }
