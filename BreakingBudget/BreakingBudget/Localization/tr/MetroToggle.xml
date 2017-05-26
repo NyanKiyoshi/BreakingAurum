@@ -2,10 +2,10 @@
 <root>
   <Localization>
     <Key>StatusOn</Key>
-    <Value>Evet</Value>
+    <Value>Açık</Value>
   </Localization>
   <Localization>
     <Key>StatusOff</Key>
-    <Value>Hayir</Value>
+    <Value>Kapalı</Value>
   </Localization>
 </root>
