@@ -1429,7 +1429,7 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.BaseContainer);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(725, 512);
+            this.MinimumSize = new System.Drawing.Size(1072, 512);
             this.Name = "FrmMain";
             this.Text = "Breaking Budget";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
