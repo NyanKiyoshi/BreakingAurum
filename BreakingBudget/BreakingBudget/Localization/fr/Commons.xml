@@ -64,4 +64,16 @@
     <Key>err_duplicate_value_caption</Key>
     <Value>Valeur dupliquée</Value>
   </Localization>
+  <Localization>
+    <Key>err_missing_fields_msg</Key>
+    <Value>Veuillez remplir et selectionner tous les champs.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_not_a_number</Key>
+    <Value>Ce n'est pas un nombre.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_missing_fields_caption</Key>
+    <Value>Données manquantes</Value>
+  </Localization>
 </root>

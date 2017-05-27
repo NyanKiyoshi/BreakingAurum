@@ -60,3 +60,4 @@ C:\BreakingBudget-master\BreakingBudget\BreakingBudget\obj\Debug\BreakingBudget.
 C:\BreakingBudget-master\BreakingBudget\BreakingBudget\obj\Debug\BreakingBudget.csproj.GenerateResource.Cache
 D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\obj\Debug\BreakingBudget.Views.GererPostes.resources
 D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\obj\Debug\BreakingBudget.Views.InputMessageBox.resources
+D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\obj\Debug\BreakingBudget.Views.Loading.resources

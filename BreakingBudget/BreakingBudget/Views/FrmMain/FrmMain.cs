@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using MetroFramework.Forms;
@@ -17,6 +18,8 @@ namespace BreakingBudget.Views.FrmMain
 {
     public partial class FrmMain : MetroForm
     {
+        delegate bool CustomCondition();
+
         private readonly IconFonts IconFontManager;
         private readonly Font IconFont;
 
@@ -33,8 +36,16 @@ namespace BreakingBudget.Views.FrmMain
             set;
         }
 
+        readonly byte[] ICON_HELP_MARK = new byte[] { 0xEE, 0xA3, 0xBD };
+
+        // used to change temporary the title (see `FrmMain_ResizeBegin(...)`)
+        string oldFormTitle;
+
         public FrmMain()
         {
+            // set the base name (used later to rename the form)
+            this.BaseName = "Breaking Budget";
+
             InitializeComponent();
 
             // set the form's style manager to the control `metroStyleManager`
@@ -44,9 +55,6 @@ namespace BreakingBudget.Views.FrmMain
             // Create the fonts icons collection & set the default one (MaterialIcons)
             this.IconFontManager = (new IconFonts());
             this.IconFont = this.IconFontManager.GetFont(IconFonts.FONT_FAMILY.MaterialIcons, 17.0f);
-
-            // set the base name (used later to rename the form)
-            this.BaseName = this.Text;
 
             // set the default page and switch to it
             this.DefaultPage = this.HomePage;
@@ -100,7 +108,9 @@ namespace BreakingBudget.Views.FrmMain
                 new SidebarEntry(this.LicensesPage, new byte[] { 0xEE, 0x90, 0xA0 }, Program.settings.localize.Translate("sidebar_page_licenses"))
             };
 
+            // initialize sub panels
             InitializePostesFixes();
+            InitializePostesPonctuels(echancesContainer);
             InitSettingsPage();
         }
 
@@ -162,6 +172,21 @@ namespace BreakingBudget.Views.FrmMain
             }
         }
 
+        /// <summary>
+        /// Takes a control and make it blink until Condition is false.
+        /// </summary>
+        /// <param name="ctrl"></param>
+        /// <param name="Condition"></param>
+        private async void BlinkControl(Control ctrl, CustomCondition Condition)
+        {
+            while (Condition())
+            {
+                ctrl.ForeColor = ctrl.ForeColor == Color.Red ? Color.LimeGreen : Color.Red;
+                await Task.Delay(500);
+            }
+            ctrl.ForeColor = Color.LimeGreen;
+        }
+
         private void HelpPosteLabel_Click(object sender, EventArgs e)
         {
             MetroMessageBox.Show(this,
@@ -205,7 +230,9 @@ namespace BreakingBudget.Views.FrmMain
             cmd.Connection.Close();
         }
 
-        private bool IsTextBoxKeyPressNumber(MetroTextBox sender, char KeyChar)
+        private bool IsTextBoxKeyPressNumber(MetroTextBox sender, char KeyChar,
+            bool allowFloat = true,
+            bool allowNegatives = true)
         {
             if (
                 (
@@ -216,10 +243,10 @@ namespace BreakingBudget.Views.FrmMain
                     || KeyChar == (char)Keys.Back
 
                     // or (not) a unique dot?
-                    || (KeyChar == '.' && (!sender.Text.Contains(".")))
+                    || (allowFloat && KeyChar == '.' && (!sender.Text.Contains(".")))
 
                     // ...or (not) a unique minus at the beginning of the line? (is the cursor not at the beginning)
-                    || (KeyChar == '-' && (!sender.Text.Contains("-")) && sender.SelectionStart == 0)
+                    || (allowNegatives && KeyChar == '-' && (!sender.Text.Contains("-")) && sender.SelectionStart == 0)
                 )
             )
             {
@@ -256,6 +283,27 @@ namespace BreakingBudget.Views.FrmMain
             {
                 this.BaseContainer.BackColor = Color.FromArgb(0x45, 0x45, 0x45);
             }
+        }
+
+        private void FrmMain_ResizeBegin(object sender, EventArgs e)
+        {
+            this.oldFormTitle = this.Text;
+        }
+
+        private void FrmMain_Resize(object sender, EventArgs e)
+        {
+            this.Text = string.Format("{0}x{1}", this.Width, this.Height);
+        }
+
+        private void FrmMain_ResizeEnd(object sender, EventArgs e)
+        {
+            this.Text = this.oldFormTitle;
+            this.Refresh();
+        }
+
+        private void echancesContainer_Paint_OR_ControlAdded(object sender, object e)
+        {
+            ((FlowLayoutPanel)sender).Visible = (this.numberVisibleBoxesEchancePonctuels > 0);
         }
     }
 }

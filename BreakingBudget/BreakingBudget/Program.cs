@@ -20,22 +20,29 @@ namespace BreakingBudget
             FrmMain MainForm;
             UserCreation CreationForm;
 
-            // If there is nobody in the database, open the creation form
-            while (PersonneRepository.CountRows() == 0)
-            {
-                CreationForm = new UserCreation();
-                Application.Run(CreationForm);
-
-                // Stop user cancelled the user creation, close the program
-                if (CreationForm.UserCancelled)
-                {
-                    return;
-                }
-            }
-
             // run the Main form and restart it if it asks so
             do
             {
+                // load settings from saved data if available. Otherwise: create settings
+                Program.settings = Settings.Load();
+                if (Program.settings == null)
+                {
+                    Program.settings = new Settings();
+                }
+
+                // If there is nobody in the database, open the creation form
+                while (PersonneRepository.CountRows() == 0)
+                {
+                    CreationForm = new UserCreation();
+                    Application.Run(CreationForm);
+
+                    // Stop user cancelled the user creation, close the program
+                    if (CreationForm.UserCancelled)
+                    {
+                        return;
+                    }
+                }
+
                 MainForm = new FrmMain();
                 Application.Run(MainForm);
             } while (MainForm.WaitsForRestart);
@@ -49,13 +56,6 @@ namespace BreakingBudget
 
             // Cache the database's scheme
             DatabaseManager.GenerateDatabaseCache();
-
-            // load settings from saved data if available. Otherwise: create settings
-            Program.settings = Settings.Load();
-            if (Program.settings == null)
-            {
-                Program.settings = new Settings();
-            }
 
             // if the DEBUG symbol is not defined (release or test mode),
             // we redirect the console output to "logs.txt"

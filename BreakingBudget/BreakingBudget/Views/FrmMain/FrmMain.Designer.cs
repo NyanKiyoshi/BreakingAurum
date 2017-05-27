@@ -86,7 +86,7 @@
             this.listBeneficiairesComboBox = new MetroFramework.Controls.MetroComboBox();
             this.lblMontantRevenu = new MetroFramework.Controls.MetroLabel();
             this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtBoxMontantPonctuel = new MetroFramework.Controls.MetroTextBox();
+            this.txtBoxMontantRevenu = new MetroFramework.Controls.MetroTextBox();
             this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblTousLesXDuMoisRevenu = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
@@ -96,13 +96,8 @@
             this.btnGererBeneficiairesRevenu = new MetroFramework.Controls.MetroButton();
             this.PagePostesPonctuel = new Kerido.Controls.MultiPanePage();
             this.ContainerPostePonctuel = new System.Windows.Forms.Panel();
+            this.echancesContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.FieldsContainerPostePonctuel = new System.Windows.Forms.FlowLayoutPanel();
-            this.ButtonsPostePonctuelContainer = new System.Windows.Forms.Panel();
-            this.btnValiderBudgetPonctuel = new MetroFramework.Controls.MetroButton();
-            this.multiPanePage3 = new Kerido.Controls.MultiPanePage();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
             this.lblIntitulePonctuel = new MetroFramework.Controls.MetroLabel();
             this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtBoxIntitulePonctuel = new MetroFramework.Controls.MetroTextBox();
@@ -112,7 +107,18 @@
             this.lblNbPrelevementsPonctuel = new MetroFramework.Controls.MetroLabel();
             this.flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtBoxNbPrelevementsPonctuel = new MetroFramework.Controls.MetroTextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.lblConfirmNbDeadLines = new System.Windows.Forms.Label();
+            this.lblMontantTotalPonctuelOptionnel = new MetroFramework.Controls.MetroLabel();
+            this.flowLayoutPanel13 = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtBoxMontantPonctuel = new MetroFramework.Controls.MetroTextBox();
+            this.lblConfirmMontantPonctuel = new System.Windows.Forms.Label();
+            this.lblHelpMontantPonctuel = new System.Windows.Forms.Label();
+            this.ButtonsPostePonctuelContainer = new System.Windows.Forms.Panel();
+            this.btnValiderBudgetPonctuel = new MetroFramework.Controls.MetroButton();
+            this.multiPanePage3 = new Kerido.Controls.MultiPanePage();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.SidebarTable.SuspendLayout();
             this.BaseContainer.SuspendLayout();
@@ -145,12 +151,13 @@
             this.PagePostesPonctuel.SuspendLayout();
             this.ContainerPostePonctuel.SuspendLayout();
             this.FieldsContainerPostePonctuel.SuspendLayout();
-            this.ButtonsPostePonctuelContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.flowLayoutPanel10.SuspendLayout();
             this.flowLayoutPanel11.SuspendLayout();
             this.flowLayoutPanel12.SuspendLayout();
+            this.flowLayoutPanel13.SuspendLayout();
+            this.ButtonsPostePonctuelContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -228,7 +235,7 @@
             this.BaseContainer.Name = "BaseContainer";
             this.BaseContainer.RowCount = 1;
             this.BaseContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.BaseContainer.Size = new System.Drawing.Size(813, 432);
+            this.BaseContainer.Size = new System.Drawing.Size(1032, 432);
             this.BaseContainer.TabIndex = 0;
             // 
             // BaseContainerInnerBorder
@@ -240,7 +247,7 @@
             this.BaseContainerInnerBorder.Location = new System.Drawing.Point(15, 0);
             this.BaseContainerInnerBorder.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.BaseContainerInnerBorder.Name = "BaseContainerInnerBorder";
-            this.BaseContainerInnerBorder.Size = new System.Drawing.Size(798, 432);
+            this.BaseContainerInnerBorder.Size = new System.Drawing.Size(1017, 432);
             this.BaseContainerInnerBorder.TabIndex = 0;
             // 
             // ContentPanel
@@ -258,8 +265,8 @@
             this.ContentPanel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.ContentPanel.Name = "ContentPanel";
             this.ContentPanel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.ContentPanel.SelectedPage = this.PageRevenus;
-            this.ContentPanel.Size = new System.Drawing.Size(798, 432);
+            this.ContentPanel.SelectedPage = this.PagePostesPonctuel;
+            this.ContentPanel.Size = new System.Drawing.Size(1017, 432);
             this.ContentPanel.TabIndex = 9;
             this.ContentPanel.Text = "Meow";
             this.ContentPanel.SelectedPageChanged += new System.EventHandler(this.ContentPanel_SelectedPageChanged);
@@ -271,7 +278,7 @@
             this.PagePostesFixes.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PagePostesFixes.Controls.Add(this.ContainerPosteFixePage);
             this.PagePostesFixes.Name = "PagePostesFixes";
-            this.PagePostesFixes.Size = new System.Drawing.Size(798, 432);
+            this.PagePostesFixes.Size = new System.Drawing.Size(1017, 432);
             this.PagePostesFixes.TabIndex = 0;
             // 
             // ContainerPosteFixePage
@@ -284,7 +291,7 @@
             this.ContainerPosteFixePage.Location = new System.Drawing.Point(0, 0);
             this.ContainerPosteFixePage.Name = "ContainerPosteFixePage";
             this.ContainerPosteFixePage.Padding = new System.Windows.Forms.Padding(10);
-            this.ContainerPosteFixePage.Size = new System.Drawing.Size(798, 432);
+            this.ContainerPosteFixePage.Size = new System.Drawing.Size(1017, 432);
             this.ContainerPosteFixePage.TabIndex = 0;
             // 
             // ButtonsPosteFixeContainer
@@ -297,14 +304,14 @@
             this.ButtonsPosteFixeContainer.Location = new System.Drawing.Point(10, 392);
             this.ButtonsPosteFixeContainer.MinimumSize = new System.Drawing.Size(0, 30);
             this.ButtonsPosteFixeContainer.Name = "ButtonsPosteFixeContainer";
-            this.ButtonsPosteFixeContainer.Size = new System.Drawing.Size(778, 30);
+            this.ButtonsPosteFixeContainer.Size = new System.Drawing.Size(997, 30);
             this.ButtonsPosteFixeContainer.TabIndex = 2;
             // 
             // BtnValiderBudgetFixe
             // 
             this.BtnValiderBudgetFixe.AutoSize = true;
             this.BtnValiderBudgetFixe.Dock = System.Windows.Forms.DockStyle.Right;
-            this.BtnValiderBudgetFixe.Location = new System.Drawing.Point(698, 0);
+            this.BtnValiderBudgetFixe.Location = new System.Drawing.Point(917, 0);
             this.BtnValiderBudgetFixe.Name = "BtnValiderBudgetFixe";
             this.BtnValiderBudgetFixe.Size = new System.Drawing.Size(80, 30);
             this.BtnValiderBudgetFixe.TabIndex = 5;
@@ -339,7 +346,7 @@
             this.PosteFixeFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.PosteFixeFlowLayoutPanel.Location = new System.Drawing.Point(10, 10);
             this.PosteFixeFlowLayoutPanel.Name = "PosteFixeFlowLayoutPanel";
-            this.PosteFixeFlowLayoutPanel.Size = new System.Drawing.Size(778, 412);
+            this.PosteFixeFlowLayoutPanel.Size = new System.Drawing.Size(997, 412);
             this.PosteFixeFlowLayoutPanel.TabIndex = 1;
             this.PosteFixeFlowLayoutPanel.WrapContents = false;
             // 
@@ -567,7 +574,7 @@
             this.SettingsPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.SettingsPage.Controls.Add(this.ContainerSettingsPage);
             this.SettingsPage.Name = "SettingsPage";
-            this.SettingsPage.Size = new System.Drawing.Size(798, 432);
+            this.SettingsPage.Size = new System.Drawing.Size(1017, 432);
             this.SettingsPage.TabIndex = 1;
             // 
             // ContainerSettingsPage
@@ -579,7 +586,7 @@
             this.ContainerSettingsPage.Location = new System.Drawing.Point(0, 0);
             this.ContainerSettingsPage.Name = "ContainerSettingsPage";
             this.ContainerSettingsPage.Padding = new System.Windows.Forms.Padding(10);
-            this.ContainerSettingsPage.Size = new System.Drawing.Size(798, 432);
+            this.ContainerSettingsPage.Size = new System.Drawing.Size(1017, 432);
             this.ContainerSettingsPage.TabIndex = 1;
             // 
             // FieldsContainerSettings
@@ -597,7 +604,7 @@
             this.FieldsContainerSettings.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.FieldsContainerSettings.Location = new System.Drawing.Point(10, 10);
             this.FieldsContainerSettings.Name = "FieldsContainerSettings";
-            this.FieldsContainerSettings.Size = new System.Drawing.Size(778, 412);
+            this.FieldsContainerSettings.Size = new System.Drawing.Size(997, 412);
             this.FieldsContainerSettings.TabIndex = 1;
             this.FieldsContainerSettings.WrapContents = false;
             // 
@@ -722,7 +729,7 @@
             this.LicensesPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.LicensesPage.Controls.Add(this.richTextBox1);
             this.LicensesPage.Name = "LicensesPage";
-            this.LicensesPage.Size = new System.Drawing.Size(798, 432);
+            this.LicensesPage.Size = new System.Drawing.Size(1017, 432);
             this.LicensesPage.TabIndex = 2;
             // 
             // richTextBox1
@@ -733,7 +740,7 @@
             this.richTextBox1.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(798, 432);
+            this.richTextBox1.Size = new System.Drawing.Size(1017, 432);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
@@ -744,7 +751,7 @@
             this.HomePage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.HomePage.Controls.Add(this.button1);
             this.HomePage.Name = "HomePage";
-            this.HomePage.Size = new System.Drawing.Size(798, 432);
+            this.HomePage.Size = new System.Drawing.Size(1017, 432);
             this.HomePage.TabIndex = 3;
             // 
             // button1
@@ -764,7 +771,7 @@
             this.PageRevenus.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PageRevenus.Controls.Add(this.ContainerRevenu);
             this.PageRevenus.Name = "PageRevenus";
-            this.PageRevenus.Size = new System.Drawing.Size(798, 432);
+            this.PageRevenus.Size = new System.Drawing.Size(1017, 432);
             this.PageRevenus.TabIndex = 4;
             // 
             // ContainerRevenu
@@ -775,7 +782,7 @@
             this.ContainerRevenu.Location = new System.Drawing.Point(0, 0);
             this.ContainerRevenu.Name = "ContainerRevenu";
             this.ContainerRevenu.Padding = new System.Windows.Forms.Padding(10);
-            this.ContainerRevenu.Size = new System.Drawing.Size(798, 432);
+            this.ContainerRevenu.Size = new System.Drawing.Size(1017, 432);
             this.ContainerRevenu.TabIndex = 0;
             // 
             // FieldsContainerRevenu
@@ -793,7 +800,7 @@
             this.FieldsContainerRevenu.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.FieldsContainerRevenu.Location = new System.Drawing.Point(10, 10);
             this.FieldsContainerRevenu.Name = "FieldsContainerRevenu";
-            this.FieldsContainerRevenu.Size = new System.Drawing.Size(778, 382);
+            this.FieldsContainerRevenu.Size = new System.Drawing.Size(997, 382);
             this.FieldsContainerRevenu.TabIndex = 1;
             this.FieldsContainerRevenu.WrapContents = false;
             // 
@@ -839,7 +846,6 @@
             this.metroTextBox1.MaxLength = 10;
             this.metroTextBox1.Name = "metroTextBox1";
             this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.PromptText = "placeholder_poste_revenu";
             this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.metroTextBox1.SelectedText = "";
             this.metroTextBox1.SelectionLength = 0;
@@ -848,7 +854,6 @@
             this.metroTextBox1.Size = new System.Drawing.Size(346, 19);
             this.metroTextBox1.TabIndex = 4;
             this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMark = "placeholder_poste_revenu";
             this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
@@ -900,7 +905,7 @@
             // 
             this.flowLayoutPanel8.AutoSize = true;
             this.flowLayoutPanel8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel8.Controls.Add(this.txtBoxMontantPonctuel);
+            this.flowLayoutPanel8.Controls.Add(this.txtBoxMontantRevenu);
             this.flowLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel8.Location = new System.Drawing.Point(3, 156);
             this.flowLayoutPanel8.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
@@ -908,38 +913,36 @@
             this.flowLayoutPanel8.Size = new System.Drawing.Size(352, 25);
             this.flowLayoutPanel8.TabIndex = 18;
             // 
-            // txtBoxMontantPonctuel
+            // txtBoxMontantRevenu
             // 
             // 
             // 
             // 
-            this.txtBoxMontantPonctuel.CustomButton.Image = null;
-            this.txtBoxMontantPonctuel.CustomButton.Location = new System.Drawing.Point(328, 1);
-            this.txtBoxMontantPonctuel.CustomButton.Name = "";
-            this.txtBoxMontantPonctuel.CustomButton.Size = new System.Drawing.Size(17, 17);
-            this.txtBoxMontantPonctuel.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtBoxMontantPonctuel.CustomButton.TabIndex = 1;
-            this.txtBoxMontantPonctuel.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtBoxMontantPonctuel.CustomButton.UseSelectable = true;
-            this.txtBoxMontantPonctuel.CustomButton.Visible = false;
-            this.txtBoxMontantPonctuel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtBoxMontantPonctuel.Lines = new string[0];
-            this.txtBoxMontantPonctuel.Location = new System.Drawing.Point(3, 3);
-            this.txtBoxMontantPonctuel.MaxLength = 10;
-            this.txtBoxMontantPonctuel.Name = "txtBoxMontantPonctuel";
-            this.txtBoxMontantPonctuel.PasswordChar = '\0';
-            this.txtBoxMontantPonctuel.PromptText = "placeholder_amount_to_pay_monthly";
-            this.txtBoxMontantPonctuel.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtBoxMontantPonctuel.SelectedText = "";
-            this.txtBoxMontantPonctuel.SelectionLength = 0;
-            this.txtBoxMontantPonctuel.SelectionStart = 0;
-            this.txtBoxMontantPonctuel.ShortcutsEnabled = true;
-            this.txtBoxMontantPonctuel.Size = new System.Drawing.Size(346, 19);
-            this.txtBoxMontantPonctuel.TabIndex = 4;
-            this.txtBoxMontantPonctuel.UseSelectable = true;
-            this.txtBoxMontantPonctuel.WaterMark = "placeholder_amount_to_pay_monthly";
-            this.txtBoxMontantPonctuel.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtBoxMontantPonctuel.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxMontantRevenu.CustomButton.Image = null;
+            this.txtBoxMontantRevenu.CustomButton.Location = new System.Drawing.Point(328, 1);
+            this.txtBoxMontantRevenu.CustomButton.Name = "";
+            this.txtBoxMontantRevenu.CustomButton.Size = new System.Drawing.Size(17, 17);
+            this.txtBoxMontantRevenu.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtBoxMontantRevenu.CustomButton.TabIndex = 1;
+            this.txtBoxMontantRevenu.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtBoxMontantRevenu.CustomButton.UseSelectable = true;
+            this.txtBoxMontantRevenu.CustomButton.Visible = false;
+            this.txtBoxMontantRevenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtBoxMontantRevenu.Lines = new string[0];
+            this.txtBoxMontantRevenu.Location = new System.Drawing.Point(3, 3);
+            this.txtBoxMontantRevenu.MaxLength = 10;
+            this.txtBoxMontantRevenu.Name = "txtBoxMontantRevenu";
+            this.txtBoxMontantRevenu.PasswordChar = '\0';
+            this.txtBoxMontantRevenu.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtBoxMontantRevenu.SelectedText = "";
+            this.txtBoxMontantRevenu.SelectionLength = 0;
+            this.txtBoxMontantRevenu.SelectionStart = 0;
+            this.txtBoxMontantRevenu.ShortcutsEnabled = true;
+            this.txtBoxMontantRevenu.Size = new System.Drawing.Size(346, 19);
+            this.txtBoxMontantRevenu.TabIndex = 4;
+            this.txtBoxMontantRevenu.UseSelectable = true;
+            this.txtBoxMontantRevenu.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtBoxMontantRevenu.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // flowLayoutPanel9
             // 
@@ -1025,14 +1028,14 @@
             this.ButtonsRevenuContainer.Location = new System.Drawing.Point(10, 392);
             this.ButtonsRevenuContainer.MinimumSize = new System.Drawing.Size(0, 30);
             this.ButtonsRevenuContainer.Name = "ButtonsRevenuContainer";
-            this.ButtonsRevenuContainer.Size = new System.Drawing.Size(778, 30);
+            this.ButtonsRevenuContainer.Size = new System.Drawing.Size(997, 30);
             this.ButtonsRevenuContainer.TabIndex = 2;
             // 
             // btnValiderRevenu
             // 
             this.btnValiderRevenu.AutoSize = true;
             this.btnValiderRevenu.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnValiderRevenu.Location = new System.Drawing.Point(698, 0);
+            this.btnValiderRevenu.Location = new System.Drawing.Point(917, 0);
             this.btnValiderRevenu.Name = "btnValiderRevenu";
             this.btnValiderRevenu.Size = new System.Drawing.Size(80, 30);
             this.btnValiderRevenu.TabIndex = 5;
@@ -1056,19 +1059,35 @@
             this.PagePostesPonctuel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PagePostesPonctuel.Controls.Add(this.ContainerPostePonctuel);
             this.PagePostesPonctuel.Name = "PagePostesPonctuel";
-            this.PagePostesPonctuel.Size = new System.Drawing.Size(798, 432);
+            this.PagePostesPonctuel.Size = new System.Drawing.Size(1017, 432);
             this.PagePostesPonctuel.TabIndex = 5;
             // 
             // ContainerPostePonctuel
             // 
+            this.ContainerPostePonctuel.Controls.Add(this.echancesContainer);
             this.ContainerPostePonctuel.Controls.Add(this.FieldsContainerPostePonctuel);
             this.ContainerPostePonctuel.Controls.Add(this.ButtonsPostePonctuelContainer);
             this.ContainerPostePonctuel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContainerPostePonctuel.Location = new System.Drawing.Point(0, 0);
             this.ContainerPostePonctuel.Name = "ContainerPostePonctuel";
             this.ContainerPostePonctuel.Padding = new System.Windows.Forms.Padding(10);
-            this.ContainerPostePonctuel.Size = new System.Drawing.Size(798, 432);
+            this.ContainerPostePonctuel.Size = new System.Drawing.Size(1017, 432);
             this.ContainerPostePonctuel.TabIndex = 0;
+            // 
+            // echancesContainer
+            // 
+            this.metroStyleExtender.SetApplyMetroTheme(this.echancesContainer, true);
+            this.echancesContainer.AutoScroll = true;
+            this.echancesContainer.AutoSize = true;
+            this.echancesContainer.Dock = System.Windows.Forms.DockStyle.Right;
+            this.echancesContainer.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.echancesContainer.Location = new System.Drawing.Point(987, 10);
+            this.echancesContainer.Name = "echancesContainer";
+            this.echancesContainer.Padding = new System.Windows.Forms.Padding(10, 0, 10, 20);
+            this.echancesContainer.Size = new System.Drawing.Size(20, 382);
+            this.echancesContainer.TabIndex = 23;
+            this.echancesContainer.Visible = false;
+            this.echancesContainer.WrapContents = false;
             // 
             // FieldsContainerPostePonctuel
             // 
@@ -1080,55 +1099,15 @@
             this.FieldsContainerPostePonctuel.Controls.Add(this.flowLayoutPanel11);
             this.FieldsContainerPostePonctuel.Controls.Add(this.lblNbPrelevementsPonctuel);
             this.FieldsContainerPostePonctuel.Controls.Add(this.flowLayoutPanel12);
-            this.FieldsContainerPostePonctuel.Controls.Add(this.dateTimePicker1);
+            this.FieldsContainerPostePonctuel.Controls.Add(this.lblMontantTotalPonctuelOptionnel);
+            this.FieldsContainerPostePonctuel.Controls.Add(this.flowLayoutPanel13);
             this.FieldsContainerPostePonctuel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FieldsContainerPostePonctuel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.FieldsContainerPostePonctuel.Location = new System.Drawing.Point(10, 10);
             this.FieldsContainerPostePonctuel.Name = "FieldsContainerPostePonctuel";
-            this.FieldsContainerPostePonctuel.Size = new System.Drawing.Size(778, 382);
+            this.FieldsContainerPostePonctuel.Size = new System.Drawing.Size(997, 382);
             this.FieldsContainerPostePonctuel.TabIndex = 1;
             this.FieldsContainerPostePonctuel.WrapContents = false;
-            // 
-            // ButtonsPostePonctuelContainer
-            // 
-            this.ButtonsPostePonctuelContainer.AutoSize = true;
-            this.ButtonsPostePonctuelContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ButtonsPostePonctuelContainer.Controls.Add(this.btnValiderBudgetPonctuel);
-            this.ButtonsPostePonctuelContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ButtonsPostePonctuelContainer.Location = new System.Drawing.Point(10, 392);
-            this.ButtonsPostePonctuelContainer.MinimumSize = new System.Drawing.Size(0, 30);
-            this.ButtonsPostePonctuelContainer.Name = "ButtonsPostePonctuelContainer";
-            this.ButtonsPostePonctuelContainer.Size = new System.Drawing.Size(778, 30);
-            this.ButtonsPostePonctuelContainer.TabIndex = 3;
-            // 
-            // btnValiderBudgetPonctuel
-            // 
-            this.btnValiderBudgetPonctuel.AutoSize = true;
-            this.btnValiderBudgetPonctuel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnValiderBudgetPonctuel.Location = new System.Drawing.Point(698, 0);
-            this.btnValiderBudgetPonctuel.Name = "btnValiderBudgetPonctuel";
-            this.btnValiderBudgetPonctuel.Size = new System.Drawing.Size(80, 30);
-            this.btnValiderBudgetPonctuel.TabIndex = 5;
-            this.btnValiderBudgetPonctuel.Text = "Valider";
-            this.btnValiderBudgetPonctuel.UseSelectable = true;
-            // 
-            // multiPanePage3
-            // 
-            this.multiPanePage3.AutoSize = true;
-            this.multiPanePage3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.multiPanePage3.Name = "multiPanePage3";
-            this.multiPanePage3.Size = new System.Drawing.Size(798, 432);
-            this.multiPanePage3.TabIndex = 6;
-            // 
-            // errorProvider
-            // 
-            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProvider.ContainerControl = this;
-            this.errorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider.Icon")));
-            // 
-            // metroStyleManager
-            // 
-            this.metroStyleManager.Owner = this;
             // 
             // lblIntitulePonctuel
             // 
@@ -1149,7 +1128,7 @@
             this.flowLayoutPanel10.Location = new System.Drawing.Point(3, 22);
             this.flowLayoutPanel10.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.flowLayoutPanel10.Name = "flowLayoutPanel10";
-            this.flowLayoutPanel10.Size = new System.Drawing.Size(352, 25);
+            this.flowLayoutPanel10.Size = new System.Drawing.Size(414, 25);
             this.flowLayoutPanel10.TabIndex = 12;
             // 
             // txtBoxIntitulePonctuel
@@ -1169,7 +1148,7 @@
             this.txtBoxIntitulePonctuel.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtBoxIntitulePonctuel.Lines = new string[0];
             this.txtBoxIntitulePonctuel.Location = new System.Drawing.Point(3, 3);
-            this.txtBoxIntitulePonctuel.MaxLength = 10;
+            this.txtBoxIntitulePonctuel.MaxLength = 255;
             this.txtBoxIntitulePonctuel.Name = "txtBoxIntitulePonctuel";
             this.txtBoxIntitulePonctuel.PasswordChar = '\0';
             this.txtBoxIntitulePonctuel.PromptText = "placeholder_intitule";
@@ -1204,7 +1183,7 @@
             this.flowLayoutPanel11.Location = new System.Drawing.Point(3, 84);
             this.flowLayoutPanel11.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.flowLayoutPanel11.Name = "flowLayoutPanel11";
-            this.flowLayoutPanel11.Size = new System.Drawing.Size(352, 25);
+            this.flowLayoutPanel11.Size = new System.Drawing.Size(414, 25);
             this.flowLayoutPanel11.TabIndex = 14;
             // 
             // txtBoxCommentairePonctuel
@@ -1224,7 +1203,7 @@
             this.txtBoxCommentairePonctuel.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtBoxCommentairePonctuel.Lines = new string[0];
             this.txtBoxCommentairePonctuel.Location = new System.Drawing.Point(3, 3);
-            this.txtBoxCommentairePonctuel.MaxLength = 10;
+            this.txtBoxCommentairePonctuel.MaxLength = 255;
             this.txtBoxCommentairePonctuel.Name = "txtBoxCommentairePonctuel";
             this.txtBoxCommentairePonctuel.PasswordChar = '\0';
             this.txtBoxCommentairePonctuel.PromptText = "placeholder_commentaire";
@@ -1255,11 +1234,12 @@
             this.flowLayoutPanel12.AutoSize = true;
             this.flowLayoutPanel12.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel12.Controls.Add(this.txtBoxNbPrelevementsPonctuel);
+            this.flowLayoutPanel12.Controls.Add(this.lblConfirmNbDeadLines);
             this.flowLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel12.Location = new System.Drawing.Point(3, 146);
             this.flowLayoutPanel12.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.flowLayoutPanel12.Name = "flowLayoutPanel12";
-            this.flowLayoutPanel12.Size = new System.Drawing.Size(352, 25);
+            this.flowLayoutPanel12.Size = new System.Drawing.Size(414, 25);
             this.flowLayoutPanel12.TabIndex = 16;
             // 
             // txtBoxNbPrelevementsPonctuel
@@ -1279,7 +1259,7 @@
             this.txtBoxNbPrelevementsPonctuel.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtBoxNbPrelevementsPonctuel.Lines = new string[0];
             this.txtBoxNbPrelevementsPonctuel.Location = new System.Drawing.Point(3, 3);
-            this.txtBoxNbPrelevementsPonctuel.MaxLength = 3;
+            this.txtBoxNbPrelevementsPonctuel.MaxLength = 2;
             this.txtBoxNbPrelevementsPonctuel.Name = "txtBoxNbPrelevementsPonctuel";
             this.txtBoxNbPrelevementsPonctuel.PasswordChar = '\0';
             this.txtBoxNbPrelevementsPonctuel.PromptText = "placeholder_nb_prelevements";
@@ -1294,21 +1274,158 @@
             this.txtBoxNbPrelevementsPonctuel.WaterMark = "placeholder_nb_prelevements";
             this.txtBoxNbPrelevementsPonctuel.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtBoxNbPrelevementsPonctuel.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxNbPrelevementsPonctuel.TextChanged += new System.EventHandler(this.txtBoxNbPrelevementsPonctuel_TextChanged);
+            this.txtBoxNbPrelevementsPonctuel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxNbPrelevementsPonctuel_KeyPress);
+            this.txtBoxNbPrelevementsPonctuel.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBoxNbPrelevementsPonctuel_KeyUp);
             // 
-            // dateTimePicker1
+            // lblConfirmNbDeadLines
             // 
-            this.metroStyleExtender.SetApplyMetroTheme(this.dateTimePicker1, true);
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(3, 189);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 17;
+            this.lblConfirmNbDeadLines.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblConfirmNbDeadLines.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfirmNbDeadLines.ForeColor = System.Drawing.Color.LimeGreen;
+            this.lblConfirmNbDeadLines.Location = new System.Drawing.Point(355, 3);
+            this.lblConfirmNbDeadLines.Margin = new System.Windows.Forms.Padding(3);
+            this.lblConfirmNbDeadLines.Name = "lblConfirmNbDeadLines";
+            this.lblConfirmNbDeadLines.Size = new System.Drawing.Size(25, 19);
+            this.lblConfirmNbDeadLines.TabIndex = 9;
+            this.lblConfirmNbDeadLines.Text = "";
+            this.lblConfirmNbDeadLines.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblConfirmNbDeadLines.Click += new System.EventHandler(this.lblConfirmNbDeadLines_Click);
+            // 
+            // lblMontantTotalPonctuelOptionnel
+            // 
+            this.lblMontantTotalPonctuelOptionnel.AutoSize = true;
+            this.lblMontantTotalPonctuelOptionnel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblMontantTotalPonctuelOptionnel.Location = new System.Drawing.Point(3, 186);
+            this.lblMontantTotalPonctuelOptionnel.Name = "lblMontantTotalPonctuelOptionnel";
+            this.lblMontantTotalPonctuelOptionnel.Size = new System.Drawing.Size(165, 19);
+            this.lblMontantTotalPonctuelOptionnel.TabIndex = 19;
+            this.lblMontantTotalPonctuelOptionnel.Text = "Montant total (optionnel)";
+            // 
+            // flowLayoutPanel13
+            // 
+            this.flowLayoutPanel13.AutoSize = true;
+            this.flowLayoutPanel13.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel13.Controls.Add(this.txtBoxMontantPonctuel);
+            this.flowLayoutPanel13.Controls.Add(this.lblConfirmMontantPonctuel);
+            this.flowLayoutPanel13.Controls.Add(this.lblHelpMontantPonctuel);
+            this.flowLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel13.Location = new System.Drawing.Point(3, 208);
+            this.flowLayoutPanel13.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.flowLayoutPanel13.Name = "flowLayoutPanel13";
+            this.flowLayoutPanel13.Size = new System.Drawing.Size(414, 26);
+            this.flowLayoutPanel13.TabIndex = 20;
+            // 
+            // txtBoxMontantPonctuel
+            // 
+            // 
+            // 
+            // 
+            this.txtBoxMontantPonctuel.CustomButton.Image = null;
+            this.txtBoxMontantPonctuel.CustomButton.Location = new System.Drawing.Point(328, 2);
+            this.txtBoxMontantPonctuel.CustomButton.Name = "";
+            this.txtBoxMontantPonctuel.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.txtBoxMontantPonctuel.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtBoxMontantPonctuel.CustomButton.TabIndex = 1;
+            this.txtBoxMontantPonctuel.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtBoxMontantPonctuel.CustomButton.UseSelectable = true;
+            this.txtBoxMontantPonctuel.CustomButton.Visible = false;
+            this.txtBoxMontantPonctuel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtBoxMontantPonctuel.Lines = new string[0];
+            this.txtBoxMontantPonctuel.Location = new System.Drawing.Point(3, 3);
+            this.txtBoxMontantPonctuel.MaxLength = 10;
+            this.txtBoxMontantPonctuel.Name = "txtBoxMontantPonctuel";
+            this.txtBoxMontantPonctuel.PasswordChar = '\0';
+            this.txtBoxMontantPonctuel.PromptText = "placeholder_total_prelevements_optionnel";
+            this.txtBoxMontantPonctuel.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtBoxMontantPonctuel.SelectedText = "";
+            this.txtBoxMontantPonctuel.SelectionLength = 0;
+            this.txtBoxMontantPonctuel.SelectionStart = 0;
+            this.txtBoxMontantPonctuel.ShortcutsEnabled = true;
+            this.txtBoxMontantPonctuel.Size = new System.Drawing.Size(346, 20);
+            this.txtBoxMontantPonctuel.TabIndex = 4;
+            this.txtBoxMontantPonctuel.UseSelectable = true;
+            this.txtBoxMontantPonctuel.WaterMark = "placeholder_total_prelevements_optionnel";
+            this.txtBoxMontantPonctuel.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtBoxMontantPonctuel.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxMontantPonctuel.TextChanged += new System.EventHandler(this.txtBoxMontantPonctuel_TextChanged);
+            this.txtBoxMontantPonctuel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxMontantPonctuel_KeyPress);
+            this.txtBoxMontantPonctuel.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBoxMontantPonctuel_KeyUp);
+            // 
+            // lblConfirmMontantPonctuel
+            // 
+            this.lblConfirmMontantPonctuel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblConfirmMontantPonctuel.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfirmMontantPonctuel.ForeColor = System.Drawing.Color.LimeGreen;
+            this.lblConfirmMontantPonctuel.Location = new System.Drawing.Point(355, 3);
+            this.lblConfirmMontantPonctuel.Margin = new System.Windows.Forms.Padding(3);
+            this.lblConfirmMontantPonctuel.Name = "lblConfirmMontantPonctuel";
+            this.lblConfirmMontantPonctuel.Size = new System.Drawing.Size(25, 20);
+            this.lblConfirmMontantPonctuel.TabIndex = 8;
+            this.lblConfirmMontantPonctuel.Text = "";
+            this.lblConfirmMontantPonctuel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblConfirmMontantPonctuel.Click += new System.EventHandler(this.lblConfirmMontantPonctuel_Click);
+            // 
+            // lblHelpMontantPonctuel
+            // 
+            this.lblHelpMontantPonctuel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblHelpMontantPonctuel.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelpMontantPonctuel.Location = new System.Drawing.Point(386, 3);
+            this.lblHelpMontantPonctuel.Margin = new System.Windows.Forms.Padding(3);
+            this.lblHelpMontantPonctuel.Name = "lblHelpMontantPonctuel";
+            this.lblHelpMontantPonctuel.Size = new System.Drawing.Size(25, 20);
+            this.lblHelpMontantPonctuel.TabIndex = 7;
+            this.lblHelpMontantPonctuel.Text = "";
+            this.lblHelpMontantPonctuel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblHelpMontantPonctuel.Click += new System.EventHandler(this.lblHelpMontantPonctuel_Click);
+            // 
+            // ButtonsPostePonctuelContainer
+            // 
+            this.ButtonsPostePonctuelContainer.AutoSize = true;
+            this.ButtonsPostePonctuelContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ButtonsPostePonctuelContainer.Controls.Add(this.btnValiderBudgetPonctuel);
+            this.ButtonsPostePonctuelContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ButtonsPostePonctuelContainer.Location = new System.Drawing.Point(10, 392);
+            this.ButtonsPostePonctuelContainer.MinimumSize = new System.Drawing.Size(0, 30);
+            this.ButtonsPostePonctuelContainer.Name = "ButtonsPostePonctuelContainer";
+            this.ButtonsPostePonctuelContainer.Size = new System.Drawing.Size(997, 30);
+            this.ButtonsPostePonctuelContainer.TabIndex = 3;
+            // 
+            // btnValiderBudgetPonctuel
+            // 
+            this.btnValiderBudgetPonctuel.AutoSize = true;
+            this.btnValiderBudgetPonctuel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnValiderBudgetPonctuel.Location = new System.Drawing.Point(917, 0);
+            this.btnValiderBudgetPonctuel.Name = "btnValiderBudgetPonctuel";
+            this.btnValiderBudgetPonctuel.Size = new System.Drawing.Size(80, 30);
+            this.btnValiderBudgetPonctuel.TabIndex = 5;
+            this.btnValiderBudgetPonctuel.Text = "Valider";
+            this.btnValiderBudgetPonctuel.UseSelectable = true;
+            this.btnValiderBudgetPonctuel.Click += new System.EventHandler(this.btnValiderBudgetPonctuel_Click);
+            // 
+            // multiPanePage3
+            // 
+            this.multiPanePage3.AutoSize = true;
+            this.multiPanePage3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.multiPanePage3.Name = "multiPanePage3";
+            this.multiPanePage3.Size = new System.Drawing.Size(1017, 432);
+            this.multiPanePage3.TabIndex = 6;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider.ContainerControl = this;
+            this.errorProvider.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider.Icon")));
+            // 
+            // metroStyleManager
+            // 
+            this.metroStyleManager.Owner = this;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 512);
+            this.ClientSize = new System.Drawing.Size(1072, 512);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.BaseContainer);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -1318,6 +1435,9 @@
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMain_FormClosing);
             this.Load += new System.EventHandler(this.FrmMain_Load);
+            this.ResizeBegin += new System.EventHandler(this.FrmMain_ResizeBegin);
+            this.ResizeEnd += new System.EventHandler(this.FrmMain_ResizeEnd);
+            this.Resize += new System.EventHandler(this.FrmMain_Resize);
             this.StyleChanged += new System.EventHandler(this.FrmMain_StyleChanged);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
@@ -1370,13 +1490,14 @@
             this.ContainerPostePonctuel.PerformLayout();
             this.FieldsContainerPostePonctuel.ResumeLayout(false);
             this.FieldsContainerPostePonctuel.PerformLayout();
+            this.flowLayoutPanel10.ResumeLayout(false);
+            this.flowLayoutPanel11.ResumeLayout(false);
+            this.flowLayoutPanel12.ResumeLayout(false);
+            this.flowLayoutPanel13.ResumeLayout(false);
             this.ButtonsPostePonctuelContainer.ResumeLayout(false);
             this.ButtonsPostePonctuelContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
-            this.flowLayoutPanel10.ResumeLayout(false);
-            this.flowLayoutPanel11.ResumeLayout(false);
-            this.flowLayoutPanel12.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1444,7 +1565,7 @@
         private MetroFramework.Controls.MetroComboBox listBeneficiairesComboBox;
         private MetroFramework.Controls.MetroLabel lblMontantRevenu;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
-        private MetroFramework.Controls.MetroTextBox txtBoxMontantPonctuel;
+        private MetroFramework.Controls.MetroTextBox txtBoxMontantRevenu;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
         private MetroFramework.Controls.MetroLabel lblTousLesXDuMoisRevenu;
         private MetroFramework.Controls.MetroTextBox metroTextBox2;
@@ -1453,9 +1574,9 @@
         private MetroFramework.Controls.MetroButton btnValiderRevenu;
         private MetroFramework.Controls.MetroButton btnGererBeneficiairesRevenu;
         private System.Windows.Forms.Panel ContainerPostePonctuel;
-        private System.Windows.Forms.FlowLayoutPanel FieldsContainerPostePonctuel;
         private System.Windows.Forms.Panel ButtonsPostePonctuelContainer;
         private MetroFramework.Controls.MetroButton btnValiderBudgetPonctuel;
+        private System.Windows.Forms.FlowLayoutPanel FieldsContainerPostePonctuel;
         private MetroFramework.Controls.MetroLabel lblIntitulePonctuel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
         private MetroFramework.Controls.MetroTextBox txtBoxIntitulePonctuel;
@@ -1465,7 +1586,13 @@
         private MetroFramework.Controls.MetroLabel lblNbPrelevementsPonctuel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel12;
         private MetroFramework.Controls.MetroTextBox txtBoxNbPrelevementsPonctuel;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private MetroFramework.Controls.MetroLabel lblMontantTotalPonctuelOptionnel;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel13;
+        private MetroFramework.Controls.MetroTextBox txtBoxMontantPonctuel;
+        private System.Windows.Forms.Label lblConfirmMontantPonctuel;
+        private System.Windows.Forms.Label lblHelpMontantPonctuel;
+        private System.Windows.Forms.FlowLayoutPanel echancesContainer;
+        private System.Windows.Forms.Label lblConfirmNbDeadLines;
     }
 }
 

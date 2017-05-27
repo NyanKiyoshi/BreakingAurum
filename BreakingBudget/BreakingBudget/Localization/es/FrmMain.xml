@@ -51,14 +51,6 @@
     <Value>Color primario</Value>
   </Localization>
   <Localization>
-    <Key>err_missing_fields_msg</Key>
-    <Value>Por favor rellene y seleccione todos los campos.</Value>
-  </Localization>
-  <Localization>
-    <Key>err_missing_fields_caption</Key>
-    <Value>Datos perdidos</Value>
-  </Localization>
-  <Localization>
     <Key>err_day_of_month_and_sum_not_number</Key>
     <Value>El día del mes y la suma debe ser un número.</Value>
   </Localization>
@@ -173,10 +165,6 @@
   <Localization>
     <Key>placeholder_amount_to_pay_monthly</Key>
     <Value>Cantidad a pagar mensualmente</Value>
-  </Localization>
-  <Localization>
-    <Key>err_not_a_number</Key>
-    <Value>No un número.</Value>
   </Localization>
   <Localization>
     <Key>err_must_be_between_1_and_31</Key>

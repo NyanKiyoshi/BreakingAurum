@@ -175,6 +175,8 @@ namespace BreakingBudget.Services.Lang
 
         public void ControlerTranslator(Control control)
         {
+            MetroFramework.Controls.MetroTextBox tmpMetroTextBox;
+
             if (control.Controls.Count > 0)
             {
                 string TranslatedText;
@@ -195,6 +197,20 @@ namespace BreakingBudget.Services.Lang
                         if (TranslatedText != subCtrl.Name)
                         {
                             subCtrl.Text = TranslatedText;
+                        }
+                    }
+
+                    if (subCtrl is MetroFramework.Controls.MetroTextBox)
+                    {
+                        tmpMetroTextBox = (MetroFramework.Controls.MetroTextBox)subCtrl;
+                        // try to get a value/ translation for the TextBox
+                        TranslatedText = Translate(tmpMetroTextBox.WaterMark);
+
+                        // only change the Text attribut's value if there
+                        // was a translation found
+                        if (TranslatedText != tmpMetroTextBox.WaterMark)
+                        {
+                            tmpMetroTextBox.WaterMark = TranslatedText;
                         }
                     }
                     // go through the control's children

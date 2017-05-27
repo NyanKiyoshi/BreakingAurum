@@ -49,14 +49,6 @@
     <Value>Couleur primaire</Value>
   </Localization>
   <Localization>
-    <Key>err_missing_fields_msg</Key>
-    <Value>Veuillez remplir et selectionner tous les champs.</Value>
-  </Localization>
-  <Localization>
-    <Key>err_missing_fields_caption</Key>
-    <Value>Données manquantes</Value>
-  </Localization>
-  <Localization>
     <Key>err_day_of_month_and_sum_not_number</Key>
     <Value>Le jour du mois et le montant doivent être un nombre.</Value>
   </Localization>
@@ -173,11 +165,91 @@
     <Value>Entrez le montant à payer chaque mois</Value>
   </Localization>
   <Localization>
-    <Key>err_not_a_number</Key>
-    <Value>Ce n'est pas un nombre.</Value>
-  </Localization>
-  <Localization>
     <Key>err_must_be_between_1_and_31</Key>
     <Value>La valeur doit être entre 1 et 31.</Value>
+  </Localization>
+
+
+
+  <Localization>
+    <Key>lblPosteRevenu</Key>
+    <Value>Poste</Value>
+  </Localization>
+  <Localization>
+    <Key>placeholder_poste_revenu</Key>
+    <Value>Le nom du poste</Value>
+  </Localization>
+  <Localization>
+    <Key>lblBeneficiaireRevenu</Key>
+    <Value>Bénéficiaire</Value>
+  </Localization>
+  <Localization>
+    <Key>lblMontantRevenu</Key>
+    <Value>Montant</Value>
+  </Localization>
+  <Localization>
+    <Key>lblTousLesXDuMoisRevenu</Key>
+    <Value>Tous les</Value>
+  </Localization>
+  <Localization>
+    <Key>lblDuMoisRevenu</Key>
+    <Value>du mois</Value>
+  </Localization>
+  <Localization>
+    <Key>btnValiderRevenu</Key>
+    <Value>Valider</Value>
+  </Localization>
+  <Localization>
+    <Key>btnGererBeneficiairesRevenu</Key>
+    <Value>Gérer les bénéficaires</Value>
+  </Localization>
+  <Localization>
+    <Key>lblIntitulePonctuel</Key>
+    <Value>Intitulé</Value>
+  </Localization>
+  <Localization>
+    <Key>lblCommentairePonctuel</Key>
+    <Value>Commentaire</Value>
+  </Localization>
+  <Localization>
+    <Key>placeholder_commentaire</Key>
+    <Value>Courte description du payement</Value>
+  </Localization>
+  <Localization>
+    <Key>lblNbPrelevementsPonctuel</Key>
+    <Value>Nombre de prélèvements</Value>
+  </Localization>
+  <Localization>
+    <Key>lblMontantTotalPonctuelOptionnel</Key>
+    <Value>Montant total (optionnel)</Value>
+  </Localization>
+  <Localization>
+    <Key>placeholder_total_prelevements_optionnel</Key>
+    <Value>Total payé après application des relevés</Value>
+  </Localization>
+  <Localization>
+    <Key>btnValiderBudgetPonctuel</Key>
+    <Value>Valider</Value>
+  </Localization>
+  <Localization>
+    <Key>help_montant_ponctuel_optionnel_caption</Key>
+    <Value>Aide sur le montant ponctuel</Value>
+  </Localization>
+  <Localization>
+    <Key>help_montant_ponctuel_optionnel</Key>
+    <Value>
+- Entrez le total et le logiciel se chargera de diviser cette somme.
+   Puis appuyez sur le bouton vert clignotant pour confirmer.
+
+- Ou alors, entrez la première valeur dans la case d'écheance.
+    </Value>
+  </Localization>
+  <Localization>
+    <Key>should_I_override_the_deadlines_to_{0}</Key>
+    <Value>Voulez-vous écraser le contenu des échéances par {0} ?</Value>
+  </Localization>
+  <Localization>
+    <Key>deadline_no_{0:00}</Key>
+    <Value>Échéance {0:00}</Value>
   </Localization>
 </root>

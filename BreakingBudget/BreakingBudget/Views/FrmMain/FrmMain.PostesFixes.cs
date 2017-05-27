@@ -16,8 +16,6 @@ namespace BreakingBudget.Views.FrmMain
 {
     partial class FrmMain
     {
-        readonly byte[] ICON_HELP_MARK = new byte[] { 0xEE, 0xA3, 0xBD };
-
         private void InitializePostesFixes()
         {
             FillPostesComboBox();
@@ -33,10 +31,6 @@ namespace BreakingBudget.Views.FrmMain
 
             // Reset the selection
             this.ComboxBoxListePostes.ResetText();
-
-            // localize placeholders
-            this.TxtBoxMontantPosteFixe.WaterMark =
-                Program.settings.localize.Translate(this.TxtBoxMontantPosteFixe.WaterMark);
 
             // Add every item that is not already used by PostePeriodique
             OleDbCommand cmd = DatabaseManager.CmdFromRawSQL(

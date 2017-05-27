@@ -49,14 +49,6 @@
     <Value>Primary Color</Value>
   </Localization>
   <Localization>
-    <Key>err_missing_fields_msg</Key>
-    <Value>Please fill and select every field.</Value>
-  </Localization>
-  <Localization>
-    <Key>err_missing_fields_caption</Key>
-    <Value>Missing Data</Value>
-  </Localization>
-  <Localization>
     <Key>err_day_of_month_and_sum_not_number</Key>
     <Value>The day of the month and the sum must be a number.</Value>
   </Localization>
@@ -167,10 +159,6 @@
   <Localization>
     <Key>placeholder_amount_to_pay_monthly</Key>
     <Value>Amount to pay monthly</Value>
-  </Localization>
-  <Localization>
-    <Key>err_not_a_number</Key>
-    <Value>Not a number.</Value>
   </Localization>
   <Localization>
     <Key>err_must_be_between_1_and_31</Key>
