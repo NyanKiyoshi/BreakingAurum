@@ -238,8 +238,7 @@
   <Localization>
     <Key>help_montant_ponctuel_optionnel</Key>
     <Value>
-- Entrez le total et le logiciel se chargera de diviser cette somme.
-   Puis appuyez sur le bouton vert clignotant pour confirmer.
+- Entrez le total et le logiciel se chargera de diviser cette somme par le montant si vous appuyez sur le bouton vert clignotant pour confirmer votre saisie.
 
 - Ou alors, entrez la première valeur dans la case d'écheance.
     </Value>

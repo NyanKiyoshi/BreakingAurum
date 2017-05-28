@@ -1280,6 +1280,7 @@
             // 
             // lblConfirmNbDeadLines
             // 
+            this.lblConfirmNbDeadLines.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.lblConfirmNbDeadLines.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblConfirmNbDeadLines.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConfirmNbDeadLines.ForeColor = System.Drawing.Color.LimeGreen;
@@ -1291,6 +1292,8 @@
             this.lblConfirmNbDeadLines.Text = "";
             this.lblConfirmNbDeadLines.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblConfirmNbDeadLines.Click += new System.EventHandler(this.lblConfirmNbDeadLines_Click);
+            this.lblConfirmNbDeadLines.MouseLeave += new System.EventHandler(this.lblConfirmMontantPonctuel_MouseLeave);
+            this.lblConfirmNbDeadLines.MouseHover += new System.EventHandler(this.lblConfirmMontantPonctuel_MouseHover);
             // 
             // lblMontantTotalPonctuelOptionnel
             // 
@@ -1354,7 +1357,9 @@
             // 
             // lblConfirmMontantPonctuel
             // 
+            this.lblConfirmMontantPonctuel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.lblConfirmMontantPonctuel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblConfirmMontantPonctuel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblConfirmMontantPonctuel.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConfirmMontantPonctuel.ForeColor = System.Drawing.Color.LimeGreen;
             this.lblConfirmMontantPonctuel.Location = new System.Drawing.Point(355, 3);
@@ -1365,9 +1370,12 @@
             this.lblConfirmMontantPonctuel.Text = "";
             this.lblConfirmMontantPonctuel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblConfirmMontantPonctuel.Click += new System.EventHandler(this.lblConfirmMontantPonctuel_Click);
+            this.lblConfirmMontantPonctuel.MouseLeave += new System.EventHandler(this.lblConfirmMontantPonctuel_MouseLeave);
+            this.lblConfirmMontantPonctuel.MouseHover += new System.EventHandler(this.lblConfirmMontantPonctuel_MouseHover);
             // 
             // lblHelpMontantPonctuel
             // 
+            this.metroStyleExtender.SetApplyMetroTheme(this.lblHelpMontantPonctuel, true);
             this.lblHelpMontantPonctuel.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblHelpMontantPonctuel.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHelpMontantPonctuel.Location = new System.Drawing.Point(386, 3);

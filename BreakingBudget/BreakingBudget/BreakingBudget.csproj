@@ -86,6 +86,7 @@
     <Compile Include="Repositories\PosteRepository.cs" />
     <Compile Include="Services\AutoCompleter.cs" />
     <Compile Include="Services\Lang\LocalizationManager.cs" />
+    <Compile Include="Services\SMSManager.cs" />
     <Compile Include="Services\SQL\DataAdapter.cs" />
     <Compile Include="Services\SQL\DatabaseManager.cs" />
     <Compile Include="Services\IconFonts.cs" />

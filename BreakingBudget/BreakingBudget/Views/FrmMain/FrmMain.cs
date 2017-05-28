@@ -305,5 +305,17 @@ namespace BreakingBudget.Views.FrmMain
         {
             ((FlowLayoutPanel)sender).Visible = (this.numberVisibleBoxesEchancePonctuels > 0);
         }
+
+        private void lblConfirmMontantPonctuel_MouseHover(object _s, EventArgs _e)
+        {
+            Label sender = (Label)_s;
+            sender.BackColor = Color.FromArgb(215, 215, 215);
+        }
+
+        private void lblConfirmMontantPonctuel_MouseLeave(object _s, EventArgs e)
+        {
+            Label sender = (Label)_s;
+            sender.BackColor = Color.FromArgb(230, 230, 230);
+        }
     }
 }
