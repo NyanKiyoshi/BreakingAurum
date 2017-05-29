@@ -1,0 +1,11 @@
+# VS backups
+Backup/
+
+# VS generated folders
+bin/
+obj/
+.vs/
+
+*.exe
+*.cache
+*.pdb
