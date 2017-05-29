@@ -74,7 +74,7 @@
   </Localization>
   <Localization>
     <Key>err_missing_fields_msg</Key>
-    <Value>Por favor rellene y seleccione todos los campos.</Value>
+    <Value>Por favor asegúrese de llenar, seleccionar y validar todos los campos.</Value>
   </Localization>
   <Localization>
     <Key>err_missing_fields_caption</Key>

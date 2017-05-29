@@ -56,7 +56,10 @@ namespace BreakingBudget.Services.Lang
                 ? language
                 : RetrieveCurrentLanguage();
 
-            this.ImportResourceLocalization(resourceName);
+            if (resourceName != null)
+            {
+                this.ImportResourceLocalization(resourceName);
+            }
         }
 
         private string RetrieveCurrentLanguage()

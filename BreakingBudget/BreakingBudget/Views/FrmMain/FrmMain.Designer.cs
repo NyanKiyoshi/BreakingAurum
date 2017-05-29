@@ -101,7 +101,7 @@
             this.lblIntitulePonctuel = new MetroFramework.Controls.MetroLabel();
             this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtBoxIntitulePonctuel = new MetroFramework.Controls.MetroTextBox();
-            this.lblCommentairePonctuel = new MetroFramework.Controls.MetroLabel();
+            this.lblCommentairePonctuelOptionnel = new MetroFramework.Controls.MetroLabel();
             this.flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtBoxCommentairePonctuel = new MetroFramework.Controls.MetroTextBox();
             this.lblNbPrelevementsPonctuel = new MetroFramework.Controls.MetroLabel();
@@ -1095,7 +1095,7 @@
             this.FieldsContainerPostePonctuel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.FieldsContainerPostePonctuel.Controls.Add(this.lblIntitulePonctuel);
             this.FieldsContainerPostePonctuel.Controls.Add(this.flowLayoutPanel10);
-            this.FieldsContainerPostePonctuel.Controls.Add(this.lblCommentairePonctuel);
+            this.FieldsContainerPostePonctuel.Controls.Add(this.lblCommentairePonctuelOptionnel);
             this.FieldsContainerPostePonctuel.Controls.Add(this.flowLayoutPanel11);
             this.FieldsContainerPostePonctuel.Controls.Add(this.lblNbPrelevementsPonctuel);
             this.FieldsContainerPostePonctuel.Controls.Add(this.flowLayoutPanel12);
@@ -1164,15 +1164,15 @@
             this.txtBoxIntitulePonctuel.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtBoxIntitulePonctuel.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
-            // lblCommentairePonctuel
+            // lblCommentairePonctuelOptionnel
             // 
-            this.lblCommentairePonctuel.AutoSize = true;
-            this.lblCommentairePonctuel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblCommentairePonctuel.Location = new System.Drawing.Point(3, 62);
-            this.lblCommentairePonctuel.Name = "lblCommentairePonctuel";
-            this.lblCommentairePonctuel.Size = new System.Drawing.Size(92, 19);
-            this.lblCommentairePonctuel.TabIndex = 13;
-            this.lblCommentairePonctuel.Text = "Commentaire";
+            this.lblCommentairePonctuelOptionnel.AutoSize = true;
+            this.lblCommentairePonctuelOptionnel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblCommentairePonctuelOptionnel.Location = new System.Drawing.Point(3, 62);
+            this.lblCommentairePonctuelOptionnel.Name = "lblCommentairePonctuelOptionnel";
+            this.lblCommentairePonctuelOptionnel.Size = new System.Drawing.Size(92, 19);
+            this.lblCommentairePonctuelOptionnel.TabIndex = 13;
+            this.lblCommentairePonctuelOptionnel.Text = "Commentaire";
             // 
             // flowLayoutPanel11
             // 
@@ -1206,7 +1206,7 @@
             this.txtBoxCommentairePonctuel.MaxLength = 255;
             this.txtBoxCommentairePonctuel.Name = "txtBoxCommentairePonctuel";
             this.txtBoxCommentairePonctuel.PasswordChar = '\0';
-            this.txtBoxCommentairePonctuel.PromptText = "placeholder_commentaire";
+            this.txtBoxCommentairePonctuel.PromptText = "placeholder_commentaire_optionnel";
             this.txtBoxCommentairePonctuel.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtBoxCommentairePonctuel.SelectedText = "";
             this.txtBoxCommentairePonctuel.SelectionLength = 0;
@@ -1215,7 +1215,7 @@
             this.txtBoxCommentairePonctuel.Size = new System.Drawing.Size(346, 19);
             this.txtBoxCommentairePonctuel.TabIndex = 4;
             this.txtBoxCommentairePonctuel.UseSelectable = true;
-            this.txtBoxCommentairePonctuel.WaterMark = "placeholder_commentaire";
+            this.txtBoxCommentairePonctuel.WaterMark = "placeholder_commentaire_optionnel";
             this.txtBoxCommentairePonctuel.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtBoxCommentairePonctuel.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
@@ -1280,7 +1280,7 @@
             // 
             // lblConfirmNbDeadLines
             // 
-            this.lblConfirmNbDeadLines.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.lblConfirmNbDeadLines.BackColor = System.Drawing.Color.Transparent;
             this.lblConfirmNbDeadLines.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblConfirmNbDeadLines.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConfirmNbDeadLines.ForeColor = System.Drawing.Color.LimeGreen;
@@ -1292,8 +1292,6 @@
             this.lblConfirmNbDeadLines.Text = "";
             this.lblConfirmNbDeadLines.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblConfirmNbDeadLines.Click += new System.EventHandler(this.lblConfirmNbDeadLines_Click);
-            this.lblConfirmNbDeadLines.MouseLeave += new System.EventHandler(this.lblConfirmMontantPonctuel_MouseLeave);
-            this.lblConfirmNbDeadLines.MouseHover += new System.EventHandler(this.lblConfirmMontantPonctuel_MouseHover);
             // 
             // lblMontantTotalPonctuelOptionnel
             // 
@@ -1357,7 +1355,7 @@
             // 
             // lblConfirmMontantPonctuel
             // 
-            this.lblConfirmMontantPonctuel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.lblConfirmMontantPonctuel.BackColor = System.Drawing.Color.Transparent;
             this.lblConfirmMontantPonctuel.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblConfirmMontantPonctuel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblConfirmMontantPonctuel.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1370,8 +1368,6 @@
             this.lblConfirmMontantPonctuel.Text = "";
             this.lblConfirmMontantPonctuel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblConfirmMontantPonctuel.Click += new System.EventHandler(this.lblConfirmMontantPonctuel_Click);
-            this.lblConfirmMontantPonctuel.MouseLeave += new System.EventHandler(this.lblConfirmMontantPonctuel_MouseLeave);
-            this.lblConfirmMontantPonctuel.MouseHover += new System.EventHandler(this.lblConfirmMontantPonctuel_MouseHover);
             // 
             // lblHelpMontantPonctuel
             // 
@@ -1588,7 +1584,7 @@
         private MetroFramework.Controls.MetroLabel lblIntitulePonctuel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
         private MetroFramework.Controls.MetroTextBox txtBoxIntitulePonctuel;
-        private MetroFramework.Controls.MetroLabel lblCommentairePonctuel;
+        private MetroFramework.Controls.MetroLabel lblCommentairePonctuelOptionnel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
         private MetroFramework.Controls.MetroTextBox txtBoxCommentairePonctuel;
         private MetroFramework.Controls.MetroLabel lblNbPrelevementsPonctuel;

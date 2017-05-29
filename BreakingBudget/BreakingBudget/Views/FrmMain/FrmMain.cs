@@ -303,19 +303,18 @@ namespace BreakingBudget.Views.FrmMain
 
         private void echancesContainer_Paint_OR_ControlAdded(object sender, object e)
         {
-            ((FlowLayoutPanel)sender).Visible = (this.numberVisibleBoxesEchancePonctuels > 0);
+            ((FlowLayoutPanel)sender).Visible = (this.numberOfDeadlines > 0);
         }
 
-        private void lblConfirmMontantPonctuel_MouseHover(object _s, EventArgs _e)
+        private DialogResult ShowMissingFieldsError()
         {
-            Label sender = (Label)_s;
-            sender.BackColor = Color.FromArgb(215, 215, 215);
-        }
-
-        private void lblConfirmMontantPonctuel_MouseLeave(object _s, EventArgs e)
-        {
-            Label sender = (Label)_s;
-            sender.BackColor = Color.FromArgb(230, 230, 230);
+            return MetroMessageBox.Show(this,
+                string.Format(Program.settings.localize.Translate("err_missing_fields_msg"),
+                    this.txtBoxMontantPonctuel.Text),
+                Program.settings.localize.Translate("err_missing_fields_caption"),
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error
+            );
         }
     }
 }

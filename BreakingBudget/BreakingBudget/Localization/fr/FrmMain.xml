@@ -208,11 +208,11 @@
     <Value>Intitulé</Value>
   </Localization>
   <Localization>
-    <Key>lblCommentairePonctuel</Key>
-    <Value>Commentaire</Value>
+    <Key>lblCommentairePonctuelOptionnel</Key>
+    <Value>Commentaire (optionnel)</Value>
   </Localization>
   <Localization>
-    <Key>placeholder_commentaire</Key>
+    <Key>placeholder_commentaire_optionnel</Key>
     <Value>Courte description du payement</Value>
   </Localization>
   <Localization>
@@ -250,5 +250,13 @@
   <Localization>
     <Key>deadline_no_{0:00}</Key>
     <Value>Échéance {0:00}</Value>
+  </Localization>
+  <Localization>
+    <Key>placeholder_intitule</Key>
+    <Value>Nom de l'achat</Value>
+  </Localization>
+  <Localization>
+    <Key>placeholder_nb_prelevements</Key>
+    <Value>Nombre de mensualités prévues</Value>
   </Localization>
 </root>

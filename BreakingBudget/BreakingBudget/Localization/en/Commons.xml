@@ -70,7 +70,7 @@
   </Localization>
   <Localization>
     <Key>err_missing_fields_msg</Key>
-    <Value>Please fill and select every field.</Value>
+    <Value>Please make sure you filled, selected and validated every field.</Value>
   </Localization>
   <Localization>
     <Key>err_missing_fields_caption</Key>

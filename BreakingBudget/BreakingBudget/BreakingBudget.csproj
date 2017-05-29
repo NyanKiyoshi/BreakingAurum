@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\PostePonctuelRepository.cs" />
     <Compile Include="Repositories\PersonneRepository.cs" />
     <Compile Include="Repositories\PeriodiciteRepository.cs" />
     <Compile Include="Repositories\PosteRepository.cs" />

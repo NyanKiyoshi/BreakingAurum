@@ -23,15 +23,53 @@ namespace BreakingBudget.Repositories
             }
         }
 
+        public static int Create(int codePoste, string libPoste)
+        {
+            // TODO
+
+            // + TODO: DatabaseManager.HandleError(e)
+            return 0;
+        }
+
+        public static int Create(string libPoste)
+        {
+            return Create(
+                // retrieves the biggest identifier in the table and increment it
+                BiggestID() + 1,
+                libPoste
+            );
+        }
+
+        // Counts the number of rows of the table
         public static int CountRows()
         {
             return (int)DatabaseManager.GetFirstRaw("SELECT COUNT(*) FROM " + TABLE_NAME);
         }
 
+        // Gets the biggest codePoste existing in the database
         public static int BiggestID()
         {
             object biggestId = DatabaseManager.GetFirstRaw("SELECT MAX(codePoste) FROM " + TABLE_NAME);
             return (biggestId.GetType() != typeof(DBNull)) ? (int)biggestId : 0;
+        }
+
+        // Checks if the given title (libPoste) is unique or not
+        public static bool IsUnique(string libPoste)
+        {
+            int rowCount;
+
+            OleDbConnection dbConn = DatabaseManager.CreateConnection();
+            OleDbCommand cmd = new OleDbCommand(
+                string.Format(
+                    "SELECT COUNT(*) FROM [{0}] WHERE libPoste = @libPoste", TABLE_NAME),
+                dbConn);
+            cmd.Parameters.AddWithValue("@libPoste", libPoste);
+
+            rowCount = (int)DatabaseManager.GetFirst(cmd);
+
+            dbConn.Close();
+
+            return rowCount == 0;
         }
 
         public static PosteModel[] List()

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using MetroFramework.Controls;
 using MetroFramework;
+using BreakingBudget.Repositories;
 
 namespace BreakingBudget.Views.FrmMain
 {
@@ -21,9 +22,7 @@ namespace BreakingBudget.Views.FrmMain
 		// the list of deadlines generated inputs
         List<MetroTextBox> txtBoxesEchancePonctuels;
 
-		// will be used to know how many boxes are hidden to allow us
-		// to find the hidden ones quickly
-        int numberVisibleBoxesEchancePonctuels = 0;
+        int numberOfDeadlines;
 
 		void InitializePostesPonctuels(FlowLayoutPanel echancesContainer)
         {
@@ -33,11 +32,12 @@ namespace BreakingBudget.Views.FrmMain
             this.lblConfirmNbDeadLines.Font =
 				this.lblConfirmMontantPonctuel.Font = this.IconFont;
             this.lblConfirmNbDeadLines.Text =
-                this.lblConfirmMontantPonctuel.Text = Encoding.UTF8.GetString(new byte[] { 0xEE, 0xA1, 0xB6 });
+                this.lblConfirmMontantPonctuel.Text = Encoding.UTF8.GetString(new byte[] { 0xEE, 0x85, 0xA3 });
 
             // initialize data
             this.containerEchancesPonctuelles = echancesContainer;
             this.txtBoxesEchancePonctuels = new List<MetroTextBox>();
+            this.numberOfDeadlines = 0;
         }
 
         // creates a single container (FlowLayoutPanel) 
@@ -140,18 +140,24 @@ namespace BreakingBudget.Views.FrmMain
             ActivateNeedUpdateMode(this.lblConfirmMontantPonctuel);
         }
 
-        private void FillDeadlines(float f_amount, int startPoint, int endPoint)
+        private bool ArePonctuelAmountFieldsInvalid()
         {
-            string str_amount = f_amount.ToString();
+            return string.IsNullOrWhiteSpace(this.txtBoxNbPrelevementsPonctuel.Text)
+                   || string.IsNullOrWhiteSpace(this.txtBoxMontantPonctuel.Text);
+        }
+
+        private void FillDeadlines(decimal f_amount, int startPoint, int endPoint)
+        {
+            string str_amount = f_amount.ToString("#.##");
             for (int i = startPoint; i < endPoint; ++i)
             {
                 this.txtBoxesEchancePonctuels[i].Text = str_amount;
             }
         }
 
-		private void AskToUpdateDeadLinesFromAmount(float montantTotal, int nbDeadLines)
+		private void AskToUpdateDeadLinesFromAmount(decimal montantTotal, int nbDeadLines)
         {
-            float dividedAmount = montantTotal / nbDeadLines;
+            decimal dividedAmount = montantTotal / nbDeadLines;
 
             // stop blinking the label "updated needed"
             this.stopBlinkingPunctualAmount = true;
@@ -160,7 +166,7 @@ namespace BreakingBudget.Views.FrmMain
             // otherwise, procceed it
             if (MetroMessageBox.Show(this,
                 string.Format(Program.settings.localize.Translate("should_I_override_the_deadlines_to_{0}"),
-                    dividedAmount),
+                    dividedAmount.ToString("#.##")),
                 Program.settings.localize.Translate("requires_confirmation"),
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
@@ -177,27 +183,24 @@ namespace BreakingBudget.Views.FrmMain
         private void lblConfirmMontantPonctuel_Click(object sender, EventArgs e)
         {
             int nbPrelevements;
-            float montantTotal;
+            decimal montantTotal;
+
+            // FIXME: refactor to only one click event
+            // generates deadlines
+            lblConfirmNbDeadLines_Click(sender, e);
 
             //lblConfirmMontantPonctuel
             // TODO: clear all button
             //// TODO: ask if we need to override or not the fields
-            if (string.IsNullOrEmpty(this.txtBoxNbPrelevementsPonctuel.Text)
-                || string.IsNullOrEmpty(this.txtBoxMontantPonctuel.Text))
+            if (ArePonctuelAmountFieldsInvalid())
             {
-                MetroMessageBox.Show(this,
-                    string.Format(Program.settings.localize.Translate("err_missing_fields_msg"),
-                        this.txtBoxMontantPonctuel.Text),
-                    Program.settings.localize.Translate("err_missing_fields_caption"),
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                ShowMissingFieldsError();
                 return;
             }
 
             // else if the values are not number: show error
             if (!int.TryParse(this.txtBoxNbPrelevementsPonctuel.Text, out nbPrelevements)
-                || !float.TryParse(this.txtBoxMontantPonctuel.Text, out montantTotal))
+                || !decimal.TryParse(this.txtBoxMontantPonctuel.Text, out montantTotal))
             {
                 MetroMessageBox.Show(this,
                     Program.settings.localize.Translate("err_not_a_number"),
@@ -211,14 +214,48 @@ namespace BreakingBudget.Views.FrmMain
 
         private void btnValiderBudgetPonctuel_Click(object sender, EventArgs e)
         {
+            // Retrieve the budget's title and remove any leading whitespacess
+            string budgetTitle = this.txtBoxIntitulePonctuel.Text.Trim();
+
             // TODO: if set, check if the sum of the fields is equal to the input sum
             //		 if not, put a warning & ask for confirmation
             //    string.IsNullOrEmpty(this.txtBoxMontantPonctuel.Text)
             //    && float.TryParse(this.txtBoxMontantPonctuel.Text, out montantTotal)
+
+            // - if the budget's title is null/empty or only has spaces:
+            //     -> show missing fields error and stop proceeding
+            //
+            // - otherwise: proceed and insert the data (if the title does not exist yet)
+
+            // TODO: check if every deadline is filled
+            if (string.IsNullOrWhiteSpace(budgetTitle)
+                || this.numberOfDeadlines < 1)
+            {
+                ShowMissingFieldsError();
+                return;
+            }
+
+            // check if the budgetTitle is unique in the database
+            // if not unique: show an error saying that it already exists and stop proceeding
+            if (!PosteRepository.IsUnique(budgetTitle))
+            {
+                MetroMessageBox.Show(this,
+                    Program.settings.localize.Translate("err_duplicate_value"),
+                    Program.settings.localize.Translate("err_duplicate_value_caption"),
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
+            
+            // otherwise: continue and insert the data
+            ////// TODO
+            // Insert the data to the data base
+            ////// TODO
         }
 
 
-		/*
+        /*
 		 * Is called when the value of the input field of the number of deductions is changed.
 		 * 
 		 * - If the input number is greater than the previously generated one:
@@ -232,11 +269,7 @@ namespace BreakingBudget.Views.FrmMain
         {
             FlowLayoutPanel newDeadlineContainer;
             int newDeadlineCount;
-            float montantTotal;
-
-			// will be used to set the last field to update
-			// it doesn't have a real meaning outside the scope
-            int targetNumber;
+            decimal montantTotal;
 
 			if (!int.TryParse(this.txtBoxNbPrelevementsPonctuel.Text, out newDeadlineCount) || newDeadlineCount < 1)
             {
@@ -273,11 +306,19 @@ namespace BreakingBudget.Views.FrmMain
                 this.txtBoxesEchancePonctuels[i].Parent.Visible = true;
             }
 
+            // Unset the error provider and tell the async blinker
+            // to stop blinking the confirmation labels
             this.errorProvider.SetError(this.txtBoxNbPrelevementsPonctuel, "");
             this.stopBlinkingPunctualAmount = true;
 
+            // update the number of deadlines
+            this.numberOfDeadlines = newDeadlineCount;
+
+            // If there was a amount entered:
+            //   ask if the user wants to override the deadlines
+            //   with the amount divided the deadlines number.
 			if (!string.IsNullOrWhiteSpace(this.txtBoxMontantPonctuel.Text)
-				&& float.TryParse(this.txtBoxMontantPonctuel.Text, out montantTotal))
+				&& decimal.TryParse(this.txtBoxMontantPonctuel.Text, out montantTotal))
             {
                 AskToUpdateDeadLinesFromAmount(montantTotal, newDeadlineCount);
             }
