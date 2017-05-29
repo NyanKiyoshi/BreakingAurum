@@ -1,8 +1,0 @@
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\MaterialSidebar\bin\Debug\MaterialSidebar.dll
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\MaterialSidebar\bin\Debug\MaterialSidebar.pdb
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\MaterialSidebar\obj\Debug\MaterialSidebar.dll
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\MaterialSidebar\obj\Debug\MaterialSidebar.pdb
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\libs\MaterialSidebar.dll
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\libs\MaterialSidebar.pdb
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\MaterialSidebar\obj\Debug\MaterialSidebar.csprojResolveAssemblyReference.cache
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\MaterialSidebar\obj\Debug\MaterialSidebar.g.resources

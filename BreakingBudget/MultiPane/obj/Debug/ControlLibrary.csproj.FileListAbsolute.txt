@@ -1,7 +1,0 @@
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\libs\ControlLibrary.dll
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\libs\ControlLibrary.pdb
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\MultiPane\obj\Debug\ControlLibrary.csprojResolveAssemblyReference.cache
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\MultiPane\obj\Debug\Kerido.Controls.Design.frmSwitchPages.resources
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\MultiPane\obj\Debug\ControlLibrary.csproj.GenerateResource.Cache
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\MultiPane\obj\Debug\ControlLibrary.dll
-D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\MultiPane\obj\Debug\ControlLibrary.pdb
