@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Localization>
+    <Key>Cancel</Key>
+    <Value>A&amp;nnuler</Value>
+  </Localization>
+  <Localization>
+    <Key>Submit</Key>
+    <Value>&amp;Envoyer</Value>
+  </Localization>
+  <Localization>
+    <Key>Add</Key>
+    <Value>&amp;Ajouter</Value>
+  </Localization>
+  <Localization>
+    <Key>&amp;Delete</Key>
+    <Value>&amp;Supprimer</Value>
+  </Localization>
+  <Localization>
+    <Key>&amp;Add</Key>
+    <Value>&amp;Ajouter</Value>
+  </Localization>
+  <Localization>
+    <Key>&amp;Undo</Key>
+    <Value>&amp;Revenir en arrière</Value>
+  </Localization>
+  <Localization>
+    <Key>Co&amp;mmit</Key>
+    <Value>Sou&amp;mettre</Value>
+  </Localization>
+  <Localization>
+    <Key>quit_confirmation_requires_commit</Key>
+    <Value>Êtes-vous sûr de vouloir quitter ? Il y a encore des données qui attendent pour être envoyées ou annulées.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_operation_failed_caption</Key>
+    <Value>Échec de l'opération</Value>
+  </Localization>
+  <Localization>
+    <Key>err_operation_requires_commit</Key>
+    <Value>L'opération nécessite la soumission des données avant de procéder.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_deletion_failed: {0}, {1}</Key>
+    <Value>La suppression de {0} a échouée. {1}</Value>
+  </Localization>
+  <Localization>
+    <Key>err_insertion_failed: {0}, {1}</Key>
+    <Value>L'insertion de {0} a échouée. {1}</Value>
+  </Localization>
+  <Localization>
+    <Key>err_invalid_input_empty</Key>
+    <Value>La valeur ne peut pas être vide.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_invalid_input_caption</Key>
+    <Value>Valeur invalide</Value>
+  </Localization>
+  <Localization>
+    <Key>err_duplicate_value</Key>
+    <Value>La valeur doit être unique.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_duplicate_value_{0}</Key>
+    <Value>La valeur du ou des champs `{0}` doit être unique.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_duplicate_value_caption</Key>
+    <Value>Valeur dupliquée</Value>
+  </Localization>
+  <Localization>
+    <Key>err_missing_fields_msg</Key>
+    <Value>Veuillez remplir, selectionner et (si possible) valider tous les champs.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_not_a_number</Key>
+    <Value>Ce n'est pas un nombre.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_missing_fields_caption</Key>
+    <Value>Données manquantes</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_entries_successfully_added_msg</Key>
+    <Value>Les entrées ont bien été ajoutées.</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_entries_successfully_added_caption</Key>
+    <Value>Succès !</Value>
+  </Localization>
+  <Localization>
+    <Key>nothing</Key>
+    <Value>rien</Value>
+  </Localization>
+</root>

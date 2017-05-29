@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Localization>
+    <Key>BreakingBudget</Key>
+    <Value>Los Pollos Hermanos</Value>
+  </Localization>
+  <Localization>
+    <Key>requires_restart</Key>
+    <Value>Cette modification demande à relancer l'application. Voulez-vous relancer maintenant ?</Value>
+  </Localization>
+  <Localization>
+    <Key>requires_confirmation</Key>
+    <Value>Confirmation</Value>
+  </Localization>
+</root>
