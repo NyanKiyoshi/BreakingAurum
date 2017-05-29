@@ -21,15 +21,16 @@ namespace BreakingBudget.Repositories
         {
             OleDbCommand cmd = new OleDbCommand(
                 string.Format(
-                    @"INSERT INTO {0} (codePoste,  datePrelevt,   montantEcheance)
-                               VALUES(@codePoste,  @datePrelevt, @montantEcheance)", TABLE_NAME),
+                    @"INSERT INTO [{0}] (codePoste,  datePrelevt,   montantEcheance) 
+                                 VALUES(@codePoste, @datePrelevt,  @montantEcheance)", TABLE_NAME),
                 dbConn, transaction
             );
 
-            cmd.Parameters.AddWithValue("@codePoste", codePoste);
-            cmd.Parameters.AddWithValue("@datePrelevt", dt);
+            cmd.Parameters.AddWithValue("@codePoste",       codePoste);
+            cmd.Parameters.AddWithValue("@datePrelevt",     OleDbType.Date).Value = dt.Date;
             cmd.Parameters.AddWithValue("@montantEcheance", amount);
 
+            Console.WriteLine("<- INSERT INTO Echeances: {0}, {1}, {2}", codePoste, dt, amount);
             cmd.ExecuteNonQuery();
         }
     }

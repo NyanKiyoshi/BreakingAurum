@@ -46,9 +46,9 @@
             this.lblDescription.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDescription.Location = new System.Drawing.Point(20, 60);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(83, 19);
+            this.lblDescription.Size = new System.Drawing.Size(88, 19);
             this.lblDescription.TabIndex = 0;
-            this.lblDescription.Text = "metroLabel1";
+            this.lblDescription.Text = "lblDescription";
             // 
             // textBoxInput
             // 

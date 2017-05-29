@@ -31,8 +31,8 @@ namespace BreakingBudget.Repositories
                 "INSERT INTO Poste (codePoste, libPoste) VALUES(@codePoste, @libPoste)",
                 dbConn, transaction);
 
-            cmd.Parameters.AddWithValue("codePoste", codePoste);
-            cmd.Parameters.AddWithValue("libPoste", libPoste);
+            cmd.Parameters.AddWithValue("@codePoste", codePoste);
+            cmd.Parameters.AddWithValue("@libPoste", libPoste);
 
             cmd.ExecuteNonQuery();
 

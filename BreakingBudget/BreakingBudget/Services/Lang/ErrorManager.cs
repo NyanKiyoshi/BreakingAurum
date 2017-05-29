@@ -33,16 +33,28 @@ namespace BreakingBudget.Services.Lang
                 collectedErrorData.AppendLine(
                     string.Format("----------------- {0:000} ------------------", i)
                 );
-                collectedErrorData.AppendLine("Message " + (i + 1) + ": " + e.Errors[i].Message);
+                collectedErrorData.AppendLine("Message: " + e.Errors[i].Message);
                 collectedErrorData.AppendLine("Native: " + e.Errors[i].NativeError.ToString());
                 collectedErrorData.AppendLine("Source: " + e.Errors[i].Source);
                 collectedErrorData.AppendLine("SQL: "    + e.Errors[i].SQLState);
             }
+            collectedErrorData.AppendLine("---------------- STACK -----------------");
+            collectedErrorData.AppendLine(e.StackTrace);
             collectedErrorData.AppendLine("----------------- END ------------------");
 
             Console.WriteLine(collectedErrorData);
             errorReporter = new FatalErrorReporter(collectedErrorData.ToString());
             errorReporter.ShowDialog();
+        }
+
+        public static DialogResult EntriesSuccessfullyAdded(IWin32Window owner)
+        {
+            return MetroMessageBox.Show(owner,
+                Program.settings.localize.Translate("msg_entries_successfully_added_msg"),
+                Program.settings.localize.Translate("msg_entries_successfully_added_caption"),
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
 
         public static DialogResult ShowMissingFieldsError(IWin32Window owner)

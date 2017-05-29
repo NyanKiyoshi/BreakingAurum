@@ -147,44 +147,25 @@ namespace BreakingBudget.Views.FrmMain
             Program.settings.Save();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            OleDbConnection conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING);
-            OleDbCommand cmd = conn.CreateCommand();
-
-            cmd.CommandText = "SELECT * FROM Poste;";
-
-            //DataAdapter.OleDbDataReaderToStruct<PosteRepository.PosteModel>(DatabaseManager.ExecuteRawSQL("SELECT * FROM Poste;"));
-
-            conn.Open();
-            foreach (PosteRepository.PosteModel p in DataAdapter.OleDbDataReaderToStruct<PosteRepository.PosteModel>(cmd.ExecuteReader()))
-            {
-                MessageBox.Show(p.ToString());
-            }
-            conn.Close();
-
-            return;
-
-            foreach (DataColumn dc in DatabaseManager.GetCachedTableSchema()["Poste"].Columns)
-            {
-                MessageBox.Show(dc.ColumnName.ToString());
-                MessageBox.Show(dc.DataType.ToString());
-            }
-        }
-
         /// <summary>
         /// Takes a control and make it blink until Condition is false.
         /// </summary>
         /// <param name="ctrl"></param>
         /// <param name="Condition"></param>
-        private async void BlinkControl(Control ctrl, CustomCondition Condition)
+        private async void BlinkControl(Control[] ctrls, CustomCondition Condition)
         {
             while (Condition())
             {
-                ctrl.ForeColor = ctrl.ForeColor == Color.Red ? Color.LimeGreen : Color.Red;
+                foreach (Control ctrl in ctrls)
+                {
+                    ctrl.ForeColor = ctrl.ForeColor == Color.Red ? Color.LimeGreen : Color.Red;
+                }
                 await Task.Delay(500);
             }
-            ctrl.ForeColor = Color.LimeGreen;
+            foreach (Control ctrl in ctrls)
+            {
+                ctrl.ForeColor = Color.LimeGreen;
+            }
         }
 
         private void HelpPosteLabel_Click(object sender, EventArgs e)
@@ -199,35 +180,6 @@ namespace BreakingBudget.Views.FrmMain
         private void PagePostesFixes_AutoSizeChanged(object sender, EventArgs e)
         {
             MessageBox.Show(this.PagePostesFixes.Size.Width.ToString());
-        }
-
-        private void button1_Click_1(object sender, EventArgs ___e)
-        {
-            SelectBuilder sql = new SelectBuilder(
-                // Table "Personne" (required)
-                PersonneRepository.TABLE_NAME,
-
-                // The selected fields (optional)
-                new string[] { "codePersonne", "nomPersonne", "pnPersonne"}
-            );
-
-            sql.AddClause(E_SQL_CLAUSE_SEP.AND, "codePersonne", E_SQL_OPERATION.GREATER_THAN,   3);
-            sql.Or ("codePersonne", E_SQL_OPERATION.EQUAL_TO,  1).
-                And("pnPersonne",   E_SQL_OPERATION.LIKE,      "%iche%");
-
-
-            MessageBox.Show(sql.ToRawSQL());
-
-            OleDbCommand cmd = sql.GetCommand(new OleDbConnection(DatabaseManager.CONNEXION_STRING));
-            cmd.Connection.Open();
-
-            foreach (PersonneRepository.PersonneModel e
-                        in DataAdapter.OleDbDataReaderToStruct<PersonneRepository.PersonneModel>(cmd.ExecuteReader()))
-            {
-                MessageBox.Show(e.codePersonne.ToString());
-            }
-
-            cmd.Connection.Close();
         }
 
         private bool IsTextBoxKeyPressNumber(MetroTextBox sender, char KeyChar,

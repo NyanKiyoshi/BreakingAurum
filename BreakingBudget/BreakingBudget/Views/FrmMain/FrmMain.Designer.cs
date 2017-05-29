@@ -763,7 +763,6 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // PageRevenus
             // 
@@ -1275,7 +1274,7 @@
             this.txtBoxNbPrelevementsPonctuel.WaterMark = "placeholder_nb_prelevements";
             this.txtBoxNbPrelevementsPonctuel.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtBoxNbPrelevementsPonctuel.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxNbPrelevementsPonctuel.TextChanged += new System.EventHandler(this.txtBoxNbPrelevementsPonctuel_TextChanged);
+            this.txtBoxNbPrelevementsPonctuel.TextChanged += new System.EventHandler(this.ConfirmationRequiredTextBox_TextChanged);
             this.txtBoxNbPrelevementsPonctuel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxNbPrelevementsPonctuel_KeyPress);
             this.txtBoxNbPrelevementsPonctuel.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBoxNbPrelevementsPonctuel_KeyUp);
             // 
@@ -1350,7 +1349,7 @@
             this.txtBoxMontantPonctuel.WaterMark = "placeholder_total_prelevements_optionnel";
             this.txtBoxMontantPonctuel.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtBoxMontantPonctuel.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxMontantPonctuel.TextChanged += new System.EventHandler(this.txtBoxMontantPonctuel_TextChanged);
+            this.txtBoxMontantPonctuel.TextChanged += new System.EventHandler(this.ConfirmationRequiredTextBox_TextChanged);
             this.txtBoxMontantPonctuel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxMontantPonctuel_KeyPress);
             this.txtBoxMontantPonctuel.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBoxMontantPonctuel_KeyUp);
             // 

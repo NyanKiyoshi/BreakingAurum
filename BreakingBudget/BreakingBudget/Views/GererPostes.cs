@@ -171,7 +171,7 @@ namespace BreakingBudget.Views
                 rmCmd = new OleDbCommand();
                 rmCmd.Connection = this.dbConn;
                 rmCmd.Transaction = this.transaction;
-                rmCmd.Parameters.AddWithValue("codePoste", entry.codePoste);
+                rmCmd.Parameters.AddWithValue("@codePoste", entry.codePoste);
 
                 try
                 {
@@ -248,8 +248,8 @@ namespace BreakingBudget.Views
                 this.dbConn.Open();
                 OleDbCommand cmd = new OleDbCommand(
                     "INSERT INTO Poste (codePoste, libPoste) VALUES(@codePoste, @libPoste)", this.dbConn);
-                cmd.Parameters.AddWithValue("codePoste", newPoste.codePoste);
-                cmd.Parameters.AddWithValue("libPoste", newPoste.libPoste);
+                cmd.Parameters.AddWithValue("@codePoste", newPoste.codePoste);
+                cmd.Parameters.AddWithValue("@libPoste", newPoste.libPoste);
 
                 try
                 {

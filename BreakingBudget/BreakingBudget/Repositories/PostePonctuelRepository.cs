@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.OleDb;
@@ -52,13 +53,14 @@ namespace BreakingBudget.Repositories
 
             OleDbCommand cmd = new OleDbCommand(
                 string.Format(
-                    "INSERT INTO {0} (codePoste, commentaire) VALUES(@codePoste, @commentaire)", TABLE_NAME),
+                    "INSERT INTO [{0}] (codePoste, commentaire) VALUES(@codePoste, @commentaire)", TABLE_NAME),
                 dbConn, transaction
             );
 
-            cmd.Parameters.AddWithValue("codePoste",   codePoste);
-            cmd.Parameters.AddWithValue("commentaire", comments);
+            cmd.Parameters.AddWithValue("@codePoste",   codePoste);
+            cmd.Parameters.AddWithValue("@commentaire", comments == null ? (object)DBNull.Value : comments);
 
+            Console.WriteLine("<- INSERT INTO PostePonctuel: {0}, {1}", codePoste, comments);
             cmd.ExecuteNonQuery();
 
             foreach (KeyValuePair<DateTime, decimal> deadline in deadLines) {

@@ -80,4 +80,16 @@
     <Key>err_missing_fields_caption</Key>
     <Value>Données manquantes</Value>
   </Localization>
+  <Localization>
+    <Key>msg_entries_successfully_added_msg</Key>
+    <Value>Les entrées ont bien été ajoutées.</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_entries_successfully_added_caption</Key>
+    <Value>Succès !</Value>
+  </Localization>
+  <Localization>
+    <Key>nothing</Key>
+    <Value>rien</Value>
+  </Localization>
 </root>
