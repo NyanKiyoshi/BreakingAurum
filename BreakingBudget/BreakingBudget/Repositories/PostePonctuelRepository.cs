@@ -21,6 +21,51 @@ namespace BreakingBudget.Repositories
             }
         }
 
+        /// <summary>
+        /// Creates a PostePonctuel entry in the database.
+        /// </summary>
+        /// 
+        /// <param name="dbConn">
+        /// The OleDB database instance.
+        /// </param>
+        /// 
+        /// <param name="libPoste">
+        /// The poste name (from the table 'Poste')
+        /// </param>
+        /// 
+        /// <param name="comments">
+        /// A short description about the entry
+        /// </param>
+        /// 
+        /// <param name="deadLines">
+        /// A Key Value Pair List of dates linked to an amount.
+        /// </param>
+        /// 
+        /// <returns></returns>
+        public static void
+        Create(OleDbConnection dbConn, OleDbTransaction transaction,
+            string libPoste, string comments,
+            params KeyValuePair<DateTime, decimal>[] deadLines)
+        {
+            // create the Poste
+            int codePoste = PosteRepository.Create(dbConn, transaction, libPoste);
+
+            OleDbCommand cmd = new OleDbCommand(
+                string.Format(
+                    "INSERT INTO {0} (codePoste, commentaire) VALUES(@codePoste, @commentaire)", TABLE_NAME),
+                dbConn, transaction
+            );
+
+            cmd.Parameters.AddWithValue("codePoste",   codePoste);
+            cmd.Parameters.AddWithValue("commentaire", comments);
+
+            cmd.ExecuteNonQuery();
+
+            foreach (KeyValuePair<DateTime, decimal> deadline in deadLines) {
+                EcheanceRepository.Create(dbConn, transaction, codePoste, deadline.Key, deadline.Value);
+            }
+        }
+
         public static int CountRows()
         {
             return (int)DatabaseManager.GetFirstRaw("SELECT COUNT(*) FROM " + TABLE_NAME);

@@ -81,10 +81,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\EcheanceRepository.cs" />
     <Compile Include="Repositories\PostePonctuelRepository.cs" />
     <Compile Include="Repositories\PersonneRepository.cs" />
     <Compile Include="Repositories\PeriodiciteRepository.cs" />
     <Compile Include="Repositories\PosteRepository.cs" />
+    <Compile Include="Services\Lang\ErrorManager.cs" />
     <Compile Include="Services\AutoCompleter.cs" />
     <Compile Include="Services\Lang\LocalizationManager.cs" />
     <Compile Include="Services\SMSManager.cs" />
@@ -96,6 +98,12 @@
     <Compile Include="Services\SQL\SQLUtils.cs" />
     <Compile Include="Services\SQL\SQLTypes.cs" />
     <Compile Include="Services\Settings.cs" />
+    <Compile Include="Views\FatalErrorReporter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FatalErrorReporter.Designer.cs">
+      <DependentUpon>FatalErrorReporter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmMain\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +146,9 @@
     <Compile Include="Views\UserCreation.Designer.cs">
       <DependentUpon>UserCreation.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\FatalErrorReporter.resx">
+      <DependentUpon>FatalErrorReporter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmMain\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>

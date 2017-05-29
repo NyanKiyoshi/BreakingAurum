@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
@@ -6,6 +7,8 @@ using System.Text;
 using MetroFramework.Controls;
 using MetroFramework;
 using BreakingBudget.Repositories;
+using BreakingBudget.Services.Lang;
+using BreakingBudget.Services.SQL;
 
 namespace BreakingBudget.Views.FrmMain
 {
@@ -19,8 +22,8 @@ namespace BreakingBudget.Views.FrmMain
 		// the base container of the whole deadline inputs
         FlowLayoutPanel containerEchancesPonctuelles;
 
-		// the list of deadlines generated inputs
-        List<MetroTextBox> txtBoxesEchancePonctuels;
+        // the list of deadlines generated inputs
+        List<KeyValuePair<DateTimePicker, MetroTextBox>> txtEchancePonctuelsEntries;
 
         int numberOfDeadlines;
 
@@ -36,7 +39,7 @@ namespace BreakingBudget.Views.FrmMain
 
             // initialize data
             this.containerEchancesPonctuelles = echancesContainer;
-            this.txtBoxesEchancePonctuels = new List<MetroTextBox>();
+            this.txtEchancePonctuelsEntries = new List<KeyValuePair<DateTimePicker, MetroTextBox>>();
             this.numberOfDeadlines = 0;
         }
 
@@ -93,8 +96,10 @@ namespace BreakingBudget.Views.FrmMain
 					_ev.Handled = !(this.IsTextBoxKeyPressNumber(_s as MetroTextBox, _ev.KeyChar))
             );
 
-			// append the newly created amount field to the list
-            this.txtBoxesEchancePonctuels.Add(txtAmount);
+			// append the newly created date picker and amount fields to the list
+            this.txtEchancePonctuelsEntries.Add(
+                new KeyValuePair<DateTimePicker, MetroTextBox>(datePicker, txtAmount)
+            );
 
 			// add the fields to the container before returning it
             fieldsContainer.Controls.Add(lblDeadline);
@@ -151,7 +156,7 @@ namespace BreakingBudget.Views.FrmMain
             string str_amount = f_amount.ToString("#.##");
             for (int i = startPoint; i < endPoint; ++i)
             {
-                this.txtBoxesEchancePonctuels[i].Text = str_amount;
+                this.txtEchancePonctuelsEntries[i].Value.Text = str_amount;
             }
         }
 
@@ -194,7 +199,7 @@ namespace BreakingBudget.Views.FrmMain
             //// TODO: ask if we need to override or not the fields
             if (ArePonctuelAmountFieldsInvalid())
             {
-                ShowMissingFieldsError();
+                ErrorManager.ShowMissingFieldsError(this);
                 return;
             }
 
@@ -212,26 +217,80 @@ namespace BreakingBudget.Views.FrmMain
             AskToUpdateDeadLinesFromAmount(montantTotal, nbPrelevements);
         }
 
-        private void btnValiderBudgetPonctuel_Click(object sender, EventArgs e)
+        /// <summary>
+        /// </summary>
+        /// <returns>
+        /// Returns false if there was a missing data.
+        /// </returns>
+        private bool CheckAndConvertDeadLinesToList(out List<KeyValuePair<DateTime, decimal>> deadLines_list)
         {
-            // Retrieve the budget's title and remove any leading whitespacess
+            decimal amount;
+            KeyValuePair<DateTimePicker, MetroTextBox> e;
+            deadLines_list = new List<KeyValuePair<DateTime, decimal>>();
+
+            // go through every deadlines
+            // (we don't use a foreach(...) because, we don't remove every deadline if the user
+            // edit the deadline count to a lower value as before.
+            // We only hide them for performance issues. But we don't proceed them.)
+            int i = 0;
+            while (i < this.numberOfDeadlines)
+            {
+                // retrieve the entry (DatePicker & TextBox)
+                e = this.txtEchancePonctuelsEntries[i];
+                
+                // try to convert the textbox value to decimal
+                // if we fail, we log it
+                // then we return false and stop proceeding
+                if (!decimal.TryParse(e.Value.Text, out amount))
+                {
+                    Console.WriteLine("F :: Unable to convert {0} ;; {1} to decimal", e.Value, e.Value.Name);
+                    return false;
+                }
+
+                // otherwise, we append it to the deadline list
+                deadLines_list.Add(new KeyValuePair<DateTime, decimal>(
+                    e.Key.Value,  // datetime
+                    amount
+                ));
+
+                ++i;
+            }
+            return true;
+        }
+
+        private void btnValiderBudgetPonctuel_Click(object sender, EventArgs _ev)
+        {
+            OleDbConnection dbConn;
+            OleDbTransaction dbTransaction;
+
+            // Retrieve the budget's title + comments and remove any leading whitespacess
             string budgetTitle = this.txtBoxIntitulePonctuel.Text.Trim();
+            string budgetComments = this.txtBoxCommentairePonctuel.Text.Trim();
+
+            // Will store the deadlines
+            List<KeyValuePair<DateTime, decimal>> deadLines;
 
             // TODO: if set, check if the sum of the fields is equal to the input sum
             //		 if not, put a warning & ask for confirmation
             //    string.IsNullOrEmpty(this.txtBoxMontantPonctuel.Text)
             //    && float.TryParse(this.txtBoxMontantPonctuel.Text, out montantTotal)
 
-            // - if the budget's title is null/empty or only has spaces:
-            //     -> show missing fields error and stop proceeding
+            // - if: 
+            //     - the budget's title is null/empty
+            //     - or only has spaces:
+            //     - or if not every deadline is filled
+            //   ---> show missing fields error and stop proceeding
             //
             // - otherwise: proceed and insert the data (if the title does not exist yet)
 
-            // TODO: check if every deadline is filled
             if (string.IsNullOrWhiteSpace(budgetTitle)
-                || this.numberOfDeadlines < 1)
+                || this.numberOfDeadlines < 1
+
+                // try to retrieve every deadlines, store it to `deadLines` and return false
+                // if there was a missing value
+                || !CheckAndConvertDeadLinesToList(out deadLines))
             {
-                ShowMissingFieldsError();
+                ErrorManager.ShowMissingFieldsError(this);
                 return;
             }
 
@@ -239,19 +298,33 @@ namespace BreakingBudget.Views.FrmMain
             // if not unique: show an error saying that it already exists and stop proceeding
             if (!PosteRepository.IsUnique(budgetTitle))
             {
-                MetroMessageBox.Show(this,
-                    Program.settings.localize.Translate("err_duplicate_value"),
-                    Program.settings.localize.Translate("err_duplicate_value_caption"),
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                // show a duplicate value error and specify the field
+                ErrorManager.ShowDuplicateError(this,
+                    Program.settings.localize.Translate(this.lblIntitulePonctuel.Name));
                 return;
             }
-            
+
             // otherwise: continue and insert the data
-            ////// TODO
+            dbConn = DatabaseManager.CreateConnection();
+
+            dbConn.Open();
+
+            dbTransaction = dbConn.BeginTransaction();
+
             // Insert the data to the data base
-            ////// TODO
+            try {
+                PostePonctuelRepository.Create(dbConn, dbTransaction,
+                    budgetTitle,
+                    budgetComments
+                );
+            } catch (OleDbException e)
+            {
+                ErrorManager.HandleOleDBError(e);
+            }
+            finally
+            {
+                dbConn.Close();
+            }
         }
 
 
@@ -281,12 +354,12 @@ namespace BreakingBudget.Views.FrmMain
 
             // if the number of the alrady created deadlines is less than the entered count,
             // create them.
-            if (this.txtBoxesEchancePonctuels.Count < newDeadlineCount)
+            if (this.txtEchancePonctuelsEntries.Count < newDeadlineCount)
             {
                 // put the main container visible
                 this.echancesContainer.Visible = true;
 
-                for (int c = this.txtBoxesEchancePonctuels.Count + 1; c <= newDeadlineCount; ++c)
+                for (int c = this.txtEchancePonctuelsEntries.Count + 1; c <= newDeadlineCount; ++c)
                 {
                     // generate a (visible) deadline container
                     newDeadlineContainer = this.CreateDeadlineContainer(c);
@@ -297,13 +370,13 @@ namespace BreakingBudget.Views.FrmMain
             }
 
 			// XXX: I should refactor that ugly pill of crap
-            for (int i = newDeadlineCount; i < this.txtBoxesEchancePonctuels.Count; ++i)
+            for (int i = newDeadlineCount; i < this.txtEchancePonctuelsEntries.Count; ++i)
             {
-                this.txtBoxesEchancePonctuels[i].Parent.Visible = false;
+                this.txtEchancePonctuelsEntries[i].Value.Parent.Visible = false;
             }
             for (int i = 0; i < newDeadlineCount; ++i)
             {
-                this.txtBoxesEchancePonctuels[i].Parent.Visible = true;
+                this.txtEchancePonctuelsEntries[i].Value.Parent.Visible = true;
             }
 
             // Unset the error provider and tell the async blinker

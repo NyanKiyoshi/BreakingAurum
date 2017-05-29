@@ -119,6 +119,7 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
             this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
+            this.btnGererBudgetPonctuel = new MetroFramework.Controls.MetroButton();
             this.flowLayoutPanel1.SuspendLayout();
             this.SidebarTable.SuspendLayout();
             this.BaseContainer.SuspendLayout();
@@ -1387,6 +1388,7 @@
             // 
             this.ButtonsPostePonctuelContainer.AutoSize = true;
             this.ButtonsPostePonctuelContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ButtonsPostePonctuelContainer.Controls.Add(this.btnGererBudgetPonctuel);
             this.ButtonsPostePonctuelContainer.Controls.Add(this.btnValiderBudgetPonctuel);
             this.ButtonsPostePonctuelContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.ButtonsPostePonctuelContainer.Location = new System.Drawing.Point(10, 392);
@@ -1424,6 +1426,17 @@
             // metroStyleManager
             // 
             this.metroStyleManager.Owner = this;
+            // 
+            // btnGererBudgetPonctuel
+            // 
+            this.btnGererBudgetPonctuel.AutoSize = true;
+            this.btnGererBudgetPonctuel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnGererBudgetPonctuel.Location = new System.Drawing.Point(0, 0);
+            this.btnGererBudgetPonctuel.Name = "btnGererBudgetPonctuel";
+            this.btnGererBudgetPonctuel.Size = new System.Drawing.Size(97, 30);
+            this.btnGererBudgetPonctuel.TabIndex = 6;
+            this.btnGererBudgetPonctuel.Text = "Gérer les entrées";
+            this.btnGererBudgetPonctuel.UseSelectable = true;
             // 
             // FrmMain
             // 
@@ -1597,6 +1610,7 @@
         private System.Windows.Forms.Label lblHelpMontantPonctuel;
         private System.Windows.Forms.FlowLayoutPanel echancesContainer;
         private System.Windows.Forms.Label lblConfirmNbDeadLines;
+        private MetroFramework.Controls.MetroButton btnGererBudgetPonctuel;
     }
 }
 

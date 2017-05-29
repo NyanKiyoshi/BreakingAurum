@@ -145,6 +145,12 @@ namespace BreakingBudget.Services.Lang
         }
 
         // TODO: suggestion -> translate every Controls.Text
+        public string Translate(string key, params object[] obj)
+        {
+            return string.Format(this.Translate(key), obj);
+        }
+
+        // TODO: suggestion -> translate every Controls.Text
         public string Translate(string key)
         {
             // if value is null or empty, return nothing

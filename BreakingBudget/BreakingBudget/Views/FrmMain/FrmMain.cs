@@ -305,16 +305,5 @@ namespace BreakingBudget.Views.FrmMain
         {
             ((FlowLayoutPanel)sender).Visible = (this.numberOfDeadlines > 0);
         }
-
-        private DialogResult ShowMissingFieldsError()
-        {
-            return MetroMessageBox.Show(this,
-                string.Format(Program.settings.localize.Translate("err_missing_fields_msg"),
-                    this.txtBoxMontantPonctuel.Text),
-                Program.settings.localize.Translate("err_missing_fields_caption"),
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error
-            );
-        }
     }
 }

@@ -23,17 +23,30 @@ namespace BreakingBudget.Repositories
             }
         }
 
-        public static int Create(int codePoste, string libPoste)
+        public static int
+            Create(OleDbConnection dbConn, OleDbTransaction transaction,
+                   int codePoste, string libPoste)
         {
-            // TODO
+            OleDbCommand cmd = new OleDbCommand(
+                "INSERT INTO Poste (codePoste, libPoste) VALUES(@codePoste, @libPoste)",
+                dbConn, transaction);
+
+            cmd.Parameters.AddWithValue("codePoste", codePoste);
+            cmd.Parameters.AddWithValue("libPoste", libPoste);
+
+            cmd.ExecuteNonQuery();
 
             // + TODO: DatabaseManager.HandleError(e)
-            return 0;
+            return codePoste;
         }
 
-        public static int Create(string libPoste)
+        public static int
+            Create(OleDbConnection dbConn, OleDbTransaction transaction, string libPoste)
         {
             return Create(
+                dbConn,
+                transaction,
+
                 // retrieves the biggest identifier in the table and increment it
                 BiggestID() + 1,
                 libPoste

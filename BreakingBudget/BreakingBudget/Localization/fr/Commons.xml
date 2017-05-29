@@ -61,6 +61,10 @@
     <Value>La valeur doit être unique.</Value>
   </Localization>
   <Localization>
+    <Key>err_duplicate_value_{0}</Key>
+    <Value>La valeur du ou des champs `{0}` doit être unique.</Value>
+  </Localization>
+  <Localization>
     <Key>err_duplicate_value_caption</Key>
     <Value>Valeur dupliquée</Value>
   </Localization>

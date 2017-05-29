@@ -84,3 +84,4 @@ C:\BreakingBudget\BreakingBudget\BreakingBudget\obj\Debug\BreakingBudget.Views.G
 C:\BreakingBudget\BreakingBudget\BreakingBudget\obj\Debug\BreakingBudget.Views.Loading.resources
 C:\BreakingBudget\BreakingBudget\BreakingBudget\obj\Debug\BreakingBudget.Views.FrmMain.UserCreation.resources
 C:\BreakingBudget\BreakingBudget\BreakingBudget\obj\Debug\BreakingBudget.csproj.GenerateResource.Cache
+D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\obj\Debug\BreakingBudget.Views.FatalErrorReporter.resources
