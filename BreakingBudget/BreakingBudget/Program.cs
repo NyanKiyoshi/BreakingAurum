@@ -59,9 +59,6 @@ namespace BreakingBudget
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Cache the database's scheme
-            DatabaseManager.GenerateDatabaseCache();
-
             // if the DEBUG symbol is not defined (release or test mode),
             // we redirect the console output to "logs.txt"
 #if !DEBUG
