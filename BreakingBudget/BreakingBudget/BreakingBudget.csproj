@@ -88,16 +88,11 @@
     <Compile Include="Repositories\PeriodiciteRepository.cs" />
     <Compile Include="Repositories\PosteRepository.cs" />
     <Compile Include="Services\Lang\ErrorManager.cs" />
-    <Compile Include="Services\AutoCompleter.cs" />
     <Compile Include="Services\Lang\LocalizationManager.cs" />
     <Compile Include="Services\SMSManager.cs" />
     <Compile Include="Services\SQL\DataAdapter.cs" />
     <Compile Include="Services\SQL\DatabaseManager.cs" />
     <Compile Include="Services\IconFonts.cs" />
-    <Compile Include="Services\SQL\SelectBuilder.cs" />
-    <Compile Include="Services\SQL\SQLClause.cs" />
-    <Compile Include="Services\SQL\SQLUtils.cs" />
-    <Compile Include="Services\SQL\SQLTypes.cs" />
     <Compile Include="Services\Settings.cs" />
     <Compile Include="Views\FatalErrorReporter.cs">
       <SubType>Form</SubType>
