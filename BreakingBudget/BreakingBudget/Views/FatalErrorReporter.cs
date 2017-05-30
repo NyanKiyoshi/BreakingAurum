@@ -36,7 +36,7 @@ namespace BreakingBudget.Views
 
         private void btnAskForSupport_Click(object sender, EventArgs e)
         {
-            ProcessStartInfo sInfo = new ProcessStartInfo("breaking.kisune.com");
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://breaking.kisune.com");
             Process.Start(sInfo);
         }
     }
