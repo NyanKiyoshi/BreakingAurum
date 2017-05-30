@@ -61,8 +61,6 @@ namespace BreakingBudget.Views.FrmMain
 
             this.Font = new Font("Arial", 11f, FontStyle.Regular, GraphicsUnit.Pixel);
 
-            AutoCompleter.ImplementCompleter(textBox1, 2);
-
             // ----
             // Load the user's preferences
             LoadSettings();

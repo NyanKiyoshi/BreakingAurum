@@ -1,12 +1,10 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Data.OleDb;
 using System.Windows.Forms;
 using BreakingBudget.Views.FrmMain;
 using BreakingBudget.Repositories;
 using BreakingBudget.Services.SQL;
+using BreakingBudget.Services.Lang;
 using BreakingBudget.Services;
 
 namespace BreakingBudget
@@ -20,32 +18,39 @@ namespace BreakingBudget
             FrmMain MainForm;
             UserCreation CreationForm;
 
-            // run the Main form and restart it if it asks so
-            do
-            {
-                // load settings from saved data if available. Otherwise: create settings
-                Program.settings = Settings.Load();
-                if (Program.settings == null)
+            try {
+                // run the Main form and restart it if it asks so
+                do
                 {
-                    Program.settings = new Settings();
-                }
-
-                // If there is nobody in the database, open the creation form
-                while (PersonneRepository.CountRows() == 0)
-                {
-                    CreationForm = new UserCreation();
-                    Application.Run(CreationForm);
-
-                    // Stop user cancelled the user creation, close the program
-                    if (CreationForm.UserCancelled)
+                    // load settings from saved data if available. Otherwise: create settings
+                    Program.settings = Settings.Load();
+                    if (Program.settings == null)
                     {
-                        return;
+                        Program.settings = new Settings();
                     }
-                }
 
-                MainForm = new FrmMain();
-                Application.Run(MainForm);
-            } while (MainForm.WaitsForRestart);
+                    // If there is nobody in the database, open the creation form
+                    while (PersonneRepository.CountRows() == 0)
+                    {
+                        CreationForm = new UserCreation();
+                        Application.Run(CreationForm);
+
+                        // Stop user cancelled the user creation, close the program
+                        if (CreationForm.UserCancelled)
+                        {
+                            return;
+                        }
+                    }
+
+                    MainForm = new FrmMain();
+                    Application.Run(MainForm);
+                } while (MainForm.WaitsForRestart);
+            }
+            // handle any fatal OleDB error
+            catch (OleDbException ex)
+            {
+                ErrorManager.HandleOleDBError(ex);
+            }
         }
 
         [STAThread]

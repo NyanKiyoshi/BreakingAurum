@@ -8,6 +8,7 @@ using System.Drawing.Text;
 using System.Threading.Tasks;
 using BreakingBudget.Repositories;
 using BreakingBudget.Services.SQL;
+using BreakingBudget.Services.Lang;
 using MetroFramework;
 using MetroFramework.Forms;
 using MetroFramework.Controls;
@@ -38,12 +39,22 @@ namespace BreakingBudget.Views.FrmMain
             );
 
             cmd.Connection.Open();
-            foreach (PosteRepository.PosteModel e in
-                DataAdapter.OleDbDataReaderToStruct<PosteRepository.PosteModel>(cmd.ExecuteReader()))
+            try
             {
-                this.ComboxBoxListePostes.Items.Add(e);
+                foreach (PosteRepository.PosteModel e in
+                    DataAdapter.OleDbDataReaderToStruct<PosteRepository.PosteModel>(cmd.ExecuteReader()))
+                {
+                    this.ComboxBoxListePostes.Items.Add(e);
+                }
             }
-            cmd.Connection.Close();
+            catch (OleDbException ex)
+            {
+                ErrorManager.HandleOleDBError(ex);
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
         }
 
         private void FillePeriodicitesComboBox()
@@ -51,12 +62,17 @@ namespace BreakingBudget.Views.FrmMain
             // empty the ComboBox
             this.ComboxBoxListePeriodicites.Items.Clear();
 
-            // Translate and add every item
-            foreach (PeriodiciteRepository.PeriodiciteModel e in
-                PeriodiciteRepository.List())
+            try {
+                // Translate and add every item
+                foreach (PeriodiciteRepository.PeriodiciteModel e in
+                    PeriodiciteRepository.List())
+                {
+                    e.libPer = Program.settings.localize.Translate(e.libPer);
+                    this.ComboxBoxListePeriodicites.Items.Add(e);
+                }
+            } catch (OleDbException e)
             {
-                e.libPer = Program.settings.localize.Translate(e.libPer);
-                this.ComboxBoxListePeriodicites.Items.Add(e);
+                ErrorManager.HandleOleDBError(e);
             }
         }
 
@@ -100,17 +116,26 @@ namespace BreakingBudget.Views.FrmMain
                 SelectedPeriode = (PeriodiciteRepository.PeriodiciteModel)this.ComboxBoxListePeriodicites.SelectedItem;
 
                 OleDbCommand cmd = DatabaseManager.InsertInto("PostePeriodique",
-                    new OleDbConnection(DatabaseManager.CONNEXION_STRING),
+                    DatabaseManager.CreateConnection(),
                     new KeyValuePair<string, object>("codePoste", SelectedPoste.codePoste),
                     new KeyValuePair<string, object>("typePer", SelectedPeriode.codePer),
                     new KeyValuePair<string, object>("montant", montant),
                     new KeyValuePair<string, object>("jourDuMois", TousLesXDuMois)
                 );
 
-                // TODO: try-catch
                 cmd.Connection.Open();
-                cmd.ExecuteNonQuery();  // insert data
-                cmd.Connection.Close();
+                try
+                {
+                    cmd.ExecuteNonQuery();  // insert data
+                }
+                catch (OleDbException ex)
+                {
+                    ErrorManager.HandleOleDBError(ex);
+                }
+                finally
+                {
+                    cmd.Connection.Close();
+                }
 
                 this.FillPostesComboBox();
             }

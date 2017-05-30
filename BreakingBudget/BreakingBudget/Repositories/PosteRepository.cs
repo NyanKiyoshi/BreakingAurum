@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Data.OleDb;
-using System.Text;
-using System.Threading.Tasks;
 using BreakingBudget.Services.SQL;
 
 namespace BreakingBudget.Repositories
@@ -71,23 +68,23 @@ namespace BreakingBudget.Repositories
         {
             int rowCount;
 
-            OleDbConnection dbConn = DatabaseManager.CreateConnection();
-            OleDbCommand cmd = new OleDbCommand(
-                string.Format(
-                    "SELECT COUNT(*) FROM [{0}] WHERE libPoste = @libPoste", TABLE_NAME),
-                dbConn);
-            cmd.Parameters.AddWithValue("@libPoste", libPoste);
+            using (OleDbConnection dbConn = DatabaseManager.CreateConnection())
+            {
+                OleDbCommand cmd = new OleDbCommand(
+                    string.Format(
+                        "SELECT COUNT(*) FROM [{0}] WHERE libPoste = @libPoste", TABLE_NAME),
+                    dbConn);
+                cmd.Parameters.AddWithValue("@libPoste", libPoste);
 
-            rowCount = (int)DatabaseManager.GetFirst(cmd);
-
-            dbConn.Close();
+                rowCount = (int)DatabaseManager.GetFirst(cmd);
+            }
 
             return rowCount == 0;
         }
 
         public static PosteModel[] List()
         {
-            OleDbConnection conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING);
+            OleDbConnection conn = DatabaseManager.CreateConnection();
             OleDbCommand cmd = conn.CreateCommand();
 
             cmd.CommandText = "SELECT * FROM " + TABLE_NAME;

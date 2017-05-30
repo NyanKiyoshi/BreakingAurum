@@ -62,7 +62,6 @@ namespace BreakingBudget.Views.FrmMain
             MetroTextBox txtAmount = new MetroTextBox();
 
             // params the StyleExtender to adapt the WindowsForms fields's visual on theme switch
-            // TODO: what if we destroy the field and switch theme? Does it crash?
             this.metroStyleExtender.SetApplyMetroTheme(fieldsContainer, true);
             this.metroStyleExtender.SetApplyMetroTheme(datePicker, true);
 
@@ -148,7 +147,6 @@ namespace BreakingBudget.Views.FrmMain
 
         private void lblHelpMontantPonctuel_Click(object sender, EventArgs e)
         {
-            // TODO: translate it
             MetroMessageBox.Show(this,
                 Program.settings.localize.Translate("help_montant_ponctuel_optionnel"),
                 Program.settings.localize.Translate("help_montant_ponctuel_optionnel_caption"),
@@ -235,8 +233,6 @@ namespace BreakingBudget.Views.FrmMain
                 return;
             }
 
-            // TODO: clear all button
-            //// TODO: ask if we need to override or not the fields
             if (ArePonctuelAmountFieldsInvalid())
             {
                 ErrorManager.ShowMissingFieldsError(this);
@@ -288,11 +284,17 @@ namespace BreakingBudget.Views.FrmMain
 
             // check if the budgetTitle is unique in the database
             // if not unique: show an error saying that it already exists and stop proceeding
-            if (!PosteRepository.IsUnique(budgetTitle))
+            try {
+                if (!PosteRepository.IsUnique(budgetTitle))
+                {
+                    // show a duplicate value error and specify the field
+                    ErrorManager.ShowDuplicateError(this,
+                        Program.settings.localize.Translate(this.lblIntitulePonctuel.Name));
+                    return;
+                }
+            } catch (OleDbException ex)
             {
-                // show a duplicate value error and specify the field
-                ErrorManager.ShowDuplicateError(this,
-                    Program.settings.localize.Translate(this.lblIntitulePonctuel.Name));
+                ErrorManager.HandleOleDBError(ex);
                 return;
             }
 
@@ -348,7 +350,6 @@ namespace BreakingBudget.Views.FrmMain
 
 			if (!int.TryParse(this.txtBoxNbPrelevementsPonctuel.Text, out newDeadlineCount) || newDeadlineCount < 1)
             {
-                // TODO: not a number -> not a VALID number (whole project)
                 this.errorProvider.SetError(this.txtBoxNbPrelevementsPonctuel, 
 					Program.settings.localize.Translate("err_not_a_valid_number"));
                 return;

@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using MetroFramework.Forms;
 using BreakingBudget.Repositories;
 using BreakingBudget.Services.SQL;
+using BreakingBudget.Services.Lang;
 using MetroFramework;
 
 namespace BreakingBudget.Views
@@ -185,16 +186,10 @@ namespace BreakingBudget.Views
                     // then remove it from the list
                     this.listBoxPostes.Items.RemoveAt(removePos);
                 }
-                catch (Exception exc)
+                catch (OleDbException exc)
                 {
                     this.RollbackTransaction();
-                    dialogResult = MetroMessageBox.Show(
-                        this,
-                        string.Format(Program.settings.localize.Translate("err_deletion_failed: {0}, {1}"), entry.libPoste, exc.Message),
-                        Program.settings.localize.Translate("err_operation_failed_caption"),
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
+                    ErrorManager.HandleOleDBError(exc);
                 }
             }
         }
@@ -232,7 +227,7 @@ namespace BreakingBudget.Views
                     return;
                 }
                 
-                // TODO: refactor it to the repository's model (.Create(...))
+                // TODO: refactor this to the repository's model (.Create(...))
                 // create a new Poste model,
                 // add the user's input to it
                 PosteRepository.PosteModel newPoste = new PosteRepository.PosteModel();
@@ -256,16 +251,9 @@ namespace BreakingBudget.Views
                     cmd.ExecuteNonQuery();
                     this.listBoxPostes.Items.Add(newPoste);
                 }
-                catch (Exception exc)
+                catch (OleDbException exc)
                 {
-                    //this.RollbackTransaction();
-                    MetroMessageBox.Show(
-                        this,
-                        string.Format(Program.settings.localize.Translate("err_insertion_failed: {0}, {1}"), newPoste.libPoste, exc.Message),
-                        Program.settings.localize.Translate("err_operation_failed_caption"),
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
+                    ErrorManager.HandleOleDBError(exc);
                 }
                 finally
                 {
@@ -291,9 +279,15 @@ namespace BreakingBudget.Views
         {
             listBoxPostes.Items.Clear();
             listBoxPostes.ClearSelected();
-            listBoxPostes.Items.AddRange(
-                PosteRepository.List()
-            );
+
+            try {
+                listBoxPostes.Items.AddRange(
+                    PosteRepository.List()
+                );
+            } catch (OleDbException e)
+            {
+                ErrorManager.HandleOleDBError(e);
+            }
         }
 
         private void GererPostes_Load(object sender, EventArgs e)

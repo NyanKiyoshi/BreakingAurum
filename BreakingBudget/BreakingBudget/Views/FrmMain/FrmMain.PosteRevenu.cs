@@ -22,7 +22,13 @@ namespace BreakingBudget.Views.FrmMain
         private void FillBeneficiaireList()
         {
             this.listBeneficiairesComboBox.Items.Clear();
-            this.listBeneficiairesComboBox.Items.AddRange(PersonneRepository.List());
+
+            try {
+                this.listBeneficiairesComboBox.Items.AddRange(PersonneRepository.List());
+            } catch (OleDbException e)
+            {
+                ErrorManager.HandleOleDBError(e);
+            }
         }
 
         private void txtTousLesXDuMoisRevenu_TextChanged(object sender, EventArgs e)
@@ -83,11 +89,17 @@ namespace BreakingBudget.Views.FrmMain
 
             // check if the budgetTitle is unique in the database
             // if not unique: show an error saying that it already exists and stop proceeding
-            if (!PosteRepository.IsUnique(revenuPoste))
+            try {
+                if (!PosteRepository.IsUnique(revenuPoste))
+                {
+                    // show a duplicate value error and specify the field
+                    ErrorManager.ShowDuplicateError(this,
+                        Program.settings.localize.Translate(this.lblPosteRevenu.Name));
+                    return;
+                }
+            } catch (OleDbException ex)
             {
-                // show a duplicate value error and specify the field
-                ErrorManager.ShowDuplicateError(this,
-                    Program.settings.localize.Translate(this.lblPosteRevenu.Name));
+                ErrorManager.HandleOleDBError(ex);
                 return;
             }
 

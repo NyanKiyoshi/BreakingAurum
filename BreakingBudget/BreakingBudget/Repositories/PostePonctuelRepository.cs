@@ -75,7 +75,7 @@ namespace BreakingBudget.Repositories
 
         public static PostePonctuel[] List()
         {
-            OleDbConnection conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING);
+            OleDbConnection conn = DatabaseManager.CreateConnection();
             OleDbCommand cmd = conn.CreateCommand();
 
             cmd.CommandText = "SELECT * FROM " + TABLE_NAME;

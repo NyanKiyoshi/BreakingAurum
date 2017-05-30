@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Data.OleDb;
 using BreakingBudget.Services.SQL;
 
@@ -28,7 +26,7 @@ namespace BreakingBudget.Repositories
 
         public static PeriodiciteModel[] List()
         {
-            OleDbConnection conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING);
+            OleDbConnection conn = DatabaseManager.CreateConnection();
             OleDbCommand cmd = conn.CreateCommand();
 
             cmd.CommandText = "SELECT * FROM " + TABLE_NAME;

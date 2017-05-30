@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Windows.Forms;
-using System.Collections.Generic;
 using System.Linq;
 using System.Data.OleDb;
 using BreakingBudget.Services.SQL;
@@ -75,7 +73,7 @@ namespace BreakingBudget.Repositories
 
         public static PosteRevenu[] List()
         {
-            OleDbConnection conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING);
+            OleDbConnection conn = DatabaseManager.CreateConnection();
             OleDbCommand cmd = conn.CreateCommand();
 
             cmd.CommandText = "SELECT * FROM " + TABLE_NAME;

@@ -31,8 +31,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.errorDataTextBox = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.btnClose = new MetroFramework.Controls.MetroButton();
+            this.btnAskForSupport = new MetroFramework.Controls.MetroButton();
             this.btnSendError = new MetroFramework.Controls.MetroButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -70,7 +70,7 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Controls.Add(this.metroButton2);
+            this.panel1.Controls.Add(this.btnAskForSupport);
             this.panel1.Controls.Add(this.btnSendError);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 226);
@@ -78,23 +78,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(531, 20);
             this.panel1.TabIndex = 3;
-            // 
-            // metroButton2
-            // 
-            this.metroButton2.AutoSize = true;
-            this.metroButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.metroButton2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.metroButton2.Location = new System.Drawing.Point(0, 0);
-            this.metroButton2.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
-            this.metroButton2.MaximumSize = new System.Drawing.Size(0, 20);
-            this.metroButton2.MinimumSize = new System.Drawing.Size(0, 20);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(88, 20);
-            this.metroButton2.TabIndex = 2;
-            this.metroButton2.Text = "Ask for support";
-            this.metroButton2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // btnClose
             // 
@@ -111,6 +94,23 @@
             this.btnClose.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.btnClose.UseSelectable = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnAskForSupport
+            // 
+            this.btnAskForSupport.AutoSize = true;
+            this.btnAskForSupport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAskForSupport.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAskForSupport.Location = new System.Drawing.Point(0, 0);
+            this.btnAskForSupport.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
+            this.btnAskForSupport.MaximumSize = new System.Drawing.Size(0, 20);
+            this.btnAskForSupport.MinimumSize = new System.Drawing.Size(0, 20);
+            this.btnAskForSupport.Name = "btnAskForSupport";
+            this.btnAskForSupport.Size = new System.Drawing.Size(88, 20);
+            this.btnAskForSupport.TabIndex = 2;
+            this.btnAskForSupport.Text = "Ask for support";
+            this.btnAskForSupport.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.btnAskForSupport.UseSelectable = true;
+            this.btnAskForSupport.Click += new System.EventHandler(this.btnAskForSupport_Click);
             // 
             // btnSendError
             // 
@@ -152,7 +152,7 @@
         private System.Windows.Forms.RichTextBox errorDataTextBox;
         private System.Windows.Forms.Panel panel1;
         private MetroFramework.Controls.MetroButton btnClose;
-        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroButton btnAskForSupport;
         private MetroFramework.Controls.MetroButton btnSendError;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,9 +34,10 @@ namespace BreakingBudget.Views
             this.Close();
         }
 
-        private void metroButton2_Click(object sender, EventArgs e)
+        private void btnAskForSupport_Click(object sender, EventArgs e)
         {
-            // TODO: open a web page
+            ProcessStartInfo sInfo = new ProcessStartInfo("breaking.kisune.com");
+            Process.Start(sInfo);
         }
     }
 }

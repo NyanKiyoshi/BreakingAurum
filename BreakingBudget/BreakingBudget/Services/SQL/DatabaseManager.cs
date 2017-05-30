@@ -19,9 +19,14 @@ namespace BreakingBudget.Services.SQL
             DatabaseManager._CachedSchemaTable = DatabaseManager.GetTableSchema();
         }
 
+        public static OleDbConnection CreateConnection()
+        {
+            return new OleDbConnection(DatabaseManager.CONNEXION_STRING);
+        }
+
         private static DataTable GetFullTableSchema()
         {
-            using (OleDbConnection db_conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING))
+            using (OleDbConnection db_conn = DatabaseManager.CreateConnection())
             {
                 db_conn.Open();
                 return db_conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
@@ -30,7 +35,7 @@ namespace BreakingBudget.Services.SQL
 
         private static DataSet GetTableSchema()
         {
-            using (OleDbConnection db_conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING))
+            using (OleDbConnection db_conn = DatabaseManager.CreateConnection())
             {
                 db_conn.Open();
 
@@ -46,7 +51,6 @@ namespace BreakingBudget.Services.SQL
                     dt.TableName = row["TABLE_NAME"] as String;
                     tablesFromDB.Tables.Add(dt);
                 }
-                // TODO: cache it and update it on table modification
                 return tablesFromDB;
             }
         }
@@ -56,14 +60,9 @@ namespace BreakingBudget.Services.SQL
             return DatabaseManager._CachedSchemaTable.Tables;
         }
 
-        public static OleDbConnection CreateConnection()
-        {
-            return new OleDbConnection(DatabaseManager.CONNEXION_STRING);
-        }
-
         public static OleDbCommand IterCommand(OleDbCommand Command)
         {
-            OleDbConnection db_conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING);
+            OleDbConnection db_conn = DatabaseManager.CreateConnection();
             {
                 Command.Connection = db_conn;
 
@@ -79,7 +78,7 @@ namespace BreakingBudget.Services.SQL
 
         public static object GetFirst(OleDbCommand Command)
         {
-            using (OleDbConnection db_conn = new OleDbConnection(DatabaseManager.CONNEXION_STRING))
+            using (OleDbConnection db_conn = DatabaseManager.CreateConnection())
             {
                 Command.Connection = db_conn;
 

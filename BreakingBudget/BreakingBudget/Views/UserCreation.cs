@@ -21,6 +21,7 @@ namespace BreakingBudget.Views.FrmMain
         private bool _UserCancelled;
         public bool UserCancelled { get { return this._UserCancelled;  } }
 
+        // TODO: Implement Me
         private void AcceptButton_Click(object sender, EventArgs e)
         {
             bool error = false;
