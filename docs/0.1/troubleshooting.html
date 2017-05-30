@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+    <title>Troubleshooting :: CryptoPaste 0.1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+</head>
+
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+        <div class="wy-side-nav-search">
+            <a href="../" class="fa fa-home"> CryptoPaste</a>
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            <ul>
+                <li class="toctree-l1">
+                    <a href="index.html" class="reference internal">Introduction</a>
+                    <ul>
+                        <li class="toctree-l2"><a href="index.html#what-is-it" class="reference internal">What is CryptoPaste?</a></li>
+                        <li class="toctree-l2"><a href="index.html#index" class="reference internal">Index</a></li>
+                        <li class="toctree-l2"><a href="index.html#license" class="reference internal">License</a></li>
+                    </ul>
+                </li>
+                <li class="toctree-l1">
+                    <a href="requirements.html" class="reference internal">Requirements</a>
+                    <ul>
+                        <li class="toctree-l2"><a href="requirements.html#Python" class="reference internal">Python</a></li>
+                        <li class="toctree-l2"><a href="requirements.html#venv" class="reference internal">Virtual Environment</a></li>
+                        <li class="toctree-l2"><a href="requirements.html#py-devel" class="reference internal">python-devel</a></li>
+                    </ul>
+                </li>
+                <li class="toctree-l1">
+                    <a href="installation.html" class="reference internal">Installation and usage</a>
+                    <ul>
+                        <li class="toctree-l2"><a href="installation.html#clone" class="reference internal">Getting the project</a></li>
+                        <li class="toctree-l2"><a href="installation.html#install" class="reference internal">Installation</a></li>
+                    </ul>
+                </li>
+                <li class="toctree-l1">
+                    <a href="screenshots.html" class="reference internal">Screenshots</a>
+                </li>
+                <li class="toctree-l1 current">
+                    <a href="troubleshooting.html" class="reference internal">Troubleshooting</a>
+                    <ul>
+                        <li class="toctree-l2"><a href="#egg-cache" class="reference internal">Python Egg Cache</a></li>
+                        <li class="toctree-l2"><a href="#setup.py" class="reference internal">Setup.py</a></li>
+                    </ul>
+                </li>
+                <li class="toctree-l1">
+                    <a href="more.html" class="reference internal">More information</a>
+                    <ul>
+                        <li class="toctree-l2"><a href="more.html#environment" class="reference internal">Developed under</a></li>
+                        <li class="toctree-l2"><a href="more.html#contributors" class="reference internal">Contributors</a></li>
+                        <li class="toctree-l2"><a href="more.html#packages" class="reference internal">Used packages for this project</a></li>
+                    </ul>
+                </li>
+                <li class="toctree-l1">
+                    <a href="../changelog.html#0.1" class="reference internal">ChangeLogs</a>
+                </li>
+            </ul>
+        </div>
+
+        &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+        <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+            <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+            <a href="../">CryptoPaste</a>
+        </nav>
+        <div class="wy-nav-content">
+            <div class="rst-content">
+                <div role="navigation" aria-label="breadcrumbs navigation">
+                    <ul class="wy-breadcrumbs">
+                        <li><a href="/docs">Docs</a> &raquo;</li>
+                        <li><a href="../">CryptoPaste</a> &raquo;</li>
+                        <li><a href="../0.1">0.1</a> &raquo;</li>
+                        <li>Troubleshooting</li>
+                        <li class="wy-breadcrumbs-aside">
+                            <a href="https://github.com/NyanKiyoshi/nyankiyoshi.github.io/tree/master/docs/CryptoPaste/0.1/troubleshooting.html" class="fa fa-github"> Edit on GitHub</a>
+                        </li>
+                    </ul>
+                    <hr/>
+                </div>
+
+                <div role="main" class="section">
+                    <h1 id="h1">
+                        Troubleshooting
+                        <a title="Permalink to this headline" href="#h1" class="headerlink">&#182;</a>
+                    </h1>
+                    <div class="section" id="egg-cache">
+                        <h2 class="h2-music">
+                            Python egg cache directory is denied
+                            <a title="Permalink to this headline" href="#egg-cache" class="headerlink">&#182;</a>
+                        </h2>
+                        <blockquote style="white-space: pre-wrap">
+The following error occurred while trying to extract file(s) to the Python egg
+cache:
+
+[Error 5] Access is denied: '/home/user/.python-eggs'
+
+The Python egg cache directory is currently set to:
+
+/home/user/.python-eggs
+
+Perhaps your account does not have write access to this directory?  You can
+change the cache directory by setting the PYTHON_EGG_CACHE environment
+variable to point to an accessible directory.
+                        </blockquote>
+                        <p>
+                            If the access is denied fpr the Python egg cache try to check the folder permissions or
+                            change its working directory.
+                        </p>
+                        <ul>
+                            <li>Like that for POSIX<code>EXPORT PYTHON_EGG_CACHE=/home/user/a_new_python-eggs</code></li>
+                            <li>or like that for Windows<code>SET PYTHON_EGG_CACHE=C:\home\user\a_new_python-eggs</code></li>
+                        </ul>
+                    </div>
+                    <div class="section" id="setup.py">
+                        <h2 class="h2-music">
+                            `setup.py develop` returns an error
+                            <a title="Permalink to this headline" href="#setup.py" class="headerlink">&#182;</a>
+                        </h2>
+                        <ul>
+                            <li>
+                                <h3 id="setup.py.POSIX">
+                                    POSIX user
+                                    <a title="Permalink to this headline" href="#setup.py.POSIX" class="headerlink">&#182;</a>
+                                </h3>
+                                <blockquote>
+                                    error: Setup script exited with error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
+                                </blockquote>
+                                <p>
+                                    If you receive this error try to install:
+                                </p>
+                                <ul>
+                                    <li><code>python-dev</code> for the using Aptitude package manager (or apt) (like Debian, Ubuntu, etc).</li>
+                                    <li>or <code>python-devel</code> for the user using the Yum Package Manager (CentOS, RedHat, etc.).</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h3 id="setup.py.Windows">
+                                    Windows user
+                                    <a title="Permalink to this headline" href="#setup.py.Windows" class="headerlink">&#182;</a>
+                                </h3>
+                                <blockquote>
+                                    error: Unable to find vcvarsall.bat
+                                </blockquote>
+                                <p>
+                                    If you receive this error you need VisualStudio installed on your computer (to compile a package).<br/>
+                                    If VisualStudio is installed, just run the corresponding command in your terminal before
+                                    relaunching the `setup.py develop` (the command below are just temporary and will be forgotten after closing your terminal).
+                                </p>
+                                <ul>
+                                    <li>For VisualStudio 10 (2011)<code>SET VS90COMNTOOLS=%VS100COMNTOOLS%</code>.</li>
+                                    <li>For VisualStudio 11 (2012)<code>SET VS90COMNTOOLS=%VS110COMNTOOLS%</code>.</li>
+                                    <li>For VisualStudio 12 (2013)<code>SET VS90COMNTOOLS=%VS120COMNTOOLS%</code>.</li>
+                                </ul>
+                                <hr/>
+                                <p>
+                                    If it does not work, you can try to install one of the below command by replacing
+                                    <code>.\env\Scripts\easy_install.exe</code> by your path to the easy_install into your virtual environment.
+                                </p>
+                                <ul>
+                                    <li>For x86<code>.\env\Scripts\easy_install.exe http://www.voidspace.org.uk/downloads/pycrypto26/pycrypto-2.6.win32-py3.2.exe</code>.</li>
+                                    <li>Or x64<code>.\env\Scripts\easy_install.exe http://www.voidspace.org.uk/downloads/pycrypto26/pycrypto-2.6.win-amd64-py3.2.exe</code>.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <footer>
+                    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+                        <a href="more.html" class="btn btn-neutral float-right" title="Next: more information about this project.">
+                            Next
+                            <span class="fa fa-arrow-circle-right"></span>
+                        </a>
+                        <a href="screenshots.html" class="btn btn-neutral" title="Previous: screenshots.">
+                            <span class="fa fa-arrow-circle-left"></span>
+                            Previous
+                        </a>
+                    </div>
+
+                    <hr/>
+
+                    <div role="contentinfo">
+                        <p>&copy; Copyright 2015 <a href="https://github.com/NyanKiyoshi/">NyanKiyoshi</a></p>
+                    </div>
+                    Using the <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a>.
+                </footer>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div aria-label="versions" role="note" data-toggle="rst-versions" class="rst-versions">
+    <span data-toggle="rst-current-version" class="rst-current-version">
+      <span class="fa fa-book"> Doc. of CryptoPaste</span>
+      0.1
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <div class="injected">
+            <dl>
+                <dt>Versions</dt>
+                <dd><a href="../latest/">latest</a></dd>
+                <script src="../static/js/version.js"></script>
+            </dl>
+            <dl>
+                <dt>More links</dt>
+                <dd>
+                    <a href="https://github.com/NyanKiyoshi/CryptoPaste/" target="_blank">CryptoPaste repository</a>
+                </dd>
+                <dd>
+                    <a href="../downloads.html">Downloads</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>On GitHub</dt>
+                <dd>
+                    <a href="https://github.com/NyanKiyoshi/nyankiyoshi.github.io/blob/master/docs/CryptoPaste/0.1/troubleshooting.html">Edit</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<script src="../../static/js/jquery-2.0.3.min.js" type="text/javascript"></script>
+<script src="../../static/js/modernizr.min.js"></script>
+<script src="../../static/js/theme.js"></script>
+</body>
+</html>
