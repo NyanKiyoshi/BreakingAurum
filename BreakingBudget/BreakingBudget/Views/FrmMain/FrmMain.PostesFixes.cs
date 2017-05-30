@@ -128,14 +128,6 @@ namespace BreakingBudget.Views.FrmMain
             this.FillPostesComboBox();
         }
 
-        private void TxtBoxMontantPosteFixe_KeyPress(object _s, KeyPressEventArgs e)
-        {
-            if (!IsTextBoxKeyPressNumber((MetroTextBox)_s, e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
         private void TxtBoxTousLesXMois_KeyUp(object _s, KeyEventArgs e)
         {
 
@@ -143,11 +135,11 @@ namespace BreakingBudget.Views.FrmMain
             MetroTextBox sender = (MetroTextBox)_s;
             if (!int.TryParse(sender.Text, out val))
             {
-                errorProvider.SetError(lblDuMois, Program.settings.localize.Translate("err_not_a_number"));
+                errorProvider.SetError(lblDuMois, Program.settings.localize.Translate("err_not_a_valid_number"));
             }
             else
             {
-                errorProvider.SetError(lblDuMois, (val > 0 && val < 32) ? null : Program.settings.localize.Translate("err_must_be_between_1_and_31"));
+                errorProvider.SetError(lblDuMois, (val > 0 && val < 29) ? null : Program.settings.localize.Translate("err_must_be_between_1_and_31"));
             }
         }
     }

@@ -47,6 +47,7 @@ namespace BreakingBudget.Services.Lang
             errorReporter.ShowDialog();
         }
 
+        #region success
         public static DialogResult EntriesSuccessfullyAdded(IWin32Window owner)
         {
             return MetroMessageBox.Show(owner,
@@ -56,7 +57,9 @@ namespace BreakingBudget.Services.Lang
                 MessageBoxIcon.Information
             );
         }
+        #endregion
 
+        #region fieldErrors
         public static DialogResult ShowMissingFieldsError(IWin32Window owner)
         {
             return MetroMessageBox.Show(owner,
@@ -65,6 +68,14 @@ namespace BreakingBudget.Services.Lang
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error
             );
+        }
+
+        public static DialogResult ShowNotANumberError(IWin32Window owner)
+        {
+            return MetroMessageBox.Show(owner,
+                Program.settings.localize.Translate("err_not_a_valid_number"),
+                Program.settings.localize.Translate("err_uh_oh_caption"),
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public static DialogResult ShowDuplicateError(IWin32Window owner)
@@ -86,5 +97,6 @@ namespace BreakingBudget.Services.Lang
                 MessageBoxIcon.Error
             );
         }
+        #endregion
     }
 }

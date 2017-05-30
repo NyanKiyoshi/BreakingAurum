@@ -80,7 +80,7 @@
             this.FieldsContainerRevenu = new System.Windows.Forms.FlowLayoutPanel();
             this.lblPosteRevenu = new MetroFramework.Controls.MetroLabel();
             this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.txtBoxPosteRevenu = new MetroFramework.Controls.MetroTextBox();
             this.lblBeneficiaireRevenu = new MetroFramework.Controls.MetroLabel();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.listBeneficiairesComboBox = new MetroFramework.Controls.MetroComboBox();
@@ -89,7 +89,7 @@
             this.txtBoxMontantRevenu = new MetroFramework.Controls.MetroTextBox();
             this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblTousLesXDuMoisRevenu = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
+            this.txtTousLesXDuMoisRevenu = new MetroFramework.Controls.MetroTextBox();
             this.lblDuMoisRevenu = new MetroFramework.Controls.MetroLabel();
             this.ButtonsRevenuContainer = new System.Windows.Forms.Panel();
             this.btnValiderRevenu = new MetroFramework.Controls.MetroButton();
@@ -114,12 +114,12 @@
             this.lblConfirmMontantPonctuel = new System.Windows.Forms.Label();
             this.lblHelpMontantPonctuel = new System.Windows.Forms.Label();
             this.ButtonsPostePonctuelContainer = new System.Windows.Forms.Panel();
+            this.btnGererBudgetPonctuel = new MetroFramework.Controls.MetroButton();
             this.btnValiderBudgetPonctuel = new MetroFramework.Controls.MetroButton();
             this.multiPanePage3 = new Kerido.Controls.MultiPanePage();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
             this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
-            this.btnGererBudgetPonctuel = new MetroFramework.Controls.MetroButton();
             this.flowLayoutPanel1.SuspendLayout();
             this.SidebarTable.SuspendLayout();
             this.BaseContainer.SuspendLayout();
@@ -266,7 +266,7 @@
             this.ContentPanel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.ContentPanel.Name = "ContentPanel";
             this.ContentPanel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.ContentPanel.SelectedPage = this.PagePostesPonctuel;
+            this.ContentPanel.SelectedPage = this.PageRevenus;
             this.ContentPanel.Size = new System.Drawing.Size(1017, 432);
             this.ContentPanel.TabIndex = 9;
             this.ContentPanel.Text = "Meow";
@@ -496,7 +496,7 @@
             this.TxtBoxTousLesXMois.WaterMark = "...";
             this.TxtBoxTousLesXMois.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.TxtBoxTousLesXMois.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.TxtBoxTousLesXMois.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtBoxTousLesXMois_KeyPress);
+            this.TxtBoxTousLesXMois.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowKeyPressANonNegativeInteger);
             this.TxtBoxTousLesXMois.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtBoxTousLesXMois_KeyUp);
             // 
             // lblDuMois
@@ -566,7 +566,7 @@
             this.TxtBoxMontantPosteFixe.WaterMark = "placeholder_amount_to_pay_monthly";
             this.TxtBoxMontantPosteFixe.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.TxtBoxMontantPosteFixe.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBoxMontantPosteFixe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtBoxMontantPosteFixe_KeyPress);
+            this.TxtBoxMontantPosteFixe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowKeyPressAFloat);
             // 
             // SettingsPage
             // 
@@ -818,7 +818,7 @@
             // 
             this.flowLayoutPanel7.AutoSize = true;
             this.flowLayoutPanel7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel7.Controls.Add(this.metroTextBox1);
+            this.flowLayoutPanel7.Controls.Add(this.txtBoxPosteRevenu);
             this.flowLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel7.Location = new System.Drawing.Point(3, 22);
             this.flowLayoutPanel7.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
@@ -826,36 +826,36 @@
             this.flowLayoutPanel7.Size = new System.Drawing.Size(352, 25);
             this.flowLayoutPanel7.TabIndex = 10;
             // 
-            // metroTextBox1
+            // txtBoxPosteRevenu
             // 
             // 
             // 
             // 
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(328, 1);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(17, 17);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(3, 3);
-            this.metroTextBox1.MaxLength = 10;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(346, 19);
-            this.metroTextBox1.TabIndex = 4;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxPosteRevenu.CustomButton.Image = null;
+            this.txtBoxPosteRevenu.CustomButton.Location = new System.Drawing.Point(328, 1);
+            this.txtBoxPosteRevenu.CustomButton.Name = "";
+            this.txtBoxPosteRevenu.CustomButton.Size = new System.Drawing.Size(17, 17);
+            this.txtBoxPosteRevenu.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtBoxPosteRevenu.CustomButton.TabIndex = 1;
+            this.txtBoxPosteRevenu.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtBoxPosteRevenu.CustomButton.UseSelectable = true;
+            this.txtBoxPosteRevenu.CustomButton.Visible = false;
+            this.txtBoxPosteRevenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtBoxPosteRevenu.Lines = new string[0];
+            this.txtBoxPosteRevenu.Location = new System.Drawing.Point(3, 3);
+            this.txtBoxPosteRevenu.MaxLength = 10;
+            this.txtBoxPosteRevenu.Name = "txtBoxPosteRevenu";
+            this.txtBoxPosteRevenu.PasswordChar = '\0';
+            this.txtBoxPosteRevenu.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtBoxPosteRevenu.SelectedText = "";
+            this.txtBoxPosteRevenu.SelectionLength = 0;
+            this.txtBoxPosteRevenu.SelectionStart = 0;
+            this.txtBoxPosteRevenu.ShortcutsEnabled = true;
+            this.txtBoxPosteRevenu.Size = new System.Drawing.Size(346, 19);
+            this.txtBoxPosteRevenu.TabIndex = 4;
+            this.txtBoxPosteRevenu.UseSelectable = true;
+            this.txtBoxPosteRevenu.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtBoxPosteRevenu.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // lblBeneficiaireRevenu
             // 
@@ -943,13 +943,14 @@
             this.txtBoxMontantRevenu.UseSelectable = true;
             this.txtBoxMontantRevenu.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtBoxMontantRevenu.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxMontantRevenu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowKeyPressAPositiveFloat);
             // 
             // flowLayoutPanel9
             // 
             this.flowLayoutPanel9.AutoSize = true;
             this.flowLayoutPanel9.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel9.Controls.Add(this.lblTousLesXDuMoisRevenu);
-            this.flowLayoutPanel9.Controls.Add(this.metroTextBox2);
+            this.flowLayoutPanel9.Controls.Add(this.txtTousLesXDuMoisRevenu);
             this.flowLayoutPanel9.Controls.Add(this.lblDuMoisRevenu);
             this.flowLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel9.Location = new System.Drawing.Point(3, 199);
@@ -971,39 +972,41 @@
             this.lblTousLesXDuMoisRevenu.Text = "Tous les";
             this.lblTousLesXDuMoisRevenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // metroTextBox2
+            // txtTousLesXDuMoisRevenu
             // 
             // 
             // 
             // 
-            this.metroTextBox2.CustomButton.Image = null;
-            this.metroTextBox2.CustomButton.Location = new System.Drawing.Point(22, 1);
-            this.metroTextBox2.CustomButton.Name = "";
-            this.metroTextBox2.CustomButton.Size = new System.Drawing.Size(17, 17);
-            this.metroTextBox2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox2.CustomButton.TabIndex = 1;
-            this.metroTextBox2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox2.CustomButton.UseSelectable = true;
-            this.metroTextBox2.CustomButton.Visible = false;
-            this.metroTextBox2.Lines = new string[0];
-            this.metroTextBox2.Location = new System.Drawing.Point(61, 3);
-            this.metroTextBox2.MaxLength = 2;
-            this.metroTextBox2.MinimumSize = new System.Drawing.Size(29, 0);
-            this.metroTextBox2.Name = "metroTextBox2";
-            this.metroTextBox2.PasswordChar = '\0';
-            this.metroTextBox2.PromptText = "...";
-            this.metroTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox2.SelectedText = "";
-            this.metroTextBox2.SelectionLength = 0;
-            this.metroTextBox2.SelectionStart = 0;
-            this.metroTextBox2.ShortcutsEnabled = true;
-            this.metroTextBox2.Size = new System.Drawing.Size(40, 19);
-            this.metroTextBox2.TabIndex = 11;
-            this.metroTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.metroTextBox2.UseSelectable = true;
-            this.metroTextBox2.WaterMark = "...";
-            this.metroTextBox2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtTousLesXDuMoisRevenu.CustomButton.Image = null;
+            this.txtTousLesXDuMoisRevenu.CustomButton.Location = new System.Drawing.Point(22, 1);
+            this.txtTousLesXDuMoisRevenu.CustomButton.Name = "";
+            this.txtTousLesXDuMoisRevenu.CustomButton.Size = new System.Drawing.Size(17, 17);
+            this.txtTousLesXDuMoisRevenu.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtTousLesXDuMoisRevenu.CustomButton.TabIndex = 1;
+            this.txtTousLesXDuMoisRevenu.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtTousLesXDuMoisRevenu.CustomButton.UseSelectable = true;
+            this.txtTousLesXDuMoisRevenu.CustomButton.Visible = false;
+            this.txtTousLesXDuMoisRevenu.Lines = new string[0];
+            this.txtTousLesXDuMoisRevenu.Location = new System.Drawing.Point(61, 3);
+            this.txtTousLesXDuMoisRevenu.MaxLength = 2;
+            this.txtTousLesXDuMoisRevenu.MinimumSize = new System.Drawing.Size(29, 0);
+            this.txtTousLesXDuMoisRevenu.Name = "txtTousLesXDuMoisRevenu";
+            this.txtTousLesXDuMoisRevenu.PasswordChar = '\0';
+            this.txtTousLesXDuMoisRevenu.PromptText = "...";
+            this.txtTousLesXDuMoisRevenu.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtTousLesXDuMoisRevenu.SelectedText = "";
+            this.txtTousLesXDuMoisRevenu.SelectionLength = 0;
+            this.txtTousLesXDuMoisRevenu.SelectionStart = 0;
+            this.txtTousLesXDuMoisRevenu.ShortcutsEnabled = true;
+            this.txtTousLesXDuMoisRevenu.Size = new System.Drawing.Size(40, 19);
+            this.txtTousLesXDuMoisRevenu.TabIndex = 11;
+            this.txtTousLesXDuMoisRevenu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTousLesXDuMoisRevenu.UseSelectable = true;
+            this.txtTousLesXDuMoisRevenu.WaterMark = "...";
+            this.txtTousLesXDuMoisRevenu.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtTousLesXDuMoisRevenu.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtTousLesXDuMoisRevenu.TextChanged += new System.EventHandler(this.txtTousLesXDuMoisRevenu_TextChanged);
+            this.txtTousLesXDuMoisRevenu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowKeyPressANonNegativeInteger);
             // 
             // lblDuMoisRevenu
             // 
@@ -1041,6 +1044,7 @@
             this.btnValiderRevenu.TabIndex = 5;
             this.btnValiderRevenu.Text = "Valider";
             this.btnValiderRevenu.UseSelectable = true;
+            this.btnValiderRevenu.Click += new System.EventHandler(this.btnValiderRevenu_Click);
             // 
             // btnGererBeneficiairesRevenu
             // 
@@ -1275,7 +1279,7 @@
             this.txtBoxNbPrelevementsPonctuel.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtBoxNbPrelevementsPonctuel.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxNbPrelevementsPonctuel.TextChanged += new System.EventHandler(this.ConfirmationRequiredTextBox_TextChanged);
-            this.txtBoxNbPrelevementsPonctuel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxNbPrelevementsPonctuel_KeyPress);
+            this.txtBoxNbPrelevementsPonctuel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowKeyPressANonNegativeInteger);
             this.txtBoxNbPrelevementsPonctuel.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBoxNbPrelevementsPonctuel_KeyUp);
             // 
             // lblConfirmNbDeadLines
@@ -1350,7 +1354,7 @@
             this.txtBoxMontantPonctuel.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtBoxMontantPonctuel.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxMontantPonctuel.TextChanged += new System.EventHandler(this.ConfirmationRequiredTextBox_TextChanged);
-            this.txtBoxMontantPonctuel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxMontantPonctuel_KeyPress);
+            this.txtBoxMontantPonctuel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowKeyPressAPositiveFloat);
             this.txtBoxMontantPonctuel.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBoxMontantPonctuel_KeyUp);
             // 
             // lblConfirmMontantPonctuel
@@ -1396,6 +1400,17 @@
             this.ButtonsPostePonctuelContainer.Size = new System.Drawing.Size(997, 30);
             this.ButtonsPostePonctuelContainer.TabIndex = 3;
             // 
+            // btnGererBudgetPonctuel
+            // 
+            this.btnGererBudgetPonctuel.AutoSize = true;
+            this.btnGererBudgetPonctuel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnGererBudgetPonctuel.Location = new System.Drawing.Point(0, 0);
+            this.btnGererBudgetPonctuel.Name = "btnGererBudgetPonctuel";
+            this.btnGererBudgetPonctuel.Size = new System.Drawing.Size(97, 30);
+            this.btnGererBudgetPonctuel.TabIndex = 6;
+            this.btnGererBudgetPonctuel.Text = "Gérer les entrées";
+            this.btnGererBudgetPonctuel.UseSelectable = true;
+            // 
             // btnValiderBudgetPonctuel
             // 
             this.btnValiderBudgetPonctuel.AutoSize = true;
@@ -1425,17 +1440,6 @@
             // metroStyleManager
             // 
             this.metroStyleManager.Owner = this;
-            // 
-            // btnGererBudgetPonctuel
-            // 
-            this.btnGererBudgetPonctuel.AutoSize = true;
-            this.btnGererBudgetPonctuel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnGererBudgetPonctuel.Location = new System.Drawing.Point(0, 0);
-            this.btnGererBudgetPonctuel.Name = "btnGererBudgetPonctuel";
-            this.btnGererBudgetPonctuel.Size = new System.Drawing.Size(97, 30);
-            this.btnGererBudgetPonctuel.TabIndex = 6;
-            this.btnGererBudgetPonctuel.Text = "Gérer les entrées";
-            this.btnGererBudgetPonctuel.UseSelectable = true;
             // 
             // FrmMain
             // 
@@ -1575,7 +1579,7 @@
         private System.Windows.Forms.FlowLayoutPanel FieldsContainerRevenu;
         private MetroFramework.Controls.MetroLabel lblPosteRevenu;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
+        private MetroFramework.Controls.MetroTextBox txtBoxPosteRevenu;
         private MetroFramework.Controls.MetroLabel lblBeneficiaireRevenu;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private MetroFramework.Controls.MetroComboBox listBeneficiairesComboBox;
@@ -1584,7 +1588,7 @@
         private MetroFramework.Controls.MetroTextBox txtBoxMontantRevenu;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
         private MetroFramework.Controls.MetroLabel lblTousLesXDuMoisRevenu;
-        private MetroFramework.Controls.MetroTextBox metroTextBox2;
+        private MetroFramework.Controls.MetroTextBox txtTousLesXDuMoisRevenu;
         private MetroFramework.Controls.MetroLabel lblDuMoisRevenu;
         private System.Windows.Forms.Panel ButtonsRevenuContainer;
         private MetroFramework.Controls.MetroButton btnValiderRevenu;

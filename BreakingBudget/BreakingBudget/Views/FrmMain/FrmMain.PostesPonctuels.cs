@@ -91,10 +91,7 @@ namespace BreakingBudget.Views.FrmMain
             txtAmount.WaterMark = lblDeadline.Text;
 
 			// create a KeyPress event for txtAmount that checks if the input is a number or not
-            txtAmount.KeyPress += new KeyPressEventHandler(
-				(object _s, KeyPressEventArgs _ev) =>
-					_ev.Handled = !(this.IsTextBoxKeyPressNumber(_s as MetroTextBox, _ev.KeyChar))
-            );
+            txtAmount.KeyPress += new KeyPressEventHandler(this.AllowKeyPressAFloat);
 
 			// append the newly created date picker and amount fields to the list
             this.txtEchancePonctuelsEntries.Add(
@@ -172,16 +169,6 @@ namespace BreakingBudget.Views.FrmMain
             }
         }
 
-        private void txtBoxNbPrelevementsPonctuel_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !(this.IsTextBoxKeyPressNumber(sender as MetroTextBox, e.KeyChar, false, false));
-        }
-
-        private void txtBoxMontantPonctuel_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !(this.IsTextBoxKeyPressNumber(sender as MetroTextBox, e.KeyChar, true, false));
-        }
-
         private void ConfirmationRequiredTextBox_TextChanged(object sender, EventArgs e)
         {
             ActivateNeedUpdateMode();
@@ -244,10 +231,7 @@ namespace BreakingBudget.Views.FrmMain
             if (!int.TryParse(this.txtBoxNbPrelevementsPonctuel.Text, out nbPrelevements)
                 || !decimal.TryParse(this.txtBoxMontantPonctuel.Text, out montantTotal))
             {
-                MetroMessageBox.Show(this,
-                    Program.settings.localize.Translate("err_not_a_number"),
-                    Program.settings.localize.Translate("err_uh_oh_caption"),
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorManager.ShowNotANumberError(this);
                 return;
             }
 
@@ -366,7 +350,7 @@ namespace BreakingBudget.Views.FrmMain
             {
                 // TODO: not a number -> not a VALID number (whole project)
                 this.errorProvider.SetError(this.txtBoxNbPrelevementsPonctuel, 
-					Program.settings.localize.Translate("err_not_a_number"));
+					Program.settings.localize.Translate("err_not_a_valid_number"));
                 return;
             }
 

@@ -69,8 +69,8 @@
     <Value>Valor duplicado</Value>
   </Localization>
   <Localization>
-    <Key>err_not_a_number</Key>
-    <Value>No un número.</Value>
+    <Key>err_not_a_valid_number</Key>
+    <Value>No un válido número.</Value>
   </Localization>
   <Localization>
     <Key>err_missing_fields_msg</Key>

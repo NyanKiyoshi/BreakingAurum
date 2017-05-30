@@ -73,8 +73,8 @@
     <Value>Veuillez remplir, selectionner et (si possible) valider tous les champs.</Value>
   </Localization>
   <Localization>
-    <Key>err_not_a_number</Key>
-    <Value>Ce n'est pas un nombre.</Value>
+    <Key>err_not_a_valid_number</Key>
+    <Value>Ce n'est pas un nombre valide.</Value>
   </Localization>
   <Localization>
     <Key>err_missing_fields_caption</Key>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.OleDb;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,13 +21,27 @@ namespace BreakingBudget.Repositories
 
             override public string ToString()
             {
-                return this.nomPersonne;
+                return this.nomPersonne + " " + this.pnPersonne;
             }
         }
 
         public static int CountRows()
         {
             return (int)DatabaseManager.GetFirstRaw("SELECT COUNT(*) FROM " + TABLE_NAME);
+        }
+
+        public static PersonneModel[] List()
+        {
+            OleDbConnection conn = DatabaseManager.CreateConnection();
+            OleDbCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = "SELECT * FROM " + TABLE_NAME;
+
+            conn.Open();
+            PersonneModel[] data = DataAdapter.OleDbDataReaderToStruct<PersonneModel>(cmd.ExecuteReader()).ToArray();
+            conn.Close();
+
+            return data;
         }
     }
 }

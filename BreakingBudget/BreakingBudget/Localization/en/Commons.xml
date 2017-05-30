@@ -77,7 +77,7 @@
     <Value>Missing Data</Value>
   </Localization>
   <Localization>
-    <Key>err_not_a_number</Key>
-    <Value>Not a number.</Value>
+    <Key>err_not_a_valid_number</Key>
+    <Value>Not a valid number.</Value>
   </Localization>
 </root>

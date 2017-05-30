@@ -12,7 +12,7 @@ namespace BreakingBudget.Views.FrmMain
 {
     partial class FrmMain
     {
-        void InitSettingsPage() {
+        void InitiliazeSettingsPage() {
             this.VariantStyleComboBox.DisplayMember = 
                 this.ThemeStyleComboBox.DisplayMember = "Key";
 

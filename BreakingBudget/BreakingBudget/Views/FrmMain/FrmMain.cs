@@ -111,7 +111,8 @@ namespace BreakingBudget.Views.FrmMain
             // initialize sub panels
             InitializePostesFixes();
             InitializePostesPonctuels(echancesContainer);
-            InitSettingsPage();
+            InitiliazePosteRevenu();
+            InitiliazeSettingsPage();
         }
 
         private void LoadSettings()
@@ -182,6 +183,34 @@ namespace BreakingBudget.Views.FrmMain
             MessageBox.Show(this.PagePostesFixes.Size.Width.ToString());
         }
 
+        private void AllowKeyPressAFloat(object s, KeyPressEventArgs e)
+        {
+            e.Handled = !(
+                this.IsTextBoxKeyPressNumber((MetroTextBox)s, e.KeyChar)
+            );
+        }
+
+        private void AllowKeyPressAPositiveFloat(object s, KeyPressEventArgs e)
+        {
+            e.Handled = !(
+                this.IsTextBoxKeyPressNumber((MetroTextBox)s, e.KeyChar, true, false)
+            );
+        }
+
+        private void AllowKeyPressAInteger(object s, KeyPressEventArgs e)
+        {
+            e.Handled = !(
+                this.IsTextBoxKeyPressNumber((MetroTextBox)s, e.KeyChar, false)
+            );
+        }
+
+        private void AllowKeyPressANonNegativeInteger(object s, KeyPressEventArgs e)
+        {
+            e.Handled = !(
+                this.IsTextBoxKeyPressNumber((MetroTextBox)s, e.KeyChar, false, false)
+            );
+        }
+
         private bool IsTextBoxKeyPressNumber(MetroTextBox sender, char KeyChar,
             bool allowFloat = true,
             bool allowNegatives = true)
@@ -205,17 +234,6 @@ namespace BreakingBudget.Views.FrmMain
                 return true;
             }
             return false;
-        }
-
-        private void TxtBoxTousLesXMois_KeyPress(object _s, KeyPressEventArgs e)
-        {
-            int val;
-            MetroTextBox sender = (MetroTextBox)_s;
-
-            if (!IsTextBoxKeyPressNumber(sender, e.KeyChar))
-            {
-                e.Handled = true;
-            }
         }
 
         private void FrmMain_StyleChanged(object sender, EventArgs e)
@@ -256,6 +274,20 @@ namespace BreakingBudget.Views.FrmMain
         private void echancesContainer_Paint_OR_ControlAdded(object sender, object e)
         {
             ((FlowLayoutPanel)sender).Visible = (this.numberOfDeadlines > 0);
+        }
+
+        /// <summary>
+        /// Tries to convert a given string to a int and compares the result to check
+        /// if the value is valid day.
+        /// </summary>
+        /// <param name="value">The day to parse</param>
+        /// <param name="output">The parsed day</param>
+        /// <returns></returns>
+        private bool isDayOfTheMonth(string value, out int output)
+        {
+            return int.TryParse(value, out output) 
+                && output > 0 
+                && output < 29;
         }
     }
 }
