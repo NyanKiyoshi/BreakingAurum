@@ -127,6 +127,8 @@ namespace BreakingBudget.Views.FrmMain
                 try
                 {
                     cmd.ExecuteNonQuery();  // insert data
+
+                    ErrorManager.EntriesSuccessfullyAdded(this);
                 }
                 catch (OleDbException ex)
                 {
