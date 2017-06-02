@@ -32,6 +32,7 @@ namespace BreakingBudget.Views.FrmMain
 
             // Reset the selection
             this.ComboxBoxListePostes.ResetText();
+            this.ComboxBoxListePostes.Refresh();
 
             // Add every item that is not already used by PostePeriodique
             OleDbCommand cmd = DatabaseManager.CmdFromRawSQL(
