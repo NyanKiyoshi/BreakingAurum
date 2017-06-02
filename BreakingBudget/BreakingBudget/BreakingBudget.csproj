@@ -89,6 +89,7 @@
     <Compile Include="Repositories\PosteRepository.cs" />
     <Compile Include="Services\Lang\ErrorManager.cs" />
     <Compile Include="Services\Lang\LocalizationManager.cs" />
+    <Compile Include="Services\PDF\WkHtmlWkHtmlPdfConverter.cs" />
     <Compile Include="Services\SMSManager.cs" />
     <Compile Include="Services\SQL\DataAdapter.cs" />
     <Compile Include="Services\SQL\DatabaseManager.cs" />
@@ -121,6 +122,12 @@
     <Compile Include="Views\FrmMain\FrmMain.Settings.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\TransactionsToPDF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TransactionsToPDF.Designer.cs">
+      <DependentUpon>TransactionsToPDF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\InputMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,12 +139,6 @@
     </Compile>
     <Compile Include="Views\GererPostes.Designer.cs">
       <DependentUpon>GererPostes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Loading.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Loading.Designer.cs">
-      <DependentUpon>Loading.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserCreation.cs">
       <SubType>Form</SubType>
@@ -167,9 +168,6 @@
     <EmbeddedResource Include="Views\GererPostes.resx">
       <DependentUpon>GererPostes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Loading.resx">
-      <DependentUpon>Loading.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserCreation.resx">
       <DependentUpon>UserCreation.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,11 +186,35 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Resources\wkhtmltopdf\lib\wkhtmltox.lib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\transaction.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\wkhtmltopdf\bin\wkhtmltopdf.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\wkhtmltopdf\bin\wkhtmltox.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\wkhtmltopdf\include\wkhtmltox\dllbegin.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\wkhtmltopdf\include\wkhtmltox\dllend.inc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\wkhtmltopdf\include\wkhtmltox\image.h">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\wkhtmltopdf\include\wkhtmltox\pdf.h">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Localization\en\MetroToggle.xml" />
     <EmbeddedResource Include="Localization\de\MetroToggle.xml" />
     <EmbeddedResource Include="Localization\es\MetroMessageBoxControl.xml" />

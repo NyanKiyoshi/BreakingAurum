@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 
-namespace BreakingBudget.Views.FrmMain
+namespace BreakingBudget.Views
 {
     public partial class UserCreation : MetroForm
     {

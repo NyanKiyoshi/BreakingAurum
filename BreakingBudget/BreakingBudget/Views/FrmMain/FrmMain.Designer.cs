@@ -72,7 +72,7 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.LanguageComboBox = new MetroFramework.Controls.MetroComboBox();
             this.LicensesPage = new Kerido.Controls.MultiPanePage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxLicenses = new System.Windows.Forms.RichTextBox();
             this.HomePage = new Kerido.Controls.MultiPanePage();
             this.button1 = new System.Windows.Forms.Button();
             this.PageRevenus = new Kerido.Controls.MultiPanePage();
@@ -120,6 +120,7 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
             this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.flowLayoutPanel1.SuspendLayout();
             this.SidebarTable.SuspendLayout();
             this.BaseContainer.SuspendLayout();
@@ -159,6 +160,7 @@
             this.ButtonsPostePonctuelContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -728,22 +730,22 @@
             this.LicensesPage.AccessibleName = "";
             this.LicensesPage.AutoSize = true;
             this.LicensesPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.LicensesPage.Controls.Add(this.richTextBox1);
+            this.LicensesPage.Controls.Add(this.richTextBoxLicenses);
             this.LicensesPage.Name = "LicensesPage";
             this.LicensesPage.Size = new System.Drawing.Size(1017, 432);
             this.LicensesPage.TabIndex = 2;
             // 
-            // richTextBox1
+            // richTextBoxLicenses
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.White;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1017, 432);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            this.richTextBoxLicenses.BackColor = System.Drawing.Color.White;
+            this.richTextBoxLicenses.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxLicenses.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxLicenses.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxLicenses.Location = new System.Drawing.Point(0, 0);
+            this.richTextBoxLicenses.Name = "richTextBoxLicenses";
+            this.richTextBoxLicenses.Size = new System.Drawing.Size(1017, 432);
+            this.richTextBoxLicenses.TabIndex = 0;
+            this.richTextBoxLicenses.Text = resources.GetString("richTextBoxLicenses.Text");
             // 
             // HomePage
             // 
@@ -1442,6 +1444,11 @@
             // 
             this.metroStyleManager.Owner = this;
             // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1519,6 +1526,7 @@
             this.ButtonsPostePonctuelContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1536,7 +1544,7 @@
         private Kerido.Controls.MultiPanePage PagePostesFixes;
         private Kerido.Controls.MultiPanePage SettingsPage;
         private Kerido.Controls.MultiPanePage LicensesPage;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxLicenses;
         private Kerido.Controls.MultiPanePage HomePage;
         private System.Windows.Forms.Button button1;
         private Kerido.Controls.MultiPanePage PageRevenus;
@@ -1615,6 +1623,7 @@
         private System.Windows.Forms.FlowLayoutPanel echancesContainer;
         private System.Windows.Forms.Label lblConfirmNbDeadLines;
         private MetroFramework.Controls.MetroButton btnGererBudgetPonctuel;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
     }
 }
 

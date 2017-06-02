@@ -1,4 +1,4 @@
-﻿namespace BreakingBudget.Views.FrmMain
+﻿namespace BreakingBudget.Views
 {
     partial class UserCreation
     {
