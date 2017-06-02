@@ -9,21 +9,32 @@ namespace BreakingBudget.Services
 {
     static class SMSManager
     {
-        private const string REMOTE_URL = "http://127.0.0.1:8000/api/SMSManager/handler.php";
+        private const string REMOTE_URL = "http://kisune.com/api/SMSManager/handler.php";
 
-        public static async void SendSMS(string[] targets, string message)
+        public static async void SendSMS(string[] numbers, string message)
         {
             HttpClient client = new HttpClient();
             var values = new Dictionary<string, string>
             {
-               { "thing1", "hello" },
-               { "thing2", "world" }
+               { "message", message },
+               { "api_token", "a415ab5cc17c8c093c015ccdb7e552aee7911aa4" }
             };
+            Console.WriteLine("Sending SMS to: " + string.Join(",", numbers));
 
+            // create a query string's parameter of array of number
+            for (int i = 0; i < numbers.Length; ++i) {
+                values["number[" + i + "]"] = numbers[i];
+            }
+
+            // create the request query string
             var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PostAsync("http://www.example.com/recepticle.aspx", content);
+            // send the HTTP POST request to the remote URL
+            // with the query string (x-www-form-urlencoded)
+            // and wait (async) for the server's response.
+            var response = await client.PostAsync(SMSManager.REMOTE_URL, content);
 
+            // then, read the response's data
             var responseString = await response.Content.ReadAsStringAsync();
         }
     }

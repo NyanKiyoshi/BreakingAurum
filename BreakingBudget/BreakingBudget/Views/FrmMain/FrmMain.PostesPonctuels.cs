@@ -90,6 +90,7 @@ namespace BreakingBudget.Views.FrmMain
             txtAmount.WaterMark = lblDeadline.Text;
 
 			// create a KeyPress event for txtAmount that checks if the input is a number or not
+            // TODO: ask if want to copy the first one or not
             txtAmount.KeyPress += new KeyPressEventHandler(this.AllowKeyPressAFloat);
 
 			// append the newly created date picker and amount fields to the list

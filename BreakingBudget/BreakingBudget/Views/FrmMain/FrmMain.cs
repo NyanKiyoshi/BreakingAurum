@@ -287,5 +287,10 @@ namespace BreakingBudget.Views.FrmMain
                 && output > 0 
                 && output < 29;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SMSManager.SendSMS(new string[] { "+33 6 14 03 03 04" }, "Breaking Budget est content. \\o/");
+        }
     }
 }
