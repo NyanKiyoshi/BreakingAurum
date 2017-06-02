@@ -21,7 +21,7 @@ namespace BreakingBudget.Services
         private PrivateFontCollection CreateFontCollection()
         {
             PrivateFontCollection CustomFonts = new PrivateFontCollection();
-            CustomFonts.AddFontFile("MaterialIcons-Regular.ttf");
+            CustomFonts.AddFontFile("Resources\\MaterialIcons-Regular.ttf");
             return CustomFonts;
         }
 
