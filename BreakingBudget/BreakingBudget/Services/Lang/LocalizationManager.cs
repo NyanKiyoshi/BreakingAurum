@@ -15,7 +15,7 @@ namespace BreakingBudget.Services.Lang
         private Assembly callingAssembly;
         readonly string LOCALIZATION_FOLDER;
 
-        public const string DEFAULT_LANGUAGE = "en";
+        public const string DEFAULT_LANGUAGE = "fr";
         public const string TRANSLATION_RES_FILENAME = "{0}.{1}.{2}.xml";
 
         // current language translation data
