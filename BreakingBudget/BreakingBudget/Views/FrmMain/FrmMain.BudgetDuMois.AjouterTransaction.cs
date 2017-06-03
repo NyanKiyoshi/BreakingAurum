@@ -320,7 +320,7 @@ namespace BreakingBudget.Views.FrmMain
         {
             // Récupération des informations du formulaire
             string dateTransaction = calTransaction.Value.ToShortDateString();
-            string description = FieldsContainerTxtDescr.Text;
+            string description = txtDesc.Text;
             string montant = txtMontant.Text;
             int type = (int)cboType.SelectedValue;
             int idTransac = GetNextIdTransac(); // Récupérer le numéro de la prochaine transaction

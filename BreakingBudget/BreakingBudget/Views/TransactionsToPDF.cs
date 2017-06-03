@@ -12,6 +12,7 @@ namespace BreakingBudget.Views
 {
     public partial class TransactionsToPDF : MetroForm
     {
+        // TODO: PUT A LOGO!
         public void GetCSSMeta(StringBuilder output)
         {
             output.AppendLine(@"
@@ -151,6 +152,7 @@ namespace BreakingBudget.Views
         public TransactionsToPDF(int month = 2, int year = 2017)
         {
             int i;
+            int entry_index;
             TransactionRepository.TransactionModel[] _transactions = null;
 
             // the sum of every transaction in the current groupe
@@ -210,9 +212,11 @@ namespace BreakingBudget.Views
                 <body><table>
             ");
 
+            i = 0;
             foreach (IGrouping<int, TransactionRepository.TransactionModel> transactions in transactionsGroups)
             {
-                i = 0;
+                ++i;
+                entry_index = 0;
 
                 group_total = 0.0;
                 group_spendings = 0.0;
@@ -225,7 +229,7 @@ namespace BreakingBudget.Views
 
                 while (it.MoveNext())
                 {
-                    i += 1;
+                    ++entry_index;
 
                     currentEntryRow_str.AppendFormat(@"
                         <tr>
@@ -240,7 +244,7 @@ namespace BreakingBudget.Views
                         it.Current.montant,
                         it.Current.recetteON ? "yes" : "no",
                         it.Current.percuON ? "yes" : "no",
-                        it.Current.description
+                        string.IsNullOrWhiteSpace(it.Current.description) ? "-" : it.Current.description
                     );
 
                     // if it is an income
@@ -250,37 +254,49 @@ namespace BreakingBudget.Views
                         if (it.Current.percuON)
                         {
                             group_received_incomes += it.Current.montant;
+
+                            // add the income the group income
+                            group_total += it.Current.montant;
                         }
                         else
                         {
                             group_pending_incomes = it.Current.montant;
                         }
-                        // finally, add the income the group income
-                        group_total += it.Current.montant;
                     }
                     // otherwise, it is a spending, a loss.
                     else
                     {
                         group_spendings += it.Current.montant;
-                        group_total -= it.Current.montant;
+
+                        // if the value is negative, make it positive
+                        group_total -= it.Current.montant > 0 ? it.Current.montant : it.Current.montant * - 1;
                     }
                 }
 
                 s.AppendFormat(@"
+                    <tr><td class='hr' colspan='5'></td></tr>
                     <tr>
                         <th colspan='5' class='th-line-title'>
                             <h2 style='margin: 0'>{0}</h2>
                             {1}, <span class='amount'>{2}</span>
                         </th>
                     </tr>
+                ", it.Current.typeTransaction_s, FormatTransactionCount(entry_index), group_total);
+
+                // if we are proceeding the first entry, append the legend
+                if (i == 1)
+                {
+                    s.Append(@"
                     <tr>
                         <th>Date de transaction</th>
                         <th>Montant</th>
                         <th>Recette</th>
                         <th>Perçu</th>
                         <th width='100%'>Description</th>
-                    </tr>
-                ", it.Current.typeTransaction_s, FormatTransactionCount(i), group_total);
+                    </tr>");
+                }
+
+                // append the entries
                 s.Append(currentEntryRow_str);
 
                 total_amount += group_total;

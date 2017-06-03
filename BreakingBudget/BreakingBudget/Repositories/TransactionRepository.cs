@@ -55,11 +55,11 @@ namespace BreakingBudget.Repositories
                          [transac.type]             AS [type],
                          [typeTransac.libType]      AS typeTransaction_s
 
-                  FROM [{0}] transac, [{1}] typeTransac
+                      FROM [{0}] transac, [{1}] typeTransac
 
-                  WHERE Month(dateTransaction) = {2}
-                          AND Year(dateTransaction) = {3}
-                          AND typeTransac.codeType = transac.type",
+                      WHERE Month(dateTransaction) = {2}
+                              AND Year(dateTransaction) = {3}
+                              AND typeTransac.codeType = transac.type",
 
                     TABLE_NAME, TypeTransactionRepository.TABLE_NAME, month, year
                 );
