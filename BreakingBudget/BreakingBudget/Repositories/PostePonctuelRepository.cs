@@ -74,16 +74,15 @@ namespace BreakingBudget.Repositories
 
         public static PostePonctuel[] List()
         {
-            OleDbConnection conn = DatabaseManager.CreateConnection();
-            OleDbCommand cmd = conn.CreateCommand();
+            using (OleDbConnection conn = DatabaseManager.CreateConnection())
+            {
+                OleDbCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = "SELECT * FROM " + TABLE_NAME;
+                cmd.CommandText = "SELECT * FROM " + TABLE_NAME;
 
-            conn.Open();
-            PostePonctuel[] data = DataAdapter.OleDbDataReaderToStruct<PostePonctuel>(cmd.ExecuteReader()).ToArray();
-            conn.Close();
-
-            return data;
+                conn.Open();
+                return DataAdapter.OleDbDataReaderToStruct<PostePonctuel>(cmd.ExecuteReader()).ToArray();
+            }
         }
     }
 }

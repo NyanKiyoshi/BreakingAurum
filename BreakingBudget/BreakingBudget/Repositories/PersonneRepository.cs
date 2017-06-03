@@ -28,16 +28,15 @@ namespace BreakingBudget.Repositories
 
         public static PersonneModel[] List()
         {
-            OleDbConnection conn = DatabaseManager.CreateConnection();
-            OleDbCommand cmd = conn.CreateCommand();
+            using (OleDbConnection conn = DatabaseManager.CreateConnection())
+            {
+                OleDbCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = "SELECT * FROM " + TABLE_NAME;
+                cmd.CommandText = "SELECT * FROM " + TABLE_NAME;
 
-            conn.Open();
-            PersonneModel[] data = DataAdapter.OleDbDataReaderToStruct<PersonneModel>(cmd.ExecuteReader()).ToArray();
-            conn.Close();
-
-            return data;
+                conn.Open();
+                return DataAdapter.OleDbDataReaderToStruct<PersonneModel>(cmd.ExecuteReader()).ToArray();
+            }
         }
     }
 }

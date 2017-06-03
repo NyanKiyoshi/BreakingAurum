@@ -73,16 +73,15 @@ namespace BreakingBudget.Repositories
 
         public static PosteRevenu[] List()
         {
-            OleDbConnection conn = DatabaseManager.CreateConnection();
-            OleDbCommand cmd = conn.CreateCommand();
+            using (OleDbConnection conn = DatabaseManager.CreateConnection())
+            {
+                OleDbCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = "SELECT * FROM " + TABLE_NAME;
+                cmd.CommandText = "SELECT * FROM " + TABLE_NAME;
 
-            conn.Open();
-            PosteRevenu[] data = DataAdapter.OleDbDataReaderToStruct<PosteRevenu>(cmd.ExecuteReader()).ToArray();
-            conn.Close();
-
-            return data;
+                conn.Open();
+                return DataAdapter.OleDbDataReaderToStruct<PosteRevenu>(cmd.ExecuteReader()).ToArray();
+            }
         }
     }
 }

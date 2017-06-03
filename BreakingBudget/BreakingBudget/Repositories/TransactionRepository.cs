@@ -41,11 +41,12 @@ namespace BreakingBudget.Repositories
 
         public static TransactionModel[] GetByMonth(int month, int year)
         {
-            OleDbConnection conn = DatabaseManager.CreateConnection();
-            OleDbCommand cmd = conn.CreateCommand();
+            using (OleDbConnection conn = DatabaseManager.CreateConnection())
+            {
+                OleDbCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = string.Format(
-                @"SELECT [transac.codeTransaction]  AS codeTransaction,
+                cmd.CommandText = string.Format(
+                    @"SELECT [transac.codeTransaction]  AS codeTransaction,
                          [transac.dateTransaction]  AS dateTransaction, 
                          [transac.description]      AS description,
                          [transac.montant]          AS montant,
@@ -59,15 +60,13 @@ namespace BreakingBudget.Repositories
                   WHERE Month(dateTransaction) = {2}
                           AND Year(dateTransaction) = {3}
                           AND typeTransac.codeType = transac.type",
-                
-                TABLE_NAME, TypeTransactionRepository.TABLE_NAME, month, year
-            );
 
-            conn.Open();
-            TransactionModel[] data = DataAdapter.OleDbDataReaderToStruct<TransactionRepository.TransactionModel>(cmd.ExecuteReader()).ToArray();
-            conn.Close();
+                    TABLE_NAME, TypeTransactionRepository.TABLE_NAME, month, year
+                );
 
-            return data;
+                conn.Open();
+                return DataAdapter.OleDbDataReaderToStruct<TransactionRepository.TransactionModel>(cmd.ExecuteReader()).ToArray();
+            }
         }
     }
 }

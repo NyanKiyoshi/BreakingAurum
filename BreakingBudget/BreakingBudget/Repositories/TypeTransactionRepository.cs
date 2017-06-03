@@ -1,9 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Data.OleDb;
-using BreakingBudget.Services.SQL;
-
-namespace BreakingBudget.Repositories
+﻿namespace BreakingBudget.Repositories
 {
     static class TypeTransactionRepository
     {

@@ -1,9 +1,11 @@
-﻿using System.Diagnostics;
+﻿using System.Data.OleDb;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using BreakingBudget.Services.PDF;
+using BreakingBudget.Services.Lang;
 using BreakingBudget.Repositories;
 
 namespace BreakingBudget.Views
@@ -149,6 +151,7 @@ namespace BreakingBudget.Views
         public TransactionsToPDF(int month = 2, int year = 2017)
         {
             int i;
+            TransactionRepository.TransactionModel[] _transactions = null;
 
             // the sum of every transaction in the current groupe
             double group_total;
@@ -174,8 +177,16 @@ namespace BreakingBudget.Views
             Program.settings.localize.ImportResourceLocalization("PDFTransactions");
             PdfDocument doc = new PdfDocument();
 
-
-            TransactionRepository.TransactionModel[] _transactions = TransactionRepository.GetByMonth(month, year);
+            // retrieve every transaction of the current month
+            try {
+                _transactions = TransactionRepository.GetByMonth(month, year);
+            }
+            catch (OleDbException ex)
+            {
+                // abort if there was an error
+                ErrorManager.HandleOleDBError(ex);
+                return;
+            }
 
             // Group each transaction by type
             IGrouping<int, TransactionRepository.TransactionModel>[] transactionsGroups = _transactions.GroupBy(x => x.type).ToArray();

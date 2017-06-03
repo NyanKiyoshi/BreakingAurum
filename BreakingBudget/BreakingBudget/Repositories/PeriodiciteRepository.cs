@@ -26,16 +26,15 @@ namespace BreakingBudget.Repositories
 
         public static PeriodiciteModel[] List()
         {
-            OleDbConnection conn = DatabaseManager.CreateConnection();
-            OleDbCommand cmd = conn.CreateCommand();
+            using (OleDbConnection conn = DatabaseManager.CreateConnection())
+            {
+                OleDbCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = "SELECT * FROM " + TABLE_NAME;
+                cmd.CommandText = "SELECT * FROM " + TABLE_NAME;
 
-            conn.Open();
-            PeriodiciteModel[] data = DataAdapter.OleDbDataReaderToStruct<PeriodiciteModel>(cmd.ExecuteReader()).ToArray();
-            conn.Close();
-
-            return data;
+                conn.Open();
+                return DataAdapter.OleDbDataReaderToStruct<PeriodiciteModel>(cmd.ExecuteReader()).ToArray();
+            }
         }
     }
 }
