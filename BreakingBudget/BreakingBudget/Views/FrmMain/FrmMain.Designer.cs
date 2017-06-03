@@ -1709,7 +1709,6 @@
             this.cboType.Location = new System.Drawing.Point(3, 3);
             this.cboType.Name = "cboType";
             this.cboType.Size = new System.Drawing.Size(346, 29);
-            this.cboType.Sorted = true;
             this.cboType.TabIndex = 7;
             this.cboType.UseSelectable = true;
             // 
@@ -1790,9 +1789,10 @@
             this.ckbTtSelect.AutoSize = true;
             this.ckbTtSelect.Location = new System.Drawing.Point(9, 54);
             this.ckbTtSelect.Name = "ckbTtSelect";
-            this.ckbTtSelect.Size = new System.Drawing.Size(108, 18);
+            this.ckbTtSelect.Size = new System.Drawing.Size(115, 15);
             this.ckbTtSelect.TabIndex = 29;
             this.ckbTtSelect.Text = "Tout sélectionner";
+            this.ckbTtSelect.UseSelectable = true;
             this.ckbTtSelect.Click += new System.EventHandler(this.ckbTtSelect_Click);
             // 
             // btnAddPers
@@ -1814,6 +1814,7 @@
             this.btnClear.TabIndex = 27;
             this.btnClear.TabStop = false;
             this.btnClear.Text = "Clear";
+            this.btnClear.UseSelectable = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // label2
