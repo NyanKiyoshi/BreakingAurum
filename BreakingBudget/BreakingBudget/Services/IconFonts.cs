@@ -1,7 +1,6 @@
 ﻿using System.Drawing;
 using System.Drawing.Text;
 
-
 namespace BreakingBudget.Services
 {
     class IconFonts
