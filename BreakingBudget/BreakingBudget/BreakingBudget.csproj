@@ -103,6 +103,15 @@
     <Compile Include="Views\FatalErrorReporter.Designer.cs">
       <DependentUpon>FatalErrorReporter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmAjoutType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmAjoutType.Designer.cs">
+      <DependentUpon>FrmAjoutType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmMain\FrmMain.BudgetDuMois.AjouterTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\FrmMain\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +159,9 @@
     </Compile>
     <EmbeddedResource Include="Views\FatalErrorReporter.resx">
       <DependentUpon>FatalErrorReporter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmAjoutType.resx">
+      <DependentUpon>FrmAjoutType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmMain\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>

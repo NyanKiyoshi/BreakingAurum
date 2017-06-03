@@ -9,3 +9,6 @@ obj/
 *.exe
 *.cache
 *.pdb
+
+!wkhtmltopdf.exe
+!wkhtmltox.dll

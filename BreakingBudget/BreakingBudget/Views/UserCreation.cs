@@ -1,21 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.OleDb;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+
 using MetroFramework.Forms;
+
+using BreakingBudget.Services.SQL;
+using BreakingBudget.Services.Lang;
+
 
 namespace BreakingBudget.Views
 {
     public partial class UserCreation : MetroForm
     {
+        private const string RE_NUMBER_MATCHING = @"^(\+\d{2}([\s]*\d){9}$)|^([\s]*\d){10}$";
+        //private const string RE_NUMBER_MATCHING = @"^(0|\\+33)[1-9]([-. ]?[0-9]{2}){4}$";
+
         public UserCreation()
         {
             InitializeComponent();
+
+            Program.settings.localize.ControlerTranslator(this);
+            this.Text = Program.settings.localize.Translate(this.Name);
+            this.Refresh();
         }
 
         private bool _UserCancelled;
@@ -24,10 +31,43 @@ namespace BreakingBudget.Views
         // TODO: Implement Me
         private void AcceptButton_Click(object sender, EventArgs e)
         {
-            bool error = false;
-            MessageBox.Show("Implement Me!");
 
-            if (!error)
+            //recuperation des valeurs des textbox 
+            string nom = txtNom.Text;
+            string prenom = txtPrenom.Text;
+            string tel = txtTel.Text;
+
+            OleDbConnection connec = DatabaseManager.CreateConnection();
+
+            //requete SQL pour recuperer le code personne le plus grand
+            string sqlCodePersonne = "SELECT MAX(codePersonne) FROM Personne";
+            //requete sql pour inserer la nouvelle personne dans la base de donnees
+            string sqlAjoutPersonne = "INSERT INTO Personne ([codePersonne], [nomPersonne], [pnPersonne], [telMobile]) VALUES (?,?,?,?)";
+
+            //recuperation et calcul du prochain codePersonne
+            OleDbCommand cmd = new OleDbCommand(sqlCodePersonne, connec);
+
+            try
+            {
+                connec.Open();
+                int codePersonne = int.Parse(cmd.ExecuteScalar().ToString()) + 1;
+
+                //insertion de la personne dans la base de donnees
+                cmd.CommandText = sqlAjoutPersonne;
+                cmd.Parameters.AddWithValue("@codePersonne", codePersonne);
+                cmd.Parameters.AddWithValue("@nomPersonne", nom);
+                cmd.Parameters.AddWithValue("@pnPersonne", prenom);
+                cmd.Parameters.AddWithValue("@telMobile", string.IsNullOrEmpty(tel) ? (object)DBNull.Value : tel); //si jamais le telephone n'est pas renseigne, on insert null dans la colonne telMobile
+                cmd.ExecuteNonQuery();
+
+                ErrorManager.EntriesSuccessfullyAdded(this);
+                this.DialogResult = DialogResult.OK;
+            }
+            catch (OleDbException ex)
+            {
+                ErrorManager.HandleOleDBError(ex);
+            }
+            finally
             {
                 this.Close();
             }
@@ -36,7 +76,52 @@ namespace BreakingBudget.Views
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this._UserCancelled = true;
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void txtTel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar)
+                || e.KeyChar == (char)Keys.Back
+                || (txtTel.SelectionStart == 0 && e.KeyChar == '+' && (txtTel.Text.Length == 0 || txtTel.Text[0] != '+'))
+                || e.KeyChar == ' ')
+            {
+                e.Handled = false;
+            }
+            else if (e.KeyChar == (char)Keys.Enter && AcceptButton.Enabled)
+            {
+                this.AcceptButton_Click(null, null);
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNom_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || e.KeyChar == '\'' || e.KeyChar == '-' || e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space)
+                e.Handled = false;
+            else if (e.KeyChar == (char)Keys.Enter && AcceptButton.Enabled)
+            {
+                this.AcceptButton_Click(null, null);
+            }
+            else
+                e.Handled = true;
+        }
+
+        private void txtNom_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtNom.Text) && !string.IsNullOrWhiteSpace(txtPrenom.Text))
+            {
+                if (string.IsNullOrEmpty(txtTel.Text) || Regex.Match(txtTel.Text, UserCreation.RE_NUMBER_MATCHING).Success)
+                    AcceptButton.Enabled = true;
+                else
+                    AcceptButton.Enabled = false;
+            }
+            else
+                AcceptButton.Enabled = false;
         }
     }
 }

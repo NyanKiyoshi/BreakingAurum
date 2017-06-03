@@ -100,7 +100,7 @@ namespace BreakingBudget.Views.FrmMain
                     
                     new SidebarEntry[] {
                         new SidebarEntry(
-                            (MultiPanePage)null,
+                            PageBudgetMoisAjouterTransaction,
                             Program.settings.localize.Translate("sidebar_page_ajouter_transaction")
                         ),
 
@@ -127,6 +127,9 @@ namespace BreakingBudget.Views.FrmMain
             InitializePostesFixes();
             InitializePostesPonctuels(echancesContainer);
             InitiliazePosteRevenu();
+
+            InitializeAjouterTransactionBudgetDuMois();
+
             InitiliazeSettingsPage();
         }
 

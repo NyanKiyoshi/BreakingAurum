@@ -92,4 +92,16 @@
     <Key>nothing</Key>
     <Value>rien</Value>
   </Localization>
+  <Localization>
+    <Key>AcceptButton</Key>
+    <Value>Valider</Value>
+  </Localization>
+  <Localization>
+    <Key>CancelButton</Key>
+    <Value>Annuler</Value>
+  </Localization>
+  <Localization>
+    <Key>UserCreation</Key>
+    <Value>Ajout d'une personne</Value>
+  </Localization>
 </root>

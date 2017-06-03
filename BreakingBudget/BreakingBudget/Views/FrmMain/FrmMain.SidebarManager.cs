@@ -392,5 +392,15 @@ namespace BreakingBudget.Views.FrmMain
             // Update the form's title and force the repaint
             this.Refresh();
         }
+
+        private void HideSidebar()
+        {
+            SidebarTable.Visible = false;
+        }
+
+        private void ShowSidebar()
+        {
+            SidebarTable.Visible = true;
+        }
     }
 }
