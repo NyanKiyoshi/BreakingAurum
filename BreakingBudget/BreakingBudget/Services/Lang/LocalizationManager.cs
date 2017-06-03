@@ -121,6 +121,10 @@ namespace BreakingBudget.Services.Lang
                 xmlStream.Close();
             }
 
+            if (xmlStream == null)
+            {
+                System.Console.WriteLine("E :: Resource {0} not found!", resourceName);
+            }
         }
 
         public string[] RetrieveAvailableLanguages()

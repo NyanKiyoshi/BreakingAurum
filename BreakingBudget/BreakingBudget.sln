@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetroFramework", "..\..\..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetroFramework.Design", "..\..\..\..\Documents\Visual Studio 2015\Projects\metroframework-modern-ui-master\MetroFramework.Design\MetroFramework.Design.csproj", "{7316584D-9A16-4280-A8AB-6D45198C6E4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaterialSidebar", "MaterialSidebar\MaterialSidebar.csproj", "{10BEDC82-A544-4C65-BC16-6BAB72ACB6E2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlLibrary", "MultiPane\ControlLibrary.csproj", "{449BEEFB-E1DB-47F4-81F5-E559C8398C77}"
 EndProject
 Global
@@ -45,14 +43,6 @@ Global
 		{7316584D-9A16-4280-A8AB-6D45198C6E4D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7316584D-9A16-4280-A8AB-6D45198C6E4D}.Release|x86.ActiveCfg = Release|Any CPU
 		{7316584D-9A16-4280-A8AB-6D45198C6E4D}.Release|x86.Build.0 = Release|Any CPU
-		{10BEDC82-A544-4C65-BC16-6BAB72ACB6E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10BEDC82-A544-4C65-BC16-6BAB72ACB6E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10BEDC82-A544-4C65-BC16-6BAB72ACB6E2}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{10BEDC82-A544-4C65-BC16-6BAB72ACB6E2}.Debug|x86.Build.0 = Debug|Any CPU
-		{10BEDC82-A544-4C65-BC16-6BAB72ACB6E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10BEDC82-A544-4C65-BC16-6BAB72ACB6E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10BEDC82-A544-4C65-BC16-6BAB72ACB6E2}.Release|x86.ActiveCfg = Release|Any CPU
-		{10BEDC82-A544-4C65-BC16-6BAB72ACB6E2}.Release|x86.Build.0 = Release|Any CPU
 		{449BEEFB-E1DB-47F4-81F5-E559C8398C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{449BEEFB-E1DB-47F4-81F5-E559C8398C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{449BEEFB-E1DB-47F4-81F5-E559C8398C77}.Debug|x86.ActiveCfg = Debug|Any CPU

@@ -7,12 +7,10 @@ using MetroFramework.Controls;
 using MetroFramework;
 using Kerido.Controls;
 using BreakingBudget.Services;
-using BreakingBudget.Services.Lang;
-using BreakingBudget.Services.SQL;
-using BreakingBudget.Structural;
 using BreakingBudget.Repositories;
-using System.Data;
+using BreakingBudget.Services.SQL;
 using System.Data.OleDb;
+using BreakingBudget.Structural;
 
 namespace BreakingBudget.Views.FrmMain
 {
@@ -307,7 +305,8 @@ namespace BreakingBudget.Views.FrmMain
                 && output < 29;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        // button for test purposes only
+        private void button1_Click(object sender, EventArgs _ev)
         {
             (new TransactionsToPDF()).ShowDialog();
         }

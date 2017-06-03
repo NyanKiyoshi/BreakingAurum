@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Localization>
+    <Key>summary_of_the_month_{0}</Key>
+    <Value>Récapitulatif du mois {0}</Value>
+  </Localization>
+  <Localization>
+    <Key>{0}_transactions</Key>
+    <Value>{0} transactions</Value>
+  </Localization>
+  <Localization>
+    <Key>{0}_transaction</Key>
+    <Value>{0} transaction</Value>
+  </Localization>
+  <Localization>
+    <Key>of_january</Key>
+    <Value>de janvier</Value>
+  </Localization>
+  <Localization>
+    <Key>of_february</Key>
+    <Value>de février</Value>
+  </Localization>
+  <Localization>
+    <Key>of_march</Key>
+    <Value>de mars</Value>
+  </Localization>
+  <Localization>
+    <Key>of_april</Key>
+    <Value>d'avril</Value>
+  </Localization>
+  <Localization>
+    <Key>of_may</Key>
+    <Value>de mai</Value>
+  </Localization>
+  <Localization>
+    <Key>of_june</Key>
+    <Value>de juin</Value>
+  </Localization>
+  <Localization>
+    <Key>of_july</Key>
+    <Value>de juillet</Value>
+  </Localization>
+  <Localization>
+    <Key>of_august</Key>
+    <Value>d'août</Value>
+  </Localization>
+  <Localization>
+    <Key>of_september</Key>
+    <Value>de septembre</Value>
+  </Localization>
+  <Localization>
+    <Key>of_october</Key>
+    <Value>d'octobre</Value>
+  </Localization>
+  <Localization>
+    <Key>of_november</Key>
+    <Value>de novembre</Value>
+  </Localization>
+  <Localization>
+    <Key>of_december</Key>
+    <Value>de décembre</Value>
+  </Localization>
+</root>

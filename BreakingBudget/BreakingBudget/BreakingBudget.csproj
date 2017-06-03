@@ -82,7 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Repositories\EcheanceRepository.cs" />
-    <Compile Include="Repositories\PosteRevenu.cs" />
+    <Compile Include="Repositories\TypeTransactionRepository.cs" />
+    <Compile Include="Repositories\TransactionRepository.cs" />
+    <Compile Include="Repositories\PosteRevenuRepository.cs" />
     <Compile Include="Repositories\PostePonctuelRepository.cs" />
     <Compile Include="Repositories\PersonneRepository.cs" />
     <Compile Include="Repositories\PeriodiciteRepository.cs" />
@@ -168,6 +170,9 @@
     <EmbeddedResource Include="Views\GererPostes.resx">
       <DependentUpon>GererPostes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\TransactionsToPDF.resx">
+      <DependentUpon>TransactionsToPDF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserCreation.resx">
       <DependentUpon>UserCreation.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,6 +240,7 @@
     <EmbeddedResource Include="Localization\es\Commons.xml" />
     <EmbeddedResource Include="Localization\en\Commons.xml" />
     <EmbeddedResource Include="Localization\tr\Commons.xml" />
+    <EmbeddedResource Include="Localization\fr\PDFTransactions.xml" />
     <Content Include="Resources\budget1.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

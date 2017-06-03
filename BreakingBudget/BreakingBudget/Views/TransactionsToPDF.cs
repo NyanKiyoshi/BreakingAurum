@@ -9,24 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using BreakingBudget.Services.PDF;
+using BreakingBudget.Repositories;
 
 namespace BreakingBudget.Views
 {
     public partial class TransactionsToPDF : MetroForm
     {
-        public TransactionsToPDF()
+        public void GetCSSMeta(StringBuilder output)
         {
-            // TODO: check if destination file is being used or not
-            //   QPainter::begin(): Returned false============================] 100%
-            //   Error: Unable to write to destination
-            //   Exit with code 1, due to unknown error.
-            InitializeComponent();
-            PdfDocument doc = new PdfDocument();
-            doc.Html = @"<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset='utf-8' />
-        <title>{Transaction of {0}}</title>
+            output.AppendLine(@"
         <style type='text/css'>
             body {
                 font-family: 'Lato','proxima-nova','Helvetica Neue',Arial,sans-serif;
@@ -128,104 +119,147 @@ namespace BreakingBudget.Views
                 background-position: center;
                 background-repeat: no-repeat;
             }
-        </style>
+        </style>");
+        }
+
+        public void GetPageTitle(string month, int transactionCount, StringBuilder output)
+        {
+            output.AppendFormat("<h1>{0} &mdash; <span class='light'>{1}</span></h1>",
+                string.Format(
+                    Program.settings.localize.Translate("summary_of_the_month_{0}"),
+                    Program.settings.localize.Translate("of_" + month)
+                ),
+                string.Format(
+                    transactionCount > 1
+                    ? Program.settings.localize.Translate("{0}_transactions")  // plural
+                    : Program.settings.localize.Translate("{0}_transaction"),  // singular
+                    transactionCount
+                )
+            );
+        }
+
+        public TransactionsToPDF(int month = 2, int year = 2017)
+        {
+            // TODO: check if destination file is being used or not
+            //   QPainter::begin(): Returned false============================] 100%
+            //   Error: Unable to write to destination
+            //   Exit with code 1, due to unknown error.
+            InitializeComponent();
+
+            Program.settings.localize.ImportResourceLocalization("PDFTransactions");
+            PdfDocument doc = new PdfDocument();
+
+
+            TransactionRepository.TransactionModel[] _transactions = TransactionRepository.GetByMonth(month, year);
+
+            // Group each transaction by type
+            IGrouping<int, TransactionRepository.TransactionModel>[] tr = _transactions.GroupBy(x => x.type).ToArray();
+
+            doc.Html = this.richTextBox.Text = "";
+            StringBuilder s = new StringBuilder(@"<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>{Transaction of {0}}</title>
     </head>
 
-    <body>
-        <h1>Récapitulatif du mois d'avril &mdash; <span class='light'>4 transactions</span></h1>
+    <body>");
 
-        <table>
-            <tr>
-                <th colspan='5' class='th-line-title'>
-                    <h2 style='margin: 0'>Essence</h2>
-                    3 transactions, <span class='amount'>220.65</span>
-                </th>
-            </tr>
-            <tr>
-                <th>Date de transaction</th>
-                <th>Montant</th>
-                <th>Recette</th>
-                <th>Perçu</th>
-                <th width='100%'>Description</th>
-            </tr>
-            <tr>
-                <td>04/04/2017</td>
-                <td class='amount'>54.20</td>
-                <td class='yes'></td>
-                <td class='yes'></td>
-                <td class='left'>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-            </tr>
+            GetPageTitle("april", _transactions.Length, s);
 
-            <tr>
-                <td>20/04/2017</td>
-                <td class='amount'>98.56</td>
-                <td class='no'></td>
-                <td class='no'></td>
-                <td class='left'>Essence de la semaine</td>
-            </tr>
+            //        <table>
+            //            <tr>
+            //                <th colspan='5' class='th-line-title'>
+            //                    <h2 style='margin: 0'>Essence</h2>
+            //                    3 transactions, <span class='amount'>220.65</span>
+            //                </th>
+            //            </tr>
+            //            <tr>
+            //                <th>Date de transaction</th>
+            //                <th>Montant</th>
+            //                <th>Recette</th>
+            //                <th>Perçu</th>
+            //                <th width='100%'>Description</th>
+            //            </tr>
+            //            <tr>
+            //                <td>04/04/2017</td>
+            //                <td class='amount'>54.20</td>
+            //                <td class='yes'></td>
+            //                <td class='yes'></td>
+            //                <td class='left'>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            //                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            //                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            //                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            //                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            //                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+            //            </tr>
 
-            <tr>
-                <td>27/04/2017</td>
-                <td class='amount'>67.89</td>
-                <td class='no'></td>
-                <td class='no'></td>
-                <td class='left'>Essence de la semaine</td>
-            </tr>
+            //            <tr>
+            //                <td>20/04/2017</td>
+            //                <td class='amount'>98.56</td>
+            //                <td class='no'></td>
+            //                <td class='no'></td>
+            //                <td class='left'>Essence de la semaine</td>
+            //            </tr>
 
-            <tr>
-                <td class='hr' colspan='5'></td>
-            </tr>
+            //            <tr>
+            //                <td>27/04/2017</td>
+            //                <td class='amount'>67.89</td>
+            //                <td class='no'></td>
+            //                <td class='no'></td>
+            //                <td class='left'>Essence de la semaine</td>
+            //            </tr>
 
-            <tr>
-                <th colspan='5' class='th-line-title'>
-                    <h2 style='margin: 0'>Vêtements</h2>
-                    1 transaction, <span class='amount'>220.65</span>
-                </th>
-            </tr>
+            //            <tr>
+            //                <td class='hr' colspan='5'></td>
+            //            </tr>
 
-            <tr>
-                <td>28/04/2017</td>
-                <td class='amount'>154.00</td>
-                <td class='no'></td>
-                <td class='no'></td>
-                <td class='left'>Jeans</td>
-            </tr>
-        </table>
+            //            <tr>
+            //                <th colspan='5' class='th-line-title'>
+            //                    <h2 style='margin: 0'>Vêtements</h2>
+            //                    1 transaction, <span class='amount'>220.65</span>
+            //                </th>
+            //            </tr>
 
-        <hr />
+            //            <tr>
+            //                <td>28/04/2017</td>
+            //                <td class='amount'>154.00</td>
+            //                <td class='no'></td>
+            //                <td class='no'></td>
+            //                <td class='left'>Jeans</td>
+            //            </tr>
+            //        </table>
 
-        <table class='bold-table'>
-            <tr>
-                <td>Dépenses</td>
-                <td class='amount'>54.20</td>
-            </tr>
+            //        <hr />
 
-            <tr>
-                <td>Recettes</td>
-                <td class='amount'>54.2</td>
-            </tr>
+            //        <table class='bold-table'>
+            //            <tr>
+            //                <td>Dépenses</td>
+            //                <td class='amount'>54.20</td>
+            //            </tr>
 
-            <tr>
-                <td>À percevoir</td>
-                <td class='amount'>0.00</td>
-            </tr>
+            //            <tr>
+            //                <td>Recettes</td>
+            //                <td class='amount'>54.2</td>
+            //            </tr>
 
-            <tfoot>
-                <tr>
-                    <td>Total</td>
-                    <td class='amount'>-320.45</td>
-                </tr>
-            </tfoot>
-        </table>
-    </body>
-</html>";
+            //            <tr>
+            //                <td>À percevoir</td>
+            //                <td class='amount'>0.00</td>
+            //            </tr>
 
-            WkHtmlWkHtmlPdfConverter.ConvertHtmlToPdf(doc, "out.pdf");
+            //            <tfoot>
+            //                <tr>
+            //                    <td>Total</td>
+            //                    <td class='amount'>-320.45</td>
+            //                </tr>
+            //            </tfoot>
+            //        </table>
+            //    </body>
+            //</html>");
+
+            this.richTextBox.Text = s.ToString();
+            //WkHtmlWkHtmlPdfConverter.ConvertHtmlToPdf(doc, "out.pdf");
         }
     }
 }
