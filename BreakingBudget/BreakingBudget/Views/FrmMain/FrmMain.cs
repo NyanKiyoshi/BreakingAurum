@@ -75,35 +75,54 @@ namespace BreakingBudget.Views.FrmMain
             // create the sidebar's top entries
             this.TopSidebarEntries = new SidebarEntry[]
             {
-                // To have a parent that do nothing: pass as first parameter: `(MultiPanePage)null`
-                new SidebarEntry(this.HomePage, new byte[] { 0xEE, 0xA2, 0x8A }, Program.settings.localize.Translate("sidebar_page_home")),
+                // (To have a parent that do nothing: pass as first parameter: `(MultiPanePage)null`)
+                new SidebarEntry(this.HomePage,
+                                 new byte[] { 0xEE, 0xA2, 0x8A },  // little "house" icon
+                                 Program.settings.localize.Translate("sidebar_page_home")),
 
                 // budget previsonnel
-                new SidebarEntry((MultiPanePage)null, new byte[] { 0xEE, 0xA2, 0xA1 },
+                new SidebarEntry((MultiPanePage)null, new byte[] { 0xEE, 0xA2, 0xA1 },  // credit card icon
                     Program.settings.localize.Translate("sidebar_page_budget_previsionnel"),
                     
                     new SidebarEntry[] {
-                        new SidebarEntry(this.PagePostesFixes,     Program.settings.localize.Translate("sidebar_page_poste_fixe")),
-                        new SidebarEntry(this.PagePostesPonctuel,  Program.settings.localize.Translate("sidebar_page_poste_ponctuel")),
-                        new SidebarEntry(this.PageRevenus,         Program.settings.localize.Translate("sidebar_page_revenu")),
+                        new SidebarEntry(this.PagePostesFixes,
+                                         Program.settings.localize.Translate("sidebar_page_poste_fixe")),
+
+                        new SidebarEntry(this.PagePostesPonctuel,
+                                         Program.settings.localize.Translate("sidebar_page_poste_ponctuel")),
+
+                        new SidebarEntry(this.PageRevenus,         
+                                         Program.settings.localize.Translate("sidebar_page_revenu")),
                     }
                 ),
 
                 // budget du mois
-                new SidebarEntry((MultiPanePage)null, new byte[] { 0xEE, 0xA1, 0xAC },
+                new SidebarEntry((MultiPanePage)null, new byte[] { 0xEE, 0xA1, 0xAC },  // "validate/ check" icon
                     Program.settings.localize.Translate("sidebar_page_budget_mois"),
                     
                     new SidebarEntry[] {
-                        new SidebarEntry((MultiPanePage)null,      Program.settings.localize.Translate("sidebar_page_ajouter_transaction")),
-                        new SidebarEntry((MultiPanePage)null,      Program.settings.localize.Translate("sidebar_page_lister_transactions")),
+                        new SidebarEntry(
+                            (MultiPanePage)null,
+                            Program.settings.localize.Translate("sidebar_page_ajouter_transaction")
+                        ),
+
+                        new SidebarEntry(
+                            (MultiPanePage)null,
+                            Program.settings.localize.Translate("sidebar_page_lister_transactions")
+                        ),
                 }),
             };
 
             // create the sidebar's bottom entries
             this.BottomSidebarEntries = new SidebarEntry[]
             {
-                new SidebarEntry(this.SettingsPage, new byte[] { 0xEE, 0xA1, 0xA9 }, Program.settings.localize.Translate("sidebar_page_settings")),
-                new SidebarEntry(this.LicensesPage, new byte[] { 0xEE, 0x90, 0xA0 }, Program.settings.localize.Translate("sidebar_page_licenses"))
+                new SidebarEntry(this.SettingsPage,
+                                 new byte[] { 0xEE, 0xA1, 0xA9 },  // gear icon
+                                 Program.settings.localize.Translate("sidebar_page_settings")),
+
+                new SidebarEntry(this.LicensesPage,
+                                 new byte[] { 0xEE, 0x90, 0xA0 },  // smiling icon
+                                 Program.settings.localize.Translate("sidebar_page_licenses"))
             };
 
             // initialize sub panels
