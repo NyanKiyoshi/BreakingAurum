@@ -31,9 +31,13 @@ namespace BreakingBudget.Services
         [NonSerialized]
         public MetroFramework.Components.MetroStyleManager styleManager;
 
+        [NonSerialized]
+        public const string DEFAULT_LOCALIZATION_RESOURCE_NAME = "Commons";
+
         public Settings()
         {
-            localize = new LocalizationManager(null, LocalizationManager.DEFAULT_LANGUAGE);
+            localize = new LocalizationManager(Settings.DEFAULT_LOCALIZATION_RESOURCE_NAME,
+                LocalizationManager.DEFAULT_LANGUAGE);
         }
 
         public static Settings Load()
@@ -63,7 +67,8 @@ namespace BreakingBudget.Services
                 stream.Close();
             }
 
-            instance.localize = new LocalizationManager("Commons", instance.TwoLetterISOLanguage);
+            instance.localize = new LocalizationManager(Settings.DEFAULT_LOCALIZATION_RESOURCE_NAME,
+                instance.TwoLetterISOLanguage);
             return instance;
         }
 
