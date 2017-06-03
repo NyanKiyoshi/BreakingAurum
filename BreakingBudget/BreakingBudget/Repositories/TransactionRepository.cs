@@ -12,7 +12,7 @@ namespace BreakingBudget.Repositories
         public class TransactionModel
         {
             public int      codeTransaction { get; set; }
-            public string   dateTransaction { get; set; }
+            public DateTime dateTransaction { get; set; }
             public string   description     { get; set; }
             public double   montant         { get; set; }
             public bool     recetteON       { get; set; }
@@ -45,11 +45,14 @@ namespace BreakingBudget.Repositories
             OleDbCommand cmd = conn.CreateCommand();
 
             cmd.CommandText = string.Format(
-                @"SELECT [transac.codeTransaction], [transac.dateTransaction], 
-                         [transac.description],     [transac.montant],
-                         [transac.recetteON],       [transac.percuON],
-                         [transac.type],
-                         [typeTransac.libType] AS typeTransaction_s
+                @"SELECT [transac.codeTransaction]  AS codeTransaction,
+                         [transac.dateTransaction]  AS dateTransaction, 
+                         [transac.description]      AS description,
+                         [transac.montant]          AS montant,
+                         [transac.recetteON]        AS recetteON,
+                         [transac.percuON]          AS percuON,
+                         [transac.type]             AS [type],
+                         [typeTransac.libType]      AS typeTransaction_s
 
                   FROM [{0}] transac, [{1}] typeTransac
 

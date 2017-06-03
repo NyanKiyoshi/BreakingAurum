@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using BreakingBudget.Services.PDF;
@@ -122,24 +117,54 @@ namespace BreakingBudget.Views
         </style>");
         }
 
-        public void GetPageTitle(string month, int transactionCount, StringBuilder output)
+        public void GetPageTitle(int month, int transactionCount, StringBuilder output)
         {
             output.AppendFormat("<h1>{0} &mdash; <span class='light'>{1}</span></h1>",
                 string.Format(
                     Program.settings.localize.Translate("summary_of_the_month_{0}"),
-                    Program.settings.localize.Translate("of_" + month)
+                    Program.settings.localize.Translate("of_the_month_id_" + month)
                 ),
-                string.Format(
-                    transactionCount > 1
-                    ? Program.settings.localize.Translate("{0}_transactions")  // plural
-                    : Program.settings.localize.Translate("{0}_transaction"),  // singular
-                    transactionCount
-                )
+                FormatTransactionCount(transactionCount)
+            );
+        }
+
+        public string GetFileNameFromMonth(int month)
+        {
+            return string.Format(
+                Program.settings.localize.Translate("filename_summary_of_the_month_{0}"),
+                Program.settings.localize.Translate("of_the_month_id_" + month)
+            ) + ".pdf";
+        }
+
+        public string FormatTransactionCount(int transactionCount)
+        {
+            return string.Format(
+                transactionCount > 1
+                ? Program.settings.localize.Translate("{0}_transactions")  // plural
+                : Program.settings.localize.Translate("{0}_transaction"),  // singular
+                transactionCount
             );
         }
 
         public TransactionsToPDF(int month = 2, int year = 2017)
         {
+            int i;
+
+            // the sum of every transaction in the current groupe
+            double group_total;
+            double group_spendings;
+            double group_received_incomes;
+            double group_pending_incomes;
+
+            // the sum of every group's amount
+            double total_amount = 0.0;
+            double total_spendings = 0.0;
+            double total_received_incomes = 0.0;
+            double total_pending_incomes = 0.0;
+
+            // a temporary set of HTML rows
+            StringBuilder currentEntryRow_str;
+
             // TODO: check if destination file is being used or not
             //   QPainter::begin(): Returned false============================] 100%
             //   Error: Unable to write to destination
@@ -153,113 +178,147 @@ namespace BreakingBudget.Views
             TransactionRepository.TransactionModel[] _transactions = TransactionRepository.GetByMonth(month, year);
 
             // Group each transaction by type
-            IGrouping<int, TransactionRepository.TransactionModel>[] tr = _transactions.GroupBy(x => x.type).ToArray();
+            IGrouping<int, TransactionRepository.TransactionModel>[] transactionsGroups = _transactions.GroupBy(x => x.type).ToArray();
 
             doc.Html = this.richTextBox.Text = "";
             StringBuilder s = new StringBuilder(@"<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset='utf-8' />
-        <title>{Transaction of {0}}</title>
-    </head>
+            <html>
+                <head>
+                    <meta charset='utf-8' />
+                    <title></title>"
+            );
 
-    <body>");
+            GetCSSMeta(s);
 
-            GetPageTitle("april", _transactions.Length, s);
+            GetPageTitle(month, _transactions.Length, s);
 
-            //        <table>
-            //            <tr>
-            //                <th colspan='5' class='th-line-title'>
-            //                    <h2 style='margin: 0'>Essence</h2>
-            //                    3 transactions, <span class='amount'>220.65</span>
-            //                </th>
-            //            </tr>
-            //            <tr>
-            //                <th>Date de transaction</th>
-            //                <th>Montant</th>
-            //                <th>Recette</th>
-            //                <th>Perçu</th>
-            //                <th width='100%'>Description</th>
-            //            </tr>
-            //            <tr>
-            //                <td>04/04/2017</td>
-            //                <td class='amount'>54.20</td>
-            //                <td class='yes'></td>
-            //                <td class='yes'></td>
-            //                <td class='left'>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            //                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            //                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            //                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            //                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            //                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-            //            </tr>
+            // TODO: translate
+            // Table header's row
+            s.Append(@"
+                </head>
+                <body><table>
+            ");
 
-            //            <tr>
-            //                <td>20/04/2017</td>
-            //                <td class='amount'>98.56</td>
-            //                <td class='no'></td>
-            //                <td class='no'></td>
-            //                <td class='left'>Essence de la semaine</td>
-            //            </tr>
+            foreach (IGrouping<int, TransactionRepository.TransactionModel> transactions in transactionsGroups)
+            {
+                i = 0;
 
-            //            <tr>
-            //                <td>27/04/2017</td>
-            //                <td class='amount'>67.89</td>
-            //                <td class='no'></td>
-            //                <td class='no'></td>
-            //                <td class='left'>Essence de la semaine</td>
-            //            </tr>
+                group_total = 0.0;
+                group_spendings = 0.0;
+                group_received_incomes = 0.0;
+                group_pending_incomes = 0.0;
 
-            //            <tr>
-            //                <td class='hr' colspan='5'></td>
-            //            </tr>
+                currentEntryRow_str = new StringBuilder();
 
-            //            <tr>
-            //                <th colspan='5' class='th-line-title'>
-            //                    <h2 style='margin: 0'>Vêtements</h2>
-            //                    1 transaction, <span class='amount'>220.65</span>
-            //                </th>
-            //            </tr>
+                var it = transactions.GetEnumerator();
 
-            //            <tr>
-            //                <td>28/04/2017</td>
-            //                <td class='amount'>154.00</td>
-            //                <td class='no'></td>
-            //                <td class='no'></td>
-            //                <td class='left'>Jeans</td>
-            //            </tr>
-            //        </table>
+                while (it.MoveNext())
+                {
+                    i += 1;
 
-            //        <hr />
+                    currentEntryRow_str.AppendFormat(@"
+                        <tr>
+                            <td>{0}</td>
+                            <td class='amount'>{1}</td>
+                            <td class='{2}'></td>
+                            <td class='{3}'></td>
+                            <td class='left'>{4}</td>
+                        </tr>
+                        ",
+                        it.Current.dateTransaction.ToString(Program.settings.localize.Translate("dd/MM/yyyy")),
+                        it.Current.montant,
+                        it.Current.recetteON ? "yes" : "no",
+                        it.Current.percuON ? "yes" : "no",
+                        it.Current.description
+                    );
 
-            //        <table class='bold-table'>
-            //            <tr>
-            //                <td>Dépenses</td>
-            //                <td class='amount'>54.20</td>
-            //            </tr>
+                    // if it is an income
+                    if (it.Current.recetteON)
+                    {
+                        // look if he received the income or not and append it
+                        if (it.Current.percuON)
+                        {
+                            group_received_incomes += it.Current.montant;
+                        }
+                        else
+                        {
+                            group_pending_incomes = it.Current.montant;
+                        }
+                        // finally, add the income the group income
+                        group_total += it.Current.montant;
+                    }
+                    // otherwise, it is a spending, a loss.
+                    else
+                    {
+                        group_spendings += it.Current.montant;
+                        group_total -= it.Current.montant;
+                    }
+                }
 
-            //            <tr>
-            //                <td>Recettes</td>
-            //                <td class='amount'>54.2</td>
-            //            </tr>
+                s.AppendFormat(@"
+                    <tr>
+                        <th colspan='5' class='th-line-title'>
+                            <h2 style='margin: 0'>{0}</h2>
+                            {1}, <span class='amount'>{2}</span>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>Date de transaction</th>
+                        <th>Montant</th>
+                        <th>Recette</th>
+                        <th>Perçu</th>
+                        <th width='100%'>Description</th>
+                    </tr>
+                ", it.Current.typeTransaction_s, FormatTransactionCount(i), group_total);
+                s.Append(currentEntryRow_str);
 
-            //            <tr>
-            //                <td>À percevoir</td>
-            //                <td class='amount'>0.00</td>
-            //            </tr>
+                total_amount += group_total;
+                total_pending_incomes += group_pending_incomes;
+                total_received_incomes += group_received_incomes;
+                total_spendings += group_spendings;
+            }
 
-            //            <tfoot>
-            //                <tr>
-            //                    <td>Total</td>
-            //                    <td class='amount'>-320.45</td>
-            //                </tr>
-            //            </tfoot>
-            //        </table>
-            //    </body>
-            //</html>");
+            s.AppendFormat(@"
+                    </table>
+                    <hr/>
+                    <table class='bold-table'>
+                        <tr>
+                            <td>Dépenses</td>
+                            <td class='amount'>{0}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Recettes</td>
+                            <td class='amount'>{1}</td>
+                        </tr>
+
+                        <tr>
+                            <td>À percevoir</td>
+                            <td class='amount'>{2}</td>
+                        </tr>
+
+                        <tfoot>
+                            <tr>
+                                <td>Total</td>
+                                <td class='amount'>{3}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </body>
+            </html>", total_spendings, total_received_incomes, total_pending_incomes, total_amount);
 
             this.richTextBox.Text = s.ToString();
-            //WkHtmlWkHtmlPdfConverter.ConvertHtmlToPdf(doc, "out.pdf");
+
+            // TODO: try-catch
+            saveFileDialog.FileName = GetFileNameFromMonth(month);
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                doc.Html = richTextBox.Text;
+                WkHtmlWkHtmlPdfConverter.ConvertHtmlToPdf(doc, saveFileDialog.FileName);
+
+                // open the PDF file
+                Process.Start(saveFileDialog.FileName);
+            }
         }
     }
 }

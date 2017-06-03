@@ -122,7 +122,7 @@ namespace BreakingBudget.Services.PDF
             }
 
             // input file is "-" -> STDIN
-            paramsBuilder.AppendFormat(" - {0} ", outputPdfFilePath);
+            paramsBuilder.AppendFormat(" - \"{0}\" ", outputPdfFilePath);
         }
 
         public static void ConvertHtmlToPdf(PdfDocument document, String outputPdfFilePath)

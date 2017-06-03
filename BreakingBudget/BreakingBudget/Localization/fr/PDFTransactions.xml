@@ -5,6 +5,10 @@
     <Value>Récapitulatif du mois {0}</Value>
   </Localization>
   <Localization>
+    <Key>filename_summary_of_the_month_{0}</Key>
+    <Value>Rapport du mois {0}</Value>
+  </Localization>
+  <Localization>
     <Key>{0}_transactions</Key>
     <Value>{0} transactions</Value>
   </Localization>
@@ -13,51 +17,51 @@
     <Value>{0} transaction</Value>
   </Localization>
   <Localization>
-    <Key>of_january</Key>
+    <Key>of_the_month_id_1</Key>
     <Value>de janvier</Value>
   </Localization>
   <Localization>
-    <Key>of_february</Key>
+    <Key>of_the_month_id_2</Key>
     <Value>de février</Value>
   </Localization>
   <Localization>
-    <Key>of_march</Key>
+    <Key>of_the_month_id_3</Key>
     <Value>de mars</Value>
   </Localization>
   <Localization>
-    <Key>of_april</Key>
+    <Key>of_the_month_id_4</Key>
     <Value>d'avril</Value>
   </Localization>
   <Localization>
-    <Key>of_may</Key>
+    <Key>of_the_month_id_5</Key>
     <Value>de mai</Value>
   </Localization>
   <Localization>
-    <Key>of_june</Key>
+    <Key>of_the_month_id_6</Key>
     <Value>de juin</Value>
   </Localization>
   <Localization>
-    <Key>of_july</Key>
+    <Key>of_the_month_id_7</Key>
     <Value>de juillet</Value>
   </Localization>
   <Localization>
-    <Key>of_august</Key>
+    <Key>of_the_month_id_8</Key>
     <Value>d'août</Value>
   </Localization>
   <Localization>
-    <Key>of_september</Key>
+    <Key>of_the_month_id_9</Key>
     <Value>de septembre</Value>
   </Localization>
   <Localization>
-    <Key>of_october</Key>
+    <Key>of_the_month_id_10</Key>
     <Value>d'octobre</Value>
   </Localization>
   <Localization>
-    <Key>of_november</Key>
+    <Key>of_the_month_id_11</Key>
     <Value>de novembre</Value>
   </Localization>
   <Localization>
-    <Key>of_december</Key>
+    <Key>of_the_month_id_12</Key>
     <Value>de décembre</Value>
   </Localization>
 </root>

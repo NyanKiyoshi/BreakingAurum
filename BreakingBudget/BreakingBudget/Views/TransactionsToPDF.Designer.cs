@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.richTextBox = new System.Windows.Forms.RichTextBox();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // richTextBox
@@ -39,6 +40,13 @@
             this.richTextBox.Size = new System.Drawing.Size(832, 502);
             this.richTextBox.TabIndex = 0;
             this.richTextBox.Text = "";
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.DefaultExt = "pdf";
+            this.saveFileDialog.FileName = "rapport.pdf";
+            this.saveFileDialog.Filter = "Portable Document Format (*.pdf)|*.pdf";
+            this.saveFileDialog.Title = "Save rapport";
             // 
             // TransactionsToPDF
             // 
@@ -55,5 +63,6 @@
         #endregion
 
         private System.Windows.Forms.RichTextBox richTextBox;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
