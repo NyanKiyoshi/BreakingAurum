@@ -104,4 +104,12 @@
     <Key>UserCreation</Key>
     <Value>Ajout d'une personne</Value>
   </Localization>
+  <Localization>
+    <Key>err_already_used_{0}</Key>
+    <Value>{0} est déjà utilisé !</Value>
+  </Localization>
+  <Localization>
+    <Key>err_already_used_caption</Key>
+    <Value>Indisponible</Value>
+  </Localization>
 </root>

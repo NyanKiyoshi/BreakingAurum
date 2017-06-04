@@ -66,20 +66,56 @@ namespace BreakingBudget.Repositories
         // Checks if the given title (libPoste) is unique or not
         public static bool IsUnique(string libPoste)
         {
-            int rowCount;
+            OleDbCommand cmd = new OleDbCommand(
+                string.Format(
+                    "SELECT COUNT(*) FROM [{0}] WHERE libPoste = @libPoste", TABLE_NAME
+                )
+            );
+            cmd.Parameters.AddWithValue("@libPoste", libPoste);
 
-            using (OleDbConnection dbConn = DatabaseManager.CreateConnection())
+            return ((int)DatabaseManager.GetFirst(cmd)) == 0;
+        }
+
+        /// <summary>
+        /// Is the "poste" not used yet?
+        /// </summary>
+        /// <param name="codePoste"></param>
+        /// <returns></returns>
+        public static bool IsAvailable(int codePoste)
+        {
+            OleDbCommand cmd = new OleDbCommand(
+                string.Format(
+                    @"SELECT COUNT(*) FROM [{0}] a, [{1}] b, [{2}] c 
+                        WHERE a.codePoste = @codePoste
+                                OR b.codePoste = @codePoste
+                                OR c.codePoste = @codePoste",
+                    PostePonctuelRepository.TABLE_NAME, "PostePeriodique", PosteRevenuRepository.TABLE_NAME)
+                );
+            cmd.Parameters.AddWithValue("@codePoste", codePoste);
+
+            return ((int)DatabaseManager.GetFirst(cmd)) == 0;
+        }
+
+        public static PosteModel[] ListAvailableToUse()
+        {
+            using (OleDbConnection conn = DatabaseManager.CreateConnection())
             {
-                OleDbCommand cmd = new OleDbCommand(
-                    string.Format(
-                        "SELECT COUNT(*) FROM [{0}] WHERE libPoste = @libPoste", TABLE_NAME),
-                    dbConn);
-                cmd.Parameters.AddWithValue("@libPoste", libPoste);
+                OleDbCommand cmd = conn.CreateCommand();
 
-                rowCount = (int)DatabaseManager.GetFirst(cmd);
+                cmd.CommandText = string.Format(
+                    @"SELECT codePoste, libPoste FROM [{0}]
+                      WHERE   codePoste NOT IN (SELECT codePoste FROM [{1}])
+                          AND codePoste NOT IN (SELECT codePoste FROM [{2}])
+                          AND codePoste NOT IN (SELECT codePoste FROM [{3}])",
+                    PosteRepository.TABLE_NAME,
+                    PostePonctuelRepository.TABLE_NAME,
+                    "PostePeriodique",
+                    PosteRevenuRepository.TABLE_NAME
+                );
+
+                conn.Open();
+                return DataAdapter.OleDbDataReaderToStruct<PosteRepository.PosteModel>(cmd.ExecuteReader()).ToArray();
             }
-
-            return rowCount == 0;
         }
 
         public static PosteModel[] List()

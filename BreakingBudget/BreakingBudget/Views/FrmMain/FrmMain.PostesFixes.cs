@@ -34,27 +34,13 @@ namespace BreakingBudget.Views.FrmMain
             this.ComboxBoxListePostes.ResetText();
             this.ComboxBoxListePostes.Refresh();
 
-            // Add every item that is not already used by PostePeriodique
-            OleDbCommand cmd = DatabaseManager.CmdFromRawSQL(
-                "SELECT * FROM Poste WHERE codePoste NOT IN (SELECT codePoste FROM PostePeriodique WHERE codePoste IS NOT NULL)"
-            );
-
-            cmd.Connection.Open();
             try
             {
-                foreach (PosteRepository.PosteModel e in
-                    DataAdapter.OleDbDataReaderToStruct<PosteRepository.PosteModel>(cmd.ExecuteReader()))
-                {
-                    this.ComboxBoxListePostes.Items.Add(e);
-                }
+                this.ComboxBoxListePostes.Items.AddRange(PosteRepository.ListAvailableToUse());
             }
             catch (OleDbException ex)
             {
                 ErrorManager.HandleOleDBError(ex);
-            }
-            finally
-            {
-                cmd.Connection.Close();
             }
         }
 
@@ -123,13 +109,20 @@ namespace BreakingBudget.Views.FrmMain
                     new KeyValuePair<string, object>("montant", montant),
                     new KeyValuePair<string, object>("jourDuMois", TousLesXDuMois)
                 );
-
-                cmd.Connection.Open();
+                
                 try
                 {
-                    cmd.ExecuteNonQuery();  // insert data
+                    if (PosteRepository.IsAvailable(SelectedPoste.codePoste))
+                    {
+                        cmd.Connection.Open();
+                        cmd.ExecuteNonQuery();  // insert data
 
-                    ErrorManager.EntriesSuccessfullyAdded(this);
+                        ErrorManager.EntriesSuccessfullyAdded(this);
+                    }
+                    else
+                    {
+                        ErrorManager.ShowAlreadyUsedError(this, this.lblCmbPostes.Text);
+                    }
                 }
                 catch (OleDbException ex)
                 {

@@ -233,26 +233,20 @@ namespace BreakingBudget.Views.FrmMain
             bool allowFloat = true,
             bool allowNegatives = true)
         {
-            if (
-                (
-                    // is the char (not) a number?
-                    char.IsNumber(KeyChar)
+            return (
+                // is the char (not) a number?
+                char.IsNumber(KeyChar)
 
-                    // or (not) a backspace?
-                    || KeyChar == (char)Keys.Back
+                // or (not) a backspace?
+                || KeyChar == (char)Keys.Back
 
-                    // or (not) a unique dot?
-                    || (allowFloat && (KeyChar == '.' || KeyChar == ',')
-                                   && (!sender.Text.Contains(".") && !sender.Text.Contains(",")))
+                // or (not) a unique dot?
+                || (allowFloat && (KeyChar == '.' || KeyChar == ',')
+                                && (!sender.Text.Contains(".") && !sender.Text.Contains(",")))
 
-                    // ...or (not) a unique minus at the beginning of the line? (is the cursor not at the beginning)
-                    || (allowNegatives && KeyChar == '-' && (!sender.Text.Contains("-")) && sender.SelectionStart == 0)
-                )
-            )
-            {
-                return true;
-            }
-            return false;
+                // ...or (not) a unique minus at the beginning of the line? (is the cursor not at the beginning)
+                || (allowNegatives && KeyChar == '-' && (!sender.Text.Contains("-")) && sender.SelectionStart == 0)
+            );
         }
 
         private void FrmMain_StyleChanged(object sender, EventArgs e)

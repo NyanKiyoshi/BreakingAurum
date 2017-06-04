@@ -94,6 +94,16 @@ namespace BreakingBudget.Services.Lang
                 MessageBoxIcon.Error
             );
         }
+
+        public static DialogResult ShowAlreadyUsedError(IWin32Window owner, string field)
+        {
+            return MetroMessageBox.Show(owner,
+                Program.settings.localize.Translate("err_already_used_{0}", field),
+                Program.settings.localize.Translate("err_already_used_caption"),
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error
+            );
+        }
         #endregion
     }
 }
