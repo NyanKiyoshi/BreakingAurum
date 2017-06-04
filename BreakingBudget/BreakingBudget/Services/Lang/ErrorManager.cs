@@ -45,13 +45,27 @@ namespace BreakingBudget.Services.Lang
         }
 
         #region success
-        public static DialogResult EntriesSuccessfullyAdded(IWin32Window owner)
+        public static DialogResult ShowSuccess(IWin32Window owner, string caption, string msg)
         {
-            return MetroMessageBox.Show(owner,
-                Program.settings.localize.Translate("msg_entries_successfully_added_msg"),
-                Program.settings.localize.Translate("msg_entries_successfully_added_caption"),
+            return MetroMessageBox.Show(owner, msg, caption,
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information
+            );
+        }
+
+        public static DialogResult EntriesSuccessfullyAdded(IWin32Window owner)
+        {
+            return ErrorManager.ShowSuccess(owner,
+                Program.settings.localize.Translate("msg_entries_successfully_added_caption"),
+                Program.settings.localize.Translate("msg_entries_successfully_added_msg")
+            );
+        }
+
+        public static DialogResult SMSSuccessfullySent(IWin32Window owner)
+        {
+            return ErrorManager.ShowSuccess(owner,
+                Program.settings.localize.Translate("msg_success_caption"),
+                Program.settings.localize.Translate("msg_sms_successfully_sent_msg")
             );
         }
         #endregion
@@ -100,6 +114,16 @@ namespace BreakingBudget.Services.Lang
             return MetroMessageBox.Show(owner,
                 Program.settings.localize.Translate("err_already_used_{0}", field),
                 Program.settings.localize.Translate("err_already_used_caption"),
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error
+            );
+        }
+
+        public static DialogResult ShowOperationFailed(IWin32Window owner)
+        {
+            return MetroMessageBox.Show(owner,
+                "",
+                Program.settings.localize.Translate("err_operation_failed_caption"),
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error
             );

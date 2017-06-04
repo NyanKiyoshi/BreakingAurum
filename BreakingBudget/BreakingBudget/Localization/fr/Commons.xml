@@ -112,4 +112,12 @@
     <Key>err_already_used_caption</Key>
     <Value>Indisponible</Value>
   </Localization>
+  <Localization>
+    <Key>msg_sms_successfully_sent_msg</Key>
+    <Value>SMS envoyé !</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_success_caption</Key>
+    <Value>Succès</Value>
+  </Localization>
 </root>

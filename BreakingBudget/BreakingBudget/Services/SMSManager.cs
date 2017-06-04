@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net.Http;
 using System.Collections.Generic;
+using BreakingBudget.Services.Lang;
+using System.Windows.Forms;
 
 namespace BreakingBudget.Services
 {
@@ -8,7 +10,7 @@ namespace BreakingBudget.Services
     {
         private const string REMOTE_URL = "http://kisune.com/api/SMSManager/handler.php";
 
-        public static async void SendSMS(string[] numbers, string message)
+        public static async void SendSMS(IWin32Window owner, string[] numbers, string message)
         {
             HttpClient client = new HttpClient();
             var values = new Dictionary<string, string>
@@ -31,8 +33,16 @@ namespace BreakingBudget.Services
             // and wait (async) for the server's response.
             var response = await client.PostAsync(SMSManager.REMOTE_URL, content);
 
-            // then, read the response's data
-            var responseString = await response.Content.ReadAsStringAsync();
+            // read the HTTP status code, if 2xx or 3xx, it's ok.
+            // TODO: look if C# handle redirections
+            if ((int)response.StatusCode >= 200 && (int)response.StatusCode < 400)
+            {
+                ErrorManager.SMSSuccessfullySent(owner);
+            }
+            else
+            {
+                ErrorManager.ShowOperationFailed(owner);
+            }
         }
     }
 }

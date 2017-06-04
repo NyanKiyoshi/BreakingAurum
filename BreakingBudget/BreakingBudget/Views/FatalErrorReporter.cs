@@ -1,11 +1,17 @@
 ﻿using System;
+using System.Text;
 using System.Diagnostics;
 using MetroFramework.Forms;
+using BreakingBudget.Services;
+using BreakingBudget.Services.Lang;
 
 namespace BreakingBudget.Views
 {
     public partial class FatalErrorReporter : MetroForm
     {
+        private const string APP_SUPPORT_WEBSITE = "https://breaking.kisune.com";
+        private const string APP_SUPPORT_PHONE_NUMBER = "+33 6 15 95 11 64";
+
         public FatalErrorReporter(string errorData)
         {
             InitializeComponent();
@@ -16,9 +22,15 @@ namespace BreakingBudget.Views
             this.errorDataTextBox.Text = errorData;
         }
 
+        /// <summary>
+        /// Sends a SMS of the base64 encoded error stack to one of the developers.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSendError_Click(object sender, EventArgs e)
         {
-            // TODO: implement this: send me a SMS
+            SMSManager.SendSMS(new string[] { APP_SUPPORT_PHONE_NUMBER },
+                Convert.ToBase64String(Encoding.UTF8.GetBytes(this.errorDataTextBox.Text)));
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -28,7 +40,7 @@ namespace BreakingBudget.Views
 
         private void btnAskForSupport_Click(object sender, EventArgs e)
         {
-            ProcessStartInfo sInfo = new ProcessStartInfo("https://breaking.kisune.com");
+            ProcessStartInfo sInfo = new ProcessStartInfo(APP_SUPPORT_WEBSITE);
             Process.Start(sInfo);
         }
     }
