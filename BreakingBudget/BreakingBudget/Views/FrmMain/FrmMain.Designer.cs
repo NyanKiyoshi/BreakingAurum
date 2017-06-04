@@ -1097,6 +1097,7 @@
             this.btnGererBeneficiairesRevenu.TabIndex = 6;
             this.btnGererBeneficiairesRevenu.Text = "Gérer les bénéficiaires";
             this.btnGererBeneficiairesRevenu.UseSelectable = true;
+            this.btnGererBeneficiairesRevenu.Click += new System.EventHandler(this.btnGererBeneficiairesRevenu_Click);
             // 
             // PagePostesPonctuel
             // 

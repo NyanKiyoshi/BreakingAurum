@@ -43,27 +43,37 @@ namespace BreakingBudget.Repositories
         /// 
         /// <returns></returns>
         public static void
-        Create(OleDbConnection dbConn, OleDbTransaction transaction,
-            string libPoste, string comments,
+        Create(OleDbConnection dbConn, OleDbTransaction dbTransaction,
+            string libPoste, string _comments,
             params KeyValuePair<DateTime, decimal>[] deadLines)
         {
+            int transactionCodeType;
+
+            // if there is no comments: put a DBNull value. Otherwise, the comment.
+            object comments = _comments == null ? (object)DBNull.Value : _comments;
+
             // create the Poste
-            int codePoste = PosteRepository.Create(dbConn, transaction, libPoste);
+            int codePoste = PosteRepository.Create(dbConn, dbTransaction, libPoste);
 
             OleDbCommand cmd = new OleDbCommand(
                 string.Format(
                     "INSERT INTO [{0}] (codePoste, commentaire) VALUES(@codePoste, @commentaire)", TABLE_NAME),
-                dbConn, transaction
+                dbConn, dbTransaction
             );
 
             cmd.Parameters.AddWithValue("@codePoste",   codePoste);
-            cmd.Parameters.AddWithValue("@commentaire", comments == null ? (object)DBNull.Value : comments);
+            cmd.Parameters.AddWithValue("@commentaire", comments);
 
             Console.WriteLine("<- INSERT INTO PostePonctuel: {0}, {1}", codePoste, comments);
             cmd.ExecuteNonQuery();
 
+            // create the TransactionType
+            transactionCodeType = 
+                TypeTransactionRepository.CreateUsingIncrementalName(ref libPoste, dbConn, dbTransaction);
+
             foreach (KeyValuePair<DateTime, decimal> deadline in deadLines) {
-                EcheanceRepository.Create(dbConn, transaction, codePoste, deadline.Key, deadline.Value);
+                EcheanceRepository.Create(dbConn,
+                    dbTransaction, ref codePoste, ref transactionCodeType, ref comments, deadline.Key, deadline.Value);
             }
         }
 

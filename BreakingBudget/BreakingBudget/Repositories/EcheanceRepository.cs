@@ -9,8 +9,10 @@ namespace BreakingBudget.Repositories
 
         public static void Create(
             OleDbConnection dbConn,
-            OleDbTransaction transaction,
-            int codePoste,
+            OleDbTransaction dbTransaction,
+            ref int codePoste,
+            ref int transactionCodeType,
+            ref object comments,
             DateTime dt,
             decimal amount
         )
@@ -19,7 +21,7 @@ namespace BreakingBudget.Repositories
                 string.Format(
                     @"INSERT INTO [{0}] (codePoste,  datePrelevt,   montantEcheance) 
                                  VALUES(@codePoste, @datePrelevt,  @montantEcheance)", TABLE_NAME),
-                dbConn, transaction
+                dbConn, dbTransaction
             );
 
             cmd.Parameters.AddWithValue("@codePoste",       codePoste);
@@ -28,6 +30,10 @@ namespace BreakingBudget.Repositories
 
             Console.WriteLine("<- INSERT INTO Echeances: {0}, {1}, {2}", codePoste, dt, amount);
             cmd.ExecuteNonQuery();
+
+            // create a transaction entry too
+            TransactionRepository.Create(dbConn, dbTransaction,
+                ref transactionCodeType, ref comments, dt, ref amount);
         }
     }
 }

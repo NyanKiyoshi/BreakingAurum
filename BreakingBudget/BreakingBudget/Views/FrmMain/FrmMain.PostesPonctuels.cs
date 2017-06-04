@@ -23,7 +23,7 @@ namespace BreakingBudget.Views.FrmMain
         FlowLayoutPanel containerEchancesPonctuelles;
 
         // the list of deadlines generated inputs
-        List<KeyValuePair<DateTimePicker, MetroTextBox>> txtEchancePonctuelsEntries;
+        List<KeyValuePair<DateTimePicker, MetroTextBox>> txtEcheancePonctuelsEntries;
 
         int numberOfDeadlines;
 
@@ -39,7 +39,7 @@ namespace BreakingBudget.Views.FrmMain
 
             // initialize data
             this.containerEchancesPonctuelles = echancesContainer;
-            this.txtEchancePonctuelsEntries = new List<KeyValuePair<DateTimePicker, MetroTextBox>>();
+            this.txtEcheancePonctuelsEntries = new List<KeyValuePair<DateTimePicker, MetroTextBox>>();
             this.numberOfDeadlines = 0;
         }
 
@@ -94,7 +94,7 @@ namespace BreakingBudget.Views.FrmMain
             txtAmount.KeyPress += new KeyPressEventHandler(this.AllowKeyPressAFloat);
 
 			// append the newly created date picker and amount fields to the list
-            this.txtEchancePonctuelsEntries.Add(
+            this.txtEcheancePonctuelsEntries.Add(
                 new KeyValuePair<DateTimePicker, MetroTextBox>(datePicker, txtAmount)
             );
 
@@ -124,7 +124,7 @@ namespace BreakingBudget.Views.FrmMain
             while (i < this.numberOfDeadlines)
             {
                 // retrieve the entry (DatePicker & TextBox)
-                e = this.txtEchancePonctuelsEntries[i];
+                e = this.txtEcheancePonctuelsEntries[i];
 
                 // try to convert the textbox value to decimal
                 // if we fail, we log it
@@ -184,7 +184,7 @@ namespace BreakingBudget.Views.FrmMain
             string str_amount = f_amount.ToString("#.##");
             for (int i = startPoint; i < endPoint; ++i)
             {
-                this.txtEchancePonctuelsEntries[i].Value.Text = str_amount;
+                this.txtEcheancePonctuelsEntries[i].Value.Text = str_amount;
             }
         }
 
@@ -363,12 +363,12 @@ namespace BreakingBudget.Views.FrmMain
             {
                 // if the number of the alrady created deadlines is less than the entered count,
                 // create them.
-                if (this.txtEchancePonctuelsEntries.Count < newDeadlineCount)
+                if (this.txtEcheancePonctuelsEntries.Count < newDeadlineCount)
                 {
                     // put the main container visible
                     this.echancesContainer.Visible = true;
 
-                    for (int c = this.txtEchancePonctuelsEntries.Count + 1; c <= newDeadlineCount; ++c)
+                    for (int c = this.txtEcheancePonctuelsEntries.Count + 1; c <= newDeadlineCount; ++c)
                     {
                         // generate a (visible) deadline container
                         newDeadlineContainer = this.CreateDeadlineContainer(c);
@@ -379,13 +379,13 @@ namespace BreakingBudget.Views.FrmMain
                 }
 
                 // XXX: I should refactor that ugly pill of crap
-                for (int i = newDeadlineCount; i < this.txtEchancePonctuelsEntries.Count; ++i)
+                for (int i = newDeadlineCount; i < this.txtEcheancePonctuelsEntries.Count; ++i)
                 {
-                    this.txtEchancePonctuelsEntries[i].Value.Parent.Visible = false;
+                    this.txtEcheancePonctuelsEntries[i].Value.Parent.Visible = false;
                 }
                 for (int i = 0; i < newDeadlineCount; ++i)
                 {
-                    this.txtEchancePonctuelsEntries[i].Value.Parent.Visible = true;
+                    this.txtEcheancePonctuelsEntries[i].Value.Parent.Visible = true;
                 }
 
                 // update the number of deadlines

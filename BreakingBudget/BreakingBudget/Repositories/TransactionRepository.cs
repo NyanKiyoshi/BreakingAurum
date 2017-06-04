@@ -28,10 +28,56 @@ namespace BreakingBudget.Repositories
             }
         }
 
+        public static void Create(
+            OleDbConnection dbConn,
+            OleDbTransaction dbTransaction,
+            ref int transactionTypeCode,
+            ref object comments,
+            DateTime dt,
+            ref decimal amount
+        )
+        {
+            int codeTransaction = BiggestID(dbConn, dbTransaction) + 1;
+
+            OleDbCommand cmd = new OleDbCommand(
+                string.Format(
+                    @"INSERT INTO [{0}] (
+                                codeTransaction,   dateTransaction,  description,
+                                montant,           recetteON,        percuON,
+                                type
+                      ) VALUES(@codeTransaction,  @dateTransaction, @description,
+                               @montant,          @recetteON,       @percuON,
+                               @type)", TABLE_NAME),
+                dbConn, dbTransaction
+            );
+
+            cmd.Parameters.AddWithValue("@codeTransaction",   codeTransaction);
+            cmd.Parameters.AddWithValue("@dateTransaction",   OleDbType.Date).Value = dt.Date;
+            cmd.Parameters.AddWithValue("@description",       comments);
+            cmd.Parameters.AddWithValue("@montant",           amount);
+            cmd.Parameters.AddWithValue("@recetteON",         false);
+            cmd.Parameters.AddWithValue("@percuON",           false);
+            cmd.Parameters.AddWithValue("@type",              transactionTypeCode);
+
+            Console.WriteLine("<- INSERT INTO Transaction");
+            cmd.ExecuteNonQuery();
+        }
+
         // Counts the number of rows of the table
         public static int CountRows()
         {
             return (int)DatabaseManager.GetFirstRaw("SELECT COUNT(*) FROM " + TABLE_NAME);
+        }
+
+        // Gets the biggest codeTransaction existing in the database
+        public static int BiggestID(OleDbConnection dbConn, OleDbTransaction dbTransaction)
+        {
+            OleDbCommand cmd = dbConn.CreateCommand();
+            cmd.Transaction = dbTransaction;
+            cmd.CommandText = "SELECT MAX(codeTransaction) FROM [" + TABLE_NAME + "]";
+
+            object biggestId = cmd.ExecuteScalar();
+            return (biggestId.GetType() != typeof(DBNull)) ? (int)biggestId : 0;
         }
 
         public static TransactionModel[] GetByMonth(int month)

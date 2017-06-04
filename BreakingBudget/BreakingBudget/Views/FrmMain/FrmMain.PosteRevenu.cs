@@ -138,5 +138,10 @@ namespace BreakingBudget.Views.FrmMain
                 dbConn.Close();
             }
         }
+
+        private void btnGererBeneficiairesRevenu_Click(object sender, EventArgs e)
+        {
+            // TODO!
+        }
     }
 }
