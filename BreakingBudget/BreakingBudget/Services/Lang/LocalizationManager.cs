@@ -3,6 +3,9 @@ using System.IO;
 using System.Reflection;
 using System.Data;
 using System.Windows.Forms;
+using System;
+using System.Reflection;
+using System.Globalization;
 
 namespace BreakingBudget.Services.Lang
 {
@@ -224,6 +227,24 @@ namespace BreakingBudget.Services.Lang
                     ControlerTranslator(subCtrl);
                 }
             }
+        }
+
+        public delegate bool TryParseHandler<T>(string s, NumberStyles style, IFormatProvider provider, out T result);
+
+        /// <summary>
+        /// Tries to convert a string `s` to a type `T` without any caring of the localization.
+        /// Avoids for example of having `12,25` interpreted as `1225` or `12.3` as `123`.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="s"></param>
+        /// <param name="parseHandler"></param>
+        /// <param name="res"></param>
+        /// <returns></returns>
+        public static bool ConvertFloatingTo<T>(string s, TryParseHandler<T> parseHandler, out T res)
+            where T : IComparable, IFormattable, IConvertible
+        {
+            s = s.Replace(',', '.');
+            return parseHandler(s, NumberStyles.Any, CultureInfo.InvariantCulture, out res);
         }
     }
 }

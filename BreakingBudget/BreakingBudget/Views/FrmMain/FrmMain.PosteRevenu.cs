@@ -63,7 +63,7 @@ namespace BreakingBudget.Views.FrmMain
 
             // try to convert the user amount to a decimal and the day to a int,
             // if it fails, we trigger a "not a number" error and we stop proceeding
-            if (!decimal.TryParse(this.txtBoxMontantRevenu.Text, out revenuMontant)
+            if (!LocalizationManager.ConvertFloatingTo<decimal>(this.txtBoxMontantRevenu.Text, decimal.TryParse, out revenuMontant)
                 ||  !this.isDayOfTheMonth(this.txtTousLesXDuMoisRevenu.Text, out chaqueXDuMois))
             {
                 ErrorManager.ShowNotANumberError(this);

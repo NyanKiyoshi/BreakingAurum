@@ -242,7 +242,8 @@ namespace BreakingBudget.Views.FrmMain
                     || KeyChar == (char)Keys.Back
 
                     // or (not) a unique dot?
-                    || (allowFloat && KeyChar == '.' && (!sender.Text.Contains(".")))
+                    || (allowFloat && (KeyChar == '.' || KeyChar == ',')
+                                   && (!sender.Text.Contains(".") && !sender.Text.Contains(",")))
 
                     // ...or (not) a unique minus at the beginning of the line? (is the cursor not at the beginning)
                     || (allowNegatives && KeyChar == '-' && (!sender.Text.Contains("-")) && sender.SelectionStart == 0)

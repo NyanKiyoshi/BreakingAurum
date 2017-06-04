@@ -102,7 +102,7 @@ namespace BreakingBudget.Views.FrmMain
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             // try to convert the decimals and integers
-            else if (!(decimal.TryParse(TxtBoxMontantPosteFixe.Text, out montant)
+            else if (!(LocalizationManager.ConvertFloatingTo<decimal>(TxtBoxMontantPosteFixe.Text, decimal.TryParse, out montant)
                   && int.TryParse(TxtBoxTousLesXMois.Text, out TousLesXDuMois)))
             {
                 MetroMessageBox.Show(this,

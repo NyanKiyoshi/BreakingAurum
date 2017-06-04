@@ -129,7 +129,7 @@ namespace BreakingBudget.Views.FrmMain
                 // try to convert the textbox value to decimal
                 // if we fail, we log it
                 // then we return false and stop proceeding
-                if (!decimal.TryParse(e.Value.Text, out amount))
+                if (!LocalizationManager.ConvertFloatingTo<decimal>(e.Value.Text, decimal.TryParse, out amount))
                 {
                     Console.WriteLine("F :: Unable to convert {0} ;; {1} to decimal", e.Value, e.Value.Name);
                     return false;
@@ -227,8 +227,8 @@ namespace BreakingBudget.Views.FrmMain
             lblConfirmNbDeadLines_Click(sender, e);
 
             // if the values are not number: show error
-            if (!int.TryParse(this.txtBoxNbPrelevementsPonctuel.Text, out nbPrelevements)
-                || !decimal.TryParse(this.txtBoxMontantPonctuel.Text, out montantTotal))
+            if (!LocalizationManager.ConvertFloatingTo<int>(this.txtBoxNbPrelevementsPonctuel.Text, int.TryParse, out nbPrelevements)
+                || !LocalizationManager.ConvertFloatingTo<decimal>(this.txtBoxMontantPonctuel.Text, decimal.TryParse, out montantTotal))
             {
                 ErrorManager.ShowNotANumberError(this);
                 return;
@@ -349,7 +349,7 @@ namespace BreakingBudget.Views.FrmMain
             int newDeadlineCount;
             decimal montantTotal;
 
-			if (!int.TryParse(this.txtBoxNbPrelevementsPonctuel.Text, out newDeadlineCount) || newDeadlineCount < 1)
+			if (!LocalizationManager.ConvertFloatingTo<int>(this.txtBoxNbPrelevementsPonctuel.Text, int.TryParse, out newDeadlineCount) || newDeadlineCount < 1)
             {
                 this.errorProvider.SetError(this.txtBoxNbPrelevementsPonctuel, 
 					Program.settings.localize.Translate("err_not_a_valid_number"));
@@ -401,7 +401,7 @@ namespace BreakingBudget.Views.FrmMain
             //   ask if the user wants to override the deadlines
             //   with the amount divided the deadlines number.
 			if (!string.IsNullOrWhiteSpace(this.txtBoxMontantPonctuel.Text)
-				&& decimal.TryParse(this.txtBoxMontantPonctuel.Text, out montantTotal))
+				&& LocalizationManager.ConvertFloatingTo<decimal>(this.txtBoxMontantPonctuel.Text, decimal.TryParse, out montantTotal))
             {
                 AskToUpdateDeadLinesFromAmount(montantTotal, newDeadlineCount);
             }

@@ -169,9 +169,9 @@ namespace BreakingBudget.Views.FrmMain
                     e.Handled = true;
             }
             // On autorise uniquement UNE SEULE virgule uniquement en milieu de chaine
-            else if (e.KeyChar == ',')
+            else if (e.KeyChar == ',' || e.KeyChar == '.')
             {
-                if (txt.Text.Contains(',') || txt.Text == string.Empty)
+                if (txt.Text.Contains(',') || txt.Text.Contains('.') || txt.Text == string.Empty)
                     e.Handled = true;
             }
             else
@@ -321,11 +321,18 @@ namespace BreakingBudget.Views.FrmMain
             // Récupération des informations du formulaire
             string dateTransaction = calTransaction.Value.ToShortDateString();
             string description = txtDesc.Text;
-            string montant = txtMontant.Text;
+            double montant;
             int type = (int)cboType.SelectedValue;
             int idTransac = GetNextIdTransac(); // Récupérer le numéro de la prochaine transaction
 
             int codeRetour;
+
+            // Tente de convertir le montant en un double. Sinon : affiche une erreur et stop le traitement.
+            if (!LocalizationManager.ConvertFloatingTo<double>(txtMontant.Text, double.TryParse, out montant))
+            {
+                ErrorManager.ShowNotANumberError(this);
+                return;
+            }
 
             // Ouverture de la connection
             OleDbConnection connec = DatabaseManager.CreateConnection();
@@ -341,7 +348,7 @@ namespace BreakingBudget.Views.FrmMain
 
             // Si jamais la description n'est pas renseigne, on insert "NULL" dans la colonne description
             cmdTransac.Parameters.AddWithValue("@description", string.IsNullOrEmpty(description) ? (object)DBNull.Value : description);
-            cmdTransac.Parameters.AddWithValue("@montant", montant);
+            cmdTransac.Parameters.AddWithValue("@montant", montant > 0 ? montant : montant * -1);
             cmdTransac.Parameters.AddWithValue("@recetteON", ckbRecette.Checked);
             cmdTransac.Parameters.AddWithValue("@percuON", ckbPercu.Checked);
             cmdTransac.Parameters.AddWithValue("@type", type);
