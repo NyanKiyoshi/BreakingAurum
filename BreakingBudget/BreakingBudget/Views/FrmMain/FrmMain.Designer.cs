@@ -1819,6 +1819,7 @@
             // 
             // label2
             // 
+            this.metroStyleExtender.SetApplyMetroTheme(this.label2, true);
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 35);
             this.label2.Name = "label2";
@@ -1828,6 +1829,7 @@
             // 
             // listBoxPersonne
             // 
+            this.metroStyleExtender.SetApplyMetroTheme(this.listBoxPersonne, true);
             this.listBoxPersonne.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listBoxPersonne.FormattingEnabled = true;
             this.listBoxPersonne.Location = new System.Drawing.Point(9, 72);
