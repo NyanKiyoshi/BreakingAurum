@@ -108,6 +108,11 @@ namespace BreakingBudget.Views.FrmMain
                             (MultiPanePage)null,
                             Program.settings.localize.Translate("sidebar_page_lister_transactions")
                         ),
+
+                        new SidebarEntry(
+                            (MultiPanePage)null,
+                            Program.settings.localize.Translate("sidebar_page_exporter_transactions")
+                        ),
                 }),
             };
 

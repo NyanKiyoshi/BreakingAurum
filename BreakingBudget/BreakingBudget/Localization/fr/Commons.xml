@@ -120,4 +120,52 @@
     <Key>msg_success_caption</Key>
     <Value>Succès</Value>
   </Localization>
+  <Localization>
+    <Key>month_id_1</Key>
+    <Value>Janvier</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_2</Key>
+    <Value>Février</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_3</Key>
+    <Value>Mars</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_4</Key>
+    <Value>Avril</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_5</Key>
+    <Value>Mai</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_6</Key>
+    <Value>Juin</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_7</Key>
+    <Value>Juillet</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_8</Key>
+    <Value>Août</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_9</Key>
+    <Value>Septembre</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_10</Key>
+    <Value>Octobre</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_11</Key>
+    <Value>Novembre</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_12</Key>
+    <Value>Décembre</Value>
+  </Localization>
 </root>

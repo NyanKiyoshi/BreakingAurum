@@ -85,7 +85,7 @@ namespace BreakingBudget.Views.FrmMain
 			// params the amount input field
             txtAmount.Dock = DockStyle.Right;
             txtAmount.Text = "";
-            txtAmount.MaxLength = 5;
+            txtAmount.MaxLength = 12;
             txtAmount.Size = new Size(74, 20);
             txtAmount.WaterMark = lblDeadline.Text;
 

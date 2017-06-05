@@ -32,7 +32,7 @@ namespace BreakingBudget.Repositories
             OleDbConnection dbConn,
             OleDbTransaction dbTransaction,
             ref int transactionTypeCode,
-            ref object comments,
+            ref string title,
             DateTime dt,
             ref decimal amount
         )
@@ -53,7 +53,7 @@ namespace BreakingBudget.Repositories
 
             cmd.Parameters.AddWithValue("@codeTransaction",   codeTransaction);
             cmd.Parameters.AddWithValue("@dateTransaction",   OleDbType.Date).Value = dt.Date;
-            cmd.Parameters.AddWithValue("@description",       comments);
+            cmd.Parameters.AddWithValue("@description",       title);
             cmd.Parameters.AddWithValue("@montant",           amount);
             cmd.Parameters.AddWithValue("@recetteON",         false);
             cmd.Parameters.AddWithValue("@percuON",           false);

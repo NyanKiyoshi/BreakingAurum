@@ -12,7 +12,7 @@ namespace BreakingBudget.Repositories
             OleDbTransaction dbTransaction,
             ref int codePoste,
             ref int transactionCodeType,
-            ref object comments,
+            ref string title,
             DateTime dt,
             decimal amount
         )
@@ -33,7 +33,7 @@ namespace BreakingBudget.Repositories
 
             // create a transaction entry too
             TransactionRepository.Create(dbConn, dbTransaction,
-                ref transactionCodeType, ref comments, dt, ref amount);
+                ref transactionCodeType, ref title, dt, ref amount);
         }
     }
 }

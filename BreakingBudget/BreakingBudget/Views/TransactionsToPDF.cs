@@ -12,8 +12,26 @@ namespace BreakingBudget.Views
 {
     public partial class TransactionsToPDF : MetroForm
     {
+        public TransactionsToPDF()
+        {
+            InitializeComponent();
+
+
+            // retrieve the set of translations for this form
+            Program.settings.localize.ImportResourceLocalization("PDFTransactions");
+
+            this.Text = Program.settings.localize.Translate(this.Name);
+            Program.settings.localize.ControlerTranslator(this);
+
+            comboBoxMonth.Items.Clear();
+            for (int i = 1; i < 13; ++i)
+            {
+                comboBoxMonth.Items.Add(Program.settings.localize.Translate("month_id_" + i));
+            }
+        }
+
         // TODO: PUT A LOGO!
-        public void GetCSSMeta(StringBuilder output)
+        public static void GetCSSMeta(StringBuilder output)
         {
             output.AppendLine(@"
         <style type='text/css'>
@@ -149,7 +167,7 @@ namespace BreakingBudget.Views
             );
         }
 
-        public TransactionsToPDF(int month = 2, int year = 2017)
+        public void PrintToPDDF(int month, int year)
         {
             int i;
             int entry_index;
@@ -174,9 +192,6 @@ namespace BreakingBudget.Views
             //   QPainter::begin(): Returned false============================] 100%
             //   Error: Unable to write to destination
             //   Exit with code 1, due to unknown error.
-            InitializeComponent();
-
-            Program.settings.localize.ImportResourceLocalization("PDFTransactions");
             PdfDocument doc = new PdfDocument();
 
             // retrieve every transaction of the current month
@@ -193,7 +208,7 @@ namespace BreakingBudget.Views
             // Group each transaction by type
             IGrouping<int, TransactionRepository.TransactionModel>[] transactionsGroups = _transactions.GroupBy(x => x.type).ToArray();
 
-            doc.Html = this.richTextBox.Text = "";
+            // the HTML headings
             StringBuilder s = new StringBuilder(@"<!DOCTYPE html>
             <html>
                 <head>
@@ -334,18 +349,31 @@ namespace BreakingBudget.Views
                 </body>
             </html>", total_spendings, total_received_incomes, total_pending_incomes, total_amount);
 
-            this.richTextBox.Text = s.ToString();
+            // set the default filename
+            saveFileDialog.FileName = GetFileNameFromMonth(month);
 
             // TODO: try-catch
-            saveFileDialog.FileName = GetFileNameFromMonth(month);
+            // ask where to save the PDF file
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                doc.Html = richTextBox.Text;
+                doc.Html = s.ToString();
                 WkHtmlWkHtmlPdfConverter.ConvertHtmlToPdf(doc, saveFileDialog.FileName);
 
                 // open the PDF file
                 Process.Start(saveFileDialog.FileName);
             }
+        }
+
+        private void btnExport_Click(object sender, System.EventArgs e)
+        {
+            int year;
+            if (!LocalizationManager.ConvertFloatingTo<int>(this.txtBoxYear.Text, int.TryParse, out year))
+            {
+                ErrorManager.ShowNotANumberError(this);
+                return;
+            }
+            
+            PrintToPDDF(this.comboBoxMonth.SelectedIndex + 1, year);
         }
     }
 }

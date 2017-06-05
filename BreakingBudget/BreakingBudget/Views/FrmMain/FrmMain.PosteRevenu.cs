@@ -141,7 +141,10 @@ namespace BreakingBudget.Views.FrmMain
 
         private void btnGererBeneficiairesRevenu_Click(object sender, EventArgs e)
         {
-            // TODO!
+            if ((new UserCreation()).ShowDialog() == DialogResult.OK)
+            {
+                FillBeneficiaireList();
+            }
         }
     }
 }

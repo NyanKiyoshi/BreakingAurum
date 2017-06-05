@@ -243,7 +243,7 @@
             this.txtTel.MaxLength = 32767;
             this.txtTel.Name = "txtTel";
             this.txtTel.PasswordChar = '\0';
-            this.txtTel.PromptText = "+33 6 .. .. .. ..";
+            this.txtTel.PromptText = "06 .. .. .. ..";
             this.txtTel.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtTel.SelectedText = "";
             this.txtTel.SelectionLength = 0;
@@ -252,7 +252,7 @@
             this.txtTel.Size = new System.Drawing.Size(424, 23);
             this.txtTel.TabIndex = 0;
             this.txtTel.UseSelectable = true;
-            this.txtTel.WaterMark = "+33 6 .. .. .. ..";
+            this.txtTel.WaterMark = "06 .. .. .. ..";
             this.txtTel.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtTel.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.txtTel.TextChanged += new System.EventHandler(this.txtNom_TextChanged);
