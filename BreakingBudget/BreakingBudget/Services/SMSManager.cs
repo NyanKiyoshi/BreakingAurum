@@ -41,7 +41,12 @@ namespace BreakingBudget.Services
             }
             else
             {
-                ErrorManager.ShowOperationFailed(owner);
+                ErrorManager.ShowOperationFailed(owner, 
+                    String.Format(
+                        Program.settings.localize.Translate("err_message_not_sent_err_code_{0}"),
+                        (int)response.StatusCode
+                    )
+                );
             }
         }
     }

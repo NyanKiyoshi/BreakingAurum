@@ -9,6 +9,7 @@ using MetroFramework.Forms;
 using BreakingBudget.Services;
 using BreakingBudget.Services.Lang;
 using BreakingBudget.Services.SQL;
+using System.Collections.Generic;
 
 namespace BreakingBudget.Views
 {
@@ -432,6 +433,42 @@ namespace BreakingBudget.Views
                     cmdBenef.ExecuteNonQuery();
                 }
                 ErrorManager.EntriesSuccessfullyAdded(this);
+
+                ///////// Envoi d'un SMS si la somme dépasse la totalité des revenus + 10 %
+                // Recherche et calcul du revenu de la famille
+                string requeteSumRevenus = "SELECT SUM(montant) FROM [PosteRevenu]";
+                OleDbCommand cmdSumRevenus = new OleDbCommand(requeteSumRevenus, connec);
+
+                double sumRevenus = (double)cmdSumRevenus.ExecuteScalar();
+                double sommeLimite = sumRevenus + 0.1 * sumRevenus;
+                //MessageBox.Show("Revenu : " + sumRevenus + "\n" + "Somme limite : " + sommeLimite);
+                List<string> numerosTel = new List<string>();
+
+                // Si le montant de la transaction dépasse cette somme max, alors on envoi 
+                // un sms a tous les numéros renseignés dans la base
+                if (montant > sommeLimite)
+                {
+                    // On récupère tous les numéros de téléphone de la table Personne
+                    string requeteAllNum = "SELECT telMobile FROM [Personne] WHERE telMobile IS NOT NULL";
+                    OleDbCommand cmdAllNum = new OleDbCommand(requeteAllNum, connec);
+                    OleDbDataReader drAllNum = cmdAllNum.ExecuteReader();
+                    while (drAllNum.Read())
+                    {
+                        string num = drAllNum[0].ToString();
+                        if (num[0] == '0')
+                        {
+                            num = num.Substring(1, num.Length - 1);
+                            num = "+33" + num;
+                        }
+                        //MessageBox.Show("Numéro : " + num);
+                        numerosTel.Add(num);
+                    }
+                }
+
+                // Envoi des SMS TODO: translate
+                string message = "Message automatique de BreakingBudget\n" +
+                                 "ATTENTION : une transaction d'un montant anormalement élevée a été saisie (" + montant + " EUR)";
+                SMSManager.SendSMS(this, numerosTel.ToArray(), message);
 
                 // Clear formulaire
                 btnClearAjoutTransaction_Click(null, null);

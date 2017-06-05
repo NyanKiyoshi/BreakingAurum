@@ -119,10 +119,10 @@ namespace BreakingBudget.Services.Lang
             );
         }
 
-        public static DialogResult ShowOperationFailed(IWin32Window owner)
+        public static DialogResult ShowOperationFailed(IWin32Window owner, string message)
         {
             return MetroMessageBox.Show(owner,
-                "",
+                message,
                 Program.settings.localize.Translate("err_operation_failed_caption"),
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error

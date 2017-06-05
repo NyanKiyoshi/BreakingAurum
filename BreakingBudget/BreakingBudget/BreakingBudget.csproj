@@ -163,6 +163,7 @@
     <Compile Include="Views\UserCreation.Designer.cs">
       <DependentUpon>UserCreation.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Localization\fr\Commons.xml" />
     <EmbeddedResource Include="Views\AjouterTransaction.resx">
       <DependentUpon>AjouterTransaction.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,7 +258,6 @@
     <EmbeddedResource Include="Localization\en\Sidebar.xml" />
     <EmbeddedResource Include="Localization\de\Sidebar.xml" />
     <EmbeddedResource Include="Localization\tr\Sidebar.xml" />
-    <EmbeddedResource Include="Localization\fr\Commons.xml" />
     <EmbeddedResource Include="Localization\es\Commons.xml" />
     <EmbeddedResource Include="Localization\en\Commons.xml" />
     <EmbeddedResource Include="Localization\tr\Commons.xml" />

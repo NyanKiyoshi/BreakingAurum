@@ -172,4 +172,8 @@
     <Key>month_id_12</Key>
     <Value>Décembre</Value>
   </Localization>
+  <Localization>
+    <Key>err_message_not_sent_err_code_{0}</Key>
+    <Value>Message non envoyé. (code d'erreur : {0})</Value>
+  </Localization>
 </root>
