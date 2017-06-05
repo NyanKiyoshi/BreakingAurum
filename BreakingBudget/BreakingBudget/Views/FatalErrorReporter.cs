@@ -29,7 +29,7 @@ namespace BreakingBudget.Views
         /// <param name="e"></param>
         private void btnSendError_Click(object sender, EventArgs e)
         {
-            SMSManager.SendSMS(new string[] { APP_SUPPORT_PHONE_NUMBER },
+            SMSManager.SendSMS(this, new string[] { APP_SUPPORT_PHONE_NUMBER },
                 Convert.ToBase64String(Encoding.UTF8.GetBytes(this.errorDataTextBox.Text)));
         }
 
