@@ -109,11 +109,29 @@
     <Compile Include="Views\FatalErrorReporter.Designer.cs">
       <DependentUpon>FatalErrorReporter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FrmAffichage1par1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmAffichage1par1.designer.cs">
+      <DependentUpon>FrmAffichage1par1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmAffichDetailsPoste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmAffichDetailsPoste.designer.cs">
+      <DependentUpon>FrmAffichDetailsPoste.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FrmAjoutType.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\FrmAjoutType.Designer.cs">
       <DependentUpon>FrmAjoutType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrmCalendrierPrev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmCalendrierPrev.designer.cs">
+      <DependentUpon>FrmCalendrierPrev.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FrmMain\FrmMain.cs">
       <SubType>Form</SubType>
@@ -138,6 +156,12 @@
     </Compile>
     <Compile Include="Views\FrmMain\FrmMain.Settings.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmTableauDeBordPostes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FrmTableauDeBordPostes.designer.cs">
+      <DependentUpon>FrmTableauDeBordPostes.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\TransactionsToPDF.cs">
       <SubType>Form</SubType>
@@ -170,8 +194,17 @@
     <EmbeddedResource Include="Views\FatalErrorReporter.resx">
       <DependentUpon>FatalErrorReporter.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmAffichage1par1.resx">
+      <DependentUpon>FrmAffichage1par1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmAffichDetailsPoste.resx">
+      <DependentUpon>FrmAffichDetailsPoste.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmAjoutType.resx">
       <DependentUpon>FrmAjoutType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FrmCalendrierPrev.resx">
+      <DependentUpon>FrmCalendrierPrev.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FrmMain\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
@@ -186,6 +219,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\FrmTableauDeBordPostes.resx">
+      <DependentUpon>FrmTableauDeBordPostes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\InputMessageBox.resx">
       <DependentUpon>InputMessageBox.cs</DependentUpon>
     </EmbeddedResource>

@@ -122,6 +122,7 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnExport);
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TransactionsToPDF";
             this.Resizable = false;
             this.Text = "TransactionsToPDF";

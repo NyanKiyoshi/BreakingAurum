@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SidebarTable = new System.Windows.Forms.TableLayoutPanel();
             this.SidebarBottomFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.SidebarTopFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
@@ -93,7 +91,7 @@
             this.lblDuMoisRevenu = new MetroFramework.Controls.MetroLabel();
             this.ButtonsRevenuContainer = new System.Windows.Forms.Panel();
             this.btnValiderRevenu = new MetroFramework.Controls.MetroButton();
-            this.btnGererBeneficiairesRevenu = new MetroFramework.Controls.MetroButton();
+            this.btnAjouterBeneficiairesRevenu = new MetroFramework.Controls.MetroButton();
             this.PagePostesPonctuel = new Kerido.Controls.MultiPanePage();
             this.ContainerPostePonctuel = new System.Windows.Forms.Panel();
             this.echancesContainer = new System.Windows.Forms.FlowLayoutPanel();
@@ -147,7 +145,6 @@
             this.supprimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsDgv = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modifierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SidebarTable.SuspendLayout();
             this.BaseContainer.SuspendLayout();
             this.BaseContainerInnerBorder.SuspendLayout();
@@ -198,29 +195,9 @@
             this.cmsDgv.SuspendLayout();
             this.SuspendLayout();
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Silver;
-            this.flowLayoutPanel1.Controls.Add(this.textBox1);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(76, 9);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(106, 26);
-            this.flowLayoutPanel1.TabIndex = 3;
-            this.flowLayoutPanel1.Visible = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
-            // 
             // SidebarTable
             // 
+            this.SidebarTable.AutoScroll = true;
             this.SidebarTable.AutoSize = true;
             this.SidebarTable.ColumnCount = 1;
             this.SidebarTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -232,7 +209,7 @@
             this.SidebarTable.RowCount = 2;
             this.SidebarTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.SidebarTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.SidebarTable.Size = new System.Drawing.Size(6, 426);
+            this.SidebarTable.Size = new System.Drawing.Size(6, 558);
             this.SidebarTable.TabIndex = 6;
             // 
             // SidebarBottomFlowLayout
@@ -243,7 +220,7 @@
             this.SidebarBottomFlowLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SidebarBottomFlowLayout.Location = new System.Drawing.Point(3, 9);
             this.SidebarBottomFlowLayout.Name = "SidebarBottomFlowLayout";
-            this.SidebarBottomFlowLayout.Size = new System.Drawing.Size(1, 414);
+            this.SidebarBottomFlowLayout.Size = new System.Drawing.Size(1, 546);
             this.SidebarBottomFlowLayout.TabIndex = 2;
             // 
             // SidebarTopFlowLayout
@@ -273,7 +250,7 @@
             this.BaseContainer.Name = "BaseContainer";
             this.BaseContainer.RowCount = 1;
             this.BaseContainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.BaseContainer.Size = new System.Drawing.Size(1032, 432);
+            this.BaseContainer.Size = new System.Drawing.Size(1032, 564);
             this.BaseContainer.TabIndex = 0;
             // 
             // BaseContainerInnerBorder
@@ -285,7 +262,7 @@
             this.BaseContainerInnerBorder.Location = new System.Drawing.Point(15, 0);
             this.BaseContainerInnerBorder.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.BaseContainerInnerBorder.Name = "BaseContainerInnerBorder";
-            this.BaseContainerInnerBorder.Size = new System.Drawing.Size(1017, 432);
+            this.BaseContainerInnerBorder.Size = new System.Drawing.Size(1017, 564);
             this.BaseContainerInnerBorder.TabIndex = 0;
             // 
             // ContentPanel
@@ -305,7 +282,7 @@
             this.ContentPanel.Name = "ContentPanel";
             this.ContentPanel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.ContentPanel.SelectedPage = this.PageDashboard;
-            this.ContentPanel.Size = new System.Drawing.Size(1017, 432);
+            this.ContentPanel.Size = new System.Drawing.Size(1017, 564);
             this.ContentPanel.TabIndex = 9;
             this.ContentPanel.Text = "Meow";
             this.ContentPanel.SelectedPageChanged += new System.EventHandler(this.ContentPanel_SelectedPageChanged);
@@ -317,7 +294,7 @@
             this.PagePostesFixes.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PagePostesFixes.Controls.Add(this.ContainerPosteFixePage);
             this.PagePostesFixes.Name = "PagePostesFixes";
-            this.PagePostesFixes.Size = new System.Drawing.Size(1017, 432);
+            this.PagePostesFixes.Size = new System.Drawing.Size(1017, 564);
             this.PagePostesFixes.TabIndex = 0;
             // 
             // ContainerPosteFixePage
@@ -330,7 +307,7 @@
             this.ContainerPosteFixePage.Location = new System.Drawing.Point(0, 0);
             this.ContainerPosteFixePage.Name = "ContainerPosteFixePage";
             this.ContainerPosteFixePage.Padding = new System.Windows.Forms.Padding(10);
-            this.ContainerPosteFixePage.Size = new System.Drawing.Size(1017, 432);
+            this.ContainerPosteFixePage.Size = new System.Drawing.Size(1017, 564);
             this.ContainerPosteFixePage.TabIndex = 0;
             // 
             // ButtonsPosteFixeContainer
@@ -340,7 +317,7 @@
             this.ButtonsPosteFixeContainer.Controls.Add(this.BtnValiderBudgetFixe);
             this.ButtonsPosteFixeContainer.Controls.Add(this.btnGererPostes);
             this.ButtonsPosteFixeContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ButtonsPosteFixeContainer.Location = new System.Drawing.Point(10, 392);
+            this.ButtonsPosteFixeContainer.Location = new System.Drawing.Point(10, 524);
             this.ButtonsPosteFixeContainer.MinimumSize = new System.Drawing.Size(0, 30);
             this.ButtonsPosteFixeContainer.Name = "ButtonsPosteFixeContainer";
             this.ButtonsPosteFixeContainer.Size = new System.Drawing.Size(997, 30);
@@ -385,7 +362,7 @@
             this.PosteFixeFlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.PosteFixeFlowLayoutPanel.Location = new System.Drawing.Point(10, 10);
             this.PosteFixeFlowLayoutPanel.Name = "PosteFixeFlowLayoutPanel";
-            this.PosteFixeFlowLayoutPanel.Size = new System.Drawing.Size(997, 412);
+            this.PosteFixeFlowLayoutPanel.Size = new System.Drawing.Size(997, 544);
             this.PosteFixeFlowLayoutPanel.TabIndex = 1;
             this.PosteFixeFlowLayoutPanel.WrapContents = false;
             // 
@@ -613,7 +590,7 @@
             this.SettingsPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.SettingsPage.Controls.Add(this.ContainerSettingsPage);
             this.SettingsPage.Name = "SettingsPage";
-            this.SettingsPage.Size = new System.Drawing.Size(1017, 432);
+            this.SettingsPage.Size = new System.Drawing.Size(1017, 564);
             this.SettingsPage.TabIndex = 1;
             // 
             // ContainerSettingsPage
@@ -625,7 +602,7 @@
             this.ContainerSettingsPage.Location = new System.Drawing.Point(0, 0);
             this.ContainerSettingsPage.Name = "ContainerSettingsPage";
             this.ContainerSettingsPage.Padding = new System.Windows.Forms.Padding(10);
-            this.ContainerSettingsPage.Size = new System.Drawing.Size(1017, 432);
+            this.ContainerSettingsPage.Size = new System.Drawing.Size(1017, 564);
             this.ContainerSettingsPage.TabIndex = 1;
             // 
             // FieldsContainerSettings
@@ -643,7 +620,7 @@
             this.FieldsContainerSettings.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.FieldsContainerSettings.Location = new System.Drawing.Point(10, 10);
             this.FieldsContainerSettings.Name = "FieldsContainerSettings";
-            this.FieldsContainerSettings.Size = new System.Drawing.Size(997, 412);
+            this.FieldsContainerSettings.Size = new System.Drawing.Size(997, 544);
             this.FieldsContainerSettings.TabIndex = 1;
             this.FieldsContainerSettings.WrapContents = false;
             // 
@@ -768,7 +745,7 @@
             this.LicensesPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.LicensesPage.Controls.Add(this.richTextBoxLicenses);
             this.LicensesPage.Name = "LicensesPage";
-            this.LicensesPage.Size = new System.Drawing.Size(1017, 432);
+            this.LicensesPage.Size = new System.Drawing.Size(1017, 564);
             this.LicensesPage.TabIndex = 2;
             // 
             // richTextBoxLicenses
@@ -779,7 +756,7 @@
             this.richTextBoxLicenses.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxLicenses.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxLicenses.Name = "richTextBoxLicenses";
-            this.richTextBoxLicenses.Size = new System.Drawing.Size(1017, 432);
+            this.richTextBoxLicenses.Size = new System.Drawing.Size(1017, 564);
             this.richTextBoxLicenses.TabIndex = 0;
             this.richTextBoxLicenses.Text = resources.GetString("richTextBoxLicenses.Text");
             // 
@@ -790,7 +767,7 @@
             this.HomePage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.HomePage.Controls.Add(this.button1);
             this.HomePage.Name = "HomePage";
-            this.HomePage.Size = new System.Drawing.Size(1017, 432);
+            this.HomePage.Size = new System.Drawing.Size(1017, 564);
             this.HomePage.TabIndex = 3;
             // 
             // button1
@@ -810,7 +787,7 @@
             this.PageRevenus.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PageRevenus.Controls.Add(this.ContainerRevenu);
             this.PageRevenus.Name = "PageRevenus";
-            this.PageRevenus.Size = new System.Drawing.Size(1017, 432);
+            this.PageRevenus.Size = new System.Drawing.Size(1017, 564);
             this.PageRevenus.TabIndex = 4;
             // 
             // ContainerRevenu
@@ -821,7 +798,7 @@
             this.ContainerRevenu.Location = new System.Drawing.Point(0, 0);
             this.ContainerRevenu.Name = "ContainerRevenu";
             this.ContainerRevenu.Padding = new System.Windows.Forms.Padding(10);
-            this.ContainerRevenu.Size = new System.Drawing.Size(1017, 432);
+            this.ContainerRevenu.Size = new System.Drawing.Size(1017, 564);
             this.ContainerRevenu.TabIndex = 0;
             // 
             // FieldsContainerRevenu
@@ -839,7 +816,7 @@
             this.FieldsContainerRevenu.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.FieldsContainerRevenu.Location = new System.Drawing.Point(10, 10);
             this.FieldsContainerRevenu.Name = "FieldsContainerRevenu";
-            this.FieldsContainerRevenu.Size = new System.Drawing.Size(997, 382);
+            this.FieldsContainerRevenu.Size = new System.Drawing.Size(997, 514);
             this.FieldsContainerRevenu.TabIndex = 1;
             this.FieldsContainerRevenu.WrapContents = false;
             // 
@@ -1065,9 +1042,9 @@
             this.ButtonsRevenuContainer.AutoSize = true;
             this.ButtonsRevenuContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ButtonsRevenuContainer.Controls.Add(this.btnValiderRevenu);
-            this.ButtonsRevenuContainer.Controls.Add(this.btnGererBeneficiairesRevenu);
+            this.ButtonsRevenuContainer.Controls.Add(this.btnAjouterBeneficiairesRevenu);
             this.ButtonsRevenuContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ButtonsRevenuContainer.Location = new System.Drawing.Point(10, 392);
+            this.ButtonsRevenuContainer.Location = new System.Drawing.Point(10, 524);
             this.ButtonsRevenuContainer.MinimumSize = new System.Drawing.Size(0, 30);
             this.ButtonsRevenuContainer.Name = "ButtonsRevenuContainer";
             this.ButtonsRevenuContainer.Size = new System.Drawing.Size(997, 30);
@@ -1085,17 +1062,17 @@
             this.btnValiderRevenu.UseSelectable = true;
             this.btnValiderRevenu.Click += new System.EventHandler(this.btnValiderRevenu_Click);
             // 
-            // btnGererBeneficiairesRevenu
+            // btnAjouterBeneficiairesRevenu
             // 
-            this.btnGererBeneficiairesRevenu.AutoSize = true;
-            this.btnGererBeneficiairesRevenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnGererBeneficiairesRevenu.Location = new System.Drawing.Point(0, 0);
-            this.btnGererBeneficiairesRevenu.Name = "btnGererBeneficiairesRevenu";
-            this.btnGererBeneficiairesRevenu.Size = new System.Drawing.Size(121, 30);
-            this.btnGererBeneficiairesRevenu.TabIndex = 6;
-            this.btnGererBeneficiairesRevenu.Text = "Gérer les bénéficiaires";
-            this.btnGererBeneficiairesRevenu.UseSelectable = true;
-            this.btnGererBeneficiairesRevenu.Click += new System.EventHandler(this.btnGererBeneficiairesRevenu_Click);
+            this.btnAjouterBeneficiairesRevenu.AutoSize = true;
+            this.btnAjouterBeneficiairesRevenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAjouterBeneficiairesRevenu.Location = new System.Drawing.Point(0, 0);
+            this.btnAjouterBeneficiairesRevenu.Name = "btnAjouterBeneficiairesRevenu";
+            this.btnAjouterBeneficiairesRevenu.Size = new System.Drawing.Size(137, 30);
+            this.btnAjouterBeneficiairesRevenu.TabIndex = 6;
+            this.btnAjouterBeneficiairesRevenu.Text = "Ajouter un bénéficiaire";
+            this.btnAjouterBeneficiairesRevenu.UseSelectable = true;
+            this.btnAjouterBeneficiairesRevenu.Click += new System.EventHandler(this.btnAjouterBeneficiaireRevenu_Click);
             // 
             // PagePostesPonctuel
             // 
@@ -1103,7 +1080,7 @@
             this.PagePostesPonctuel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PagePostesPonctuel.Controls.Add(this.ContainerPostePonctuel);
             this.PagePostesPonctuel.Name = "PagePostesPonctuel";
-            this.PagePostesPonctuel.Size = new System.Drawing.Size(1017, 432);
+            this.PagePostesPonctuel.Size = new System.Drawing.Size(1017, 564);
             this.PagePostesPonctuel.TabIndex = 5;
             // 
             // ContainerPostePonctuel
@@ -1115,7 +1092,7 @@
             this.ContainerPostePonctuel.Location = new System.Drawing.Point(0, 0);
             this.ContainerPostePonctuel.Name = "ContainerPostePonctuel";
             this.ContainerPostePonctuel.Padding = new System.Windows.Forms.Padding(10);
-            this.ContainerPostePonctuel.Size = new System.Drawing.Size(1017, 432);
+            this.ContainerPostePonctuel.Size = new System.Drawing.Size(1017, 564);
             this.ContainerPostePonctuel.TabIndex = 0;
             // 
             // echancesContainer
@@ -1128,7 +1105,7 @@
             this.echancesContainer.Location = new System.Drawing.Point(987, 10);
             this.echancesContainer.Name = "echancesContainer";
             this.echancesContainer.Padding = new System.Windows.Forms.Padding(10, 0, 10, 20);
-            this.echancesContainer.Size = new System.Drawing.Size(20, 382);
+            this.echancesContainer.Size = new System.Drawing.Size(20, 514);
             this.echancesContainer.TabIndex = 23;
             this.echancesContainer.Visible = false;
             this.echancesContainer.WrapContents = false;
@@ -1149,7 +1126,7 @@
             this.FieldsContainerPostePonctuel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.FieldsContainerPostePonctuel.Location = new System.Drawing.Point(10, 10);
             this.FieldsContainerPostePonctuel.Name = "FieldsContainerPostePonctuel";
-            this.FieldsContainerPostePonctuel.Size = new System.Drawing.Size(997, 382);
+            this.FieldsContainerPostePonctuel.Size = new System.Drawing.Size(997, 514);
             this.FieldsContainerPostePonctuel.TabIndex = 1;
             this.FieldsContainerPostePonctuel.WrapContents = false;
             // 
@@ -1434,7 +1411,7 @@
             this.ButtonsPostePonctuelContainer.Controls.Add(this.btnGererBudgetPonctuel);
             this.ButtonsPostePonctuelContainer.Controls.Add(this.btnValiderBudgetPonctuel);
             this.ButtonsPostePonctuelContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ButtonsPostePonctuelContainer.Location = new System.Drawing.Point(10, 392);
+            this.ButtonsPostePonctuelContainer.Location = new System.Drawing.Point(10, 524);
             this.ButtonsPostePonctuelContainer.MinimumSize = new System.Drawing.Size(0, 30);
             this.ButtonsPostePonctuelContainer.Name = "ButtonsPostePonctuelContainer";
             this.ButtonsPostePonctuelContainer.Size = new System.Drawing.Size(997, 30);
@@ -1468,14 +1445,14 @@
             this.PageBudgetMoisAjouterTransaction.AutoSize = true;
             this.PageBudgetMoisAjouterTransaction.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PageBudgetMoisAjouterTransaction.Name = "PageBudgetMoisAjouterTransaction";
-            this.PageBudgetMoisAjouterTransaction.Size = new System.Drawing.Size(1017, 432);
+            this.PageBudgetMoisAjouterTransaction.Size = new System.Drawing.Size(1017, 564);
             this.PageBudgetMoisAjouterTransaction.TabIndex = 6;
             // 
             // PageDashboard
             // 
             this.PageDashboard.Controls.Add(this.DashboardContainer);
             this.PageDashboard.Name = "PageDashboard";
-            this.PageDashboard.Size = new System.Drawing.Size(1017, 432);
+            this.PageDashboard.Size = new System.Drawing.Size(1017, 564);
             this.PageDashboard.TabIndex = 7;
             // 
             // DashboardContainer
@@ -1486,7 +1463,7 @@
             this.DashboardContainer.Location = new System.Drawing.Point(0, 0);
             this.DashboardContainer.Name = "DashboardContainer";
             this.DashboardContainer.Padding = new System.Windows.Forms.Padding(10);
-            this.DashboardContainer.Size = new System.Drawing.Size(1017, 432);
+            this.DashboardContainer.Size = new System.Drawing.Size(1017, 564);
             this.DashboardContainer.TabIndex = 0;
             // 
             // grbRecherche
@@ -1784,7 +1761,7 @@
             this.dgvTransac.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTransac.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvTransac.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dgvTransac.Location = new System.Drawing.Point(10, 162);
+            this.dgvTransac.Location = new System.Drawing.Point(10, 294);
             this.dgvTransac.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvTransac.MultiSelect = false;
             this.dgvTransac.Name = "dgvTransac";
@@ -1837,11 +1814,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1072, 512);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(1072, 644);
             this.Controls.Add(this.BaseContainer);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(1072, 512);
+            this.MinimumSize = new System.Drawing.Size(1072, 644);
             this.Name = "FrmMain";
             this.Text = "Breaking Budget";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
@@ -1851,8 +1827,6 @@
             this.ResizeEnd += new System.EventHandler(this.FrmMain_ResizeEnd);
             this.Resize += new System.EventHandler(this.FrmMain_Resize);
             this.StyleChanged += new System.EventHandler(this.FrmMain_StyleChanged);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             this.SidebarTable.ResumeLayout(false);
             this.SidebarTable.PerformLayout();
             this.BaseContainer.ResumeLayout(false);
@@ -1931,8 +1905,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TableLayoutPanel SidebarTable;
         private System.Windows.Forms.FlowLayoutPanel SidebarBottomFlowLayout;
         private System.Windows.Forms.FlowLayoutPanel SidebarTopFlowLayout;
@@ -1999,7 +1971,7 @@
         private MetroFramework.Controls.MetroLabel lblDuMoisRevenu;
         private System.Windows.Forms.Panel ButtonsRevenuContainer;
         private MetroFramework.Controls.MetroButton btnValiderRevenu;
-        private MetroFramework.Controls.MetroButton btnGererBeneficiairesRevenu;
+        private MetroFramework.Controls.MetroButton btnAjouterBeneficiairesRevenu;
         private System.Windows.Forms.Panel ContainerPostePonctuel;
         private System.Windows.Forms.Panel ButtonsPostePonctuelContainer;
         private MetroFramework.Controls.MetroButton btnValiderBudgetPonctuel;

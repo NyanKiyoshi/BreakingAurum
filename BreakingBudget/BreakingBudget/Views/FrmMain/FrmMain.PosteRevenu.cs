@@ -139,7 +139,7 @@ namespace BreakingBudget.Views.FrmMain
             }
         }
 
-        private void btnGererBeneficiairesRevenu_Click(object sender, EventArgs e)
+        private void btnAjouterBeneficiaireRevenu_Click(object sender, EventArgs e)
         {
             if ((new UserCreation()).ShowDialog() == DialogResult.OK)
             {

@@ -44,4 +44,16 @@
     <Key>sidebar_page_exporter_transactions</Key>
     <Value>Exporter</Value>
   </Localization>
+  <Localization>
+    <Key>sidebar_page_dashboard</Key>
+    <Value>Récapitulatif</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_calendrier_previsionnel</Key>
+    <Value>Calendrier</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_lister_postes</Key>
+    <Value>Lister postes</Value>
+  </Localization>
 </root>

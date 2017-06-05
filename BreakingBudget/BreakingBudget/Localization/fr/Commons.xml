@@ -176,4 +176,16 @@
     <Key>err_message_not_sent_err_code_{0}</Key>
     <Value>Message non envoyé. (code d'erreur : {0})</Value>
   </Localization>
+  <Localization>
+    <Key>FrmAjoutType</Key>
+    <Value>Ajouter type</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmCalendrierPrev</Key>
+    <Value>Calendrier Prévisionnel</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmTableauDeBordPostes</Key>
+    <Value>Tableau de bord des postes</Value>
+  </Localization>
 </root>

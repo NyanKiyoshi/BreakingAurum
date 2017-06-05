@@ -7,9 +7,6 @@ using MetroFramework.Controls;
 using MetroFramework;
 using Kerido.Controls;
 using BreakingBudget.Services;
-using BreakingBudget.Repositories;
-using BreakingBudget.Services.SQL;
-using System.Data.OleDb;
 using BreakingBudget.Structural;
 
 namespace BreakingBudget.Views.FrmMain
@@ -78,6 +75,14 @@ namespace BreakingBudget.Views.FrmMain
                                  new byte[] { 0xEE, 0xA2, 0x8A },  // little "house" icon
                                  Program.settings.localize.Translate("sidebar_page_home")),
 
+                new SidebarEntry(this.PageDashboard,
+                                 new byte[] { 0xEE, 0xA1, 0xB1 },  // little "house" icon
+                                 Program.settings.localize.Translate("sidebar_page_dashboard")),
+
+                new SidebarEntry(() => (new FrmCalendrierPrev()).ShowDialog(),
+                                 new byte[] { 0xEE, 0xA4, 0x96 },  // little "house" icon
+                                 Program.settings.localize.Translate("sidebar_page_calendrier_previsionnel")),
+
                 // budget previsonnel
                 new SidebarEntry((MultiPanePage)null, new byte[] { 0xEE, 0xA2, 0xA1 },  // credit card icon
                     Program.settings.localize.Translate("sidebar_page_budget_previsionnel"),
@@ -89,8 +94,11 @@ namespace BreakingBudget.Views.FrmMain
                         new SidebarEntry(this.PagePostesPonctuel,
                                          Program.settings.localize.Translate("sidebar_page_poste_ponctuel")),
 
-                        new SidebarEntry(this.PageRevenus,         
+                        new SidebarEntry(this.PageRevenus,
                                          Program.settings.localize.Translate("sidebar_page_revenu")),
+
+                        new SidebarEntry(() => (new FrmTableauDeBordPostes()).ShowDialog(),
+                                         Program.settings.localize.Translate("sidebar_page_lister_postes")),
                     }
                 ),
 
@@ -100,14 +108,9 @@ namespace BreakingBudget.Views.FrmMain
                     
                     new SidebarEntry[] {
                         new SidebarEntry(
-                            this.PageDashboard,
+                            () => (new FrmAffichage1par1()).ShowDialog(),
                             Program.settings.localize.Translate("sidebar_page_lister_transactions")
                         ),
-
-                        //new SidebarEntry(
-                        //    (MultiPanePage)null,
-                        //    Program.settings.localize.Translate("sidebar_page_lister_transactions")
-                        //),
 
                         new SidebarEntry(
                             () => (new AjouterTransaction()).ShowDialog(),

@@ -200,8 +200,8 @@
     <Value>Valider</Value>
   </Localization>
   <Localization>
-    <Key>btnGererBeneficiairesRevenu</Key>
-    <Value>Gérer les bénéficaires</Value>
+    <Key>btnAjouterBeneficiairesRevenu</Key>
+    <Value>Ajouter un bénéficaire</Value>
   </Localization>
   <Localization>
     <Key>lblIntitulePonctuel</Key>
