@@ -136,10 +136,10 @@
             this.flowLayoutPanel18 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel17 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblDateDeb = new MetroFramework.Controls.MetroLabel();
-            this.dtpDeb = new System.Windows.Forms.DateTimePicker();
+            this.dtpDeb = new MetroFramework.Controls.MetroDateTime();
             this.panel = new System.Windows.Forms.FlowLayoutPanel();
             this.lblDateA = new MetroFramework.Controls.MetroLabel();
-            this.dtpFin = new System.Windows.Forms.DateTimePicker();
+            this.dtpFin = new MetroFramework.Controls.MetroDateTime();
             this.dgvTransac = new MetroFramework.Controls.MetroGrid();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
@@ -1484,9 +1484,8 @@
             this.grbRecherche.Dock = System.Windows.Forms.DockStyle.Top;
             this.grbRecherche.Location = new System.Drawing.Point(10, 408);
             this.grbRecherche.Name = "grbRecherche";
-            this.grbRecherche.Size = new System.Drawing.Size(997, 141);
+            this.grbRecherche.Size = new System.Drawing.Size(997, 125);
             this.grbRecherche.TabIndex = 5;
-            this.grbRecherche.TabStop = false;
             this.grbRecherche.Text = "Recherche";
             // 
             // panel2
@@ -1704,7 +1703,7 @@
             this.flowLayoutPanel17.Location = new System.Drawing.Point(3, 2);
             this.flowLayoutPanel17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel17.Name = "flowLayoutPanel17";
-            this.flowLayoutPanel17.Size = new System.Drawing.Size(248, 24);
+            this.flowLayoutPanel17.Size = new System.Drawing.Size(248, 33);
             this.flowLayoutPanel17.TabIndex = 8;
             // 
             // lblDateDeb
@@ -1719,18 +1718,21 @@
             // 
             // dtpDeb
             // 
+            this.dtpDeb.Checked = false;
             this.dtpDeb.Enabled = false;
+            this.dtpDeb.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDeb.Location = new System.Drawing.Point(45, 2);
             this.dtpDeb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpDeb.MinimumSize = new System.Drawing.Size(0, 29);
             this.dtpDeb.Name = "dtpDeb";
-            this.dtpDeb.Size = new System.Drawing.Size(200, 20);
+            this.dtpDeb.Size = new System.Drawing.Size(200, 29);
             this.dtpDeb.TabIndex = 3;
             // 
             // panel
             // 
             this.panel.Controls.Add(this.lblDateA);
             this.panel.Controls.Add(this.dtpFin);
-            this.panel.Location = new System.Drawing.Point(3, 30);
+            this.panel.Location = new System.Drawing.Point(3, 39);
             this.panel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(260, 32);
@@ -1748,10 +1750,12 @@
             // dtpFin
             // 
             this.dtpFin.Enabled = false;
+            this.dtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFin.Location = new System.Drawing.Point(49, 2);
             this.dtpFin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpFin.MinimumSize = new System.Drawing.Size(0, 29);
             this.dtpFin.Name = "dtpFin";
-            this.dtpFin.Size = new System.Drawing.Size(200, 20);
+            this.dtpFin.Size = new System.Drawing.Size(200, 29);
             this.dtpFin.TabIndex = 4;
             this.dtpFin.Visible = false;
             // 
@@ -2045,10 +2049,10 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel18;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel17;
         private MetroFramework.Controls.MetroLabel lblDateDeb;
-        private System.Windows.Forms.DateTimePicker dtpDeb;
+        private MetroFramework.Controls.MetroDateTime dtpDeb;
         private System.Windows.Forms.FlowLayoutPanel panel;
         private MetroFramework.Controls.MetroLabel lblDateA;
-        private System.Windows.Forms.DateTimePicker dtpFin;
+        private MetroFramework.Controls.MetroDateTime dtpFin;
         private MetroFramework.Controls.MetroGrid dgvTransac;
         private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip cmsDgv;

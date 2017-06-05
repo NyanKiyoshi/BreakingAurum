@@ -210,8 +210,8 @@ namespace MetroFramework.Controls
             this.BackColor = MetroPaint.BackColor.Form(Theme);
             this.BackgroundColor = MetroPaint.BackColor.Form(Theme);
             this.GridColor = MetroPaint.BackColor.Form(Theme);
-            this.ForeColor = MetroPaint.ForeColor.Button.Disabled(Theme);
-            this.Font = new Font("Segoe UI", 11f, FontStyle.Regular, GraphicsUnit.Pixel);
+            this.ForeColor = MetroPaint.ForeColor.Button.Normal(Theme);
+            this.Font = new Font("Segoe UI", 12f, FontStyle.Regular, GraphicsUnit.Pixel);
 
             this.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.AllowUserToResizeRows = false;
