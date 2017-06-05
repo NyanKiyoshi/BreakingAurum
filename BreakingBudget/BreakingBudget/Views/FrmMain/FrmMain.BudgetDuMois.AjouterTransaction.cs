@@ -192,6 +192,10 @@ namespace BreakingBudget.Views.FrmMain
                 OleDbCommand cmd = new OleDbCommand(requete, connec);
                 res = (int)cmd.ExecuteScalar() + 1;
             }
+            catch (InvalidCastException)
+            {
+                res = 1;
+            }
             catch (OleDbException ex)
             {
                 ErrorManager.HandleOleDBError(ex);
@@ -233,6 +237,9 @@ namespace BreakingBudget.Views.FrmMain
             }
             // On complète la listbox avec les "Noms Prénoms" des personnes
             RemplirListboxNomPrenom();
+
+            // Nettoyer le formulaire
+            btnClear_Click(null, null);
         }
 
         private void txtMontant_KeyPress(object sender, KeyPressEventArgs e)
@@ -377,6 +384,9 @@ namespace BreakingBudget.Views.FrmMain
                     cmdBenef.ExecuteNonQuery();
                 }
                 ErrorManager.EntriesSuccessfullyAdded(this);
+
+                // Clear formulaire
+                btnClear_Click(null, null);
             }
             catch (OleDbException ex)
             {
