@@ -6,23 +6,25 @@ namespace BreakingBudget.Structural
     class SidebarEntry
     {
         private static byte[] DEFAULT_ICON = new byte[] { 0xEE, 0x97, 0x90 };
+        public delegate void CallbackFunction();
 
         public SidebarEntry(string text)
         {
             this.Text = text;
         }
 
-        public SidebarEntry(string url, string text) : this(text)
+        public SidebarEntry(CallbackFunction callback, string text) : this(text)
         {
-            this.TargetLink = url;
+            this.TargetCallback = callback;
         }
 
-        public SidebarEntry(string url, byte[] icon, string text) : this(url, text)
+        public SidebarEntry(CallbackFunction callback, byte[] icon, string text) : this(callback, text)
         {
             this.Icon = icon;
         }
 
-        public SidebarEntry(string url, byte[] icon, string text, SidebarEntry[] children) : this(url, icon, text)
+        public SidebarEntry(CallbackFunction callback, byte[] icon, string text, SidebarEntry[] children)
+            : this(callback, icon, text)
         {
             this.children = children;
         }
@@ -52,7 +54,7 @@ namespace BreakingBudget.Structural
         public MultiPanePage Target { get; set; }
 
         // The entry's target url
-        public string TargetLink { get; set; }
+        public CallbackFunction TargetCallback { get; set; }
 
         // The children nodes.
         private SidebarEntry[] _children;

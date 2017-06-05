@@ -135,12 +135,11 @@ namespace BreakingBudget.Views.FrmMain
             };
 
             // if the target is a web link -> open it when the user clicks on it
-            if (e.TargetLink != null)
+            if (e.TargetCallback != null)
             {
                 OnMouseClick = (s, ev) =>
                 {
-                    ProcessStartInfo sInfo = new ProcessStartInfo(e.TargetLink);
-                    Process.Start(sInfo);
+                    e.TargetCallback();
                 };
             }
             else

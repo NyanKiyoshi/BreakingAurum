@@ -110,7 +110,9 @@ namespace BreakingBudget.Views.FrmMain
                         ),
 
                         new SidebarEntry(
-                            (MultiPanePage)null,
+                            () => {
+                                (new TransactionsToPDF()).ShowDialog();
+                            },
                             Program.settings.localize.Translate("sidebar_page_exporter_transactions")
                         ),
                 }),

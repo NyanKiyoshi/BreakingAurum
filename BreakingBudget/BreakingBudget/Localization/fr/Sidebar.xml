@@ -40,4 +40,8 @@
     <Key>sidebar_page_licenses</Key>
     <Value>Licences</Value>
   </Localization>
+  <Localization>
+    <Key>sidebar_page_exporter_transactions</Key>
+    <Value>Exporter</Value>
+  </Localization>
 </root>
