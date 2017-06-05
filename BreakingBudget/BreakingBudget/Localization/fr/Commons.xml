@@ -101,6 +101,10 @@
     <Value>Annuler</Value>
   </Localization>
   <Localization>
+    <Key>Year</Key>
+    <Value>Année</Value>
+  </Localization>
+  <Localization>
     <Key>UserCreation</Key>
     <Value>Ajout d'une personne</Value>
   </Localization>

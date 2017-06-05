@@ -17,11 +17,65 @@ namespace BreakingBudget.Views.FrmMain
 {
     partial class FrmMain
     {
+        private MultiPanePage ajoutTransactionCallingPage = null;
+
         // Type de la transaction lors de la modification de celle-ci 
         int ajoutTransaction_typeTransac;
         // Déclaration du DialogueResult pour confirmer la modification de la transaction
-        DialogResult sureModif;
+        DialogResult ajoutTransactionSureModif;
 
+
+
+        // Accesseurs 
+        public string AjoutTransaction_Date
+        {
+            get
+            {
+                return this.calAjoutTransaction.Value.ToShortDateString();
+            }
+        }
+        public string AjoutTransaction_Description
+        {
+            get
+            {
+                return this.txtAjoutTransaction_desc.Text;
+            }
+        }
+        public string AjoutTransaction_Montant
+        {
+            get
+            {
+                return this.txtAjoutTransaction_montant.Text;
+            }
+        }
+        public bool AjoutTransaction_Recette
+        {
+            get
+            {
+                return this.ckbAjoutTransaction_recette.Checked;
+            }
+        }
+        public bool AjoutTransaction_Percu
+        {
+            get
+            {
+                return this.ckbAjoutTransaction_percu.Checked;
+            }
+        }
+        public int AjoutTransaction_Type
+        {
+            get
+            {
+                return (int)this.cboAjoutTransaction_Type.SelectedValue;
+            }
+        }
+        public DialogResult AjoutTransaction_confirmModif
+        {
+            get
+            {
+                return this.ajoutTransactionSureModif;
+            }
+        }
 
         private void InitializeAjouterTransactionBudgetDuMois()
         {
@@ -42,6 +96,8 @@ namespace BreakingBudget.Views.FrmMain
         {
             // call base
             this.InitializeAjouterTransactionBudgetDuMois();
+
+            this.ajoutTransactionCallingPage = callingPage;
 
             // Paramètres des composants
             panelAjoutTransac.Visible = false;
@@ -239,17 +295,17 @@ namespace BreakingBudget.Views.FrmMain
             RemplirListboxNomPrenom();
 
             // Nettoyer le formulaire
-            btnClear_Click(null, null);
+            btnClearAjoutTransaction_Click(null, null);
         }
 
-        private void txtMontant_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtMontantAjoutTransaction_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Contrôle de la saisie du montant lors de la 
             // pression d'une touche du clavier
             VerifSaisieMontant(e, txtAjoutTransaction_montant);
         }
 
-        private void txtMontant_KeyUp(object sender, KeyEventArgs e)
+        private void txtMontantAjoutTransaction_KeyUp(object sender, KeyEventArgs e)
         {
             // Changer le status du bouton recette si il y a un moins 
             // dans la textebox du montant
@@ -284,10 +340,10 @@ namespace BreakingBudget.Views.FrmMain
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.SwitchPanel(this.ajoutTransactionCallingPage);
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void btnClearAjoutTransaction_Click(object sender, EventArgs e)
         {
             // Remettre la fenêtre par défaut (vider tous les composants)
             ckbAjoutTransaction_recette.Checked = false;
@@ -386,7 +442,7 @@ namespace BreakingBudget.Views.FrmMain
                 ErrorManager.EntriesSuccessfullyAdded(this);
 
                 // Clear formulaire
-                btnClear_Click(null, null);
+                btnClearAjoutTransaction_Click(null, null);
             }
             catch (OleDbException ex)
             {
@@ -402,8 +458,7 @@ namespace BreakingBudget.Views.FrmMain
 
         private void btnModif_Click(object sender, EventArgs e)
         {
-            sureModif = MessageBox.Show("Voulez-vous vraiment modifier cette transaction ?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            // TODO: clear the form!!
+            ajoutTransactionSureModif = MessageBox.Show("Voulez-vous vraiment modifier cette transaction ?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
         }
 
         // Bouton "tout sélectionner"
@@ -418,7 +473,7 @@ namespace BreakingBudget.Views.FrmMain
                 listBoxAjoutTransaction_Personne.SelectedItems.Clear();
         }
 
-        private void ckbPercu_Click(object sender, EventArgs e)
+        private void ckbPercuAjoutTransaction_Click(object sender, EventArgs e)
         {
             // On vérifie que le bouton recette soit coché
             // pour pouvoir cocher le bouton perçu
@@ -427,12 +482,12 @@ namespace BreakingBudget.Views.FrmMain
                 if (!ckbAjoutTransaction_recette.Checked)
                 {
                     ckbAjoutTransaction_recette.Checked = true;
-                    ckbRecette_Click(null, null);
+                    ckbRecetteAjoutTransaction_Click(null, null);
                 }
             }
         }
 
-        private void ckbRecette_Click(object sender, EventArgs e)
+        private void ckbRecetteAjoutTransaction_Click(object sender, EventArgs e)
         {
             // Rajouter/enlever le "-" dans la zone de txt
             // de saisie du montant si il n'existe pas déjà
@@ -454,7 +509,7 @@ namespace BreakingBudget.Views.FrmMain
             }
         }
 
-        private void listBoxPersonne_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxPersonneAjoutTransaction_SelectedIndexChanged(object sender, EventArgs e)
         {
             VerifConditionTransaction();
             // On décheck le bouton tout selectionner si on déselectionne un élement dans la listbox

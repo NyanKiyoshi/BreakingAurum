@@ -145,10 +145,36 @@
             this.btnClear = new MetroFramework.Controls.MetroButton();
             this.label2 = new System.Windows.Forms.Label();
             this.listBoxAjoutTransaction_Personne = new System.Windows.Forms.ListBox();
+            this.PageDashboard = new Kerido.Controls.MultiPanePage();
+            this.DashboardContainer = new System.Windows.Forms.Panel();
+            this.grbRecherche = new System.Windows.Forms.GroupBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txtLib = new MetroFramework.Controls.MetroTextBox();
+            this.txtMontant = new MetroFramework.Controls.MetroTextBox();
+            this.ckbRecette = new MetroFramework.Controls.MetroCheckBox();
+            this.ckbPercu = new MetroFramework.Controls.MetroCheckBox();
+            this.ckbMontant = new MetroFramework.Controls.MetroCheckBox();
+            this.ckbLib = new MetroFramework.Controls.MetroCheckBox();
+            this.ckbDate = new MetroFramework.Controls.MetroCheckBox();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.btnSearch = new MetroFramework.Controls.MetroButton();
+            this.rdbPlage = new MetroFramework.Controls.MetroRadioButton();
+            this.rdbDateUnique = new MetroFramework.Controls.MetroRadioButton();
+            this.flowLayoutPanel18 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel17 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblDateDeb = new MetroFramework.Controls.MetroLabel();
+            this.dtpDeb = new System.Windows.Forms.DateTimePicker();
+            this.panel = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblDateA = new MetroFramework.Controls.MetroLabel();
+            this.dtpFin = new System.Windows.Forms.DateTimePicker();
+            this.dgvTransac = new System.Windows.Forms.DataGridView();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
             this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.supprimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsDgv = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.modifierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel1.SuspendLayout();
             this.SidebarTable.SuspendLayout();
             this.BaseContainer.SuspendLayout();
@@ -196,9 +222,18 @@
             this.flowLayoutPanel14.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelAjoutTransac.SuspendLayout();
+            this.PageDashboard.SuspendLayout();
+            this.DashboardContainer.SuspendLayout();
+            this.grbRecherche.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.flowLayoutPanel18.SuspendLayout();
+            this.flowLayoutPanel17.SuspendLayout();
+            this.panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTransac)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
+            this.cmsDgv.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -301,12 +336,13 @@
             this.ContentPanel.Controls.Add(this.PageRevenus);
             this.ContentPanel.Controls.Add(this.PagePostesPonctuel);
             this.ContentPanel.Controls.Add(this.PageBudgetMoisAjouterTransaction);
+            this.ContentPanel.Controls.Add(this.PageDashboard);
             this.ContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContentPanel.Location = new System.Drawing.Point(0, 0);
             this.ContentPanel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.ContentPanel.Name = "ContentPanel";
             this.ContentPanel.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.ContentPanel.SelectedPage = this.PageBudgetMoisAjouterTransaction;
+            this.ContentPanel.SelectedPage = this.PageDashboard;
             this.ContentPanel.Size = new System.Drawing.Size(1017, 432);
             this.ContentPanel.TabIndex = 9;
             this.ContentPanel.Text = "Meow";
@@ -1538,11 +1574,11 @@
             this.flowLayoutPanel16.TabIndex = 4;
             this.flowLayoutPanel16.WrapContents = false;
             // 
-            // calTransaction
+            // calAjoutTransaction
             // 
             this.calAjoutTransaction.Location = new System.Drawing.Point(3, 3);
-            this.calAjoutTransaction.MinimumSize = new System.Drawing.Size(0, 29);
-            this.calAjoutTransaction.Name = "calTransaction";
+            this.calAjoutTransaction.MinimumSize = new System.Drawing.Size(4, 29);
+            this.calAjoutTransaction.Name = "calAjoutTransaction";
             this.calAjoutTransaction.Size = new System.Drawing.Size(200, 29);
             this.calAjoutTransaction.TabIndex = 37;
             // 
@@ -1568,7 +1604,7 @@
             this.FieldsContainerTxtDescr.Size = new System.Drawing.Size(479, 25);
             this.FieldsContainerTxtDescr.TabIndex = 6;
             // 
-            // txtDesc
+            // txtAjoutTransaction_desc
             // 
             // 
             // 
@@ -1586,7 +1622,7 @@
             this.txtAjoutTransaction_desc.Lines = new string[0];
             this.txtAjoutTransaction_desc.Location = new System.Drawing.Point(3, 3);
             this.txtAjoutTransaction_desc.MaxLength = 255;
-            this.txtAjoutTransaction_desc.Name = "txtDesc";
+            this.txtAjoutTransaction_desc.Name = "txtAjoutTransaction_desc";
             this.txtAjoutTransaction_desc.PasswordChar = '\0';
             this.txtAjoutTransaction_desc.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtAjoutTransaction_desc.SelectedText = "";
@@ -1623,7 +1659,7 @@
             this.flowLayoutPanel19.Size = new System.Drawing.Size(479, 25);
             this.flowLayoutPanel19.TabIndex = 9;
             // 
-            // txtMontant
+            // txtAjoutTransaction_montant
             // 
             // 
             // 
@@ -1641,7 +1677,7 @@
             this.txtAjoutTransaction_montant.Lines = new string[0];
             this.txtAjoutTransaction_montant.Location = new System.Drawing.Point(3, 3);
             this.txtAjoutTransaction_montant.MaxLength = 10;
-            this.txtAjoutTransaction_montant.Name = "txtMontant";
+            this.txtAjoutTransaction_montant.Name = "txtAjoutTransaction_montant";
             this.txtAjoutTransaction_montant.PasswordChar = '\0';
             this.txtAjoutTransaction_montant.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtAjoutTransaction_montant.SelectedText = "";
@@ -1654,32 +1690,32 @@
             this.txtAjoutTransaction_montant.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtAjoutTransaction_montant.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAjoutTransaction_montant.TextChanged += new System.EventHandler(this.txtMontant_TextChanged);
-            this.txtAjoutTransaction_montant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontant_KeyPress);
-            this.txtAjoutTransaction_montant.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMontant_KeyUp);
+            this.txtAjoutTransaction_montant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontantAjoutTransaction_KeyPress);
+            this.txtAjoutTransaction_montant.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMontantAjoutTransaction_KeyUp);
             // 
-            // ckbRecette
+            // ckbAjoutTransaction_recette
             // 
             this.ckbAjoutTransaction_recette.AutoSize = true;
             this.ckbAjoutTransaction_recette.Dock = System.Windows.Forms.DockStyle.Left;
             this.ckbAjoutTransaction_recette.Location = new System.Drawing.Point(355, 3);
-            this.ckbAjoutTransaction_recette.Name = "ckbRecette";
+            this.ckbAjoutTransaction_recette.Name = "ckbAjoutTransaction_recette";
             this.ckbAjoutTransaction_recette.Size = new System.Drawing.Size(62, 19);
             this.ckbAjoutTransaction_recette.TabIndex = 5;
             this.ckbAjoutTransaction_recette.Text = "Recette";
             this.ckbAjoutTransaction_recette.UseSelectable = true;
-            this.ckbAjoutTransaction_recette.Click += new System.EventHandler(this.ckbRecette_Click);
+            this.ckbAjoutTransaction_recette.Click += new System.EventHandler(this.ckbRecetteAjoutTransaction_Click);
             // 
-            // ckbPercu
+            // ckbAjoutTransaction_percu
             // 
             this.ckbAjoutTransaction_percu.AutoSize = true;
             this.ckbAjoutTransaction_percu.Dock = System.Windows.Forms.DockStyle.Left;
             this.ckbAjoutTransaction_percu.Location = new System.Drawing.Point(423, 3);
-            this.ckbAjoutTransaction_percu.Name = "ckbPercu";
+            this.ckbAjoutTransaction_percu.Name = "ckbAjoutTransaction_percu";
             this.ckbAjoutTransaction_percu.Size = new System.Drawing.Size(53, 19);
             this.ckbAjoutTransaction_percu.TabIndex = 6;
             this.ckbAjoutTransaction_percu.Text = "Perçu";
             this.ckbAjoutTransaction_percu.UseSelectable = true;
-            this.ckbAjoutTransaction_percu.Click += new System.EventHandler(this.ckbPercu_Click);
+            this.ckbAjoutTransaction_percu.Click += new System.EventHandler(this.ckbPercuAjoutTransaction_Click);
             // 
             // lbType
             // 
@@ -1702,18 +1738,18 @@
             this.flowLayoutPanel14.Size = new System.Drawing.Size(383, 35);
             this.flowLayoutPanel14.TabIndex = 34;
             // 
-            // cboType
+            // cboAjoutTransaction_Type
             // 
             this.cboAjoutTransaction_Type.Dock = System.Windows.Forms.DockStyle.Top;
             this.cboAjoutTransaction_Type.FormattingEnabled = true;
             this.cboAjoutTransaction_Type.ItemHeight = 23;
             this.cboAjoutTransaction_Type.Location = new System.Drawing.Point(3, 3);
-            this.cboAjoutTransaction_Type.Name = "cboType";
+            this.cboAjoutTransaction_Type.Name = "cboAjoutTransaction_Type";
             this.cboAjoutTransaction_Type.Size = new System.Drawing.Size(346, 29);
             this.cboAjoutTransaction_Type.TabIndex = 7;
             this.cboAjoutTransaction_Type.UseSelectable = true;
             // 
-            // btnAddType
+            // btnAjoutTransaction_AddType
             // 
             this.metroStyleExtender.SetApplyMetroTheme(this.btnAjoutTransaction_AddType, true);
             this.btnAjoutTransaction_AddType.AutoSize = true;
@@ -1721,7 +1757,7 @@
             this.btnAjoutTransaction_AddType.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAjoutTransaction_AddType.Location = new System.Drawing.Point(355, 3);
             this.btnAjoutTransaction_AddType.Margin = new System.Windows.Forms.Padding(3);
-            this.btnAjoutTransaction_AddType.Name = "btnAddType";
+            this.btnAjoutTransaction_AddType.Name = "btnAjoutTransaction_AddType";
             this.btnAjoutTransaction_AddType.Size = new System.Drawing.Size(25, 29);
             this.btnAjoutTransaction_AddType.TabIndex = 8;
             this.btnAjoutTransaction_AddType.Text = "";
@@ -1739,33 +1775,33 @@
             this.panel3.Size = new System.Drawing.Size(796, 26);
             this.panel3.TabIndex = 0;
             // 
-            // btnOK
+            // btnAjoutTransaction_OK
             // 
             this.btnAjoutTransaction_OK.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnAjoutTransaction_OK.Location = new System.Drawing.Point(150, 0);
-            this.btnAjoutTransaction_OK.Name = "btnOK";
+            this.btnAjoutTransaction_OK.Name = "btnAjoutTransaction_OK";
             this.btnAjoutTransaction_OK.Size = new System.Drawing.Size(75, 26);
             this.btnAjoutTransaction_OK.TabIndex = 1;
             this.btnAjoutTransaction_OK.Text = "Valider";
             this.btnAjoutTransaction_OK.UseSelectable = true;
             this.btnAjoutTransaction_OK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // btnModif
+            // btnAjoutTransaction_modif
             // 
             this.btnAjoutTransaction_modif.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnAjoutTransaction_modif.Location = new System.Drawing.Point(75, 0);
-            this.btnAjoutTransaction_modif.Name = "btnModif";
+            this.btnAjoutTransaction_modif.Name = "btnAjoutTransaction_modif";
             this.btnAjoutTransaction_modif.Size = new System.Drawing.Size(75, 26);
             this.btnAjoutTransaction_modif.TabIndex = 1;
             this.btnAjoutTransaction_modif.Text = "Modifier";
             this.btnAjoutTransaction_modif.UseSelectable = true;
             this.btnAjoutTransaction_modif.Click += new System.EventHandler(this.btnModif_Click);
             // 
-            // btnAnnuler2
+            // btnAjoutTransaction_Annuler2
             // 
             this.btnAjoutTransaction_Annuler2.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnAjoutTransaction_Annuler2.Location = new System.Drawing.Point(0, 0);
-            this.btnAjoutTransaction_Annuler2.Name = "btnAnnuler2";
+            this.btnAjoutTransaction_Annuler2.Name = "btnAjoutTransaction_Annuler2";
             this.btnAjoutTransaction_Annuler2.Size = new System.Drawing.Size(75, 26);
             this.btnAjoutTransaction_Annuler2.TabIndex = 2;
             this.btnAjoutTransaction_Annuler2.Text = "Annuler";
@@ -1816,7 +1852,7 @@
             this.btnClear.TabStop = false;
             this.btnClear.Text = "Clear";
             this.btnClear.UseSelectable = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnClear.Click += new System.EventHandler(this.btnClearAjoutTransaction_Click);
             // 
             // label2
             // 
@@ -1828,19 +1864,343 @@
             this.label2.TabIndex = 26;
             this.label2.Text = "Personne(s) concernées : ";
             // 
-            // listBoxPersonne
+            // listBoxAjoutTransaction_Personne
             // 
             this.metroStyleExtender.SetApplyMetroTheme(this.listBoxAjoutTransaction_Personne, true);
             this.listBoxAjoutTransaction_Personne.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listBoxAjoutTransaction_Personne.FormattingEnabled = true;
             this.listBoxAjoutTransaction_Personne.Location = new System.Drawing.Point(9, 72);
-            this.listBoxAjoutTransaction_Personne.Name = "listBoxPersonne";
+            this.listBoxAjoutTransaction_Personne.Name = "listBoxAjoutTransaction_Personne";
             this.listBoxAjoutTransaction_Personne.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBoxAjoutTransaction_Personne.Size = new System.Drawing.Size(189, 147);
             this.listBoxAjoutTransaction_Personne.Sorted = true;
             this.listBoxAjoutTransaction_Personne.TabIndex = 24;
             this.listBoxAjoutTransaction_Personne.TabStop = false;
-            this.listBoxAjoutTransaction_Personne.SelectedIndexChanged += new System.EventHandler(this.listBoxPersonne_SelectedIndexChanged);
+            this.listBoxAjoutTransaction_Personne.SelectedIndexChanged += new System.EventHandler(this.listBoxPersonneAjoutTransaction_SelectedIndexChanged);
+            // 
+            // PageDashboard
+            // 
+            this.PageDashboard.Controls.Add(this.DashboardContainer);
+            this.PageDashboard.Name = "PageDashboard";
+            this.PageDashboard.Size = new System.Drawing.Size(1017, 432);
+            this.PageDashboard.TabIndex = 7;
+            // 
+            // DashboardContainer
+            // 
+            this.DashboardContainer.Controls.Add(this.grbRecherche);
+            this.DashboardContainer.Controls.Add(this.dgvTransac);
+            this.DashboardContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DashboardContainer.Location = new System.Drawing.Point(0, 0);
+            this.DashboardContainer.Name = "DashboardContainer";
+            this.DashboardContainer.Padding = new System.Windows.Forms.Padding(10);
+            this.DashboardContainer.Size = new System.Drawing.Size(1017, 432);
+            this.DashboardContainer.TabIndex = 0;
+            // 
+            // grbRecherche
+            // 
+            this.grbRecherche.AutoSize = true;
+            this.grbRecherche.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.grbRecherche.Controls.Add(this.panel2);
+            this.grbRecherche.Controls.Add(this.ckbDate);
+            this.grbRecherche.Controls.Add(this.metroButton1);
+            this.grbRecherche.Controls.Add(this.btnSearch);
+            this.grbRecherche.Controls.Add(this.rdbPlage);
+            this.grbRecherche.Controls.Add(this.rdbDateUnique);
+            this.grbRecherche.Controls.Add(this.flowLayoutPanel18);
+            this.grbRecherche.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grbRecherche.Location = new System.Drawing.Point(10, 10);
+            this.grbRecherche.Name = "grbRecherche";
+            this.grbRecherche.Size = new System.Drawing.Size(997, 141);
+            this.grbRecherche.TabIndex = 5;
+            this.grbRecherche.TabStop = false;
+            this.grbRecherche.Text = "Recherche";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txtLib);
+            this.panel2.Controls.Add(this.txtMontant);
+            this.panel2.Controls.Add(this.ckbRecette);
+            this.panel2.Controls.Add(this.ckbPercu);
+            this.panel2.Controls.Add(this.ckbMontant);
+            this.panel2.Controls.Add(this.ckbLib);
+            this.panel2.Location = new System.Drawing.Point(320, 23);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(353, 72);
+            this.panel2.TabIndex = 34;
+            // 
+            // txtLib
+            // 
+            // 
+            // 
+            // 
+            this.txtLib.CustomButton.Image = null;
+            this.txtLib.CustomButton.Location = new System.Drawing.Point(166, 2);
+            this.txtLib.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtLib.CustomButton.Name = "";
+            this.txtLib.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.txtLib.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtLib.CustomButton.TabIndex = 1;
+            this.txtLib.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtLib.CustomButton.UseSelectable = true;
+            this.txtLib.CustomButton.Visible = false;
+            this.txtLib.Enabled = false;
+            this.txtLib.Lines = new string[0];
+            this.txtLib.Location = new System.Drawing.Point(80, 4);
+            this.txtLib.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtLib.MaxLength = 32767;
+            this.txtLib.Name = "txtLib";
+            this.txtLib.PasswordChar = '\0';
+            this.txtLib.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtLib.SelectedText = "";
+            this.txtLib.SelectionLength = 0;
+            this.txtLib.SelectionStart = 0;
+            this.txtLib.ShortcutsEnabled = true;
+            this.txtLib.Size = new System.Drawing.Size(184, 20);
+            this.txtLib.TabIndex = 5;
+            this.txtLib.UseSelectable = true;
+            this.txtLib.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtLib.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtLib.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLib_KeyPress);
+            // 
+            // txtMontant
+            // 
+            // 
+            // 
+            // 
+            this.txtMontant.CustomButton.Image = null;
+            this.txtMontant.CustomButton.Location = new System.Drawing.Point(94, 2);
+            this.txtMontant.CustomButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMontant.CustomButton.Name = "";
+            this.txtMontant.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.txtMontant.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtMontant.CustomButton.TabIndex = 1;
+            this.txtMontant.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtMontant.CustomButton.UseSelectable = true;
+            this.txtMontant.CustomButton.Visible = false;
+            this.txtMontant.Enabled = false;
+            this.txtMontant.Lines = new string[0];
+            this.txtMontant.Location = new System.Drawing.Point(95, 30);
+            this.txtMontant.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMontant.MaxLength = 32767;
+            this.txtMontant.Name = "txtMontant";
+            this.txtMontant.PasswordChar = '\0';
+            this.txtMontant.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtMontant.SelectedText = "";
+            this.txtMontant.SelectionLength = 0;
+            this.txtMontant.SelectionStart = 0;
+            this.txtMontant.ShortcutsEnabled = true;
+            this.txtMontant.Size = new System.Drawing.Size(112, 20);
+            this.txtMontant.TabIndex = 6;
+            this.txtMontant.UseSelectable = true;
+            this.txtMontant.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtMontant.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.txtMontant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontant_KeyPress);
+            this.txtMontant.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMontant_KeyUp);
+            // 
+            // ckbRecette
+            // 
+            this.ckbRecette.AutoSize = true;
+            this.ckbRecette.Enabled = false;
+            this.ckbRecette.Location = new System.Drawing.Point(213, 28);
+            this.ckbRecette.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ckbRecette.Name = "ckbRecette";
+            this.ckbRecette.Size = new System.Drawing.Size(62, 15);
+            this.ckbRecette.TabIndex = 7;
+            this.ckbRecette.Text = "Recette";
+            this.ckbRecette.UseSelectable = true;
+            this.ckbRecette.Click += new System.EventHandler(this.ckbRecette_Click);
+            // 
+            // ckbPercu
+            // 
+            this.ckbPercu.AutoSize = true;
+            this.ckbPercu.Enabled = false;
+            this.ckbPercu.Location = new System.Drawing.Point(213, 46);
+            this.ckbPercu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ckbPercu.Name = "ckbPercu";
+            this.ckbPercu.Size = new System.Drawing.Size(53, 15);
+            this.ckbPercu.TabIndex = 8;
+            this.ckbPercu.Text = "Perçu";
+            this.ckbPercu.UseSelectable = true;
+            this.ckbPercu.Click += new System.EventHandler(this.ckbPercu_Click);
+            // 
+            // ckbMontant
+            // 
+            this.ckbMontant.AutoSize = true;
+            this.ckbMontant.Location = new System.Drawing.Point(4, 31);
+            this.ckbMontant.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ckbMontant.Name = "ckbMontant";
+            this.ckbMontant.Size = new System.Drawing.Size(78, 15);
+            this.ckbMontant.TabIndex = 33;
+            this.ckbMontant.Text = "Montant : ";
+            this.ckbMontant.UseSelectable = true;
+            this.ckbMontant.Click += new System.EventHandler(this.ckbMontant_Click);
+            // 
+            // ckbLib
+            // 
+            this.ckbLib.Location = new System.Drawing.Point(4, 2);
+            this.ckbLib.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ckbLib.Name = "ckbLib";
+            this.ckbLib.Size = new System.Drawing.Size(85, 21);
+            this.ckbLib.TabIndex = 32;
+            this.ckbLib.Text = "Libellé : ";
+            this.ckbLib.UseSelectable = true;
+            this.ckbLib.Click += new System.EventHandler(this.ckbLib_Click);
+            // 
+            // ckbDate
+            // 
+            this.ckbDate.AutoSize = true;
+            this.ckbDate.Location = new System.Drawing.Point(6, 22);
+            this.ckbDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ckbDate.Name = "ckbDate";
+            this.ckbDate.Size = new System.Drawing.Size(56, 15);
+            this.ckbDate.TabIndex = 31;
+            this.ckbDate.Text = "Date : ";
+            this.ckbDate.UseSelectable = true;
+            this.ckbDate.Click += new System.EventHandler(this.ckbDate_Click);
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroButton1.Location = new System.Drawing.Point(832, 100);
+            this.metroButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(58, 23);
+            this.metroButton1.TabIndex = 20;
+            this.metroButton1.TabStop = false;
+            this.metroButton1.Text = "Clear";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearch.Location = new System.Drawing.Point(896, 100);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(95, 23);
+            this.btnSearch.TabIndex = 9;
+            this.btnSearch.Text = "Rechercher";
+            this.btnSearch.UseSelectable = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // rdbPlage
+            // 
+            this.rdbPlage.AutoSize = true;
+            this.rdbPlage.Enabled = false;
+            this.rdbPlage.Location = new System.Drawing.Point(176, 23);
+            this.rdbPlage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rdbPlage.Name = "rdbPlage";
+            this.rdbPlage.Size = new System.Drawing.Size(52, 15);
+            this.rdbPlage.TabIndex = 2;
+            this.rdbPlage.Text = "Plage";
+            this.rdbPlage.UseSelectable = true;
+            this.rdbPlage.Click += new System.EventHandler(this.rdbPlage_Click);
+            // 
+            // rdbDateUnique
+            // 
+            this.rdbDateUnique.AutoSize = true;
+            this.rdbDateUnique.Checked = true;
+            this.rdbDateUnique.Enabled = false;
+            this.rdbDateUnique.Location = new System.Drawing.Point(83, 23);
+            this.rdbDateUnique.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rdbDateUnique.Name = "rdbDateUnique";
+            this.rdbDateUnique.Size = new System.Drawing.Size(61, 15);
+            this.rdbDateUnique.TabIndex = 1;
+            this.rdbDateUnique.TabStop = true;
+            this.rdbDateUnique.Text = "Unique";
+            this.rdbDateUnique.UseSelectable = true;
+            this.rdbDateUnique.Click += new System.EventHandler(this.rdbDateUnique_Click);
+            // 
+            // flowLayoutPanel18
+            // 
+            this.flowLayoutPanel18.Controls.Add(this.flowLayoutPanel17);
+            this.flowLayoutPanel18.Controls.Add(this.panel);
+            this.flowLayoutPanel18.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel18.Location = new System.Drawing.Point(23, 43);
+            this.flowLayoutPanel18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.flowLayoutPanel18.Name = "flowLayoutPanel18";
+            this.flowLayoutPanel18.Size = new System.Drawing.Size(263, 80);
+            this.flowLayoutPanel18.TabIndex = 10;
+            // 
+            // flowLayoutPanel17
+            // 
+            this.flowLayoutPanel17.AutoSize = true;
+            this.flowLayoutPanel17.Controls.Add(this.lblDateDeb);
+            this.flowLayoutPanel17.Controls.Add(this.dtpDeb);
+            this.flowLayoutPanel17.Location = new System.Drawing.Point(3, 2);
+            this.flowLayoutPanel17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.flowLayoutPanel17.Name = "flowLayoutPanel17";
+            this.flowLayoutPanel17.Size = new System.Drawing.Size(248, 24);
+            this.flowLayoutPanel17.TabIndex = 8;
+            // 
+            // lblDateDeb
+            // 
+            this.lblDateDeb.AutoSize = true;
+            this.lblDateDeb.Location = new System.Drawing.Point(3, 0);
+            this.lblDateDeb.Name = "lblDateDeb";
+            this.lblDateDeb.Size = new System.Drawing.Size(36, 19);
+            this.lblDateDeb.TabIndex = 54;
+            this.lblDateDeb.Text = "De : ";
+            this.lblDateDeb.Visible = false;
+            // 
+            // dtpDeb
+            // 
+            this.dtpDeb.Enabled = false;
+            this.dtpDeb.Location = new System.Drawing.Point(45, 2);
+            this.dtpDeb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpDeb.Name = "dtpDeb";
+            this.dtpDeb.Size = new System.Drawing.Size(200, 20);
+            this.dtpDeb.TabIndex = 3;
+            // 
+            // panel
+            // 
+            this.panel.Controls.Add(this.lblDateA);
+            this.panel.Controls.Add(this.dtpFin);
+            this.panel.Location = new System.Drawing.Point(3, 30);
+            this.panel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(260, 32);
+            this.panel.TabIndex = 9;
+            // 
+            // lblDateA
+            // 
+            this.lblDateA.Location = new System.Drawing.Point(3, 0);
+            this.lblDateA.Name = "lblDateA";
+            this.lblDateA.Size = new System.Drawing.Size(40, 18);
+            this.lblDateA.TabIndex = 70;
+            this.lblDateA.Text = "A : ";
+            this.lblDateA.Visible = false;
+            // 
+            // dtpFin
+            // 
+            this.dtpFin.Enabled = false;
+            this.dtpFin.Location = new System.Drawing.Point(49, 2);
+            this.dtpFin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpFin.Name = "dtpFin";
+            this.dtpFin.Size = new System.Drawing.Size(200, 20);
+            this.dtpFin.TabIndex = 4;
+            this.dtpFin.Visible = false;
+            // 
+            // dgvTransac
+            // 
+            this.dgvTransac.AllowUserToAddRows = false;
+            this.dgvTransac.AllowUserToDeleteRows = false;
+            this.dgvTransac.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvTransac.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvTransac.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvTransac.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTransac.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvTransac.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dgvTransac.Location = new System.Drawing.Point(10, 162);
+            this.dgvTransac.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvTransac.MultiSelect = false;
+            this.dgvTransac.Name = "dgvTransac";
+            this.dgvTransac.ReadOnly = true;
+            this.dgvTransac.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTransac.Size = new System.Drawing.Size(997, 260);
+            this.dgvTransac.TabIndex = 6;
+            this.dgvTransac.TabStop = false;
+            this.dgvTransac.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTransac_CellMouseClick);
             // 
             // errorProvider
             // 
@@ -1856,6 +2216,29 @@
             // 
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
+            // supprimerToolStripMenuItem
+            // 
+            this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
+            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.supprimerToolStripMenuItem.Text = "Supprimer";
+            this.supprimerToolStripMenuItem.Click += new System.EventHandler(this.supprimerToolStripMenuItem_Click);
+            // 
+            // cmsDgv
+            // 
+            this.cmsDgv.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmsDgv.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.modifierToolStripMenuItem,
+            this.supprimerToolStripMenuItem});
+            this.cmsDgv.Name = "cmsDgv";
+            this.cmsDgv.Size = new System.Drawing.Size(130, 48);
+            // 
+            // modifierToolStripMenuItem
+            // 
+            this.modifierToolStripMenuItem.Name = "modifierToolStripMenuItem";
+            this.modifierToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.modifierToolStripMenuItem.Text = "Modifier";
+            this.modifierToolStripMenuItem.Click += new System.EventHandler(this.modifierToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
@@ -1948,9 +2331,23 @@
             this.panel3.ResumeLayout(false);
             this.panelAjoutTransac.ResumeLayout(false);
             this.panelAjoutTransac.PerformLayout();
+            this.PageDashboard.ResumeLayout(false);
+            this.DashboardContainer.ResumeLayout(false);
+            this.DashboardContainer.PerformLayout();
+            this.grbRecherche.ResumeLayout(false);
+            this.grbRecherche.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.flowLayoutPanel18.ResumeLayout(false);
+            this.flowLayoutPanel18.PerformLayout();
+            this.flowLayoutPanel17.ResumeLayout(false);
+            this.flowLayoutPanel17.PerformLayout();
+            this.panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTransac)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
+            this.cmsDgv.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2076,6 +2473,32 @@
         private System.Windows.Forms.Label btnAjoutTransaction_AddType;
         private MetroFramework.Controls.MetroButton btnAjoutTransaction_OK;
         private MetroFramework.Controls.MetroButton btnAjoutTransaction_Annuler2;
+        private Kerido.Controls.MultiPanePage PageDashboard;
+        private System.Windows.Forms.Panel DashboardContainer;
+        private System.Windows.Forms.GroupBox grbRecherche;
+        private MetroFramework.Controls.MetroTextBox txtMontant;
+        private MetroFramework.Controls.MetroTextBox txtLib;
+        private MetroFramework.Controls.MetroCheckBox ckbMontant;
+        private MetroFramework.Controls.MetroCheckBox ckbLib;
+        private MetroFramework.Controls.MetroCheckBox ckbDate;
+        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton btnSearch;
+        private MetroFramework.Controls.MetroCheckBox ckbPercu;
+        private MetroFramework.Controls.MetroCheckBox ckbRecette;
+        private MetroFramework.Controls.MetroRadioButton rdbPlage;
+        private MetroFramework.Controls.MetroRadioButton rdbDateUnique;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel18;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel17;
+        private MetroFramework.Controls.MetroLabel lblDateDeb;
+        private System.Windows.Forms.DateTimePicker dtpDeb;
+        private System.Windows.Forms.FlowLayoutPanel panel;
+        private MetroFramework.Controls.MetroLabel lblDateA;
+        private System.Windows.Forms.DateTimePicker dtpFin;
+        private System.Windows.Forms.DataGridView dgvTransac;
+        private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip cmsDgv;
+        private System.Windows.Forms.ToolStripMenuItem modifierToolStripMenuItem;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

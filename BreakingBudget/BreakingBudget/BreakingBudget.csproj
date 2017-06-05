@@ -115,6 +115,9 @@
     <Compile Include="Views\FrmMain\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\FrmMain\FrmMain.Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\FrmMain\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>

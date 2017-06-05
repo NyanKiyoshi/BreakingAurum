@@ -110,6 +110,11 @@ namespace BreakingBudget.Views.FrmMain
                         ),
 
                         new SidebarEntry(
+                            this.PageDashboard,
+                            Program.settings.localize.Translate("sidebar_page_dashboard")
+                        ),
+
+                        new SidebarEntry(
                             () => {
                                 (new TransactionsToPDF()).ShowDialog();
                             },
@@ -135,6 +140,7 @@ namespace BreakingBudget.Views.FrmMain
             InitializePostesPonctuels(echancesContainer);
             InitiliazePosteRevenu();
 
+            InitializeDashboard();
             InitializeAjouterTransactionBudgetDuMois();
 
             InitiliazeSettingsPage();
