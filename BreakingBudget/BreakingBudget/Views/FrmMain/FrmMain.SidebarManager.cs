@@ -66,6 +66,9 @@ namespace BreakingBudget.Views.FrmMain
         private void SwitchPanel(MultiPanePage target)
         {
             this.ContentPanel.SelectedPage = target;
+
+            // unfocus the active control
+            this.ActiveControl = null;
         }
 
         // Toggle every child visibility

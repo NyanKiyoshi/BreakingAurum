@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.SidebarTable = new System.Windows.Forms.TableLayoutPanel();
             this.SidebarBottomFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.SidebarTopFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
@@ -117,7 +120,7 @@
             this.PageBudgetMoisAjouterTransaction = new Kerido.Controls.MultiPanePage();
             this.PageDashboard = new Kerido.Controls.MultiPanePage();
             this.DashboardContainer = new System.Windows.Forms.Panel();
-            this.grbRecherche = new System.Windows.Forms.GroupBox();
+            this.grbRecherche = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtLib = new MetroFramework.Controls.MetroTextBox();
             this.txtMontant = new MetroFramework.Controls.MetroTextBox();
@@ -137,7 +140,7 @@
             this.panel = new System.Windows.Forms.FlowLayoutPanel();
             this.lblDateA = new MetroFramework.Controls.MetroLabel();
             this.dtpFin = new System.Windows.Forms.DateTimePicker();
-            this.dgvTransac = new System.Windows.Forms.DataGridView();
+            this.dgvTransac = new MetroFramework.Controls.MetroGrid();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
             this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
@@ -1468,6 +1471,7 @@
             // 
             // grbRecherche
             // 
+            this.metroStyleExtender.SetApplyMetroTheme(this.grbRecherche, true);
             this.grbRecherche.AutoSize = true;
             this.grbRecherche.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.grbRecherche.Controls.Add(this.panel2);
@@ -1478,7 +1482,7 @@
             this.grbRecherche.Controls.Add(this.rdbDateUnique);
             this.grbRecherche.Controls.Add(this.flowLayoutPanel18);
             this.grbRecherche.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grbRecherche.Location = new System.Drawing.Point(10, 10);
+            this.grbRecherche.Location = new System.Drawing.Point(10, 408);
             this.grbRecherche.Name = "grbRecherche";
             this.grbRecherche.Size = new System.Drawing.Size(997, 141);
             this.grbRecherche.TabIndex = 5;
@@ -1755,19 +1759,49 @@
             // 
             this.dgvTransac.AllowUserToAddRows = false;
             this.dgvTransac.AllowUserToDeleteRows = false;
-            this.dgvTransac.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvTransac.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvTransac.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvTransac.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTransac.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvTransac.AllowUserToResizeRows = false;
+            this.dgvTransac.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvTransac.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvTransac.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvTransac.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTransac.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTransac.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvTransac.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvTransac.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dgvTransac.Location = new System.Drawing.Point(10, 294);
+            this.dgvTransac.EnableHeadersVisualStyles = false;
+            this.dgvTransac.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvTransac.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvTransac.Location = new System.Drawing.Point(10, 10);
             this.dgvTransac.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvTransac.MultiSelect = false;
             this.dgvTransac.Name = "dgvTransac";
             this.dgvTransac.ReadOnly = true;
+            this.dgvTransac.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTransac.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvTransac.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvTransac.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTransac.Size = new System.Drawing.Size(997, 260);
+            this.dgvTransac.Size = new System.Drawing.Size(997, 398);
             this.dgvTransac.TabIndex = 6;
             this.dgvTransac.TabStop = false;
             this.dgvTransac.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTransac_CellMouseClick);
@@ -1996,7 +2030,7 @@
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private Kerido.Controls.MultiPanePage PageDashboard;
         private System.Windows.Forms.Panel DashboardContainer;
-        private System.Windows.Forms.GroupBox grbRecherche;
+        private System.Windows.Forms.Panel grbRecherche;
         private MetroFramework.Controls.MetroTextBox txtMontant;
         private MetroFramework.Controls.MetroTextBox txtLib;
         private MetroFramework.Controls.MetroCheckBox ckbMontant;
@@ -2015,7 +2049,7 @@
         private System.Windows.Forms.FlowLayoutPanel panel;
         private MetroFramework.Controls.MetroLabel lblDateA;
         private System.Windows.Forms.DateTimePicker dtpFin;
-        private System.Windows.Forms.DataGridView dgvTransac;
+        private MetroFramework.Controls.MetroGrid dgvTransac;
         private System.Windows.Forms.ToolStripMenuItem supprimerToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip cmsDgv;
         private System.Windows.Forms.ToolStripMenuItem modifierToolStripMenuItem;
