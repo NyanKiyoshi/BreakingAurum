@@ -107,23 +107,23 @@ namespace BreakingBudget.Views.FrmMain
             int type = (int)dtTransacSelect[0][6];
 
             // Création et affichage du formulaire de modification
-            InitializeAjouterTransactionBudgetDuMois(this.PageDashboard, dt, description, montant, recette, percu, type);
-            SwitchPanel(PageBudgetMoisAjouterTransaction);
+            AjouterTransaction frmAdd = new AjouterTransaction(dt, description, montant, recette, percu, type);
+            frmAdd.ShowDialog();
 
             OleDbConnection connec = DatabaseManager.CreateConnection();
             // Si la modification est confirmée par l'utilisateur
             // On lance la modification de la transaction
-            if (AjoutTransaction_confirmModif == DialogResult.Yes)
+            if (frmAdd.AjoutTransaction_confirmModif == DialogResult.Yes)
             {
                 connec.Open();
 
                 // Récupération des infos modifiées
-                dateTransac = AjoutTransaction_Date;
-                description = AjoutTransaction_Description;
-                montant = AjoutTransaction_Montant;
-                recette = AjoutTransaction_Recette;
-                percu = AjoutTransaction_Percu;
-                type = AjoutTransaction_Type;
+                dateTransac = frmAdd.AjoutTransaction_Date;
+                description = frmAdd.AjoutTransaction_Description;
+                montant = frmAdd.AjoutTransaction_Montant;
+                recette = frmAdd.AjoutTransaction_Recette;
+                percu = frmAdd.AjoutTransaction_Percu;
+                type = frmAdd.AjoutTransaction_Type;
 
                 // Construction de la requete SQL Update
                 string cmdUpdate = @"UPDATE [Transaction] "
@@ -166,9 +166,6 @@ namespace BreakingBudget.Views.FrmMain
                 finally
                 {
                     connec.Close();
-
-                    // clear the edit form
-                    btnClearAjoutTransaction_Click(null, null);
                 }
             }
         }
@@ -505,7 +502,7 @@ namespace BreakingBudget.Views.FrmMain
         {
             // Contrôle de la saisie du montant lors de la 
             // pression d'une touche du clavier
-            VerifSaisieMontant(e, txtMontant);
+            AjouterTransaction.VerifSaisieMontant(e, txtMontant);
 
             if (e.KeyChar == (char)Keys.Enter && btnSearch.Enabled == true)
             {

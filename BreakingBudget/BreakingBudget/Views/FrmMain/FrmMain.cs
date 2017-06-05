@@ -100,24 +100,22 @@ namespace BreakingBudget.Views.FrmMain
                     
                     new SidebarEntry[] {
                         new SidebarEntry(
-                            PageBudgetMoisAjouterTransaction,
+                            this.PageDashboard,
+                            Program.settings.localize.Translate("sidebar_page_lister_transactions")
+                        ),
+
+                        //new SidebarEntry(
+                        //    (MultiPanePage)null,
+                        //    Program.settings.localize.Translate("sidebar_page_lister_transactions")
+                        //),
+
+                        new SidebarEntry(
+                            () => (new AjouterTransaction()).ShowDialog(),
                             Program.settings.localize.Translate("sidebar_page_ajouter_transaction")
                         ),
 
                         new SidebarEntry(
-                            (MultiPanePage)null,
-                            Program.settings.localize.Translate("sidebar_page_lister_transactions")
-                        ),
-
-                        new SidebarEntry(
-                            this.PageDashboard,
-                            Program.settings.localize.Translate("sidebar_page_dashboard")
-                        ),
-
-                        new SidebarEntry(
-                            () => {
-                                (new TransactionsToPDF()).ShowDialog();
-                            },
+                            () => (new TransactionsToPDF()).ShowDialog(),
                             Program.settings.localize.Translate("sidebar_page_exporter_transactions")
                         ),
                 }),
@@ -141,7 +139,6 @@ namespace BreakingBudget.Views.FrmMain
             InitiliazePosteRevenu();
 
             InitializeDashboard();
-            InitializeAjouterTransactionBudgetDuMois();
 
             InitiliazeSettingsPage();
         }

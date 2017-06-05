@@ -1,30 +1,24 @@
 ﻿using System;
 using System.Data;
 using System.Data.OleDb;
-using System.Windows.Forms;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
-using Kerido.Controls;
-
-using BreakingBudget.Views;
-using BreakingBudget.Services.SQL;
+using MetroFramework.Forms;
+using BreakingBudget.Services;
 using BreakingBudget.Services.Lang;
+using BreakingBudget.Services.SQL;
 
-namespace BreakingBudget.Views.FrmMain
+namespace BreakingBudget.Views
 {
-    partial class FrmMain
+    public partial class AjouterTransaction : MetroForm
     {
-        private MultiPanePage ajoutTransactionCallingPage = null;
-
         // Type de la transaction lors de la modification de celle-ci 
         int ajoutTransaction_typeTransac;
+
         // Déclaration du DialogueResult pour confirmer la modification de la transaction
         DialogResult ajoutTransactionSureModif;
-
-
 
         // Accesseurs 
         public string AjoutTransaction_Date
@@ -77,34 +71,38 @@ namespace BreakingBudget.Views.FrmMain
             }
         }
 
-        private void InitializeAjouterTransactionBudgetDuMois()
+        public AjouterTransaction()
         {
-            this.btnAjoutTransaction_AddType.Font = this.IconFont;
+            InitializeComponent();
+
+            this.btnAjoutTransaction_AddType.Font = (new IconFonts()).GetFont(IconFonts.FONT_FAMILY.MaterialIcons, 17.0f);
             this.btnAjoutTransaction_AddType.Text = Encoding.UTF8.GetString(new byte[] { 0xEE, 0x85, 0x87 });
 
             // Paramètre des composants
             this.btnAjoutTransaction_modif.Visible = false;
             panelAjoutTransac.Visible = true;
-            this.Text = "Nouvelle transaction";
+            this.Text = Program.settings.localize.Translate("Nouvelle transaction");
+            this.Refresh();
 
-            this.FrmAjoutTransaction_Load();
+            Program.settings.localize.ControlerTranslator(this);
+
+            this.AjoutTransaction_Load();
         }
 
-        private void InitializeAjouterTransactionBudgetDuMois(
-            MultiPanePage callingPage,
-            DateTime dataTransac, string description, string montant, bool recette, bool percu, int type)
+        public AjouterTransaction(
+            DateTime dataTransac, string description, string montant, bool recette, bool percu, int type) : this()
         {
-            // call base
-            this.InitializeAjouterTransactionBudgetDuMois();
-
-            this.ajoutTransactionCallingPage = callingPage;
-
             // Paramètres des composants
             panelAjoutTransac.Visible = false;
-            this.Text = "Modifier une transaction";
+            this.Text = Program.settings.localize.Translate("Modifier une transaction");
+            this.Refresh();
+
             this.btnAjoutTransaction_Annuler2.Visible = true;
             this.btnAjoutTransaction_modif.Visible = true;
             this.btnAjoutTransaction_modif.Enabled = true;
+
+            this.btnAjoutTransaction_OK.Enabled = false;
+            this.btnAjoutTransaction_OK.Visible = false;
 
             // Initialisation de la transaction à modifier
             // Récupération des info de la transaction du formulaire père
@@ -114,11 +112,6 @@ namespace BreakingBudget.Views.FrmMain
             this.ckbAjoutTransaction_recette.Checked = recette;
             this.ckbAjoutTransaction_percu.Checked = percu;
             this.ajoutTransaction_typeTransac = type;
-
-            // hide sidebar
-            this.HideSidebar();
-
-            this.FrmAjoutTransaction_Load();
         }
 
         ////////////// FONCTIONS OUTILS ///////////////////////////////////////////////////////////////////
@@ -179,7 +172,8 @@ namespace BreakingBudget.Views.FrmMain
             OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             DataTable table = new DataTable("nomTable");
 
-            try {
+            try
+            {
                 connec.Open();
 
                 da.Fill(table);
@@ -280,7 +274,7 @@ namespace BreakingBudget.Views.FrmMain
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        private void FrmAjoutTransaction_Load()
+        private void AjoutTransaction_Load()
         {
             // On récupère tous les types pour compléter la combobox "cboType"
             RemplirCombobox(cboAjoutTransaction_Type, "TypeTransaction", "libType", "codeType");
@@ -293,9 +287,6 @@ namespace BreakingBudget.Views.FrmMain
             }
             // On complète la listbox avec les "Noms Prénoms" des personnes
             RemplirListboxNomPrenom();
-
-            // Nettoyer le formulaire
-            btnClearAjoutTransaction_Click(null, null);
         }
 
         private void txtMontantAjoutTransaction_KeyPress(object sender, KeyPressEventArgs e)
@@ -340,7 +331,7 @@ namespace BreakingBudget.Views.FrmMain
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            this.SwitchPanel(this.ajoutTransactionCallingPage);
+            this.Close();
         }
 
         private void btnClearAjoutTransaction_Click(object sender, EventArgs e)
@@ -411,12 +402,13 @@ namespace BreakingBudget.Views.FrmMain
 
             // Si jamais la description n'est pas renseigne, on insert "NULL" dans la colonne description
             cmdTransac.Parameters.AddWithValue("@description", string.IsNullOrEmpty(description) ? (object)DBNull.Value : description);
-            cmdTransac.Parameters.AddWithValue("@montant", montant > 0 ? montant : montant * -1);
+            cmdTransac.Parameters.AddWithValue("@montant", montant);
             cmdTransac.Parameters.AddWithValue("@recetteON", ckbAjoutTransaction_recette.Checked);
             cmdTransac.Parameters.AddWithValue("@percuON", ckbAjoutTransaction_percu.Checked);
             cmdTransac.Parameters.AddWithValue("@type", type);
 
-            try {
+            try
+            {
                 // Execution de la requête
                 connec.Open();
                 codeRetour = cmdTransac.ExecuteNonQuery();
@@ -443,6 +435,8 @@ namespace BreakingBudget.Views.FrmMain
 
                 // Clear formulaire
                 btnClearAjoutTransaction_Click(null, null);
+
+                this.Close();
             }
             catch (OleDbException ex)
             {
@@ -452,13 +446,13 @@ namespace BreakingBudget.Views.FrmMain
             {
                 connec.Close();
             }
-
             // TODO: SMS API
         }
 
         private void btnModif_Click(object sender, EventArgs e)
         {
             ajoutTransactionSureModif = MessageBox.Show("Voulez-vous vraiment modifier cette transaction ?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            this.Close();
         }
 
         // Bouton "tout sélectionner"
@@ -518,6 +512,11 @@ namespace BreakingBudget.Views.FrmMain
             // On check le bouton tout selectionner si on coche tous les élements de la liste
             if (listBoxAjoutTransaction_Personne.SelectedItems.Count == listBoxAjoutTransaction_Personne.Items.Count)
                 ckbTtSelect.Checked = true;
+        }
+
+        private void AjoutTransaction_Load(object sender, EventArgs e)
+        {
+            this.AjoutTransaction_Load();
         }
     }
 }

@@ -259,4 +259,12 @@
     <Key>placeholder_nb_prelevements</Key>
     <Value>Nombre de mensualités prévues</Value>
   </Localization>
+  <Localization>
+    <Key>Nouvelle transaction</Key>
+    <Value>Nouvelle transaction</Value>
+  </Localization>
+  <Localization>
+    <Key>Modifier une transaction</Key>
+    <Value>Modifier une transaction</Value>
+  </Localization>
 </root>

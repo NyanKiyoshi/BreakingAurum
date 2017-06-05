@@ -97,6 +97,12 @@
     <Compile Include="Services\SQL\DatabaseManager.cs" />
     <Compile Include="Services\IconFonts.cs" />
     <Compile Include="Services\Settings.cs" />
+    <Compile Include="Views\AjouterTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AjouterTransaction.Designer.cs">
+      <DependentUpon>AjouterTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FatalErrorReporter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,9 +114,6 @@
     </Compile>
     <Compile Include="Views\FrmAjoutType.Designer.cs">
       <DependentUpon>FrmAjoutType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FrmMain\FrmMain.BudgetDuMois.AjouterTransaction.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\FrmMain\FrmMain.cs">
       <SubType>Form</SubType>
@@ -160,6 +163,9 @@
     <Compile Include="Views\UserCreation.Designer.cs">
       <DependentUpon>UserCreation.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\AjouterTransaction.resx">
+      <DependentUpon>AjouterTransaction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FatalErrorReporter.resx">
       <DependentUpon>FatalErrorReporter.cs</DependentUpon>
     </EmbeddedResource>
