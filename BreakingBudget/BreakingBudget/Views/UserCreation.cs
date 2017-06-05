@@ -13,8 +13,9 @@ namespace BreakingBudget.Views
 {
     public partial class UserCreation : MetroForm
     {
-        private const string RE_NUMBER_MATCHING = @"^(\+\d{2}([\s]*\d){9}$)|^([\s]*\d){10}$";
-        //private const string RE_NUMBER_MATCHING = @"^(0|\\+33)[1-9]([-. ]?[0-9]{2}){4}$";
+        // The db field is too short to accept the country code
+        //private const string RE_NUMBER_MATCHING = @"^(\+\d{2,3}([\s]*\d){9}$)|^([\s]*\d){10}$";
+        private const string RE_NUMBER_MATCHING = @"^([\s]*\d){10}$";
 
         public UserCreation()
         {
@@ -35,7 +36,7 @@ namespace BreakingBudget.Views
             //recuperation des valeurs des textbox 
             string nom = txtNom.Text;
             string prenom = txtPrenom.Text;
-            string tel = txtTel.Text;
+            string tel = txtTel.Text.Replace(" ", "");
 
             OleDbConnection connec = DatabaseManager.CreateConnection();
 
@@ -82,9 +83,9 @@ namespace BreakingBudget.Views
 
         private void txtTel_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar)
+            if (txtTel.Text.Length > 10
+                || char.IsDigit(e.KeyChar)
                 || e.KeyChar == (char)Keys.Back
-                || (txtTel.SelectionStart == 0 && e.KeyChar == '+' && (txtTel.Text.Length == 0 || txtTel.Text[0] != '+'))
                 || e.KeyChar == ' ')
             {
                 e.Handled = false;
