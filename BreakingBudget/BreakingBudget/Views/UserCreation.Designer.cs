@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.CancelButton = new MetroFramework.Controls.MetroButton();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.AcceptButton = new MetroFramework.Controls.MetroButton();
@@ -41,11 +42,14 @@
             this.lblTelephone = new MetroFramework.Controls.MetroLabel();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtTel = new MetroFramework.Controls.MetroTextBox();
+            this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
+            this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             this.formContainer.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.SuspendLayout();
             // 
             // CancelButton
@@ -258,6 +262,10 @@
             this.txtTel.TextChanged += new System.EventHandler(this.txtNom_TextChanged);
             this.txtTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_KeyPress);
             // 
+            // metroStyleManager
+            // 
+            this.metroStyleManager.Owner = this;
+            // 
             // UserCreation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,6 +282,7 @@
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,5 +303,7 @@
         private MetroFramework.Controls.MetroLabel lblTelephone;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private MetroFramework.Controls.MetroTextBox txtTel;
+        private MetroFramework.Components.MetroStyleExtender metroStyleExtender;
+        private MetroFramework.Components.MetroStyleManager metroStyleManager;
     }
 }

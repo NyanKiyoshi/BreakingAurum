@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ContainerAjouterTransaction = new System.Windows.Forms.Panel();
             this.flowLayoutPanel15 = new System.Windows.Forms.FlowLayoutPanel();
@@ -55,6 +56,9 @@
             this.btnAddPers = new MetroFramework.Controls.MetroButton();
             this.btnClear = new MetroFramework.Controls.MetroButton();
             this.label2 = new System.Windows.Forms.Label();
+            this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
+            this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.ListPersonneContainer = new System.Windows.Forms.Panel();
             this.listBoxAjoutTransaction_Personne = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.ContainerAjouterTransaction.SuspendLayout();
@@ -65,6 +69,8 @@
             this.flowLayoutPanel14.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelAjoutTransac.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
+            this.ListPersonneContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -85,7 +91,7 @@
             this.ContainerAjouterTransaction.Location = new System.Drawing.Point(0, 0);
             this.ContainerAjouterTransaction.Name = "ContainerAjouterTransaction";
             this.ContainerAjouterTransaction.Padding = new System.Windows.Forms.Padding(10);
-            this.ContainerAjouterTransaction.Size = new System.Drawing.Size(623, 364);
+            this.ContainerAjouterTransaction.Size = new System.Drawing.Size(615, 364);
             this.ContainerAjouterTransaction.TabIndex = 28;
             // 
             // flowLayoutPanel15
@@ -104,7 +110,7 @@
             this.flowLayoutPanel15.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel15.Location = new System.Drawing.Point(10, 10);
             this.flowLayoutPanel15.Name = "flowLayoutPanel15";
-            this.flowLayoutPanel15.Size = new System.Drawing.Size(603, 318);
+            this.flowLayoutPanel15.Size = new System.Drawing.Size(595, 318);
             this.flowLayoutPanel15.TabIndex = 30;
             this.flowLayoutPanel15.WrapContents = false;
             // 
@@ -308,6 +314,7 @@
             // 
             // btnAjoutTransaction_AddType
             // 
+            this.metroStyleExtender.SetApplyMetroTheme(this.btnAjoutTransaction_AddType, true);
             this.btnAjoutTransaction_AddType.AutoSize = true;
             this.btnAjoutTransaction_AddType.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnAjoutTransaction_AddType.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -328,7 +335,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(10, 328);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(603, 26);
+            this.panel3.Size = new System.Drawing.Size(595, 26);
             this.panel3.TabIndex = 0;
             // 
             // btnAjoutTransaction_OK
@@ -367,15 +374,15 @@
             // panelAjoutTransac
             // 
             this.panelAjoutTransac.AutoSize = true;
+            this.panelAjoutTransac.Controls.Add(this.ListPersonneContainer);
             this.panelAjoutTransac.Controls.Add(this.ckbTtSelect);
             this.panelAjoutTransac.Controls.Add(this.btnAddPers);
             this.panelAjoutTransac.Controls.Add(this.btnClear);
             this.panelAjoutTransac.Controls.Add(this.label2);
-            this.panelAjoutTransac.Controls.Add(this.listBoxAjoutTransaction_Personne);
             this.panelAjoutTransac.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelAjoutTransac.Location = new System.Drawing.Point(623, 0);
+            this.panelAjoutTransac.Location = new System.Drawing.Point(615, 0);
             this.panelAjoutTransac.Name = "panelAjoutTransac";
-            this.panelAjoutTransac.Size = new System.Drawing.Size(201, 364);
+            this.panelAjoutTransac.Size = new System.Drawing.Size(209, 364);
             this.panelAjoutTransac.TabIndex = 27;
             // 
             // ckbTtSelect
@@ -413,6 +420,7 @@
             // 
             // label2
             // 
+            this.metroStyleExtender.SetApplyMetroTheme(this.label2, true);
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 35);
             this.label2.Name = "label2";
@@ -420,18 +428,33 @@
             this.label2.TabIndex = 26;
             this.label2.Text = "Personne(s) concernées : ";
             // 
+            // metroStyleManager
+            // 
+            this.metroStyleManager.Owner = this;
+            // 
+            // ListPersonneContainer
+            // 
+            this.ListPersonneContainer.Controls.Add(this.listBoxAjoutTransaction_Personne);
+            this.ListPersonneContainer.Location = new System.Drawing.Point(6, 75);
+            this.ListPersonneContainer.Name = "ListPersonneContainer";
+            this.ListPersonneContainer.Padding = new System.Windows.Forms.Padding(1);
+            this.ListPersonneContainer.Size = new System.Drawing.Size(200, 144);
+            this.ListPersonneContainer.TabIndex = 30;
+            // 
             // listBoxAjoutTransaction_Personne
             // 
+            this.metroStyleExtender.SetApplyMetroTheme(this.listBoxAjoutTransaction_Personne, true);
+            this.listBoxAjoutTransaction_Personne.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBoxAjoutTransaction_Personne.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.listBoxAjoutTransaction_Personne.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBoxAjoutTransaction_Personne.FormattingEnabled = true;
-            this.listBoxAjoutTransaction_Personne.Location = new System.Drawing.Point(9, 72);
+            this.listBoxAjoutTransaction_Personne.Location = new System.Drawing.Point(1, 1);
             this.listBoxAjoutTransaction_Personne.Name = "listBoxAjoutTransaction_Personne";
             this.listBoxAjoutTransaction_Personne.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBoxAjoutTransaction_Personne.Size = new System.Drawing.Size(189, 147);
+            this.listBoxAjoutTransaction_Personne.Size = new System.Drawing.Size(198, 142);
             this.listBoxAjoutTransaction_Personne.Sorted = true;
-            this.listBoxAjoutTransaction_Personne.TabIndex = 24;
+            this.listBoxAjoutTransaction_Personne.TabIndex = 25;
             this.listBoxAjoutTransaction_Personne.TabStop = false;
-            this.listBoxAjoutTransaction_Personne.SelectedIndexChanged += new System.EventHandler(this.listBoxPersonneAjoutTransaction_SelectedIndexChanged);
             // 
             // AjouterTransaction
             // 
@@ -458,6 +481,8 @@
             this.panel3.ResumeLayout(false);
             this.panelAjoutTransac.ResumeLayout(false);
             this.panelAjoutTransac.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
+            this.ListPersonneContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -491,6 +516,9 @@
         private MetroFramework.Controls.MetroButton btnAddPers;
         private MetroFramework.Controls.MetroButton btnClear;
         private System.Windows.Forms.Label label2;
+        private MetroFramework.Components.MetroStyleExtender metroStyleExtender;
+        private MetroFramework.Components.MetroStyleManager metroStyleManager;
+        private System.Windows.Forms.Panel ListPersonneContainer;
         private System.Windows.Forms.ListBox listBoxAjoutTransaction_Personne;
     }
 }

@@ -76,6 +76,22 @@ namespace BreakingBudget.Views
         {
             InitializeComponent();
 
+            // inherit theme from settings
+            this.metroStyleExtender.StyleManager = Program.settings.styleManager;
+            this.StyleManager = this.metroStyleManager;
+            this.StyleManager.Theme = Program.settings.styleManager.Theme;
+            this.StyleManager.Style = Program.settings.styleManager.Style;
+
+            // change the background of the "ListPersonneContainer" (will make a border-like)
+            if (this.StyleManager.Theme == MetroFramework.MetroThemeStyle.Dark)
+            {
+                this.ListPersonneContainer.BackColor = System.Drawing.Color.FromArgb(55, 56, 57);
+            }
+            else
+            {
+                this.ListPersonneContainer.BackColor = System.Drawing.Color.FromArgb(0xCC, 0xCC, 0xCC);
+            }
+
             this.btnAjoutTransaction_AddType.Font = (new IconFonts()).GetFont(IconFonts.FONT_FAMILY.MaterialIcons, 17.0f);
             this.btnAjoutTransaction_AddType.Text = Encoding.UTF8.GetString(new byte[] { 0xEE, 0x85, 0x87 });
 

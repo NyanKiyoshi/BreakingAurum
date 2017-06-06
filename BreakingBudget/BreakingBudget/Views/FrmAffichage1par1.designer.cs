@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.rtxtDescription = new System.Windows.Forms.RichTextBox();
             this.lblTitreDescription = new MetroFramework.Controls.MetroLabel();
             this.lblTitreMontant = new MetroFramework.Controls.MetroLabel();
@@ -44,13 +45,24 @@
             this.lblTitrePersonnes = new MetroFramework.Controls.MetroLabel();
             this.chkPercu = new MetroFramework.Controls.MetroCheckBox();
             this.chkRecette = new MetroFramework.Controls.MetroCheckBox();
+            this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
+            this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtxtDescription
             // 
-            this.rtxtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroStyleExtender.SetApplyMetroTheme(this.rtxtDescription, true);
+            this.rtxtDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtxtDescription.Location = new System.Drawing.Point(116, 158);
             this.rtxtDescription.Name = "rtxtDescription";
+            this.rtxtDescription.ReadOnly = true;
             this.rtxtDescription.Size = new System.Drawing.Size(302, 77);
             this.rtxtDescription.TabIndex = 0;
             this.rtxtDescription.Text = "";
@@ -88,7 +100,7 @@
             // 
             // btnSuivant
             // 
-            this.btnSuivant.Location = new System.Drawing.Point(187, 449);
+            this.btnSuivant.Location = new System.Drawing.Point(3, 2);
             this.btnSuivant.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSuivant.Name = "btnSuivant";
             this.btnSuivant.Size = new System.Drawing.Size(64, 19);
@@ -99,7 +111,7 @@
             // 
             // btnPrecedent
             // 
-            this.btnPrecedent.Location = new System.Drawing.Point(117, 449);
+            this.btnPrecedent.Location = new System.Drawing.Point(3, 2);
             this.btnPrecedent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPrecedent.Name = "btnPrecedent";
             this.btnPrecedent.Size = new System.Drawing.Size(64, 19);
@@ -110,7 +122,7 @@
             // 
             // btnDernier
             // 
-            this.btnDernier.Location = new System.Drawing.Point(256, 449);
+            this.btnDernier.Location = new System.Drawing.Point(73, 2);
             this.btnDernier.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDernier.Name = "btnDernier";
             this.btnDernier.Size = new System.Drawing.Size(64, 19);
@@ -121,7 +133,7 @@
             // 
             // btnPremier
             // 
-            this.btnPremier.Location = new System.Drawing.Point(48, 449);
+            this.btnPremier.Location = new System.Drawing.Point(73, 2);
             this.btnPremier.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPremier.Name = "btnPremier";
             this.btnPremier.Size = new System.Drawing.Size(64, 19);
@@ -173,11 +185,13 @@
             // 
             // lstPersonnes
             // 
+            this.metroStyleExtender.SetApplyMetroTheme(this.lstPersonnes, true);
+            this.lstPersonnes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lstPersonnes.FormattingEnabled = true;
             this.lstPersonnes.Location = new System.Drawing.Point(117, 279);
             this.lstPersonnes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstPersonnes.Name = "lstPersonnes";
-            this.lstPersonnes.Size = new System.Drawing.Size(301, 134);
+            this.lstPersonnes.Size = new System.Drawing.Size(301, 130);
             this.lstPersonnes.TabIndex = 12;
             // 
             // lblTitrePersonnes
@@ -214,11 +228,60 @@
             this.chkRecette.Text = "Recette";
             this.chkRecette.UseSelectable = true;
             // 
+            // metroStyleManager
+            // 
+            this.metroStyleManager.Owner = this;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(17, 448);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(426, 29);
+            this.tableLayoutPanel1.TabIndex = 17;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.Controls.Add(this.btnSuivant);
+            this.flowLayoutPanel1.Controls.Add(this.btnDernier);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(216, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(140, 23);
+            this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel1.WrapContents = false;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.AutoSize = true;
+            this.flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel2.Controls.Add(this.btnPremier);
+            this.flowLayoutPanel2.Controls.Add(this.btnPrecedent);
+            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(70, 3);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(140, 23);
+            this.flowLayoutPanel2.TabIndex = 1;
+            this.flowLayoutPanel2.WrapContents = false;
+            // 
             // FrmAffichage1par1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 493);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.chkRecette);
             this.Controls.Add(this.chkPercu);
             this.Controls.Add(this.lblTitrePersonnes);
@@ -227,10 +290,6 @@
             this.Controls.Add(this.lblTitreType);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblTitreDate);
-            this.Controls.Add(this.btnPremier);
-            this.Controls.Add(this.btnDernier);
-            this.Controls.Add(this.btnPrecedent);
-            this.Controls.Add(this.btnSuivant);
             this.Controls.Add(this.lblMontant);
             this.Controls.Add(this.lblTitreMontant);
             this.Controls.Add(this.lblTitreDescription);
@@ -241,6 +300,11 @@
             this.Resizable = false;
             this.Text = "Transactions";
             this.Load += new System.EventHandler(this.FrmAffichage1par1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,5 +328,10 @@
         private MetroFramework.Controls.MetroLabel lblTitrePersonnes;
         private MetroFramework.Controls.MetroCheckBox chkPercu;
         private MetroFramework.Controls.MetroCheckBox chkRecette;
+        private MetroFramework.Components.MetroStyleExtender metroStyleExtender;
+        private MetroFramework.Components.MetroStyleManager metroStyleManager;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

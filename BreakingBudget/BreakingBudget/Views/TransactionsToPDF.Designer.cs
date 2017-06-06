@@ -28,12 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.comboBoxMonth = new MetroFramework.Controls.MetroComboBox();
             this.txtBoxYear = new MetroFramework.Controls.MetroTextBox();
             this.btnExport = new MetroFramework.Controls.MetroButton();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
+            this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.SuspendLayout();
             // 
             // saveFileDialog
@@ -112,6 +116,10 @@
             this.flowLayoutPanel1.TabIndex = 3;
             this.flowLayoutPanel1.WrapContents = false;
             // 
+            // metroStyleManager
+            // 
+            this.metroStyleManager.Owner = this;
+            // 
             // TransactionsToPDF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -127,6 +135,7 @@
             this.Resizable = false;
             this.Text = "TransactionsToPDF";
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,5 +147,7 @@
         private MetroFramework.Controls.MetroTextBox txtBoxYear;
         private MetroFramework.Controls.MetroButton btnExport;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private MetroFramework.Components.MetroStyleManager metroStyleManager;
+        private MetroFramework.Components.MetroStyleExtender metroStyleExtender;
     }
 }

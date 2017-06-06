@@ -188,4 +188,12 @@
     <Key>FrmTableauDeBordPostes</Key>
     <Value>Tableau de bord des postes</Value>
   </Localization>
+  <Localization>
+    <Key>FrmAffichDetailsPoste</Key>
+    <Value>Détails poste à échéances</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmAffichage1par1</Key>
+    <Value>Transactions</Value>
+  </Localization>
 </root>

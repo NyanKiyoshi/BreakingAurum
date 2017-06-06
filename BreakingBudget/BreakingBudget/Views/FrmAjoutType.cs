@@ -22,6 +22,12 @@ namespace BreakingBudget
         {
             InitializeComponent();
 
+            // inherit theme from settings
+            this.metroStyleExtender.StyleManager = Program.settings.styleManager;
+            this.StyleManager = this.metroStyleManager;
+            this.StyleManager.Theme = Program.settings.styleManager.Theme;
+            this.StyleManager.Style = Program.settings.styleManager.Style;
+
             Program.settings.localize.ControlerTranslator(this);
             this.Text = Program.settings.localize.Translate(this.Name);
             this.Refresh();

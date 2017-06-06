@@ -25,6 +25,17 @@ namespace BreakingBudget
         public FrmAffichage1par1()
         {
             InitializeComponent();
+
+            this.Text = Program.settings.localize.Translate(this.Name);
+            this.Refresh();
+
+            Program.settings.localize.ControlerTranslator(this);
+
+            // inherit theme from settings
+            this.metroStyleExtender.StyleManager = Program.settings.styleManager;
+            this.StyleManager = this.metroStyleManager;
+            this.StyleManager.Theme = Program.settings.styleManager.Theme;
+            this.StyleManager.Style = Program.settings.styleManager.Style;
         }
         private void FrmAffichage1par1_Load(object sender, EventArgs e)
         {

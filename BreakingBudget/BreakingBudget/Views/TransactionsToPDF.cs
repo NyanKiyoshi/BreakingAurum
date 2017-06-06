@@ -20,6 +20,12 @@ namespace BreakingBudget.Views
             // retrieve the set of translations for this form
             Program.settings.localize.ImportResourceLocalization("PDFTransactions");
 
+            // inherit theme from settings
+            this.metroStyleExtender.StyleManager = Program.settings.styleManager;
+            this.StyleManager = this.metroStyleManager;
+            this.StyleManager.Theme = Program.settings.styleManager.Theme;
+            this.StyleManager.Style = Program.settings.styleManager.Style;
+
             this.Text = Program.settings.localize.Translate(this.Name);
             Program.settings.localize.ControlerTranslator(this);
 

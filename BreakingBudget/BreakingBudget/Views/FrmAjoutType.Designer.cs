@@ -28,10 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new MetroFramework.Controls.MetroLabel();
             this.txtType = new MetroFramework.Controls.MetroTextBox();
             this.btnOK = new MetroFramework.Controls.MetroButton();
             this.btnCancel = new MetroFramework.Controls.MetroButton();
+            this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
+            this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -51,7 +55,7 @@
             // 
             // 
             this.txtType.CustomButton.Image = null;
-            this.txtType.CustomButton.Location = new System.Drawing.Point(167, 2);
+            this.txtType.CustomButton.Location = new System.Drawing.Point(303, 2);
             this.txtType.CustomButton.Name = "";
             this.txtType.CustomButton.Size = new System.Drawing.Size(17, 17);
             this.txtType.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -99,6 +103,10 @@
             this.btnCancel.Text = "Annuler";
             this.btnCancel.UseSelectable = true;
             // 
+            // metroStyleManager
+            // 
+            this.metroStyleManager.Owner = this;
+            // 
             // FrmAjoutType
             // 
             this.ClientSize = new System.Drawing.Size(369, 186);
@@ -112,6 +120,7 @@
             this.Name = "FrmAjoutType";
             this.Resizable = false;
             this.Text = "Ajouter un type";
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,5 +132,7 @@
         private MetroFramework.Controls.MetroTextBox txtType;
         private MetroFramework.Controls.MetroButton btnOK;
         private MetroFramework.Controls.MetroButton btnCancel;
+        private MetroFramework.Components.MetroStyleExtender metroStyleExtender;
+        private MetroFramework.Components.MetroStyleManager metroStyleManager;
     }
 }
