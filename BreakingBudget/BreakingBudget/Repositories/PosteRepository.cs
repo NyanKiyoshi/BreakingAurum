@@ -9,6 +9,18 @@ namespace BreakingBudget.Repositories
     {
         public const string TABLE_NAME = "Poste";
 
+        /// <summary>
+        /// Ordered list of tables requiring Poste.
+        /// </summary>
+        static readonly string[] REQUIRED_BY = new string[]
+        {
+            "PosteRevenu",
+            "PostePeriodique",
+            "Echeances",
+            "PostePonctuel",
+            "Poste"
+        };
+
         public class PosteModel
         {
             public int codePoste { get; set; }
@@ -38,16 +50,52 @@ namespace BreakingBudget.Repositories
         }
 
         public static int
-            Create(OleDbConnection dbConn, OleDbTransaction transaction, string libPoste)
+            Create(OleDbConnection dbConn, OleDbTransaction dbTransaction, string libPoste)
         {
             return Create(
                 dbConn,
-                transaction,
+                dbTransaction,
 
                 // retrieves the biggest identifier in the table and increment it
                 BiggestID() + 1,
                 libPoste
             );
+        }
+
+        public static void
+        Update(OleDbConnection dbConn, OleDbTransaction dbTransaction, int codePoste, string newTitle)
+        {
+            OleDbCommand cmd = new OleDbCommand(
+                "UPDATE " + TABLE_NAME + "SET libPoste = @libPoste WHERE codePoste = @codePoste",
+                dbConn, dbTransaction
+            );
+            cmd.Parameters.AddWithValue("@codePoste", codePoste);
+            cmd.Parameters.AddWithValue("@libPoste",  newTitle);
+
+            cmd.ExecuteNonQuery();
+        }
+
+        /// <summary>
+        /// Deletes a poste in cascade.
+        /// </summary>
+        /// <param name="dbConn"></param>
+        /// <param name="dbTransaction"></param>
+        /// <param name="codePoste"></param>
+        public static void
+        Delete(OleDbConnection dbConn, OleDbTransaction dbTransaction, int codePoste)
+        {
+            OleDbCommand rmCmd = new OleDbCommand();
+            rmCmd.Connection = dbConn;
+            rmCmd.Transaction = dbTransaction;
+
+            rmCmd.Parameters.AddWithValue("@codePoste", codePoste);
+
+            foreach (string table in PosteRepository.REQUIRED_BY)
+            {
+                rmCmd.CommandText = string.Format(
+                    "DELETE FROM [{0}] WHERE codePoste = @codePoste", table);
+                Console.WriteLine("I :: Removed: " + rmCmd.CommandText + " -> " + rmCmd.ExecuteNonQuery());
+            }
         }
 
         // Counts the number of rows of the table
@@ -128,6 +176,14 @@ namespace BreakingBudget.Repositories
 
                 conn.Open();
                 return DataAdapter.OleDbDataReaderToStruct<PosteRepository.PosteModel>(cmd.ExecuteReader()).ToArray();
+            }
+        }
+
+        public static void CheckDayRangeOrThrow(int day)
+        {
+            if (day < 1 || day > 28)
+            {
+                throw new ArgumentException("err_invalid_day");
             }
         }
     }

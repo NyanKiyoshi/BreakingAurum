@@ -196,4 +196,8 @@
     <Key>FrmAffichage1par1</Key>
     <Value>Transactions</Value>
   </Localization>
+  <Localization>
+    <Key>err_invalid_day</Key>
+    <Value>Le jour est invalide.</Value>
+  </Localization>
 </root>

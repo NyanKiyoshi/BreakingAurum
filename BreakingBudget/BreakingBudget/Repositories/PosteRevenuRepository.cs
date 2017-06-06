@@ -11,12 +11,16 @@ namespace BreakingBudget.Repositories
 
         public class PosteRevenu
         {
-            public int codePoste { get; set; }
-            public string commentaire { get; set; }
+            public int      codePoste     { get; set; }
+            public int      codePersonne  { get; set; }
+            public decimal  montant       { get; set; }
+            public int      jourDuMois    { get; set; }
+
+            public string   libPoste_s    { get; set; }
 
             override public string ToString()
             {
-                return codePoste.ToString() + " -> " + this.commentaire;
+                return codePoste.ToString() + " -> " + this.libPoste_s ;
             }
         }
 
@@ -56,13 +60,39 @@ namespace BreakingBudget.Repositories
                 dbConn, transaction
             );
 
-            cmd.Parameters.AddWithValue("@codePoste",    codePoste);
+            cmd.Parameters.AddWithValue("@codePoste", codePoste);
             cmd.Parameters.AddWithValue("@codePersonne", beneficiary.codePersonne);
-            cmd.Parameters.AddWithValue("@montant",      amount);
-            cmd.Parameters.AddWithValue("@jourDuMois",   everyXOfTheMonth);
+            cmd.Parameters.AddWithValue("@montant", amount);
+            cmd.Parameters.AddWithValue("@jourDuMois", everyXOfTheMonth);
 
             Console.WriteLine("<- INSERT INTO PosteRevenu: {0}, {1}, {2}, {3}",
                 codePoste, beneficiary.codePersonne, amount, everyXOfTheMonth);
+            cmd.ExecuteNonQuery();
+        }
+
+        public static void
+        Update(OleDbConnection dbConn, OleDbTransaction dbTransaction,
+            PosteRevenu originalEntry, PosteRevenu newEntry)
+        {
+            OleDbCommand cmd;
+
+            // if the day is invalid, throw ArgumentException
+            PosteRepository.CheckDayRangeOrThrow(newEntry.jourDuMois);
+
+            // if the poste title changed, update it
+            if (originalEntry.libPoste_s != null
+                && newEntry.libPoste_s != null
+                && !originalEntry.libPoste_s.Equals(newEntry.libPoste_s))
+            {
+                PosteRepository.Update(dbConn, dbTransaction, newEntry.codePoste, newEntry.libPoste_s);
+            }
+
+            cmd = new OleDbCommand("UPDATE " + TABLE_NAME + "SET montant = @amount, codePersonne = @codePer"
+                                     + "WHERE codePoste = @codePoste");
+            cmd.Parameters.AddWithValue("@amount",       newEntry.montant);
+            cmd.Parameters.AddWithValue("@codePersonne", newEntry.codePersonne);
+            cmd.Parameters.AddWithValue("@codePoste",    originalEntry.codePoste);
+
             cmd.ExecuteNonQuery();
         }
 

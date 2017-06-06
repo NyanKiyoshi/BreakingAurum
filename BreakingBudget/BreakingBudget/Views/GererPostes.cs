@@ -18,18 +18,7 @@ namespace BreakingBudget.Views
 {
     public partial class GererPostes : MetroForm
     {
-        //List<PosteRepository.PosteModel> AddQueue = new List<PosteRepository.PosteModel>();
         OleDbConnection dbConn;
-        //OleDbTransaction Transaction;
-
-        readonly string[] deleteFrom = new string[] 
-        {
-            "PosteRevenu",
-            "PostePeriodique",
-            "Echeances",
-            "PostePonctuel",
-            "Poste"
-        };
 
         public void EnableStyling()
         {
@@ -169,19 +158,10 @@ namespace BreakingBudget.Views
                 removePos = this.listBoxPostes.SelectedIndices[0];
                 entry = (PosteRepository.PosteModel)this.listBoxPostes.Items[removePos];
 
-                rmCmd = new OleDbCommand();
-                rmCmd.Connection = this.dbConn;
-                rmCmd.Transaction = this.transaction;
-                rmCmd.Parameters.AddWithValue("@codePoste", entry.codePoste);
-
                 try
                 {
-                    foreach (string table in this.deleteFrom)
-                    {
-                        rmCmd.CommandText = string.Format(
-                            "DELETE FROM [{0}] WHERE codePoste = @codePoste", table);
-                        Console.WriteLine("I :: Removed: " + rmCmd.CommandText + " -> " + rmCmd.ExecuteNonQuery());
-                    }
+                    // Delete in cascade the given poste
+                    PosteRepository.Delete(dbConn, transaction, entry.codePoste);
 
                     // then remove it from the list
                     this.listBoxPostes.Items.RemoveAt(removePos);

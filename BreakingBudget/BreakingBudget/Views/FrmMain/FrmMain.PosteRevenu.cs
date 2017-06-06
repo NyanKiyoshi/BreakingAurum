@@ -133,6 +133,10 @@ namespace BreakingBudget.Views.FrmMain
                 // handle the error (log it and report it to the user)
                 ErrorManager.HandleOleDBError(e);
             }
+            catch (ArgumentException e)
+            {
+                ErrorManager.ShowOperationFailed(this, Program.settings.localize.Translate(e.Message));
+            }
             finally
             {
                 dbConn.Close();
