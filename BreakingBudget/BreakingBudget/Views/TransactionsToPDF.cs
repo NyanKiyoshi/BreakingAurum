@@ -29,11 +29,14 @@ namespace BreakingBudget.Views
             this.Text = Program.settings.localize.Translate(this.Name);
             Program.settings.localize.ControlerTranslator(this);
 
+            this.txtBoxYear.Text = System.DateTime.Today.Year.ToString();
+
             comboBoxMonth.Items.Clear();
             for (int i = 1; i < 13; ++i)
             {
                 comboBoxMonth.Items.Add(Program.settings.localize.Translate("month_id_" + i));
             }
+            comboBoxMonth.SelectedIndex = 0;
         }
 
         // TODO: PUT A LOGO!

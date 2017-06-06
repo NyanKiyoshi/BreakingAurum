@@ -38,7 +38,6 @@ namespace BreakingBudget.Repositories
         )
         {
             int codeTransaction = BiggestID(dbConn, dbTransaction) + 1;
-
             OleDbCommand cmd = new OleDbCommand(
                 string.Format(
                     @"INSERT INTO [{0}] (
@@ -60,6 +59,21 @@ namespace BreakingBudget.Repositories
             cmd.Parameters.AddWithValue("@type",              transactionTypeCode);
 
             Console.WriteLine("<- INSERT INTO Transaction");
+
+            cmd.ExecuteNonQuery();
+        }
+
+        public static void CreateBeneficiare(OleDbConnection dbConn, OleDbTransaction dbTransaction, 
+            int codeTransaction, int codePersonne)
+        {
+            OleDbCommand cmd = new OleDbCommand(
+                    @"INSERT INTO [Beneficiaires] (
+                                codeTransaction,   codePersonne
+                      ) VALUES(@codeTransaction,  @codePersonne)",
+                dbConn, dbTransaction
+            );
+
+            Console.WriteLine("<- INSERT INTO Beneficiaires");
             cmd.ExecuteNonQuery();
         }
 

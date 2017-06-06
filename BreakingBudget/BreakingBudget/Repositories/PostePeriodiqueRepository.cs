@@ -41,7 +41,7 @@ namespace BreakingBudget.Repositories
 
             cmd = new OleDbCommand("UPDATE " + TABLE_NAME + "SET montant = @amount, typePer = @typePer, jourDuMois = @jourDuMois"
                                      + "WHERE codePoste = @codePoste");
-            cmd.Parameters.AddWithValue("@amount",      newEntry.montant);
+            cmd.Parameters.AddWithValue("@amount",      newEntry.montant > 0 ? newEntry.montant * -1 : newEntry.montant);
             cmd.Parameters.AddWithValue("@typePer",     newEntry.typePer);
             cmd.Parameters.AddWithValue("@jourDuMois",  originalEntry.jourDuMois);
             cmd.Parameters.AddWithValue("@codePoste",   originalEntry.codePoste);

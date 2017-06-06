@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.SidebarTable = new System.Windows.Forms.TableLayoutPanel();
             this.SidebarBottomFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.SidebarTopFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
@@ -73,6 +73,8 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.LanguageComboBox = new MetroFramework.Controls.MetroComboBox();
             this.LicensesPage = new Kerido.Controls.MultiPanePage();
+            this.LicenseContainer = new System.Windows.Forms.Panel();
+            this.richTextBoxLicenses = new System.Windows.Forms.RichTextBox();
             this.HomePage = new Kerido.Controls.MultiPanePage();
             this.button1 = new System.Windows.Forms.Button();
             this.PageRevenus = new Kerido.Controls.MultiPanePage();
@@ -114,7 +116,6 @@
             this.lblConfirmMontantPonctuel = new System.Windows.Forms.Label();
             this.lblHelpMontantPonctuel = new System.Windows.Forms.Label();
             this.ButtonsPostePonctuelContainer = new System.Windows.Forms.Panel();
-            this.btnGererBudgetPonctuel = new MetroFramework.Controls.MetroButton();
             this.btnValiderBudgetPonctuel = new MetroFramework.Controls.MetroButton();
             this.PageBudgetMoisAjouterTransaction = new Kerido.Controls.MultiPanePage();
             this.PageDashboard = new Kerido.Controls.MultiPanePage();
@@ -147,8 +148,6 @@
             this.supprimerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsDgv = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.modifierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LicenseContainer = new System.Windows.Forms.Panel();
-            this.richTextBoxLicenses = new System.Windows.Forms.RichTextBox();
             this.SidebarTable.SuspendLayout();
             this.BaseContainer.SuspendLayout();
             this.BaseContainerInnerBorder.SuspendLayout();
@@ -168,6 +167,7 @@
             this.flowLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.LicensesPage.SuspendLayout();
+            this.LicenseContainer.SuspendLayout();
             this.HomePage.SuspendLayout();
             this.PageRevenus.SuspendLayout();
             this.ContainerRevenu.SuspendLayout();
@@ -197,7 +197,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.cmsDgv.SuspendLayout();
-            this.LicenseContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // SidebarTable
@@ -753,6 +752,31 @@
             this.LicensesPage.Size = new System.Drawing.Size(1017, 564);
             this.LicensesPage.TabIndex = 2;
             // 
+            // LicenseContainer
+            // 
+            this.LicenseContainer.Controls.Add(this.richTextBoxLicenses);
+            this.LicenseContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LicenseContainer.Location = new System.Drawing.Point(0, 0);
+            this.LicenseContainer.Name = "LicenseContainer";
+            this.LicenseContainer.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.LicenseContainer.Size = new System.Drawing.Size(1017, 564);
+            this.LicenseContainer.TabIndex = 1;
+            // 
+            // richTextBoxLicenses
+            // 
+            this.metroStyleExtender.SetApplyMetroTheme(this.richTextBoxLicenses, true);
+            this.richTextBoxLicenses.BackColor = System.Drawing.Color.White;
+            this.richTextBoxLicenses.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxLicenses.DetectUrls = false;
+            this.richTextBoxLicenses.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxLicenses.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxLicenses.Location = new System.Drawing.Point(10, 0);
+            this.richTextBoxLicenses.Name = "richTextBoxLicenses";
+            this.richTextBoxLicenses.ReadOnly = true;
+            this.richTextBoxLicenses.Size = new System.Drawing.Size(1007, 564);
+            this.richTextBoxLicenses.TabIndex = 1;
+            this.richTextBoxLicenses.Text = resources.GetString("richTextBoxLicenses.Text");
+            // 
             // HomePage
             // 
             this.HomePage.AccessibleName = "Accueil";
@@ -1217,7 +1241,7 @@
             this.txtBoxCommentairePonctuel.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtBoxCommentairePonctuel.Lines = new string[0];
             this.txtBoxCommentairePonctuel.Location = new System.Drawing.Point(3, 3);
-            this.txtBoxCommentairePonctuel.MaxLength = 255;
+            this.txtBoxCommentairePonctuel.MaxLength = 30;
             this.txtBoxCommentairePonctuel.Name = "txtBoxCommentairePonctuel";
             this.txtBoxCommentairePonctuel.PasswordChar = '\0';
             this.txtBoxCommentairePonctuel.PromptText = "placeholder_commentaire_optionnel";
@@ -1401,7 +1425,6 @@
             // 
             this.ButtonsPostePonctuelContainer.AutoSize = true;
             this.ButtonsPostePonctuelContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ButtonsPostePonctuelContainer.Controls.Add(this.btnGererBudgetPonctuel);
             this.ButtonsPostePonctuelContainer.Controls.Add(this.btnValiderBudgetPonctuel);
             this.ButtonsPostePonctuelContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.ButtonsPostePonctuelContainer.Location = new System.Drawing.Point(10, 524);
@@ -1409,17 +1432,6 @@
             this.ButtonsPostePonctuelContainer.Name = "ButtonsPostePonctuelContainer";
             this.ButtonsPostePonctuelContainer.Size = new System.Drawing.Size(997, 30);
             this.ButtonsPostePonctuelContainer.TabIndex = 3;
-            // 
-            // btnGererBudgetPonctuel
-            // 
-            this.btnGererBudgetPonctuel.AutoSize = true;
-            this.btnGererBudgetPonctuel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnGererBudgetPonctuel.Location = new System.Drawing.Point(0, 0);
-            this.btnGererBudgetPonctuel.Name = "btnGererBudgetPonctuel";
-            this.btnGererBudgetPonctuel.Size = new System.Drawing.Size(97, 30);
-            this.btnGererBudgetPonctuel.TabIndex = 6;
-            this.btnGererBudgetPonctuel.Text = "Gérer les entrées";
-            this.btnGererBudgetPonctuel.UseSelectable = true;
             // 
             // btnValiderBudgetPonctuel
             // 
@@ -1713,7 +1725,7 @@
             this.dtpDeb.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDeb.Location = new System.Drawing.Point(45, 2);
             this.dtpDeb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtpDeb.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtpDeb.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtpDeb.Name = "dtpDeb";
             this.dtpDeb.Size = new System.Drawing.Size(200, 29);
             this.dtpDeb.TabIndex = 3;
@@ -1743,7 +1755,7 @@
             this.dtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFin.Location = new System.Drawing.Point(49, 2);
             this.dtpFin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtpFin.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtpFin.MinimumSize = new System.Drawing.Size(4, 29);
             this.dtpFin.Name = "dtpFin";
             this.dtpFin.Size = new System.Drawing.Size(200, 29);
             this.dtpFin.TabIndex = 4;
@@ -1758,22 +1770,22 @@
             this.dgvTransac.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvTransac.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvTransac.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTransac.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTransac.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTransac.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTransac.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvTransac.Dock = System.Windows.Forms.DockStyle.Top;
             this.dgvTransac.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvTransac.EnableHeadersVisualStyles = false;
@@ -1785,14 +1797,14 @@
             this.dgvTransac.Name = "dgvTransac";
             this.dgvTransac.ReadOnly = true;
             this.dgvTransac.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTransac.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTransac.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvTransac.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvTransac.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTransac.Size = new System.Drawing.Size(997, 398);
@@ -1818,7 +1830,7 @@
             // supprimerToolStripMenuItem
             // 
             this.supprimerToolStripMenuItem.Name = "supprimerToolStripMenuItem";
-            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.supprimerToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.supprimerToolStripMenuItem.Text = "Supprimer";
             this.supprimerToolStripMenuItem.Click += new System.EventHandler(this.supprimerToolStripMenuItem_Click);
             // 
@@ -1829,39 +1841,14 @@
             this.modifierToolStripMenuItem,
             this.supprimerToolStripMenuItem});
             this.cmsDgv.Name = "cmsDgv";
-            this.cmsDgv.Size = new System.Drawing.Size(123, 48);
+            this.cmsDgv.Size = new System.Drawing.Size(130, 48);
             // 
             // modifierToolStripMenuItem
             // 
             this.modifierToolStripMenuItem.Name = "modifierToolStripMenuItem";
-            this.modifierToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.modifierToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.modifierToolStripMenuItem.Text = "Modifier";
             this.modifierToolStripMenuItem.Click += new System.EventHandler(this.modifierToolStripMenuItem_Click);
-            // 
-            // LicenseContainer
-            // 
-            this.LicenseContainer.Controls.Add(this.richTextBoxLicenses);
-            this.LicenseContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LicenseContainer.Location = new System.Drawing.Point(0, 0);
-            this.LicenseContainer.Name = "LicenseContainer";
-            this.LicenseContainer.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.LicenseContainer.Size = new System.Drawing.Size(1017, 564);
-            this.LicenseContainer.TabIndex = 1;
-            // 
-            // richTextBoxLicenses
-            // 
-            this.metroStyleExtender.SetApplyMetroTheme(this.richTextBoxLicenses, true);
-            this.richTextBoxLicenses.BackColor = System.Drawing.Color.White;
-            this.richTextBoxLicenses.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxLicenses.DetectUrls = false;
-            this.richTextBoxLicenses.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBoxLicenses.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxLicenses.Location = new System.Drawing.Point(10, 0);
-            this.richTextBoxLicenses.Name = "richTextBoxLicenses";
-            this.richTextBoxLicenses.ReadOnly = true;
-            this.richTextBoxLicenses.Size = new System.Drawing.Size(1007, 564);
-            this.richTextBoxLicenses.TabIndex = 1;
-            this.richTextBoxLicenses.Text = resources.GetString("richTextBoxLicenses.Text");
             // 
             // FrmMain
             // 
@@ -1911,6 +1898,7 @@
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.LicensesPage.ResumeLayout(false);
+            this.LicenseContainer.ResumeLayout(false);
             this.HomePage.ResumeLayout(false);
             this.PageRevenus.ResumeLayout(false);
             this.ContainerRevenu.ResumeLayout(false);
@@ -1952,7 +1940,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.cmsDgv.ResumeLayout(false);
-            this.LicenseContainer.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2045,7 +2032,6 @@
         private System.Windows.Forms.Label lblHelpMontantPonctuel;
         private System.Windows.Forms.FlowLayoutPanel echancesContainer;
         private System.Windows.Forms.Label lblConfirmNbDeadLines;
-        private MetroFramework.Controls.MetroButton btnGererBudgetPonctuel;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private Kerido.Controls.MultiPanePage PageDashboard;
         private System.Windows.Forms.Panel DashboardContainer;

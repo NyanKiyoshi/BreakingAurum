@@ -73,7 +73,8 @@ namespace BreakingBudget.Repositories
 
             foreach (KeyValuePair<DateTime, decimal> deadline in deadLines) {
                 EcheanceRepository.Create(dbConn,
-                    dbTransaction, ref codePoste, ref transactionCodeType, ref libPoste, deadline.Key, deadline.Value);
+                    dbTransaction, ref codePoste, ref transactionCodeType,
+                    ref libPoste, deadline.Key, deadline.Value > 0 ? deadline.Value * -1 : deadline.Value);
             }
         }
 

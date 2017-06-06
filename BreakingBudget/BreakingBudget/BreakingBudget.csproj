@@ -303,7 +303,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="libs\MaterialSkin.dll" />
-    <EmbeddedResource Include="Localization\fr\MetroMessageBoxControl.xml" />
+    <EmbeddedResource Include="Repositories\MetroMessageBoxControl.xml" />
     <EmbeddedResource Include="Localization\fr\MetroToggle.xml" />
   </ItemGroup>
   <ItemGroup>

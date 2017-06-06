@@ -8,7 +8,7 @@ namespace BreakingBudget.Services
 {
     static class SMSManager
     {
-        private const string REMOTE_URL = "http://kisune.com/api/SMSManager/handler.php";
+        private const string REMOTE_URL = "http://127.0.0.1:8000/api/SMSManager/handler.php";
 
         public static async void SendSMS(IWin32Window owner, string[] numbers, string message)
         {
