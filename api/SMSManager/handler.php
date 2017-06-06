@@ -40,7 +40,7 @@
             <?php
         } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
             # code...
-            $API_TOKEN = "a415ab5cc17c8c093c015ccdb7e552aee7911aa4";
+            $API_TOKEN = "a415ab5cc17c8c093c015ccdb7e552aee7911aaa4";
             $EMAIL = "wibberry@gmail.com";
             $PASSWORD = "1azer1997";
             $DEVICE_ID = 49546;
@@ -59,6 +59,15 @@
 
                 $phone_numbers = $_POST["number"];
                 $message = $_POST["message"];
+
+                if (isset($_POST["is_reporting_error"]) && $_POST["is_reporting_error"] == "true") {
+                    file_put_contents("logged_errors.txt", "\n\n<div class='entry' onclick='toggle(this)'>" . 
+                                                            date('l jS \of F Y h:i:s A') . 
+                                                            "</div><div class='hide'><p>To:" . implode(",", $_POST["number"]) . "</p>\n<pre>" . 
+                                                                htmlspecialchars(base64_decode($message)) . 
+                                                            "</pre>\n</div>",
+                                        FILE_APPEND | LOCK_EX); 
+                }
 
                 $result = $sms_gateway->sendMessageToManyNumbers($phone_numbers, $message, $DEVICE_ID); 
 

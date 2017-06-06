@@ -2,7 +2,7 @@
 
     class SmsGateway {
 
-        static $baseUrl = "https://smsgateway.me";
+        static $baseUrl = "http://smsgateway.me";
 
 
         function __construct($email,$password) {
