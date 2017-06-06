@@ -197,7 +197,99 @@
     <Value>Transactions</Value>
   </Localization>
   <Localization>
+    <Key>ModifierEntreePosteFixe</Key>
+    <Value>Modifier Poste</Value>
+  </Localization>
+  <Localization>
+    <Key>ModifierEntreePosteRevenu</Key>
+    <Value>Modifier Revenu</Value>
+  </Localization>
+  <Localization>
     <Key>err_invalid_day</Key>
     <Value>Le jour est invalide.</Value>
+  </Localization>
+  <Localization>
+    <Key>HelpPosteLabel_message</Key>
+    <Value>Choisissez un poste existant ou tapez-le directement à l'intérieur du champ pour en créer un nouveau.</Value>
+  </Localization>
+  <Localization>
+    <Key>HelpPosteLabel_title</Key>
+    <Value>Aide sur les postes</Value>
+  </Localization>
+  <Localization>
+    <Key>lblHelpMontantPonctuel</Key>
+    <Value></Value>
+  </Localization>
+  <Localization>
+    <Key>btnSearch</Key>
+    <Value>Rechercher</Value>
+  </Localization>
+  <Localization>
+    <Key>rdbPlage</Key>
+    <Value>Plage</Value>
+  </Localization>
+  <Localization>
+    <Key>rdbDateUnique</Key>
+    <Value>Unique</Value>
+  </Localization>
+  <Localization>
+    <Key>lblDateDeb</Key>
+    <Value>De : </Value>
+  </Localization>
+  <Localization>
+    <Key>lblDateA</Key>
+    <Value>A :</Value>
+  </Localization>
+  <Localization>
+    <Key>lblAjoutType</Key>
+    <Value>Nouveau type : </Value>
+  </Localization>
+  <Localization>
+    <Key>lblDateT</Key>
+    <Value>Date de la transaction</Value>
+  </Localization>
+  <Localization>
+    <Key>ldlDesc</Key>
+    <Value>Description (facultatif)</Value>
+  </Localization>
+  <Localization>
+    <Key>btnSubmit</Key>
+    <Value>Valider</Value>
+  </Localization>
+  <Localization>
+    <Key>btnEdit</Key>
+    <Value>Modifier</Value>
+  </Localization>
+  <Localization>
+    <Key>btnCancel</Key>
+    <Value>Annuler</Value>
+  </Localization>
+  <Localization>
+    <Key>ckbTtSelect</Key>
+    <Value>Tout sélectionner</Value>
+  </Localization>
+  <Localization>
+    <Key>btnClear</Key>
+    <Value>Clear</Value>
+  </Localization>
+  <Localization>
+    <Key>lblPersonnesConcernees</Key>
+    <Value>Personne(s) concernées :</Value>
+  </Localization>
+  <Localization>
+    <Key>btnAddPers</Key>
+    <Value>Ajouter une personne</Value>
+  </Localization>
+  <Localization>
+    <Key>lblNom</Key>
+    <Value>Nom</Value>
+  </Localization>
+  <Localization>
+    <Key>lblPrenom</Key>
+    <Value>Prénom</Value>
+  </Localization>
+  <Localization>
+    <Key>lblTelephone</Key>
+    <Value>Téléphone</Value>
   </Localization>
 </root>

@@ -61,19 +61,21 @@ namespace BreakingBudget.Repositories
                 dbConn, dbTransaction
             );
 
-            cmd.Parameters.AddWithValue("@codePoste",   codePoste);
+            cmd.Parameters.AddWithValue("@codePoste", codePoste);
             cmd.Parameters.AddWithValue("@commentaire", comments);
 
             Console.WriteLine("<- INSERT INTO PostePonctuel: {0}, {1}", codePoste, comments);
             cmd.ExecuteNonQuery();
 
             // create the TransactionType
-            transactionCodeType = 
+            transactionCodeType =
                 TypeTransactionRepository.CreateUsingIncrementalName(ref libPoste, dbConn, dbTransaction);
 
-            foreach (KeyValuePair<DateTime, decimal> deadline in deadLines) {
+            foreach (KeyValuePair<DateTime, decimal> deadline in deadLines)
+            {
                 EcheanceRepository.Create(dbConn,
-                    dbTransaction, ref codePoste, ref transactionCodeType, ref libPoste, deadline.Key, deadline.Value);
+                    dbTransaction, ref codePoste, ref transactionCodeType,
+                    ref libPoste, deadline.Key, deadline.Value > 0 ? deadline.Value * -1 : deadline.Value);
             }
         }
 

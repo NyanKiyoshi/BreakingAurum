@@ -5,7 +5,7 @@ using BreakingBudget.Services.SQL;
 
 namespace BreakingBudget.Repositories
 {
-    static class PosteRevenuRepository
+    public static class PosteRevenuRepository
     {
         public const string TABLE_NAME = "PosteRevenu";
 
@@ -60,10 +60,10 @@ namespace BreakingBudget.Repositories
                 dbConn, transaction
             );
 
-            cmd.Parameters.AddWithValue("@codePoste", codePoste);
-            cmd.Parameters.AddWithValue("@codePersonne", beneficiary.codePersonne);
-            cmd.Parameters.AddWithValue("@montant", amount);
-            cmd.Parameters.AddWithValue("@jourDuMois", everyXOfTheMonth);
+            cmd.Parameters.AddWithValue("@codePoste",     codePoste);
+            cmd.Parameters.AddWithValue("@codePersonne",  beneficiary.codePersonne);
+            cmd.Parameters.AddWithValue("@montant",       amount.ToString());
+            cmd.Parameters.AddWithValue("@jourDuMois",    everyXOfTheMonth);
 
             Console.WriteLine("<- INSERT INTO PosteRevenu: {0}, {1}, {2}, {3}",
                 codePoste, beneficiary.codePersonne, amount, everyXOfTheMonth);
@@ -90,7 +90,7 @@ namespace BreakingBudget.Repositories
             cmd = new OleDbCommand("UPDATE " + TABLE_NAME
                                      + "SET montant = @amount, codePersonne = @codePer, jourDuMois = @jourDuMois"
                                      + "WHERE codePoste = @codePoste");
-            cmd.Parameters.AddWithValue("@amount",        newEntry.montant);
+            cmd.Parameters.AddWithValue("@amount",        newEntry.montant.ToString());
             cmd.Parameters.AddWithValue("@codePersonne",  newEntry.codePersonne);
             cmd.Parameters.AddWithValue("@jourDuMois",    newEntry.jourDuMois);
             cmd.Parameters.AddWithValue("@codePoste",     originalEntry.codePoste);

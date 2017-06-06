@@ -3,28 +3,28 @@ using System.Data.OleDb;
 
 namespace BreakingBudget.Repositories
 {
-    static class PostePeriodiqueRepositoryRepository
+    public static class PostePeriodiqueRepository
     {
-        public const string TABLE_NAME = "PostePeriodiqueRepository";
+        public const string TABLE_NAME = "PostePeriodique";
 
-        public class PostePeriodiqueRepository
+        public class PostePeriodiqueModel
         {
-            public int      codePoste     { get; set; }
-            public decimal  typePer       { get; set; }
-            public decimal  montant       { get; set; }
-            public int      jourDuMois    { get; set; }
+            public int codePoste { get; set; }
+            public int typePer { get; set; }
+            public decimal montant { get; set; }
+            public int jourDuMois { get; set; }
 
-            public string   libPoste_s    { get; set; }
+            public string libPoste_s { get; set; }
 
             override public string ToString()
             {
-                return codePoste.ToString() + " -> " + this.libPoste_s ;
+                return codePoste.ToString() + " -> " + this.libPoste_s;
             }
         }
 
         public static void
         Update(OleDbConnection dbConn, OleDbTransaction dbTransaction,
-            PostePeriodiqueRepository originalEntry, PostePeriodiqueRepository newEntry)
+            PostePeriodiqueModel originalEntry, PostePeriodiqueModel newEntry)
         {
             OleDbCommand cmd;
 
@@ -41,10 +41,10 @@ namespace BreakingBudget.Repositories
 
             cmd = new OleDbCommand("UPDATE " + TABLE_NAME + "SET montant = @amount, typePer = @typePer, jourDuMois = @jourDuMois"
                                      + "WHERE codePoste = @codePoste");
-            cmd.Parameters.AddWithValue("@amount",      newEntry.montant);
-            cmd.Parameters.AddWithValue("@typePer",     newEntry.typePer);
-            cmd.Parameters.AddWithValue("@jourDuMois",  originalEntry.jourDuMois);
-            cmd.Parameters.AddWithValue("@codePoste",   originalEntry.codePoste);
+            cmd.Parameters.AddWithValue("@amount", (newEntry.montant > 0 ? newEntry.montant * -1 : newEntry.montant).ToString());
+            cmd.Parameters.AddWithValue("@typePer", newEntry.typePer);
+            cmd.Parameters.AddWithValue("@jourDuMois", originalEntry.jourDuMois);
+            cmd.Parameters.AddWithValue("@codePoste", originalEntry.codePoste);
 
             cmd.ExecuteNonQuery();
         }

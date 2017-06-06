@@ -14,7 +14,7 @@ using MetroFramework.Forms;
 using BreakingBudget.Services.Lang;
 using BreakingBudget.Services.SQL;
 
-namespace BreakingBudget
+namespace BreakingBudget.Views
 {
     public partial class FrmAjoutType : MetroForm
     {

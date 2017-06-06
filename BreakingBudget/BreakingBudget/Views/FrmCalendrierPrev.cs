@@ -8,7 +8,7 @@ using MetroFramework.Forms;
 using BreakingBudget.Services.SQL;
 using BreakingBudget.Services.Lang;
 
-namespace BreakingBudget
+namespace BreakingBudget.Views
 {
     public partial class FrmCalendrierPrev : MetroForm
     {

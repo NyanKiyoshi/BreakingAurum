@@ -3,7 +3,6 @@ using System.Text;
 using System.Diagnostics;
 using MetroFramework.Forms;
 using BreakingBudget.Services;
-using BreakingBudget.Services.Lang;
 
 namespace BreakingBudget.Views
 {

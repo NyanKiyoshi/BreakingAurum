@@ -80,4 +80,218 @@
     <Key>err_missing_fields_caption</Key>
     <Value>Datos perdidos</Value>
   </Localization>
+  
+  <!-- TRADUIRE ! -->
+  <Localization>
+    <Key>msg_entries_successfully_added_msg</Key>
+    <Value>Les entrées ont bien été ajoutées.</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_entries_successfully_added_caption</Key>
+    <Value>Succès !</Value>
+  </Localization>
+  <Localization>
+    <Key>nothing</Key>
+    <Value>rien</Value>
+  </Localization>
+  <Localization>
+    <Key>AcceptButton</Key>
+    <Value>Valider</Value>
+  </Localization>
+  <Localization>
+    <Key>CancelButton</Key>
+    <Value>Annuler</Value>
+  </Localization>
+  <Localization>
+    <Key>Year</Key>
+    <Value>Année</Value>
+  </Localization>
+  <Localization>
+    <Key>UserCreation</Key>
+    <Value>Ajout d'une personne</Value>
+  </Localization>
+  <Localization>
+    <Key>err_already_used_{0}</Key>
+    <Value>{0} est déjà utilisé !</Value>
+  </Localization>
+  <Localization>
+    <Key>err_already_used_caption</Key>
+    <Value>Indisponible</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_sms_successfully_sent_msg</Key>
+    <Value>SMS envoyé !</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_success_caption</Key>
+    <Value>Succès</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_1</Key>
+    <Value>Janvier</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_2</Key>
+    <Value>Février</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_3</Key>
+    <Value>Mars</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_4</Key>
+    <Value>Avril</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_5</Key>
+    <Value>Mai</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_6</Key>
+    <Value>Juin</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_7</Key>
+    <Value>Juillet</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_8</Key>
+    <Value>Août</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_9</Key>
+    <Value>Septembre</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_10</Key>
+    <Value>Octobre</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_11</Key>
+    <Value>Novembre</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_12</Key>
+    <Value>Décembre</Value>
+  </Localization>
+  <Localization>
+    <Key>err_message_not_sent_err_code_{0}</Key>
+    <Value>Message non envoyé. (code d'erreur : {0})</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmAjoutType</Key>
+    <Value>Ajouter type</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmCalendrierPrev</Key>
+    <Value>Calendrier Prévisionnel</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmTableauDeBordPostes</Key>
+    <Value>Tableau de bord des postes</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmAffichDetailsPoste</Key>
+    <Value>Détails poste à échéances</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmAffichage1par1</Key>
+    <Value>Transactions</Value>
+  </Localization>
+  <Localization>
+    <Key>ModifierEntreePosteFixe</Key>
+    <Value>Modifier Poste</Value>
+  </Localization>
+  <Localization>
+    <Key>ModifierEntreePosteRevenu</Key>
+    <Value>Modifier Revenu</Value>
+  </Localization>
+  <Localization>
+    <Key>err_invalid_day</Key>
+    <Value>Le jour est invalide.</Value>
+  </Localization>
+  <Localization>
+    <Key>HelpPosteLabel_message</Key>
+    <Value>Choisissez un poste existant ou tapez-le directement à l'intérieur du champ pour en créer un nouveau.</Value>
+  </Localization>
+  <Localization>
+    <Key>HelpPosteLabel_title</Key>
+    <Value>Aide sur les postes</Value>
+  </Localization>
+  <Localization>
+    <Key>lblHelpMontantPonctuel</Key>
+    <Value></Value>
+  </Localization>
+  <Localization>
+    <Key>btnSearch</Key>
+    <Value>Rechercher</Value>
+  </Localization>
+  <Localization>
+    <Key>rdbPlage</Key>
+    <Value>Plage</Value>
+  </Localization>
+  <Localization>
+    <Key>rdbDateUnique</Key>
+    <Value>Unique</Value>
+  </Localization>
+  <Localization>
+    <Key>lblDateDeb</Key>
+    <Value>De : </Value>
+  </Localization>
+  <Localization>
+    <Key>lblDateA</Key>
+    <Value>A :</Value>
+  </Localization>
+  <Localization>
+    <Key>lblAjoutType</Key>
+    <Value>Nouveau type : </Value>
+  </Localization>
+  <Localization>
+    <Key>lblDateT</Key>
+    <Value>Date de la transaction</Value>
+  </Localization>
+  <Localization>
+    <Key>ldlDesc</Key>
+    <Value>Description (facultatif)</Value>
+  </Localization>
+  <Localization>
+    <Key>btnSubmit</Key>
+    <Value>Valider</Value>
+  </Localization>
+  <Localization>
+    <Key>btnEdit</Key>
+    <Value>Modifier</Value>
+  </Localization>
+  <Localization>
+    <Key>btnCancel</Key>
+    <Value>Annuler</Value>
+  </Localization>
+  <Localization>
+    <Key>ckbTtSelect</Key>
+    <Value>Tout sélectionner</Value>
+  </Localization>
+  <Localization>
+    <Key>btnClear</Key>
+    <Value>Clear</Value>
+  </Localization>
+  <Localization>
+    <Key>lblPersonnesConcernees</Key>
+    <Value>Personne(s) concernées :</Value>
+  </Localization>
+  <Localization>
+    <Key>btnAddPers</Key>
+    <Value>Ajouter une personne</Value>
+  </Localization>
+  <Localization>
+    <Key>lblNom</Key>
+    <Value>Nom</Value>
+  </Localization>
+  <Localization>
+    <Key>lblPrenom</Key>
+    <Value>Prénom</Value>
+  </Localization>
+  <Localization>
+    <Key>lblTelephone</Key>
+    <Value>Téléphone</Value>
+  </Localization>
 </root>

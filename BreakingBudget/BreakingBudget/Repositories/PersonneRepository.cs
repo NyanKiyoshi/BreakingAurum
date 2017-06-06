@@ -4,7 +4,7 @@ using BreakingBudget.Services.SQL;
 
 namespace BreakingBudget.Repositories
 {
-    static class PersonneRepository
+    public static class PersonneRepository
     {
         public const string TABLE_NAME = "Personne";
 

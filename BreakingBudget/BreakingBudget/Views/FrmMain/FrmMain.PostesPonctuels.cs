@@ -43,6 +43,18 @@ namespace BreakingBudget.Views.FrmMain
             this.numberOfDeadlines = 0;
         }
 
+        private void ClearPostePonctuelForm()
+        {
+            // reset deadlines
+            this.numberOfDeadlines = 0;
+            FillDeadlines(0, 0, this.numberOfDeadlines);
+
+            this.txtBoxIntitulePonctuel.Text = string.Empty;
+            this.txtBoxCommentairePonctuel.Text = string.Empty;
+            this.txtBoxNbPrelevementsPonctuel.Text = string.Empty;
+            this.txtBoxMontantPonctuel.Text = string.Empty;
+        }
+
         // creates a single container (FlowLayoutPanel) 
         // contaning a deadline number {deadlineNo} and its fields.
         //
@@ -91,7 +103,7 @@ namespace BreakingBudget.Views.FrmMain
 
 			// create a KeyPress event for txtAmount that checks if the input is a number or not
             // TODO: ask if want to copy the first one or not
-            txtAmount.KeyPress += new KeyPressEventHandler(this.AllowKeyPressAFloat);
+            txtAmount.KeyPress += new KeyPressEventHandler(InputHandler.AllowKeyPressAFloat);
 
 			// append the newly created date picker and amount fields to the list
             this.txtEcheancePonctuelsEntries.Add(
@@ -318,6 +330,7 @@ namespace BreakingBudget.Views.FrmMain
                 dbTransaction.Commit();
 
                 ErrorManager.EntriesSuccessfullyAdded(this);
+                ClearPostePonctuelForm();
             } catch (OleDbException e)
             {
                 // cancel the changes

@@ -10,6 +10,10 @@ using BreakingBudget.Repositories;
 
 namespace BreakingBudget.Views
 {
+    public class UnableToSummonDaCatException : System.Exception {
+        public UnableToSummonDaCatException() : base("im in ur computer makin ur wannacry worm") { }
+    }
+
     public partial class TransactionsToPDF : MetroForm
     {
         public TransactionsToPDF()
@@ -29,11 +33,14 @@ namespace BreakingBudget.Views
             this.Text = Program.settings.localize.Translate(this.Name);
             Program.settings.localize.ControlerTranslator(this);
 
+            this.txtBoxYear.Text = System.DateTime.Today.Year.ToString();
+
             comboBoxMonth.Items.Clear();
             for (int i = 1; i < 13; ++i)
             {
                 comboBoxMonth.Items.Add(Program.settings.localize.Translate("month_id_" + i));
             }
+            comboBoxMonth.SelectedIndex = 0;
         }
 
         // TODO: PUT A LOGO!
@@ -180,16 +187,16 @@ namespace BreakingBudget.Views
             TransactionRepository.TransactionModel[] _transactions = null;
 
             // the sum of every transaction in the current groupe
-            double group_total;
-            double group_spendings;
-            double group_received_incomes;
-            double group_pending_incomes;
+            decimal group_total;
+            decimal group_spendings;
+            decimal group_received_incomes;
+            decimal group_pending_incomes;
 
             // the sum of every group's amount
-            double total_amount = 0.0;
-            double total_spendings = 0.0;
-            double total_received_incomes = 0.0;
-            double total_pending_incomes = 0.0;
+            decimal total_amount = 0.0M;
+            decimal total_spendings = 0.0M;
+            decimal total_received_incomes = 0.0M;
+            decimal total_pending_incomes = 0.0M;
 
             // a temporary set of HTML rows
             StringBuilder currentEntryRow_str;
@@ -201,7 +208,8 @@ namespace BreakingBudget.Views
             PdfDocument doc = new PdfDocument();
 
             // retrieve every transaction of the current month
-            try {
+            try
+            {
                 _transactions = TransactionRepository.GetByMonth(month, year);
             }
             catch (OleDbException ex)
@@ -239,10 +247,10 @@ namespace BreakingBudget.Views
                 ++i;
                 entry_index = 0;
 
-                group_total = 0.0;
-                group_spendings = 0.0;
-                group_received_incomes = 0.0;
-                group_pending_incomes = 0.0;
+                group_total = 0.0M;
+                group_spendings = 0.0M;
+                group_received_incomes = 0.0M;
+                group_pending_incomes = 0.0M;
 
                 currentEntryRow_str = new StringBuilder();
 
@@ -290,7 +298,7 @@ namespace BreakingBudget.Views
                         group_spendings += it.Current.montant;
 
                         // if the value is negative, make it positive
-                        group_total -= it.Current.montant > 0 ? it.Current.montant : it.Current.montant * - 1;
+                        group_total -= it.Current.montant > 0 ? it.Current.montant : it.Current.montant * -1;
                     }
                 }
 
@@ -378,7 +386,20 @@ namespace BreakingBudget.Views
                 ErrorManager.ShowNotANumberError(this);
                 return;
             }
-            
+
+            // this code spawned itself from nowhere idk why
+            try {
+                if (year == 666)
+                {
+                    throw new UnableToSummonDaCatException();
+                }
+            }
+            catch (UnableToSummonDaCatException ex)
+            {
+                ErrorManager.HandleBaseException(ex);
+                return;
+            }
+
             PrintToPDDF(this.comboBoxMonth.SelectedIndex + 1, year);
         }
     }

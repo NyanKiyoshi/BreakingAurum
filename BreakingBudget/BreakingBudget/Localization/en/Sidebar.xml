@@ -22,7 +22,7 @@
   </Localization>
   <Localization>
     <Key>sidebar_page_budget_mois</Key>
-    <Value>Month Budget</Value>
+    <Value>Monthly Budget</Value>
   </Localization>
   <Localization>
     <Key>sidebar_page_ajouter_transaction</Key>
@@ -39,5 +39,23 @@
   <Localization>
     <Key>sidebar_page_licenses</Key>
     <Value>Licenses</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_dashboard</Key>
+    <Value>Dashboard</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_calendrier_previsionnel</Key>
+    <Value>Provisional Planning</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_exporter_transactions</Key>
+    <Value>Export</Value>
+  </Localization>
+  
+  <!-- Traduire ! -->
+  <Localization>
+    <Key>sidebar_page_lister_postes</Key>
+    <Value>Export</Value>
   </Localization>
 </root>

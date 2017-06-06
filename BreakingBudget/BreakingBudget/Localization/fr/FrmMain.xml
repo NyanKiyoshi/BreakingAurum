@@ -267,4 +267,84 @@
     <Key>Modifier une transaction</Key>
     <Value>Modifier une transaction</Value>
   </Localization>
+  <Localization>
+    <Key>lblPeriodiciteFixe</Key>
+    <Value>Postes à périodicité fixe : </Value>
+  </Localization>
+  <Localization>
+    <Key>lblPosteRevenus</Key>
+    <Value>Postes "Revenus" : </Value>
+  </Localization>
+  <Localization>
+    <Key>lblPosteAEchances</Key>
+    <Value>Postes à échéances : </Value>
+  </Localization>
+  <Localization>
+    <Key>btnClearSearch</Key>
+    <Value>Clear</Value>
+  </Localization>
+  <Localization>
+    <Key>btnPremier</Key>
+    <Value>Premier</Value>
+  </Localization>
+  <Localization>
+    <Key>btnPrecedent</Key>
+    <Value>Précédent</Value>
+  </Localization>
+  <Localization>
+    <Key>btnSuivant</Key>
+    <Value>Suivant</Value>
+  </Localization>
+  <Localization>
+    <Key>btnDernier</Key>
+    <Value>Dernier</Value>
+  </Localization>
+  <Localization>
+    <Key>lblTitrePersonnes</Key>
+    <Value>Personnes : </Value>
+  </Localization>
+  <Localization>
+    <Key>lblTitreType</Key>
+    <Value>Type : </Value>
+  </Localization>
+  <Localization>
+    <Key>lblTitreDate</Key>
+    <Value>Date : </Value>
+  </Localization>
+  <Localization>
+    <Key>lblTitreMontant</Key>
+    <Value>Montant : </Value>
+  </Localization>
+  <Localization>
+    <Key>lblTitreDescription</Key>
+    <Value>Description : </Value>
+  </Localization>
+  <Localization>
+    <Key>ckbRecette</Key>
+    <Value>Recette</Value>
+  </Localization>
+  <Localization>
+    <Key>ckbPercu</Key>
+    <Value>Perçu</Value>
+  </Localization>
+  <Localization>
+    <Key>chkRecette</Key>
+  <Value>Recette</Value>
+  </Localization>
+  <Localization>
+    <Key>chkPercu</Key>
+    <Value>Perçu</Value>
+  </Localization>
+  <Localization>
+    <Key>ckbMontant</Key>
+    <Value>Montant : </Value>
+  </Localization>
+  <Localization>
+    <Key>ckbLib</Key>
+    <Value>Libellé : </Value>
+  </Localization>
+  <Localization>
+    <Key>ckbDate</Key>
+    <Value>Date : </Value>
+  </Localization>
 </root>

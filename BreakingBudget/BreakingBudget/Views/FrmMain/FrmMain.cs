@@ -203,8 +203,8 @@ namespace BreakingBudget.Views.FrmMain
         private void HelpPosteLabel_Click(object sender, EventArgs e)
         {
             MetroMessageBox.Show(this,
-                "Choisissez un poste existant ou tapez-le directement à l'intérieur du champ pour en créer un nouveau.",
-                "Aide sur les postes",
+                Program.settings.localize.Translate("HelpPosteLabel_message"),
+                Program.settings.localize.Translate("HelpPosteLabel_title"),
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
@@ -212,54 +212,6 @@ namespace BreakingBudget.Views.FrmMain
         private void PagePostesFixes_AutoSizeChanged(object sender, EventArgs e)
         {
             MessageBox.Show(this.PagePostesFixes.Size.Width.ToString());
-        }
-
-        private void AllowKeyPressAFloat(object s, KeyPressEventArgs e)
-        {
-            e.Handled = !(
-                this.IsTextBoxKeyPressNumber((MetroTextBox)s, e.KeyChar)
-            );
-        }
-
-        private void AllowKeyPressAPositiveFloat(object s, KeyPressEventArgs e)
-        {
-            e.Handled = !(
-                this.IsTextBoxKeyPressNumber((MetroTextBox)s, e.KeyChar, true, false)
-            );
-        }
-
-        private void AllowKeyPressAInteger(object s, KeyPressEventArgs e)
-        {
-            e.Handled = !(
-                this.IsTextBoxKeyPressNumber((MetroTextBox)s, e.KeyChar, false)
-            );
-        }
-
-        private void AllowKeyPressANonNegativeInteger(object s, KeyPressEventArgs e)
-        {
-            e.Handled = !(
-                this.IsTextBoxKeyPressNumber((MetroTextBox)s, e.KeyChar, false, false)
-            );
-        }
-
-        private bool IsTextBoxKeyPressNumber(MetroTextBox sender, char KeyChar,
-            bool allowFloat = true,
-            bool allowNegatives = true)
-        {
-            return (
-                // is the char (not) a number?
-                char.IsNumber(KeyChar)
-
-                // or (not) a backspace?
-                || KeyChar == (char)Keys.Back
-
-                // or (not) a unique dot?
-                || (allowFloat && (KeyChar == '.' || KeyChar == ',')
-                                && (!sender.Text.Contains(".") && !sender.Text.Contains(",")))
-
-                // ...or (not) a unique minus at the beginning of the line? (is the cursor not at the beginning)
-                || (allowNegatives && KeyChar == '-' && (!sender.Text.Contains("-")) && sender.SelectionStart == 0)
-            );
         }
 
         private void FrmMain_StyleChanged(object sender, EventArgs e)

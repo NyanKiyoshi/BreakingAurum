@@ -31,22 +31,15 @@ namespace BreakingBudget.Views.FrmMain
             }
         }
 
-        private void txtTousLesXDuMoisRevenu_TextChanged(object sender, EventArgs e)
+        private void ClearPosteRevenuForm()
         {
-            int value;
+            this.txtBoxPosteRevenu.Text = string.Empty;
+            this.txtBoxMontantRevenu.Text = string.Empty;
+            this.txtTousLesXDuMoisRevenu.Text = string.Empty;
 
-            // try to convert the user's input to a integer
-            // if it this a success: check if `1 <= val <= 28`
-            if (isDayOfTheMonth(((MetroTextBox)sender).Text, out value))
-            {
-                this.errorProvider.SetError((Control)sender, null);
-            }
-            else
-            {
-                // otherwise, trigger a invalid number error
-                this.errorProvider.SetError((Control)sender,
-                    Program.settings.localize.Translate("err_not_a_valid_number"));
-            }
+            // Reset the selected user
+            this.listBeneficiairesComboBox.ResetText();
+            this.listBeneficiairesComboBox.Refresh();
         }
 
         private void btnValiderRevenu_Click(object _s, EventArgs _ev)
@@ -124,6 +117,7 @@ namespace BreakingBudget.Views.FrmMain
                 dbTransaction.Commit();
 
                 ErrorManager.EntriesSuccessfullyAdded(this);
+                ClearPosteRevenuForm();
             }
             catch (OleDbException e)
             {

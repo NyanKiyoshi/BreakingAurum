@@ -12,7 +12,7 @@ using MetroFramework.Forms;
 using BreakingBudget.Services.SQL;
 using BreakingBudget.Services.Lang;
 
-namespace BreakingBudget
+namespace BreakingBudget.Views
 {
     public partial class FrmAffichage1par1 : MetroForm
     {
@@ -110,7 +110,8 @@ namespace BreakingBudget
 
         private void lblDate_TextChanged(object sender, EventArgs e)
         {
-            lblDate.Text = lblDate.Text.Substring(0, 10);
+            // FIXME
+            //lblDate.Text = lblDate.Text.Substring(0, 10);
         }
 
         private void lblMontant_TextChanged(object sender, EventArgs e)

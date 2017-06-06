@@ -33,8 +33,26 @@ namespace BreakingBudget.Services.Lang
                 collectedErrorData.AppendLine("Message: " + e.Errors[i].Message);
                 collectedErrorData.AppendLine("Native: " + e.Errors[i].NativeError.ToString());
                 collectedErrorData.AppendLine("Source: " + e.Errors[i].Source);
-                collectedErrorData.AppendLine("SQL: "    + e.Errors[i].SQLState);
+                collectedErrorData.AppendLine("SQL: " + e.Errors[i].SQLState);
             }
+            collectedErrorData.AppendLine("---------------- STACK -----------------");
+            collectedErrorData.AppendLine(e.StackTrace);
+            collectedErrorData.AppendLine("----------------- END ------------------");
+
+            Console.WriteLine(collectedErrorData);
+            errorReporter = new FatalErrorReporter(collectedErrorData.ToString());
+            errorReporter.ShowDialog();
+        }
+
+        public static void HandleBaseException(Exception e)
+        {
+            FatalErrorReporter errorReporter;
+            StringBuilder collectedErrorData = new StringBuilder();
+
+            // error collection sample
+            collectedErrorData.AppendLine("-------- AN EXCEPTION OCCURRED ---------");
+            collectedErrorData.AppendLine("Message: " + e.Message);
+            collectedErrorData.AppendLine("Source: " + e.Source);
             collectedErrorData.AppendLine("---------------- STACK -----------------");
             collectedErrorData.AppendLine(e.StackTrace);
             collectedErrorData.AppendLine("----------------- END ------------------");

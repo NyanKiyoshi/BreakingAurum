@@ -197,14 +197,15 @@ namespace BreakingBudget.Services.Lang
                         || subCtrl is Button
                         || subCtrl is MetroFramework.Controls.MetroButton
                         || subCtrl is RadioButton
-                        || subCtrl is MetroFramework.Controls.MetroRadioButton)
+                        || subCtrl is MetroFramework.Controls.MetroRadioButton
+                        || subCtrl is MetroFramework.Controls.MetroCheckBox)
                     {
                         // try to get a value/ translation for the label
                         TranslatedText = Translate(subCtrl.Name);
 
                         // only change the Text attribut's value if there
                         // was a translation found
-                        if (TranslatedText != subCtrl.Name)
+                        if (true || TranslatedText != subCtrl.Name)
                         {
                             subCtrl.Text = TranslatedText;
                         }
@@ -218,7 +219,7 @@ namespace BreakingBudget.Services.Lang
 
                         // only change the Text attribut's value if there
                         // was a translation found
-                        if (TranslatedText != tmpMetroTextBox.WaterMark)
+                        if (true || TranslatedText != tmpMetroTextBox.WaterMark)
                         {
                             tmpMetroTextBox.WaterMark = TranslatedText;
                         }

@@ -53,6 +53,10 @@ namespace BreakingBudget
             {
                 ErrorManager.HandleOleDBError(ex);
             }
+            catch (Exception ex)
+            {
+                ErrorManager.HandleBaseException(ex);
+            }
         }
 
         [STAThread]

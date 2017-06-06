@@ -1,4 +1,4 @@
-﻿namespace BreakingBudget
+﻿namespace BreakingBudget.Views
 {
     partial class FrmCalendrierPrev
     {

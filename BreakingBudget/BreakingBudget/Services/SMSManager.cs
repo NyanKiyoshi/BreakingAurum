@@ -8,7 +8,7 @@ namespace BreakingBudget.Services
 {
     static class SMSManager
     {
-        private const string REMOTE_URL = "http://127.0.0.1:8000/api/SMSManager/handler.php";
+        private const string REMOTE_URL = "http://kisune.com/private/api/SMSManager/handler.php";
 
         public static async void SendSMS(IWin32Window owner, string[] numbers, string message,
             params KeyValuePair<string, string>[] additional_parameters)
@@ -17,7 +17,7 @@ namespace BreakingBudget.Services
             var values = new Dictionary<string, string>
             {
                { "message", message },
-               { "api_token", "a415ab5cc17c8c093c015ccdb7e552aee7911aa4" }
+               { "api_token", "a415ab5cc17c8c093c015ccdb7e552aee7911aaa4" }
             };
             Console.WriteLine("Sending SMS to: " + string.Join(",", numbers));
 
