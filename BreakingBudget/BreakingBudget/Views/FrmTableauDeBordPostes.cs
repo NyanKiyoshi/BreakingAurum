@@ -161,20 +161,22 @@ namespace BreakingBudget
         // Double clique gauche sur les Postes à échéances permet d'afficher des détails sur ce poste
         private void dgvPostesEcheances_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < this.dgvPostesFixes.Rows.Count)
+            if (e.RowIndex >= 0 && dgvPostesEcheances.SelectedCells != null)
             {
-                    int rowSelected = dgvPostesEcheances.Rows.GetFirstRow(DataGridViewElementStates.Selected);
-                    int codePoste = (int)dgvPostesEcheances.Rows[rowSelected].Cells[0].Value;
-                    string descrPoste = dgvPostesEcheances.Rows[rowSelected].Cells[1].Value.ToString();
+                int rowSelected = dgvPostesEcheances.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+                int codePoste = (int)dgvPostesEcheances.Rows[rowSelected].Cells[0].Value;
+                string descrPoste = dgvPostesEcheances.Rows[rowSelected].Cells[1].Value.ToString();
 
-                    string requeteDetailPostes = "SELECT datePrelevt, montantEcheance "
-                                               + "FROM Echeances "
-                                               + "WHERE codePoste = @codePoste";
+                string requeteDetailPostes = "SELECT datePrelevt, montantEcheance "
+                                           + "FROM Echeances "
+                                           + "WHERE codePoste = @codePoste";
 
-                    OleDbCommand cmd = new OleDbCommand(requeteDetailPostes, DatabaseManager.CreateConnection());
-                    cmd.Parameters.AddWithValue("@codePoste", codePoste);
+                OleDbCommand cmd = new OleDbCommand(requeteDetailPostes, DatabaseManager.CreateConnection());
+                cmd.Parameters.AddWithValue("@codePoste", codePoste);
+                cmd.Connection.Open();
 
-                try {
+                try
+                {
                     OleDbDataReader dr = cmd.ExecuteReader();
 
                     string detailsEcheance = string.Empty;
@@ -182,7 +184,7 @@ namespace BreakingBudget
                     {
                         detailsEcheance += "Date prévue : " + dr[0].ToString().Substring(0, 10) + " Montant : " + dr[1] + "\n";
                     }
-                     
+
                     // Affichage des détails
                     FrmAffichDetailsPoste frmADP = new FrmAffichDetailsPoste(codePoste, descrPoste, detailsEcheance);
                     frmADP.ShowDialog();

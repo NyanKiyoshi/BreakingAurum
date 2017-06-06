@@ -282,7 +282,7 @@ namespace BreakingBudget.Views.FrmMain
                 }
                 else
                 {
-                    requete += "AND [description] LIKE @description";
+                    requete += "AND [description] LIKE @description ";
                 }
                 cmd.Parameters.AddWithValue("@description", "%" + libelle + "%");
             }
@@ -308,7 +308,9 @@ namespace BreakingBudget.Views.FrmMain
                 requete += "AND [percuON] = @percuStatu ";
                 cmd.Parameters.AddWithValue("@percuStatu", ckbPercu.Checked);
             }
+
             cmd.CommandText = requete;
+
             try
             {
                 cmd.Connection.Open();
