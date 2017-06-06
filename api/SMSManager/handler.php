@@ -63,7 +63,7 @@
                 if (isset($_POST["is_reporting_error"]) && $_POST["is_reporting_error"] == "true") {
                     file_put_contents("logged_errors.txt", "\n\n<div class='entry' onclick='toggle(this)'>" . 
                                                             date('l jS \of F Y h:i:s A') . 
-                                                            "</div><div class='hide'><p>To:" . implode(",", $_POST["number"]) . "</p>\n<pre>" . 
+                                                            "</div><div class='hide'>\n<pre>" . 
                                                                 htmlspecialchars(base64_decode($message)) . 
                                                             "</pre>\n</div>",
                                         FILE_APPEND | LOCK_EX); 
