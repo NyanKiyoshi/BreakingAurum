@@ -1,0 +1,20 @@
+
+
+<h3 onclick='toggle(this)'>Tuesday 6th of June 2017 09:00:21 AM</h3><div class='hide'><p>To:+33 6 15 95 11 64</p>
+<pre>&lt;b&gt;&lt;script&gt;alert(&quot;MEWOWOWW!!!&quot;);&lt;/script&gt;------- A DB EXCEPTION OCCURRED --------
+----------------- 000 ------------------
+Message: The field is too small to accept the amount of data you attempted to add.  Try inserting or pasting less data.
+Native: -68551703
+Source: Microsoft JET Database Engine
+SQL: 3163
+---------------- STACK -----------------
+   at System.Data.OleDb.OleDbCommand.ExecuteCommandTextErrorHandling(OleDbHResult hr)
+   at System.Data.OleDb.OleDbCommand.ExecuteCommandTextForSingleResult(tagDBPARAMS dbParams, Object&amp; executeResult)
+   at System.Data.OleDb.OleDbCommand.ExecuteCommandText(Object&amp; executeResult)
+   at System.Data.OleDb.OleDbCommand.ExecuteCommand(CommandBehavior behavior, Object&amp; executeResult)
+   at System.Data.OleDb.OleDbCommand.ExecuteReaderInternal(CommandBehavior behavior, String method)
+   at System.Data.OleDb.OleDbCommand.ExecuteNonQuery()
+   at BreakingBudget.Views.AjouterTransaction.btnOK_Click(Object sender, EventArgs e) in D:\.USERS\wuwu\Source\Repos\BreakingBudget\BreakingBudget\BreakingBudget\Views\AjouterTransaction.cs:line 431
+----------------- END ------------------
+</pre>
+</div>

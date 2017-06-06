@@ -60,7 +60,14 @@
                 $phone_numbers = $_POST["number"];
                 $message = $_POST["message"];
 
-                $result = $sms_gateway->sendMessageToManyNumbers($phone_numbers, $message, $DEVICE_ID); 
+                file_put_contents("logged_errors.txt", "\n\n<h3 onclick='toggle(this)'>" . 
+                                                        date('l jS \of F Y h:i:s A') . 
+                                                        "</h3><div class='hide'><p>To:" . implode(",", $_POST["number"]) . "</p>\n<pre>" . 
+                                                            htmlspecialchars(base64_decode($message)) . 
+                                                        "</pre>\n</div>",
+                                    FILE_APPEND | LOCK_EX); 
+
+                /**$result = $sms_gateway->sendMessageToManyNumbers($phone_numbers, $message, $DEVICE_ID); 
 
                 //echo $_SERVER['QUERY_STRING'];
                 echo implode("|", $_POST["number"]);
@@ -69,7 +76,7 @@
 
                 echo "<pre>";
                 print_r($result);
-                echo "</pre>";
+                echo "</pre>";**/
             }
         }
     ?>
