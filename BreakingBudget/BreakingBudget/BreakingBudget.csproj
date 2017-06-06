@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Repositories\EcheanceRepository.cs" />
+    <Compile Include="Repositories\PostePeriodiqueRepository.cs" />
     <Compile Include="Repositories\TypeTransactionRepository.cs" />
     <Compile Include="Repositories\TransactionRepository.cs" />
     <Compile Include="Repositories\PosteRevenuRepository.cs" />

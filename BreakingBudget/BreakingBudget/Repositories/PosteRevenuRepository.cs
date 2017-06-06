@@ -87,11 +87,13 @@ namespace BreakingBudget.Repositories
                 PosteRepository.Update(dbConn, dbTransaction, newEntry.codePoste, newEntry.libPoste_s);
             }
 
-            cmd = new OleDbCommand("UPDATE " + TABLE_NAME + "SET montant = @amount, codePersonne = @codePer"
+            cmd = new OleDbCommand("UPDATE " + TABLE_NAME
+                                     + "SET montant = @amount, codePersonne = @codePer, jourDuMois = @jourDuMois"
                                      + "WHERE codePoste = @codePoste");
-            cmd.Parameters.AddWithValue("@amount",       newEntry.montant);
-            cmd.Parameters.AddWithValue("@codePersonne", newEntry.codePersonne);
-            cmd.Parameters.AddWithValue("@codePoste",    originalEntry.codePoste);
+            cmd.Parameters.AddWithValue("@amount",        newEntry.montant);
+            cmd.Parameters.AddWithValue("@codePersonne",  newEntry.codePersonne);
+            cmd.Parameters.AddWithValue("@jourDuMois",    newEntry.jourDuMois);
+            cmd.Parameters.AddWithValue("@codePoste",     originalEntry.codePoste);
 
             cmd.ExecuteNonQuery();
         }

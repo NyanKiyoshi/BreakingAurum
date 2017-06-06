@@ -7,6 +7,7 @@ using MetroFramework.Forms;
 
 using BreakingBudget.Services.SQL;
 using BreakingBudget.Services.Lang;
+using BreakingBudget.Repositories;
 
 namespace BreakingBudget
 {
@@ -69,6 +70,7 @@ namespace BreakingBudget
                 cmd.Connection.Close();
             }
         }
+
         public FrmTableauDeBordPostes()
         {
             InitializeComponent();
@@ -83,6 +85,7 @@ namespace BreakingBudget
 
             Program.settings.localize.ControlerTranslator(this);
         }
+
         private void FrmTableauDeBordPostes_Load(object sender, EventArgs e)
         {
             // Création et save des tables qui nous intéressent en local pour pouvoir les exploiter
@@ -101,60 +104,13 @@ namespace BreakingBudget
             dgvRevenus.ClearSelection();
         }
 
-        ////////////// Menu sur les Postes à échéances fixes /////////////////////////////////////////
-        private void dgvPostesFixes_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private DataGridViewCellCollection GetSelectedRowData(MetroFramework.Controls.MetroGrid controler)
         {
-            // si le click est effectué avec le bouton droit de la souris
-            if (e.Button == MouseButtons.Right)
+            if (controler.SelectedRows != null && controler.SelectedRows.Count > 0)
             {
-                // On déselectionne tout
-                this.dgvPostesFixes.ClearSelection();
-                // On vérifie que la cellule sélectionnée est bien dans le dataset 
-                // et est sélectionnable
-                if (e.RowIndex >= 0 && e.RowIndex < this.dgvPostesFixes.Rows.Count)
-                {
-                    // Sélectionner la ligne
-                    this.dgvPostesFixes.Rows[e.RowIndex].Selected = true;
-                    // on affiche le menu contextuel sous le curseur
-                    this.cmsPosteFixes.Show(MousePosition);
-                }
+                return controler.SelectedRows[0].Cells;
             }
-        }
-        private void modifierToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void supprimerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-        
-        ////////////// Menu sur les Postes revenus /////////////////////////////////////////
-        private void dgvRevenus_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            // si le click est effectué avec le bouton droit de la souris
-            if (e.Button == MouseButtons.Right)
-            {
-                // On déselectionne tout
-                this.dgvRevenus.ClearSelection();
-                // On vérifie que la cellule sélectionnée est bien dans le dataset 
-                // et est sélectionnable
-                if (e.RowIndex >= 0 && e.RowIndex < this.dgvRevenus.Rows.Count)
-                {
-                    // Sélectionner la ligne
-                    this.dgvRevenus.Rows[e.RowIndex].Selected = true;
-                    // on affiche le menu contextuel sous le curseur
-                    this.cmsRevenus.Show(MousePosition);
-                }
-            }
-        }
-        private void modifierToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void supprimerToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
+            return null;
         }
 
         ////////////// Postes à échéances //////////////////////////////////////////////////
@@ -163,9 +119,9 @@ namespace BreakingBudget
         {
             if (e.RowIndex >= 0 && dgvPostesEcheances.SelectedCells != null)
             {
-                int rowSelected = dgvPostesEcheances.Rows.GetFirstRow(DataGridViewElementStates.Selected);
-                int codePoste = (int)dgvPostesEcheances.Rows[rowSelected].Cells[0].Value;
-                string descrPoste = dgvPostesEcheances.Rows[rowSelected].Cells[1].Value.ToString();
+                DataGridViewCellCollection selectedRowCells = GetSelectedRowData(dgvPostesEcheances);
+                int codePoste = (int)selectedRowCells[0].Value;
+                string descrPoste = selectedRowCells[1].Value.ToString();
 
                 string requeteDetailPostes = "SELECT datePrelevt, montantEcheance "
                                            + "FROM Echeances "
@@ -198,6 +154,97 @@ namespace BreakingBudget
                     cmd.Connection.Close();
                 }
             }
+        }
+
+        ////////////// Menu sur les Postes à échéances fixes /////////////////////////////////////////
+        private void dgvPostesFixes_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            // si le click est effectué avec le bouton droit de la souris
+            if (e.Button == MouseButtons.Right)
+            {
+                // On déselectionne tout
+                this.dgvPostesFixes.ClearSelection();
+                // On vérifie que la cellule sélectionnée est bien dans le dataset 
+                // et est sélectionnable
+                if (e.RowIndex >= 0 && e.RowIndex < this.dgvPostesFixes.Rows.Count)
+                {
+                    // Sélectionner la ligne
+                    this.dgvPostesFixes.Rows[e.RowIndex].Selected = true;
+                    // on affiche le menu contextuel sous le curseur
+                    this.cmsPosteFixes.Show(MousePosition);
+                }
+            }
+        }
+        
+        ////////////// Menu sur les Postes revenus /////////////////////////////////////////
+        private void dgvRevenus_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            // si le click est effectué avec le bouton droit de la souris
+            if (e.Button == MouseButtons.Right)
+            {
+                // On déselectionne tout
+                this.dgvRevenus.ClearSelection();
+                // On vérifie que la cellule sélectionnée est bien dans le dataset 
+                // et est sélectionnable
+                if (e.RowIndex >= 0 && e.RowIndex < this.dgvRevenus.Rows.Count)
+                {
+                    // Sélectionner la ligne
+                    this.dgvRevenus.Rows[e.RowIndex].Selected = true;
+                    // on affiche le menu contextuel sous le curseur
+                    this.cmsRevenus.Show(MousePosition);
+                }
+            }
+        }
+
+        private void modifierRevenuToolStripItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeleteSelectedPoste(MetroFramework.Controls.MetroGrid controler)
+        {
+            OleDbConnection dbConn;
+            OleDbTransaction dbTransaction;
+
+            // delete a whole Poste if and only if a row was selected
+            DataGridViewCellCollection cells = this.GetSelectedRowData(controler);
+            if (cells != null)
+            {
+                dbConn = DatabaseManager.CreateConnection();
+                dbConn.Open();
+                dbTransaction = dbConn.BeginTransaction();
+
+                try
+                {
+                    // delete the selected poste in cascade then commit the changes
+                    PosteRepository.Delete(dbConn, dbTransaction, (int)cells[0].Value);
+                    dbTransaction.Commit();
+                }
+                catch (OleDbException ex)
+                {
+                    dbTransaction.Rollback();
+                    ErrorManager.HandleOleDBError(ex);
+                }
+                finally
+                {
+                    dbConn.Close();
+                }
+            }
+        }
+
+        private void modifierPosteFixesToolStripItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void supprimerPosteFixesToolStripItem_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedPoste(dgvPostesFixes);
+        }
+
+        private void supprimerRevenuToolStripItem_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedPoste(dgvRevenus);
         }
     }
 }
