@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -260,3 +261,26 @@ if (!hasValidSuccess($_SERVER['REMOTE_ADDR'])) {
 	</script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Logs</title>
+	<meta charset="utf-8"/>
+	<style type="text/css">
+	.hide {
+		display: none;
+	}
+	</style>
+
+	<script type="text/javascript">
+	function toggle (o) {
+		o.nextSibling.classList.toggle('hide');
+	}
+	</script>
+</head>
+<body>
+	<?php echo file_get_contents("logged_errors.txt"); ?>
+</body>
+</html>
+>>>>>>> 1bfc8c952dd284b95a31cc6034a298e21e5bc20c
