@@ -8,9 +8,10 @@ namespace BreakingBudget.Services
 {
     static class SMSManager
     {
-        private const string REMOTE_URL = "http://kisune.com/api/SMSManager/handler.php";
+        private const string REMOTE_URL = "http://127.0.0.1:8000/api/SMSManager/handler.php";
 
-        public static async void SendSMS(IWin32Window owner, string[] numbers, string message)
+        public static async void SendSMS(IWin32Window owner, string[] numbers, string message,
+            params KeyValuePair<string, string>[] additional_parameters)
         {
             HttpClient client = new HttpClient();
             var values = new Dictionary<string, string>
@@ -19,6 +20,12 @@ namespace BreakingBudget.Services
                { "api_token", "a415ab5cc17c8c093c015ccdb7e552aee7911aa4" }
             };
             Console.WriteLine("Sending SMS to: " + string.Join(",", numbers));
+
+            // append the additional parameters to the query string
+            foreach (var additional_parameter in additional_parameters)
+            {
+                values[additional_parameter.Key] = additional_parameter.Value;
+            }
 
             // create a query string's parameter of array of number
             for (int i = 0; i < numbers.Length; ++i) {
