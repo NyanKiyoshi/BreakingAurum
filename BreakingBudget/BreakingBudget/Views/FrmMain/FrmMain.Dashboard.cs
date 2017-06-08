@@ -37,6 +37,7 @@ namespace BreakingBudget.Views.FrmMain
 
         public void UpdateDashboard()
         {
+            MessageBox.Show("kgj");
             InitializeDashboard();
         }
 

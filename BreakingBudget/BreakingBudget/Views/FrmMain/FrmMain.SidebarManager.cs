@@ -137,23 +137,23 @@ namespace BreakingBudget.Views.FrmMain
                 }
             };
 
-            // if the target is a web link -> open it when the user clicks on it
-            if (e.TargetCallback != null)
+            OnMouseClick = (s, ev) =>
             {
-                OnMouseClick = (s, ev) =>
+                if (e.Target != null)
+                {
+                    // Swith to the target
+                    SwitchPanel(e.Target);
+                }
+
+                // if there is a callback, call it
+                if (e.TargetCallback != null)
                 {
                     e.TargetCallback();
-                };
-            }
-            else
-            {
-                OnMouseClick = (s, ev) =>
+                }
+
+                // don't change the active item if there is only a callback and no TargetPage
+                if (!(e.Target == null && e.TargetCallback != null))
                 {
-                    if (e.Target != null)
-                    {
-                        // Swith to the target
-                        SwitchPanel(e.Target);
-                    }
 
                     // if the entry is not a child: unexpand everything
                     if (!e.IsExpanded && e.parent == null)
@@ -170,8 +170,8 @@ namespace BreakingBudget.Views.FrmMain
                         e.IsExpanded = !e.IsExpanded;
                         ToggleSidebarChildren(e.children, e.IsExpanded);
                     }
-                };
-            }
+                }
+            };
 
             // Set the container layout to AutoSize to allow the sidebar to be able to resize itself
             // + disallow content wrapping to force the layout to resize itself, provoking the sidebar to grow

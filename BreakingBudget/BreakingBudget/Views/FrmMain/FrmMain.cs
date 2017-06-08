@@ -71,12 +71,13 @@ namespace BreakingBudget.Views.FrmMain
                                  new byte[] { 0xEE, 0xA2, 0x8A },  // little "house" icon
                                  Program.settings.localize.Translate("sidebar_page_home")),
 
-                new SidebarEntry(() => {
-                                        SwitchPanel(this.PageDashboard);
-                                        this.UpdateDashboard();
-                                 },
-                                 new byte[] { 0xEE, 0xA1, 0xB1 },  // little "house" icon
-                                 Program.settings.localize.Translate("sidebar_page_dashboard")),
+                new SidebarEntry(
+                    target: this.PageDashboard,
+                    callback: () => this.UpdateDashboard(),
+                    icon: new byte[] { 0xEE, 0xA1, 0xB1 },  // little "house" icon
+                    text: Program.settings.localize.Translate("sidebar_page_dashboard"),
+                    children: null
+                ),
 
                 new SidebarEntry(() => (new FrmCalendrierPrev()).ShowDialog(),
                                  new byte[] { 0xEE, 0xA4, 0x96 },  // little "house" icon

@@ -44,6 +44,13 @@ namespace BreakingBudget.Structural
             this.children = children;
         }
 
+        public SidebarEntry(MultiPanePage target, CallbackFunction callback, 
+            byte[] icon, string text, SidebarEntry[] children) : this(target, icon, text)
+        {
+            this.children = children;
+            this.TargetCallback = callback;
+        }
+
         // A UTF8 char array representing a Google Material icon
         public byte[] Icon;
 
@@ -63,11 +70,15 @@ namespace BreakingBudget.Structural
             get { return this._children; }
             set
             {
-                foreach (SidebarEntry child in value)
+                if (value != null)
                 {
-                    child._parent = this;
+                    // set the children parent to this
+                    foreach (SidebarEntry child in value)
+                    {
+                        child._parent = this;
+                    }
+                    this._children = value;
                 }
-                this._children = value;
             }
         }
 
