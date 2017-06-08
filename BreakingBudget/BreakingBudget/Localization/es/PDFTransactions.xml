@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Localization>
+    <Key>TransactionsToPDF</Key>
+    <Value>Exporter vers PDF</Value>
+  </Localization>
+  <Localization>
+    <Key>summary_of_the_month_{0}</Key>
+    <Value>Récapitulatif du mois {0}</Value>
+  </Localization>
+  <Localization>
+    <Key>filename_summary_of_the_month_{0}</Key>
+    <Value>Rapport du mois {0}</Value>
+  </Localization>
+  <Localization>
+    <Key>{0}_transactions</Key>
+    <Value>{0} transactions</Value>
+  </Localization>
+  <Localization>
+    <Key>{0}_transaction</Key>
+    <Value>{0} transaction</Value>
+  </Localization>
+  <Localization>
+    <Key>lblExportTransactionsOf</Key>
+    <Value>Exporter les transactions de :</Value>
+  </Localization>
+  <!---->
+  <Localization>
+    <Key>btnExport</Key>
+    <Value>Exporter</Value>
+  </Localization>
+  <Localization>
+    <Key>transaction_date</Key>
+    <Value>Date de Transaction</Value>
+  </Localization>
+  <Localization>
+    <Key>amount</Key>
+    <Value>Montant</Value>
+  </Localization>
+  <Localization>
+    <Key>income</Key>
+    <Value>Recette</Value>
+  </Localization>
+  <Localization>
+    <Key>received</Key>
+    <Value>Reçu</Value>
+  </Localization>
+  <Localization>
+    <Key>description</Key>
+    <Value>Description</Value>
+  </Localization>
+  <!---->
+  <Localization>
+    <Key>of_the_month_id_1</Key>
+    <Value>de janvier</Value>
+  </Localization>
+  <Localization>
+    <Key>of_the_month_id_2</Key>
+    <Value>de février</Value>
+  </Localization>
+  <Localization>
+    <Key>of_the_month_id_3</Key>
+    <Value>de mars</Value>
+  </Localization>
+  <Localization>
+    <Key>of_the_month_id_4</Key>
+    <Value>d'avril</Value>
+  </Localization>
+  <Localization>
+    <Key>of_the_month_id_5</Key>
+    <Value>de mai</Value>
+  </Localization>
+  <Localization>
+    <Key>of_the_month_id_6</Key>
+    <Value>de juin</Value>
+  </Localization>
+  <Localization>
+    <Key>of_the_month_id_7</Key>
+    <Value>de juillet</Value>
+  </Localization>
+  <Localization>
+    <Key>of_the_month_id_8</Key>
+    <Value>d'août</Value>
+  </Localization>
+  <Localization>
+    <Key>of_the_month_id_9</Key>
+    <Value>de septembre</Value>
+  </Localization>
+  <Localization>
+    <Key>of_the_month_id_10</Key>
+    <Value>d'octobre</Value>
+  </Localization>
+  <Localization>
+    <Key>of_the_month_id_11</Key>
+    <Value>de novembre</Value>
+  </Localization>
+  <Localization>
+    <Key>of_the_month_id_12</Key>
+    <Value>de décembre</Value>
+  </Localization>
+</root>

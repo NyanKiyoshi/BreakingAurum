@@ -1,4 +1,4 @@
-﻿namespace BreakingBudget
+﻿namespace BreakingBudget.Views
 {
     partial class FrmAffichDetailsPoste
     {
@@ -130,6 +130,7 @@
             this.Name = "FrmAffichDetailsPoste";
             this.Padding = new System.Windows.Forms.Padding(17, 49, 17, 16);
             this.Text = "Détails poste à échéance ";
+            this.Icon = global::BreakingBudget.Properties.Resources.icon;
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

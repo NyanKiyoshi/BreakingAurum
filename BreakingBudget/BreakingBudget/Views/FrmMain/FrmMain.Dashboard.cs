@@ -26,6 +26,7 @@ namespace BreakingBudget.Views.FrmMain
             SaveTableEnLocal("Transaction");
 
             // Affichage des résultats dans le dgv
+            dgvTransac.DataSource = null;
             dgvTransac.DataSource = ds.Tables["Transaction"];
 
             // On désactive les champs de recherche par défaut
@@ -34,10 +35,15 @@ namespace BreakingBudget.Views.FrmMain
             ckbMontant_Click(null, null);
         }
 
+        public void UpdateDashboard()
+        {
+            InitializeDashboard();
+        }
+
         ///////////////// FONCTIONS /////////////////////////////////////////
         private void SaveTableEnLocal(string nomTable)
         {
-            OleDbConnection connec = DatabaseManager.CreateConnection();
+            OleDbConnection connec = DatabaseManager.GetConnection();
 
             // Création du DataSet
             ds = new DataSet();
@@ -110,7 +116,7 @@ namespace BreakingBudget.Views.FrmMain
             AjouterTransaction frmAdd = new AjouterTransaction(dt, description, montant, recette, percu, type);
             frmAdd.ShowDialog();
 
-            OleDbConnection connec = DatabaseManager.CreateConnection();
+            OleDbConnection connec = DatabaseManager.GetConnection();
             // Si la modification est confirmée par l'utilisateur
             // On lance la modification de la transaction
             if (frmAdd.AjoutTransaction_confirmModif == DialogResult.Yes)
@@ -146,7 +152,8 @@ namespace BreakingBudget.Views.FrmMain
                 {
                     // Exécution de la commande UPDATE
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Transaction modifiée avec succès !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ErrorManager.ShowSuccess(this, Program.settings.localize.Translate("transaction_edited_with_success_msg"),
+                        Program.settings.localize.Translate("msg_entries_successfully_added_caption"));
 
                     // Mise a jour de la table locale
                     dtTransacSelect[0][1] = dateTransac;
@@ -179,11 +186,15 @@ namespace BreakingBudget.Views.FrmMain
             int rowToDelete = dgvTransac.Rows.GetFirstRow(DataGridViewElementStates.Selected);
             int idTransac = (int)dgvTransac.Rows[rowToDelete].Cells[0].Value;
             // On propose de la supprimer 
-            DialogResult sure = MessageBox.Show("Voulez-vous vraiment supprimer la transaction sélectionnée ?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult sure = MessageBox.Show(
+                Program.settings.localize.Translate("delete_confirmation_msg"),
+                "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Warning
+            );
+
             if (sure == DialogResult.Yes)
             {
                 // Ouverture de la connection
-                connec = DatabaseManager.CreateConnection();
+                connec = DatabaseManager.GetConnection();
                 connec.Open();
 
                 // Début de la transaction
@@ -227,7 +238,9 @@ namespace BreakingBudget.Views.FrmMain
                 // Nettoyer la zone de recherche
                 btnClear_Click(null, null);
 
-                MessageBox.Show("Transaction(s) supprimée(s) avec succès !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Program.settings.localize.Translate("transactions_successfully_removed_msg"),
+                    Program.settings.localize.Translate("msg_entries_successfully_added_msg"),
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             // Tout déselectionner dans le dgv
             dgvTransac.ClearSelection();
@@ -238,7 +251,7 @@ namespace BreakingBudget.Views.FrmMain
         {
             string requete = @"SELECT * FROM [Transaction] ";
             OleDbCommand cmd = new OleDbCommand();
-            cmd.Connection = DatabaseManager.CreateConnection();
+            cmd.Connection = DatabaseManager.GetConnection();
 
             // Si rechercher par Date Unique
             if (ckbDate.Checked && rdbDateUnique.Checked)
@@ -324,7 +337,8 @@ namespace BreakingBudget.Views.FrmMain
                 if (dtResults.Rows.Count == 0)
                 {
                     dgvTransac.DataSource = null;
-                    MessageBox.Show("Aucune transaction trouvée", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(Program.settings.localize.Translate("err_no_transaction_found_msg"),
+                        Program.settings.localize.Translate("warning"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 // Sinon, on affiche les résultats
                 else

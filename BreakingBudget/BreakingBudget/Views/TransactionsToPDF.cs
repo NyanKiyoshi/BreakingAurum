@@ -10,6 +10,10 @@ using BreakingBudget.Repositories;
 
 namespace BreakingBudget.Views
 {
+    public class UnableToSummonDaCatException : System.Exception {
+        public UnableToSummonDaCatException() : base("im in ur computer makin ur wannacry worm") { }
+    }
+
     public partial class TransactionsToPDF : MetroForm
     {
         public TransactionsToPDF()
@@ -150,8 +154,8 @@ namespace BreakingBudget.Views
         public void GetPageTitle(int month, int transactionCount, StringBuilder output)
         {
             output.AppendFormat("<h1>{0} &mdash; <span class='light'>{1}</span></h1>",
-                string.Format(
-                    Program.settings.localize.Translate("summary_of_the_month_{0}"),
+                Program.settings.localize.Translate(
+                    "summary_of_the_month_{0}",
                     Program.settings.localize.Translate("of_the_month_id_" + month)
                 ),
                 FormatTransactionCount(transactionCount)
@@ -160,8 +164,8 @@ namespace BreakingBudget.Views
 
         public string GetFileNameFromMonth(int month)
         {
-            return string.Format(
-                Program.settings.localize.Translate("filename_summary_of_the_month_{0}"),
+            return Program.settings.localize.Translate(
+                "filename_summary_of_the_month_{0}", 
                 Program.settings.localize.Translate("of_the_month_id_" + month)
             ) + ".pdf";
         }
@@ -183,28 +187,26 @@ namespace BreakingBudget.Views
             TransactionRepository.TransactionModel[] _transactions = null;
 
             // the sum of every transaction in the current groupe
-            double group_total;
-            double group_spendings;
-            double group_received_incomes;
-            double group_pending_incomes;
+            decimal group_total;
+            decimal group_spendings;
+            decimal group_received_incomes;
+            decimal group_pending_incomes;
 
             // the sum of every group's amount
-            double total_amount = 0.0;
-            double total_spendings = 0.0;
-            double total_received_incomes = 0.0;
-            double total_pending_incomes = 0.0;
+            decimal total_amount = 0.0M;
+            decimal total_spendings = 0.0M;
+            decimal total_received_incomes = 0.0M;
+            decimal total_pending_incomes = 0.0M;
 
             // a temporary set of HTML rows
             StringBuilder currentEntryRow_str;
 
-            // TODO: check if destination file is being used or not
-            //   QPainter::begin(): Returned false============================] 100%
-            //   Error: Unable to write to destination
-            //   Exit with code 1, due to unknown error.
+            // prepare the base document
             PdfDocument doc = new PdfDocument();
 
             // retrieve every transaction of the current month
-            try {
+            try
+            {
                 _transactions = TransactionRepository.GetByMonth(month, year);
             }
             catch (OleDbException ex)
@@ -229,7 +231,6 @@ namespace BreakingBudget.Views
 
             GetPageTitle(month, _transactions.Length, s);
 
-            // TODO: translate
             // Table header's row
             s.Append(@"
                 </head>
@@ -242,10 +243,10 @@ namespace BreakingBudget.Views
                 ++i;
                 entry_index = 0;
 
-                group_total = 0.0;
-                group_spendings = 0.0;
-                group_received_incomes = 0.0;
-                group_pending_incomes = 0.0;
+                group_total = 0.0M;
+                group_spendings = 0.0M;
+                group_received_incomes = 0.0M;
+                group_pending_incomes = 0.0M;
 
                 currentEntryRow_str = new StringBuilder();
 
@@ -293,7 +294,7 @@ namespace BreakingBudget.Views
                         group_spendings += it.Current.montant;
 
                         // if the value is negative, make it positive
-                        group_total -= it.Current.montant > 0 ? it.Current.montant : it.Current.montant * - 1;
+                        group_total -= it.Current.montant > 0 ? it.Current.montant : it.Current.montant * -1;
                     }
                 }
 
@@ -310,14 +311,20 @@ namespace BreakingBudget.Views
                 // if we are proceeding the first entry, append the legend
                 if (i == 1)
                 {
-                    s.Append(@"
+                    s.AppendFormat(@"
                     <tr>
-                        <th>Date de transaction</th>
-                        <th>Montant</th>
-                        <th>Recette</th>
-                        <th>Perçu</th>
-                        <th width='100%'>Description</th>
-                    </tr>");
+                        <th>{0}</th>
+                        <th>{1}</th>
+                        <th>{2}</th>
+                        <th>{3}</th>
+                        <th width='100%'>{4}</th>
+                    </tr>",
+                        Program.settings.localize.Translate("transaction_date"),
+                        Program.settings.localize.Translate("amount"),
+                        Program.settings.localize.Translate("income"),
+                        Program.settings.localize.Translate("received"),
+                        Program.settings.localize.Translate("description")
+                    );
                 }
 
                 // append the entries
@@ -361,7 +368,6 @@ namespace BreakingBudget.Views
             // set the default filename
             saveFileDialog.FileName = GetFileNameFromMonth(month);
 
-            // TODO: try-catch
             // ask where to save the PDF file
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -381,7 +387,20 @@ namespace BreakingBudget.Views
                 ErrorManager.ShowNotANumberError(this);
                 return;
             }
-            
+
+            // this code spawned itself from nowhere idk why
+            try {
+                if (year == 666)
+                {
+                    throw new UnableToSummonDaCatException();
+                }
+            }
+            catch (UnableToSummonDaCatException ex)
+            {
+                ErrorManager.HandleBaseException(ex);
+                return;
+            }
+
             PrintToPDDF(this.comboBoxMonth.SelectedIndex + 1, year);
         }
     }

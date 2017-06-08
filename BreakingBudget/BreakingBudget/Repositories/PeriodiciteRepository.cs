@@ -26,7 +26,7 @@ namespace BreakingBudget.Repositories
 
         public static PeriodiciteModel[] List()
         {
-            using (OleDbConnection conn = DatabaseManager.CreateConnection())
+            using (OleDbConnection conn = DatabaseManager.GetConnection())
             {
                 OleDbCommand cmd = conn.CreateCommand();
 

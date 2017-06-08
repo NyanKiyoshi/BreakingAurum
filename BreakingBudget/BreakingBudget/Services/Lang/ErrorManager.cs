@@ -14,7 +14,6 @@ namespace BreakingBudget.Services.Lang
             DUPLICATE
         }
 
-        // TODO: show the data in a TextBox
         // (generated using a center with a padding of 40 chars and a dash sep. `.center(40, '-')`
         //  Thanks Python2, da real MVP <3)
         public static void HandleOleDBError(OleDbException e)
@@ -33,8 +32,27 @@ namespace BreakingBudget.Services.Lang
                 collectedErrorData.AppendLine("Message: " + e.Errors[i].Message);
                 collectedErrorData.AppendLine("Native: " + e.Errors[i].NativeError.ToString());
                 collectedErrorData.AppendLine("Source: " + e.Errors[i].Source);
-                collectedErrorData.AppendLine("SQL: "    + e.Errors[i].SQLState);
+                collectedErrorData.AppendLine("SQL: " + e.Errors[i].SQLState);
             }
+            collectedErrorData.AppendLine("---------------- STACK -----------------");
+            collectedErrorData.AppendLine(e.StackTrace);
+            collectedErrorData.AppendLine("----------------- END ------------------");
+
+            Console.WriteLine(collectedErrorData);
+            errorReporter = new FatalErrorReporter(collectedErrorData.ToString());
+            errorReporter.ShowDialog();
+        }
+
+        public static void HandleBaseException(Exception e)
+        {
+            FatalErrorReporter errorReporter;
+            StringBuilder collectedErrorData = new StringBuilder();
+
+            // error collection sample
+            collectedErrorData.AppendLine("-------- AN EXCEPTION OCCURRED ---------");
+            collectedErrorData.AppendLine("Type: " + e.GetType().ToString());
+            collectedErrorData.AppendLine("Message: " + e.Message);
+            collectedErrorData.AppendLine("Source: " + e.Source);
             collectedErrorData.AppendLine("---------------- STACK -----------------");
             collectedErrorData.AppendLine(e.StackTrace);
             collectedErrorData.AppendLine("----------------- END ------------------");
@@ -66,6 +84,14 @@ namespace BreakingBudget.Services.Lang
             return ErrorManager.ShowSuccess(owner,
                 Program.settings.localize.Translate("msg_success_caption"),
                 Program.settings.localize.Translate("msg_sms_successfully_sent_msg")
+            );
+        }
+
+        public static DialogResult SMSSuccessfullySent(IWin32Window owner, string response)
+        {
+            return ErrorManager.ShowSuccess(owner,
+                Program.settings.localize.Translate("msg_success_caption"),
+                Program.settings.localize.Translate("msg_sms_successfully_sent_response_{0}_msg", response)
             );
         }
         #endregion

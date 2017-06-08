@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2C9DD3BE-17F4-4C51-ACDD-B5AE671FFCA4}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BreakingBudget</RootNamespace>
     <AssemblyName>BreakingBudget</AssemblyName>
@@ -51,6 +51,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlLibrary">
       <HintPath>libs\ControlLibrary.dll</HintPath>
@@ -91,6 +94,7 @@
     <Compile Include="Repositories\PeriodiciteRepository.cs" />
     <Compile Include="Repositories\PosteRepository.cs" />
     <Compile Include="Services\Lang\ErrorManager.cs" />
+    <Compile Include="Services\Lang\InputHandler.cs" />
     <Compile Include="Services\Lang\LocalizationManager.cs" />
     <Compile Include="Services\PDF\WkHtmlWkHtmlPdfConverter.cs" />
     <Compile Include="Services\SMSManager.cs" />
@@ -164,9 +168,19 @@
     <Compile Include="Views\FrmTableauDeBordPostes.designer.cs">
       <DependentUpon>FrmTableauDeBordPostes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\TransactionsToPDF.cs">
+    <Compile Include="Views\ModifierEntreePosteRevenu.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Views\ModifierEntreePosteRevenu.Designer.cs">
+      <DependentUpon>ModifierEntreePosteRevenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ModifierEntreePosteFixe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ModifierEntreePosteFixe.Designer.cs">
+      <DependentUpon>ModifierEntreePosteFixe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransactionsToPDF.cs" />
     <Compile Include="Views\TransactionsToPDF.Designer.cs">
       <DependentUpon>TransactionsToPDF.cs</DependentUpon>
     </Compile>
@@ -229,6 +243,12 @@
     <EmbeddedResource Include="Views\GererPostes.resx">
       <DependentUpon>GererPostes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ModifierEntreePosteRevenu.resx">
+      <DependentUpon>ModifierEntreePosteRevenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ModifierEntreePosteFixe.resx">
+      <DependentUpon>ModifierEntreePosteFixe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\TransactionsToPDF.resx">
       <DependentUpon>TransactionsToPDF.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,6 +278,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\icon.ico" />
+    <None Include="Resources\Los_Pollos.png" />
+    <None Include="Resources\logo-big_dark.png" />
+    <None Include="Resources\logo-big.png" />
     <EmbeddedResource Include="Resources\transaction.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -280,30 +304,29 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\en\MetroToggle.xml" />
-    <EmbeddedResource Include="Localization\de\MetroToggle.xml" />
     <EmbeddedResource Include="Localization\es\MetroMessageBoxControl.xml" />
     <EmbeddedResource Include="Localization\es\MetroToggle.xml" />
-    <EmbeddedResource Include="Localization\tr\MetroMessageBoxControl.xml" />
-    <EmbeddedResource Include="Localization\tr\MetroToggle.xml" />
     <EmbeddedResource Include="Localization\es\FrmMain.xml" />
     <EmbeddedResource Include="Localization\es\Sidebar.xml" />
     <EmbeddedResource Include="Localization\fr\Sidebar.xml" />
     <EmbeddedResource Include="Localization\fr\FrmMain.xml" />
     <EmbeddedResource Include="Localization\en\FrmMain.xml" />
-    <EmbeddedResource Include="Localization\de\FrmMain.xml" />
-    <EmbeddedResource Include="Localization\tr\FrmMain.xml" />
     <EmbeddedResource Include="Localization\en\Sidebar.xml" />
-    <EmbeddedResource Include="Localization\de\Sidebar.xml" />
-    <EmbeddedResource Include="Localization\tr\Sidebar.xml" />
     <EmbeddedResource Include="Localization\es\Commons.xml" />
     <EmbeddedResource Include="Localization\en\Commons.xml" />
-    <EmbeddedResource Include="Localization\tr\Commons.xml" />
     <EmbeddedResource Include="Localization\fr\PDFTransactions.xml" />
+    <EmbeddedResource Include="Localization\es\PDFTransactions.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Localization\en\PDFTransactions.xml" />
+    <EmbeddedResource Include="Localization\fr\FrmAjoutType.xml" />
+    <EmbeddedResource Include="Localization\en\FrmAjoutType.xml" />
+    <EmbeddedResource Include="Localization\es\FrmAjoutType.xml" />
     <Content Include="Resources\budget1.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="libs\MaterialSkin.dll" />
-    <EmbeddedResource Include="Repositories\MetroMessageBoxControl.xml" />
+    <EmbeddedResource Include="Localization\fr\MetroMessageBoxControl.xml" />
     <EmbeddedResource Include="Localization\fr\MetroToggle.xml" />
   </ItemGroup>
   <ItemGroup>

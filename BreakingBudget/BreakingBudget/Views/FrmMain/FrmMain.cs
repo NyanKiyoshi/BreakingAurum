@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using MetroFramework.Forms;
-using MetroFramework.Controls;
 using MetroFramework;
 using Kerido.Controls;
 using BreakingBudget.Services;
@@ -33,13 +32,10 @@ namespace BreakingBudget.Views.FrmMain
 
         readonly byte[] ICON_HELP_MARK = new byte[] { 0xEE, 0xA3, 0xBD };
 
-        // used to change temporary the title (see `FrmMain_ResizeBegin(...)`)
-        string oldFormTitle;
-
         public FrmMain()
         {
             // set the base name (used later to rename the form)
-            this.BaseName = "Breaking Budget";
+            this.BaseName = "Breaking Aurum";
 
             InitializeComponent();
 
@@ -75,7 +71,10 @@ namespace BreakingBudget.Views.FrmMain
                                  new byte[] { 0xEE, 0xA2, 0x8A },  // little "house" icon
                                  Program.settings.localize.Translate("sidebar_page_home")),
 
-                new SidebarEntry(this.PageDashboard,
+                new SidebarEntry(() => {
+                                        SwitchPanel(this.PageDashboard);
+                                        this.UpdateDashboard();
+                                 },
                                  new byte[] { 0xEE, 0xA1, 0xB1 },  // little "house" icon
                                  Program.settings.localize.Translate("sidebar_page_dashboard")),
 
@@ -108,13 +107,16 @@ namespace BreakingBudget.Views.FrmMain
                     
                     new SidebarEntry[] {
                         new SidebarEntry(
-                            () => (new FrmAffichage1par1()).ShowDialog(),
-                            Program.settings.localize.Translate("sidebar_page_lister_transactions")
+                            () => {
+                                (new AjouterTransaction()).ShowDialog();
+                                this.UpdateDashboard();
+                            },
+                            Program.settings.localize.Translate("sidebar_page_ajouter_transaction")
                         ),
 
                         new SidebarEntry(
-                            () => (new AjouterTransaction()).ShowDialog(),
-                            Program.settings.localize.Translate("sidebar_page_ajouter_transaction")
+                            () => (new FrmAffichage1par1()).ShowDialog(),
+                            Program.settings.localize.Translate("sidebar_page_lister_transactions")
                         ),
 
                         new SidebarEntry(
@@ -166,7 +168,6 @@ namespace BreakingBudget.Views.FrmMain
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // TODO: replace this by a check if data were edited or not
             if (
                 MetroMessageBox.Show(this,
                     Program.settings.localize.Translate("quit_confirmation"),
@@ -203,8 +204,8 @@ namespace BreakingBudget.Views.FrmMain
         private void HelpPosteLabel_Click(object sender, EventArgs e)
         {
             MetroMessageBox.Show(this,
-                "Choisissez un poste existant ou tapez-le directement à l'intérieur du champ pour en créer un nouveau.",
-                "Aide sur les postes",
+                Program.settings.localize.Translate("HelpPosteLabel_message"),
+                Program.settings.localize.Translate("HelpPosteLabel_title"),
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
@@ -212,54 +213,6 @@ namespace BreakingBudget.Views.FrmMain
         private void PagePostesFixes_AutoSizeChanged(object sender, EventArgs e)
         {
             MessageBox.Show(this.PagePostesFixes.Size.Width.ToString());
-        }
-
-        private void AllowKeyPressAFloat(object s, KeyPressEventArgs e)
-        {
-            e.Handled = !(
-                this.IsTextBoxKeyPressNumber((MetroTextBox)s, e.KeyChar)
-            );
-        }
-
-        private void AllowKeyPressAPositiveFloat(object s, KeyPressEventArgs e)
-        {
-            e.Handled = !(
-                this.IsTextBoxKeyPressNumber((MetroTextBox)s, e.KeyChar, true, false)
-            );
-        }
-
-        private void AllowKeyPressAInteger(object s, KeyPressEventArgs e)
-        {
-            e.Handled = !(
-                this.IsTextBoxKeyPressNumber((MetroTextBox)s, e.KeyChar, false)
-            );
-        }
-
-        private void AllowKeyPressANonNegativeInteger(object s, KeyPressEventArgs e)
-        {
-            e.Handled = !(
-                this.IsTextBoxKeyPressNumber((MetroTextBox)s, e.KeyChar, false, false)
-            );
-        }
-
-        private bool IsTextBoxKeyPressNumber(MetroTextBox sender, char KeyChar,
-            bool allowFloat = true,
-            bool allowNegatives = true)
-        {
-            return (
-                // is the char (not) a number?
-                char.IsNumber(KeyChar)
-
-                // or (not) a backspace?
-                || KeyChar == (char)Keys.Back
-
-                // or (not) a unique dot?
-                || (allowFloat && (KeyChar == '.' || KeyChar == ',')
-                                && (!sender.Text.Contains(".") && !sender.Text.Contains(",")))
-
-                // ...or (not) a unique minus at the beginning of the line? (is the cursor not at the beginning)
-                || (allowNegatives && KeyChar == '-' && (!sender.Text.Contains("-")) && sender.SelectionStart == 0)
-            );
         }
 
         private void FrmMain_StyleChanged(object sender, EventArgs e)
@@ -274,27 +227,18 @@ namespace BreakingBudget.Views.FrmMain
             if (this.Theme != MetroThemeStyle.Dark)
             {
                 this.BaseContainer.BackColor = Color.Silver;
+                this.HomePageContainer.BackgroundImage = global::BreakingBudget.Properties.Resources.logo_big_light;
             }
             else
             {
                 this.BaseContainer.BackColor = Color.FromArgb(0x45, 0x45, 0x45);
+                this.HomePageContainer.BackgroundImage = global::BreakingBudget.Properties.Resources.logo_big_dark;
             }
-        }
 
-        private void FrmMain_ResizeBegin(object sender, EventArgs e)
-        {
-            this.oldFormTitle = this.Text;
-        }
-
-        private void FrmMain_Resize(object sender, EventArgs e)
-        {
-            this.Text = string.Format("{0}x{1}", this.Width, this.Height);
-        }
-
-        private void FrmMain_ResizeEnd(object sender, EventArgs e)
-        {
-            this.Text = this.oldFormTitle;
-            this.Refresh();
+            if (Program.settings.localize.currentLanguage == "es")
+            {
+                this.HomePageContainer.BackgroundImage = global::BreakingBudget.Properties.Resources.Los_Pollos;
+            }
         }
 
         private void echancesContainer_Paint_OR_ControlAdded(object sender, object e)
@@ -314,12 +258,6 @@ namespace BreakingBudget.Views.FrmMain
             return int.TryParse(value, out output) 
                 && output > 0 
                 && output < 29;
-        }
-
-        // button for test purposes only
-        private void button1_Click(object sender, EventArgs _ev)
-        {
-            (new TransactionsToPDF()).ShowDialog();
         }
     }
 }

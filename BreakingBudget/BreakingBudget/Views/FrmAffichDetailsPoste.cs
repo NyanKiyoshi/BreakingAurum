@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 using MetroFramework.Forms;
 
-namespace BreakingBudget
+namespace BreakingBudget.Views
 {
     public partial class FrmAffichDetailsPoste : MetroForm
     {

@@ -17,14 +17,14 @@ namespace BreakingBudget.Services.SQL
             DatabaseManager._CachedSchemaTable = DatabaseManager.GetTableSchema();
         }
 
-        public static OleDbConnection CreateConnection()
+        public static OleDbConnection GetConnection()
         {
             return new OleDbConnection(DatabaseManager.CONNEXION_STRING);
         }
 
         private static DataTable GetFullTableSchema()
         {
-            using (OleDbConnection db_conn = DatabaseManager.CreateConnection())
+            using (OleDbConnection db_conn = DatabaseManager.GetConnection())
             {
                 db_conn.Open();
                 return db_conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
@@ -33,7 +33,7 @@ namespace BreakingBudget.Services.SQL
 
         private static DataSet GetTableSchema()
         {
-            using (OleDbConnection db_conn = DatabaseManager.CreateConnection())
+            using (OleDbConnection db_conn = DatabaseManager.GetConnection())
             {
                 db_conn.Open();
 
@@ -60,7 +60,7 @@ namespace BreakingBudget.Services.SQL
 
         public static OleDbCommand IterCommand(OleDbCommand Command)
         {
-            OleDbConnection db_conn = DatabaseManager.CreateConnection();
+            OleDbConnection db_conn = DatabaseManager.GetConnection();
             {
                 Command.Connection = db_conn;
 
@@ -76,7 +76,7 @@ namespace BreakingBudget.Services.SQL
 
         public static object GetFirst(OleDbCommand Command)
         {
-            using (OleDbConnection db_conn = DatabaseManager.CreateConnection())
+            using (OleDbConnection db_conn = DatabaseManager.GetConnection())
             {
                 Command.Connection = db_conn;
 

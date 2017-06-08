@@ -1,4 +1,4 @@
-﻿namespace BreakingBudget
+﻿namespace BreakingBudget.Views
 {
     partial class FrmCalendrierPrev
     {
@@ -94,6 +94,7 @@
             this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "FrmCalendrierPrev";
             this.Text = "Calendrier Prévisionnel";
+            this.Icon = global::BreakingBudget.Properties.Resources.icon;
             this.Load += new System.EventHandler(this.FrmCalendrierPrev_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalendrier)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();

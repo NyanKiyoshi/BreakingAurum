@@ -37,29 +37,29 @@
             this.calAjoutTransaction = new MetroFramework.Controls.MetroDateTime();
             this.ldlDesc = new MetroFramework.Controls.MetroLabel();
             this.FieldsContainerTxtDescr = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtAjoutTransaction_desc = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.txtDesc = new MetroFramework.Controls.MetroTextBox();
+            this.lblMontant = new MetroFramework.Controls.MetroLabel();
             this.flowLayoutPanel19 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtAjoutTransaction_montant = new MetroFramework.Controls.MetroTextBox();
-            this.ckbAjoutTransaction_recette = new MetroFramework.Controls.MetroCheckBox();
-            this.ckbAjoutTransaction_percu = new MetroFramework.Controls.MetroCheckBox();
-            this.lbType = new MetroFramework.Controls.MetroLabel();
+            this.txtMontant = new MetroFramework.Controls.MetroTextBox();
+            this.ckbRecette = new MetroFramework.Controls.MetroCheckBox();
+            this.ckbPercu = new MetroFramework.Controls.MetroCheckBox();
+            this.lblType = new MetroFramework.Controls.MetroLabel();
             this.flowLayoutPanel14 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cboAjoutTransaction_Type = new MetroFramework.Controls.MetroComboBox();
-            this.btnAjoutTransaction_AddType = new System.Windows.Forms.Label();
+            this.cboType = new MetroFramework.Controls.MetroComboBox();
+            this.IconBtnAjoutTransaction_AddType = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnAjoutTransaction_OK = new MetroFramework.Controls.MetroButton();
-            this.btnAjoutTransaction_modif = new MetroFramework.Controls.MetroButton();
-            this.btnAjoutTransaction_Annuler2 = new MetroFramework.Controls.MetroButton();
+            this.btnSubmit = new MetroFramework.Controls.MetroButton();
+            this.btnEdit = new MetroFramework.Controls.MetroButton();
+            this.btnCancel = new MetroFramework.Controls.MetroButton();
             this.panelAjoutTransac = new System.Windows.Forms.Panel();
+            this.ListPersonneContainer = new System.Windows.Forms.Panel();
+            this.listBoxAjoutTransaction_Personne = new System.Windows.Forms.ListBox();
             this.ckbTtSelect = new MetroFramework.Controls.MetroCheckBox();
             this.btnAddPers = new MetroFramework.Controls.MetroButton();
             this.btnClear = new MetroFramework.Controls.MetroButton();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblPersonnesConcernees = new System.Windows.Forms.Label();
             this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
             this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
-            this.ListPersonneContainer = new System.Windows.Forms.Panel();
-            this.listBoxAjoutTransaction_Personne = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.ContainerAjouterTransaction.SuspendLayout();
             this.flowLayoutPanel15.SuspendLayout();
@@ -69,8 +69,8 @@
             this.flowLayoutPanel14.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panelAjoutTransac.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.ListPersonneContainer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -102,9 +102,9 @@
             this.flowLayoutPanel15.Controls.Add(this.flowLayoutPanel16);
             this.flowLayoutPanel15.Controls.Add(this.ldlDesc);
             this.flowLayoutPanel15.Controls.Add(this.FieldsContainerTxtDescr);
-            this.flowLayoutPanel15.Controls.Add(this.metroLabel5);
+            this.flowLayoutPanel15.Controls.Add(this.lblMontant);
             this.flowLayoutPanel15.Controls.Add(this.flowLayoutPanel19);
-            this.flowLayoutPanel15.Controls.Add(this.lbType);
+            this.flowLayoutPanel15.Controls.Add(this.lblType);
             this.flowLayoutPanel15.Controls.Add(this.flowLayoutPanel14);
             this.flowLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel15.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -151,15 +151,15 @@
             this.ldlDesc.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.ldlDesc.Location = new System.Drawing.Point(3, 72);
             this.ldlDesc.Name = "ldlDesc";
-            this.ldlDesc.Size = new System.Drawing.Size(78, 19);
+            this.ldlDesc.Size = new System.Drawing.Size(142, 19);
             this.ldlDesc.TabIndex = 7;
-            this.ldlDesc.Text = "Description";
+            this.ldlDesc.Text = "Description (facultatif)";
             // 
             // FieldsContainerTxtDescr
             // 
             this.FieldsContainerTxtDescr.AutoSize = true;
             this.FieldsContainerTxtDescr.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.FieldsContainerTxtDescr.Controls.Add(this.txtAjoutTransaction_desc);
+            this.FieldsContainerTxtDescr.Controls.Add(this.txtDesc);
             this.FieldsContainerTxtDescr.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FieldsContainerTxtDescr.Location = new System.Drawing.Point(3, 94);
             this.FieldsContainerTxtDescr.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
@@ -167,54 +167,54 @@
             this.FieldsContainerTxtDescr.Size = new System.Drawing.Size(479, 26);
             this.FieldsContainerTxtDescr.TabIndex = 6;
             // 
-            // txtAjoutTransaction_desc
+            // txtDesc
             // 
             // 
             // 
             // 
-            this.txtAjoutTransaction_desc.CustomButton.Image = null;
-            this.txtAjoutTransaction_desc.CustomButton.Location = new System.Drawing.Point(328, 2);
-            this.txtAjoutTransaction_desc.CustomButton.Name = "";
-            this.txtAjoutTransaction_desc.CustomButton.Size = new System.Drawing.Size(15, 15);
-            this.txtAjoutTransaction_desc.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtAjoutTransaction_desc.CustomButton.TabIndex = 1;
-            this.txtAjoutTransaction_desc.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtAjoutTransaction_desc.CustomButton.UseSelectable = true;
-            this.txtAjoutTransaction_desc.CustomButton.Visible = false;
-            this.txtAjoutTransaction_desc.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtAjoutTransaction_desc.Lines = new string[0];
-            this.txtAjoutTransaction_desc.Location = new System.Drawing.Point(3, 3);
-            this.txtAjoutTransaction_desc.MaxLength = 255;
-            this.txtAjoutTransaction_desc.Name = "txtAjoutTransaction_desc";
-            this.txtAjoutTransaction_desc.PasswordChar = '\0';
-            this.txtAjoutTransaction_desc.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtAjoutTransaction_desc.SelectedText = "";
-            this.txtAjoutTransaction_desc.SelectionLength = 0;
-            this.txtAjoutTransaction_desc.SelectionStart = 0;
-            this.txtAjoutTransaction_desc.ShortcutsEnabled = true;
-            this.txtAjoutTransaction_desc.Size = new System.Drawing.Size(346, 20);
-            this.txtAjoutTransaction_desc.TabIndex = 5;
-            this.txtAjoutTransaction_desc.UseSelectable = true;
-            this.txtAjoutTransaction_desc.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtAjoutTransaction_desc.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDesc.CustomButton.Image = null;
+            this.txtDesc.CustomButton.Location = new System.Drawing.Point(328, 2);
+            this.txtDesc.CustomButton.Name = "";
+            this.txtDesc.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.txtDesc.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtDesc.CustomButton.TabIndex = 1;
+            this.txtDesc.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtDesc.CustomButton.UseSelectable = true;
+            this.txtDesc.CustomButton.Visible = false;
+            this.txtDesc.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtDesc.Lines = new string[0];
+            this.txtDesc.Location = new System.Drawing.Point(3, 3);
+            this.txtDesc.MaxLength = 30;
+            this.txtDesc.Name = "txtDesc";
+            this.txtDesc.PasswordChar = '\0';
+            this.txtDesc.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtDesc.SelectedText = "";
+            this.txtDesc.SelectionLength = 0;
+            this.txtDesc.SelectionStart = 0;
+            this.txtDesc.ShortcutsEnabled = true;
+            this.txtDesc.Size = new System.Drawing.Size(346, 20);
+            this.txtDesc.TabIndex = 5;
+            this.txtDesc.UseSelectable = true;
+            this.txtDesc.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtDesc.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
-            // metroLabel5
+            // lblMontant
             // 
-            this.metroLabel5.AutoSize = true;
-            this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel5.Location = new System.Drawing.Point(3, 135);
-            this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(63, 19);
-            this.metroLabel5.TabIndex = 10;
-            this.metroLabel5.Text = "Montant";
+            this.lblMontant.AutoSize = true;
+            this.lblMontant.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblMontant.Location = new System.Drawing.Point(3, 135);
+            this.lblMontant.Name = "lblMontant";
+            this.lblMontant.Size = new System.Drawing.Size(63, 19);
+            this.lblMontant.TabIndex = 10;
+            this.lblMontant.Text = "Montant";
             // 
             // flowLayoutPanel19
             // 
             this.flowLayoutPanel19.AutoSize = true;
             this.flowLayoutPanel19.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel19.Controls.Add(this.txtAjoutTransaction_montant);
-            this.flowLayoutPanel19.Controls.Add(this.ckbAjoutTransaction_recette);
-            this.flowLayoutPanel19.Controls.Add(this.ckbAjoutTransaction_percu);
+            this.flowLayoutPanel19.Controls.Add(this.txtMontant);
+            this.flowLayoutPanel19.Controls.Add(this.ckbRecette);
+            this.flowLayoutPanel19.Controls.Add(this.ckbPercu);
             this.flowLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel19.Location = new System.Drawing.Point(3, 157);
             this.flowLayoutPanel19.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
@@ -222,154 +222,154 @@
             this.flowLayoutPanel19.Size = new System.Drawing.Size(479, 26);
             this.flowLayoutPanel19.TabIndex = 9;
             // 
-            // txtAjoutTransaction_montant
+            // txtMontant
             // 
             // 
             // 
             // 
-            this.txtAjoutTransaction_montant.CustomButton.Image = null;
-            this.txtAjoutTransaction_montant.CustomButton.Location = new System.Drawing.Point(328, 2);
-            this.txtAjoutTransaction_montant.CustomButton.Name = "";
-            this.txtAjoutTransaction_montant.CustomButton.Size = new System.Drawing.Size(15, 15);
-            this.txtAjoutTransaction_montant.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtAjoutTransaction_montant.CustomButton.TabIndex = 1;
-            this.txtAjoutTransaction_montant.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtAjoutTransaction_montant.CustomButton.UseSelectable = true;
-            this.txtAjoutTransaction_montant.CustomButton.Visible = false;
-            this.txtAjoutTransaction_montant.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtAjoutTransaction_montant.Lines = new string[0];
-            this.txtAjoutTransaction_montant.Location = new System.Drawing.Point(3, 3);
-            this.txtAjoutTransaction_montant.MaxLength = 10;
-            this.txtAjoutTransaction_montant.Name = "txtAjoutTransaction_montant";
-            this.txtAjoutTransaction_montant.PasswordChar = '\0';
-            this.txtAjoutTransaction_montant.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtAjoutTransaction_montant.SelectedText = "";
-            this.txtAjoutTransaction_montant.SelectionLength = 0;
-            this.txtAjoutTransaction_montant.SelectionStart = 0;
-            this.txtAjoutTransaction_montant.ShortcutsEnabled = true;
-            this.txtAjoutTransaction_montant.Size = new System.Drawing.Size(346, 20);
-            this.txtAjoutTransaction_montant.TabIndex = 4;
-            this.txtAjoutTransaction_montant.UseSelectable = true;
-            this.txtAjoutTransaction_montant.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtAjoutTransaction_montant.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAjoutTransaction_montant.TextChanged += new System.EventHandler(this.txtMontant_TextChanged);
-            this.txtAjoutTransaction_montant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontantAjoutTransaction_KeyPress);
-            this.txtAjoutTransaction_montant.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMontantAjoutTransaction_KeyUp);
+            this.txtMontant.CustomButton.Image = null;
+            this.txtMontant.CustomButton.Location = new System.Drawing.Point(328, 2);
+            this.txtMontant.CustomButton.Name = "";
+            this.txtMontant.CustomButton.Size = new System.Drawing.Size(15, 15);
+            this.txtMontant.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtMontant.CustomButton.TabIndex = 1;
+            this.txtMontant.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtMontant.CustomButton.UseSelectable = true;
+            this.txtMontant.CustomButton.Visible = false;
+            this.txtMontant.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtMontant.Lines = new string[0];
+            this.txtMontant.Location = new System.Drawing.Point(3, 3);
+            this.txtMontant.MaxLength = 10;
+            this.txtMontant.Name = "txtMontant";
+            this.txtMontant.PasswordChar = '\0';
+            this.txtMontant.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtMontant.SelectedText = "";
+            this.txtMontant.SelectionLength = 0;
+            this.txtMontant.SelectionStart = 0;
+            this.txtMontant.ShortcutsEnabled = true;
+            this.txtMontant.Size = new System.Drawing.Size(346, 20);
+            this.txtMontant.TabIndex = 4;
+            this.txtMontant.UseSelectable = true;
+            this.txtMontant.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtMontant.WaterMarkFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMontant.TextChanged += new System.EventHandler(this.txtMontant_TextChanged);
+            this.txtMontant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontantAjoutTransaction_KeyPress);
+            this.txtMontant.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtMontantAjoutTransaction_KeyUp);
             // 
-            // ckbAjoutTransaction_recette
+            // ckbRecette
             // 
-            this.ckbAjoutTransaction_recette.AutoSize = true;
-            this.ckbAjoutTransaction_recette.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ckbAjoutTransaction_recette.Location = new System.Drawing.Point(355, 3);
-            this.ckbAjoutTransaction_recette.Name = "ckbAjoutTransaction_recette";
-            this.ckbAjoutTransaction_recette.Size = new System.Drawing.Size(62, 20);
-            this.ckbAjoutTransaction_recette.TabIndex = 5;
-            this.ckbAjoutTransaction_recette.Text = "Recette";
-            this.ckbAjoutTransaction_recette.UseSelectable = true;
-            this.ckbAjoutTransaction_recette.Click += new System.EventHandler(this.ckbRecetteAjoutTransaction_Click);
+            this.ckbRecette.AutoSize = true;
+            this.ckbRecette.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ckbRecette.Location = new System.Drawing.Point(355, 3);
+            this.ckbRecette.Name = "ckbRecette";
+            this.ckbRecette.Size = new System.Drawing.Size(62, 20);
+            this.ckbRecette.TabIndex = 5;
+            this.ckbRecette.Text = "Recette";
+            this.ckbRecette.UseSelectable = true;
+            this.ckbRecette.Click += new System.EventHandler(this.ckbRecetteAjoutTransaction_Click);
             // 
-            // ckbAjoutTransaction_percu
+            // ckbPercu
             // 
-            this.ckbAjoutTransaction_percu.AutoSize = true;
-            this.ckbAjoutTransaction_percu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ckbAjoutTransaction_percu.Location = new System.Drawing.Point(423, 3);
-            this.ckbAjoutTransaction_percu.Name = "ckbAjoutTransaction_percu";
-            this.ckbAjoutTransaction_percu.Size = new System.Drawing.Size(53, 20);
-            this.ckbAjoutTransaction_percu.TabIndex = 6;
-            this.ckbAjoutTransaction_percu.Text = "Perçu";
-            this.ckbAjoutTransaction_percu.UseSelectable = true;
-            this.ckbAjoutTransaction_percu.Click += new System.EventHandler(this.ckbPercuAjoutTransaction_Click);
+            this.ckbPercu.AutoSize = true;
+            this.ckbPercu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ckbPercu.Location = new System.Drawing.Point(423, 3);
+            this.ckbPercu.Name = "ckbPercu";
+            this.ckbPercu.Size = new System.Drawing.Size(53, 20);
+            this.ckbPercu.TabIndex = 6;
+            this.ckbPercu.Text = "Perçu";
+            this.ckbPercu.UseSelectable = true;
+            this.ckbPercu.Click += new System.EventHandler(this.ckbPercuAjoutTransaction_Click);
             // 
-            // lbType
+            // lblType
             // 
-            this.lbType.AutoSize = true;
-            this.lbType.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lbType.Location = new System.Drawing.Point(3, 198);
-            this.lbType.Name = "lbType";
-            this.lbType.Size = new System.Drawing.Size(38, 19);
-            this.lbType.TabIndex = 35;
-            this.lbType.Text = "Type";
+            this.lblType.AutoSize = true;
+            this.lblType.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblType.Location = new System.Drawing.Point(3, 198);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(38, 19);
+            this.lblType.TabIndex = 35;
+            this.lblType.Text = "Type";
             // 
             // flowLayoutPanel14
             // 
             this.flowLayoutPanel14.AutoSize = true;
             this.flowLayoutPanel14.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel14.Controls.Add(this.cboAjoutTransaction_Type);
-            this.flowLayoutPanel14.Controls.Add(this.btnAjoutTransaction_AddType);
+            this.flowLayoutPanel14.Controls.Add(this.cboType);
+            this.flowLayoutPanel14.Controls.Add(this.IconBtnAjoutTransaction_AddType);
             this.flowLayoutPanel14.Location = new System.Drawing.Point(3, 220);
             this.flowLayoutPanel14.Name = "flowLayoutPanel14";
             this.flowLayoutPanel14.Size = new System.Drawing.Size(383, 35);
             this.flowLayoutPanel14.TabIndex = 34;
             // 
-            // cboAjoutTransaction_Type
+            // cboType
             // 
-            this.cboAjoutTransaction_Type.Dock = System.Windows.Forms.DockStyle.Top;
-            this.cboAjoutTransaction_Type.FormattingEnabled = true;
-            this.cboAjoutTransaction_Type.ItemHeight = 23;
-            this.cboAjoutTransaction_Type.Location = new System.Drawing.Point(3, 3);
-            this.cboAjoutTransaction_Type.Name = "cboAjoutTransaction_Type";
-            this.cboAjoutTransaction_Type.Size = new System.Drawing.Size(346, 29);
-            this.cboAjoutTransaction_Type.TabIndex = 7;
-            this.cboAjoutTransaction_Type.UseSelectable = true;
+            this.cboType.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cboType.FormattingEnabled = true;
+            this.cboType.ItemHeight = 23;
+            this.cboType.Location = new System.Drawing.Point(3, 3);
+            this.cboType.Name = "cboType";
+            this.cboType.Size = new System.Drawing.Size(346, 29);
+            this.cboType.TabIndex = 7;
+            this.cboType.UseSelectable = true;
             // 
-            // btnAjoutTransaction_AddType
+            // IconBtnAjoutTransaction_AddType
             // 
-            this.metroStyleExtender.SetApplyMetroTheme(this.btnAjoutTransaction_AddType, true);
-            this.btnAjoutTransaction_AddType.AutoSize = true;
-            this.btnAjoutTransaction_AddType.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnAjoutTransaction_AddType.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAjoutTransaction_AddType.Location = new System.Drawing.Point(355, 3);
-            this.btnAjoutTransaction_AddType.Margin = new System.Windows.Forms.Padding(3);
-            this.btnAjoutTransaction_AddType.Name = "btnAjoutTransaction_AddType";
-            this.btnAjoutTransaction_AddType.Size = new System.Drawing.Size(25, 29);
-            this.btnAjoutTransaction_AddType.TabIndex = 8;
-            this.btnAjoutTransaction_AddType.Text = "";
-            this.btnAjoutTransaction_AddType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnAjoutTransaction_AddType.Click += new System.EventHandler(this.btnAddType_Click);
+            this.metroStyleExtender.SetApplyMetroTheme(this.IconBtnAjoutTransaction_AddType, true);
+            this.IconBtnAjoutTransaction_AddType.AutoSize = true;
+            this.IconBtnAjoutTransaction_AddType.Dock = System.Windows.Forms.DockStyle.Left;
+            this.IconBtnAjoutTransaction_AddType.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IconBtnAjoutTransaction_AddType.Location = new System.Drawing.Point(355, 3);
+            this.IconBtnAjoutTransaction_AddType.Margin = new System.Windows.Forms.Padding(3);
+            this.IconBtnAjoutTransaction_AddType.Name = "IconBtnAjoutTransaction_AddType";
+            this.IconBtnAjoutTransaction_AddType.Size = new System.Drawing.Size(25, 29);
+            this.IconBtnAjoutTransaction_AddType.TabIndex = 8;
+            this.IconBtnAjoutTransaction_AddType.Text = "";
+            this.IconBtnAjoutTransaction_AddType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.IconBtnAjoutTransaction_AddType.Click += new System.EventHandler(this.btnAddType_Click);
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnAjoutTransaction_OK);
-            this.panel3.Controls.Add(this.btnAjoutTransaction_modif);
-            this.panel3.Controls.Add(this.btnAjoutTransaction_Annuler2);
+            this.panel3.Controls.Add(this.btnSubmit);
+            this.panel3.Controls.Add(this.btnEdit);
+            this.panel3.Controls.Add(this.btnCancel);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(10, 328);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(595, 26);
             this.panel3.TabIndex = 0;
             // 
-            // btnAjoutTransaction_OK
+            // btnSubmit
             // 
-            this.btnAjoutTransaction_OK.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnAjoutTransaction_OK.Location = new System.Drawing.Point(150, 0);
-            this.btnAjoutTransaction_OK.Name = "btnAjoutTransaction_OK";
-            this.btnAjoutTransaction_OK.Size = new System.Drawing.Size(75, 26);
-            this.btnAjoutTransaction_OK.TabIndex = 1;
-            this.btnAjoutTransaction_OK.Text = "Valider";
-            this.btnAjoutTransaction_OK.UseSelectable = true;
-            this.btnAjoutTransaction_OK.Click += new System.EventHandler(this.btnOK_Click);
+            this.btnSubmit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSubmit.Location = new System.Drawing.Point(150, 0);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 26);
+            this.btnSubmit.TabIndex = 1;
+            this.btnSubmit.Text = "Valider";
+            this.btnSubmit.UseSelectable = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // btnAjoutTransaction_modif
+            // btnEdit
             // 
-            this.btnAjoutTransaction_modif.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnAjoutTransaction_modif.Location = new System.Drawing.Point(75, 0);
-            this.btnAjoutTransaction_modif.Name = "btnAjoutTransaction_modif";
-            this.btnAjoutTransaction_modif.Size = new System.Drawing.Size(75, 26);
-            this.btnAjoutTransaction_modif.TabIndex = 1;
-            this.btnAjoutTransaction_modif.Text = "Modifier";
-            this.btnAjoutTransaction_modif.UseSelectable = true;
-            this.btnAjoutTransaction_modif.Click += new System.EventHandler(this.btnModif_Click);
+            this.btnEdit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnEdit.Location = new System.Drawing.Point(75, 0);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 26);
+            this.btnEdit.TabIndex = 1;
+            this.btnEdit.Text = "Modifier";
+            this.btnEdit.UseSelectable = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnModif_Click);
             // 
-            // btnAjoutTransaction_Annuler2
+            // btnCancel
             // 
-            this.btnAjoutTransaction_Annuler2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnAjoutTransaction_Annuler2.Location = new System.Drawing.Point(0, 0);
-            this.btnAjoutTransaction_Annuler2.Name = "btnAjoutTransaction_Annuler2";
-            this.btnAjoutTransaction_Annuler2.Size = new System.Drawing.Size(75, 26);
-            this.btnAjoutTransaction_Annuler2.TabIndex = 2;
-            this.btnAjoutTransaction_Annuler2.Text = "Annuler";
-            this.btnAjoutTransaction_Annuler2.UseSelectable = true;
-            this.btnAjoutTransaction_Annuler2.Click += new System.EventHandler(this.btnAnnuler_Click);
+            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnCancel.Location = new System.Drawing.Point(0, 0);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 26);
+            this.btnCancel.TabIndex = 2;
+            this.btnCancel.Text = "Annuler";
+            this.btnCancel.UseSelectable = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // panelAjoutTransac
             // 
@@ -378,12 +378,37 @@
             this.panelAjoutTransac.Controls.Add(this.ckbTtSelect);
             this.panelAjoutTransac.Controls.Add(this.btnAddPers);
             this.panelAjoutTransac.Controls.Add(this.btnClear);
-            this.panelAjoutTransac.Controls.Add(this.label2);
+            this.panelAjoutTransac.Controls.Add(this.lblPersonnesConcernees);
             this.panelAjoutTransac.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelAjoutTransac.Location = new System.Drawing.Point(615, 0);
             this.panelAjoutTransac.Name = "panelAjoutTransac";
             this.panelAjoutTransac.Size = new System.Drawing.Size(209, 364);
             this.panelAjoutTransac.TabIndex = 27;
+            // 
+            // ListPersonneContainer
+            // 
+            this.ListPersonneContainer.Controls.Add(this.listBoxAjoutTransaction_Personne);
+            this.ListPersonneContainer.Location = new System.Drawing.Point(6, 75);
+            this.ListPersonneContainer.Name = "ListPersonneContainer";
+            this.ListPersonneContainer.Padding = new System.Windows.Forms.Padding(1);
+            this.ListPersonneContainer.Size = new System.Drawing.Size(200, 144);
+            this.ListPersonneContainer.TabIndex = 30;
+            // 
+            // listBoxAjoutTransaction_Personne
+            // 
+            this.metroStyleExtender.SetApplyMetroTheme(this.listBoxAjoutTransaction_Personne, true);
+            this.listBoxAjoutTransaction_Personne.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listBoxAjoutTransaction_Personne.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.listBoxAjoutTransaction_Personne.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxAjoutTransaction_Personne.FormattingEnabled = true;
+            this.listBoxAjoutTransaction_Personne.Location = new System.Drawing.Point(1, 1);
+            this.listBoxAjoutTransaction_Personne.Name = "listBoxAjoutTransaction_Personne";
+            this.listBoxAjoutTransaction_Personne.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.listBoxAjoutTransaction_Personne.Size = new System.Drawing.Size(198, 142);
+            this.listBoxAjoutTransaction_Personne.Sorted = true;
+            this.listBoxAjoutTransaction_Personne.TabIndex = 25;
+            this.listBoxAjoutTransaction_Personne.TabStop = false;
+            this.listBoxAjoutTransaction_Personne.SelectedIndexChanged += new System.EventHandler(this.listBoxPersonneAjoutTransaction_SelectedIndexChanged);
             // 
             // ckbTtSelect
             // 
@@ -418,43 +443,19 @@
             this.btnClear.UseSelectable = true;
             this.btnClear.Click += new System.EventHandler(this.btnClearAjoutTransaction_Click);
             // 
-            // label2
+            // lblPersonnesConcernees
             // 
-            this.metroStyleExtender.SetApplyMetroTheme(this.label2, true);
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 13);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Personne(s) concernées : ";
+            this.metroStyleExtender.SetApplyMetroTheme(this.lblPersonnesConcernees, true);
+            this.lblPersonnesConcernees.AutoSize = true;
+            this.lblPersonnesConcernees.Location = new System.Drawing.Point(6, 35);
+            this.lblPersonnesConcernees.Name = "lblPersonnesConcernees";
+            this.lblPersonnesConcernees.Size = new System.Drawing.Size(131, 13);
+            this.lblPersonnesConcernees.TabIndex = 26;
+            this.lblPersonnesConcernees.Text = "Personne(s) concernées : ";
             // 
             // metroStyleManager
             // 
             this.metroStyleManager.Owner = this;
-            // 
-            // ListPersonneContainer
-            // 
-            this.ListPersonneContainer.Controls.Add(this.listBoxAjoutTransaction_Personne);
-            this.ListPersonneContainer.Location = new System.Drawing.Point(6, 75);
-            this.ListPersonneContainer.Name = "ListPersonneContainer";
-            this.ListPersonneContainer.Padding = new System.Windows.Forms.Padding(1);
-            this.ListPersonneContainer.Size = new System.Drawing.Size(200, 144);
-            this.ListPersonneContainer.TabIndex = 30;
-            // 
-            // listBoxAjoutTransaction_Personne
-            // 
-            this.metroStyleExtender.SetApplyMetroTheme(this.listBoxAjoutTransaction_Personne, true);
-            this.listBoxAjoutTransaction_Personne.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBoxAjoutTransaction_Personne.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.listBoxAjoutTransaction_Personne.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxAjoutTransaction_Personne.FormattingEnabled = true;
-            this.listBoxAjoutTransaction_Personne.Location = new System.Drawing.Point(1, 1);
-            this.listBoxAjoutTransaction_Personne.Name = "listBoxAjoutTransaction_Personne";
-            this.listBoxAjoutTransaction_Personne.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBoxAjoutTransaction_Personne.Size = new System.Drawing.Size(198, 142);
-            this.listBoxAjoutTransaction_Personne.Sorted = true;
-            this.listBoxAjoutTransaction_Personne.TabIndex = 25;
-            this.listBoxAjoutTransaction_Personne.TabStop = false;
             // 
             // AjouterTransaction
             // 
@@ -465,6 +466,7 @@
             this.MinimumSize = new System.Drawing.Size(864, 444);
             this.Name = "AjouterTransaction";
             this.Text = "AjouterTransaction";
+            this.Icon = global::BreakingBudget.Properties.Resources.icon;
             this.Load += new System.EventHandler(this.AjoutTransaction_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -481,8 +483,8 @@
             this.panel3.ResumeLayout(false);
             this.panelAjoutTransac.ResumeLayout(false);
             this.panelAjoutTransac.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             this.ListPersonneContainer.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -497,25 +499,25 @@
         private MetroFramework.Controls.MetroDateTime calAjoutTransaction;
         private MetroFramework.Controls.MetroLabel ldlDesc;
         private System.Windows.Forms.FlowLayoutPanel FieldsContainerTxtDescr;
-        private MetroFramework.Controls.MetroTextBox txtAjoutTransaction_desc;
-        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroTextBox txtDesc;
+        private MetroFramework.Controls.MetroLabel lblMontant;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel19;
-        private MetroFramework.Controls.MetroTextBox txtAjoutTransaction_montant;
-        private MetroFramework.Controls.MetroCheckBox ckbAjoutTransaction_recette;
-        private MetroFramework.Controls.MetroCheckBox ckbAjoutTransaction_percu;
-        private MetroFramework.Controls.MetroLabel lbType;
+        private MetroFramework.Controls.MetroTextBox txtMontant;
+        private MetroFramework.Controls.MetroCheckBox ckbRecette;
+        private MetroFramework.Controls.MetroCheckBox ckbPercu;
+        private MetroFramework.Controls.MetroLabel lblType;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel14;
-        private MetroFramework.Controls.MetroComboBox cboAjoutTransaction_Type;
-        private System.Windows.Forms.Label btnAjoutTransaction_AddType;
+        private MetroFramework.Controls.MetroComboBox cboType;
+        private System.Windows.Forms.Label IconBtnAjoutTransaction_AddType;
         private System.Windows.Forms.Panel panel3;
-        private MetroFramework.Controls.MetroButton btnAjoutTransaction_OK;
-        private MetroFramework.Controls.MetroButton btnAjoutTransaction_modif;
-        private MetroFramework.Controls.MetroButton btnAjoutTransaction_Annuler2;
+        private MetroFramework.Controls.MetroButton btnSubmit;
+        private MetroFramework.Controls.MetroButton btnEdit;
+        private MetroFramework.Controls.MetroButton btnCancel;
         private System.Windows.Forms.Panel panelAjoutTransac;
         private MetroFramework.Controls.MetroCheckBox ckbTtSelect;
         private MetroFramework.Controls.MetroButton btnAddPers;
         private MetroFramework.Controls.MetroButton btnClear;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblPersonnesConcernees;
         private MetroFramework.Components.MetroStyleExtender metroStyleExtender;
         private MetroFramework.Components.MetroStyleManager metroStyleManager;
         private System.Windows.Forms.Panel ListPersonneContainer;

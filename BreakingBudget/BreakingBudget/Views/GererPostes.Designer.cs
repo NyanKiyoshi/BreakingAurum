@@ -219,6 +219,7 @@
             this.MaximizeBox = false;
             this.Name = "GererPostes";
             this.Text = "GererPostes";
+            this.Icon = global::BreakingBudget.Properties.Resources.icon;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GererPostes_FormClosing);
             this.Load += new System.EventHandler(this.GererPostes_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GererPostes_KeyUp);

@@ -4,7 +4,7 @@ using BreakingBudget.Services.SQL;
 
 namespace BreakingBudget.Repositories
 {
-    static class PersonneRepository
+    public static class PersonneRepository
     {
         public const string TABLE_NAME = "Personne";
 
@@ -28,7 +28,7 @@ namespace BreakingBudget.Repositories
 
         public static PersonneModel[] List()
         {
-            using (OleDbConnection conn = DatabaseManager.CreateConnection())
+            using (OleDbConnection conn = DatabaseManager.GetConnection())
             {
                 OleDbCommand cmd = conn.CreateCommand();
 

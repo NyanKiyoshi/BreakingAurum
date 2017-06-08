@@ -66,13 +66,13 @@ namespace BreakingBudget.Repositories
         Update(OleDbConnection dbConn, OleDbTransaction dbTransaction, int codePoste, string newTitle)
         {
             OleDbCommand cmd = new OleDbCommand(
-                "UPDATE " + TABLE_NAME + "SET libPoste = @libPoste WHERE codePoste = @codePoste",
+                "UPDATE " + TABLE_NAME + " SET libPoste = @libPoste WHERE codePoste = @codePoste",
                 dbConn, dbTransaction
             );
-            cmd.Parameters.AddWithValue("@codePoste", codePoste);
             cmd.Parameters.AddWithValue("@libPoste",  newTitle);
+            cmd.Parameters.AddWithValue("@codePoste", codePoste);
 
-            cmd.ExecuteNonQuery();
+            int n = cmd.ExecuteNonQuery();
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace BreakingBudget.Repositories
 
         public static PosteModel[] ListAvailableToUse()
         {
-            using (OleDbConnection conn = DatabaseManager.CreateConnection())
+            using (OleDbConnection conn = DatabaseManager.GetConnection())
             {
                 OleDbCommand cmd = conn.CreateCommand();
 
@@ -168,7 +168,7 @@ namespace BreakingBudget.Repositories
 
         public static PosteModel[] List()
         {
-            using (OleDbConnection conn = DatabaseManager.CreateConnection())
+            using (OleDbConnection conn = DatabaseManager.GetConnection())
             {
                 OleDbCommand cmd = conn.CreateCommand();
 

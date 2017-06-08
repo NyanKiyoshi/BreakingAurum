@@ -26,7 +26,7 @@ namespace BreakingBudget.Repositories
 
             cmd.Parameters.AddWithValue("@codePoste",       codePoste);
             cmd.Parameters.AddWithValue("@datePrelevt",     OleDbType.Date).Value = dt.Date;
-            cmd.Parameters.AddWithValue("@montantEcheance", amount);
+            cmd.Parameters.AddWithValue("@montantEcheance", amount.ToString());
 
             Console.WriteLine("<- INSERT INTO Echeances: {0}, {1}, {2}", codePoste, dt, amount);
             cmd.ExecuteNonQuery();

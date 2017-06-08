@@ -34,7 +34,7 @@
   </Localization>
   <Localization>
     <Key>quit_confirmation_requires_commit</Key>
-    <Value>Are you sure you want to quit? There are data pending for commit or rollback.</Value>
+    <Value>Are you sure you want to quit? Some data is pending for commit or rollback.</Value>
   </Localization>
   <Localization>
     <Key>err_operation_failed_caption</Key>
@@ -42,7 +42,7 @@
   </Localization>
   <Localization>
     <Key>err_operation_requires_commit</Key>
-    <Value>The operation requires a commit before proceeding.</Value>
+    <Value>This operation requires commit.</Value>
   </Localization>
   <Localization>
     <Key>err_deletion_failed: {0}, {1}</Key>
@@ -54,7 +54,7 @@
   </Localization>
   <Localization>
     <Key>err_invalid_input_empty</Key>
-    <Value>The value cannot be empty.</Value>
+    <Value>The field cannot be empty.</Value>
   </Localization>
   <Localization>
     <Key>err_invalid_input_caption</Key>
@@ -62,7 +62,7 @@
   </Localization>
   <Localization>
     <Key>err_duplicate_value</Key>
-    <Value>The value must be unique.</Value>
+    <Value>The field must be unique.</Value>
   </Localization>
   <Localization>
     <Key>err_duplicate_value_caption</Key>
@@ -79,5 +79,267 @@
   <Localization>
     <Key>err_not_a_valid_number</Key>
     <Value>Not a valid number.</Value>
+  </Localization>
+  <Localization>
+    <Key>err_missing_fields_caption</Key>
+    <Value>Missing data</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_entries_successfully_added_msg</Key>
+    <Value>Entries successfully added.</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_entries_successfully_added_caption</Key>
+    <Value>Success!</Value>
+  </Localization>
+  <Localization>
+    <Key>nothing</Key>
+    <Value>nothing</Value>
+  </Localization>
+  <Localization>
+    <Key>AcceptButton</Key>
+    <Value>Submit</Value>
+  </Localization>
+  <Localization>
+    <Key>CancelButton</Key>
+    <Value>Cancel</Value>
+  </Localization>
+  <Localization>
+    <Key>Year</Key>
+    <Value>Year</Value>
+  </Localization>
+  <Localization>
+    <Key>UserCreation</Key>
+    <Value>Add User</Value>
+  </Localization>
+  <Localization>
+    <Key>err_already_used_{0}</Key>
+    <Value>"{0}" is already in use!</Value>
+  </Localization>
+  <Localization>
+    <Key>err_already_used_caption</Key>
+    <Value>Unavailable</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_sms_successfully_sent_msg</Key>
+    <Value>SMS sent!</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_sms_successfully_sent_response_{0}_msg</Key>
+    <Value>SMS sent!
+Server response: "{0}"</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_success_caption</Key>
+    <Value>Success</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_1</Key>
+    <Value>January</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_2</Key>
+    <Value>February</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_3</Key>
+    <Value>March</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_4</Key>
+    <Value>April</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_5</Key>
+    <Value>May</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_6</Key>
+    <Value>June</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_7</Key>
+    <Value>July</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_8</Key>
+    <Value>August</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_9</Key>
+    <Value>September</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_10</Key>
+    <Value>October</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_11</Key>
+    <Value>November</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_12</Key>
+    <Value>December</Value>
+  </Localization>
+  <Localization>
+    <Key>err_message_not_sent_err_code_{0}</Key>
+    <Value>Message not sent. (Error code: {0})</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmAjoutType</Key>
+    <Value>Add Type</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmCalendrierPrev</Key>
+    <Value>Projected Timetable</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmTableauDeBordPostes</Key>
+    <Value>Job Dashboard</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmAffichDetailsPoste</Key>
+    <Value>&amp;Details</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmAffichage1par1</Key>
+    <Value>Transactions</Value>
+  </Localization>
+  <Localization>
+    <Key>ModifierEntreePosteFixe</Key>
+    <Value>Edit Job</Value>
+  </Localization>
+  <Localization>
+    <Key>ModifierEntreePosteRevenu</Key>
+    <Value>Edit income</Value>
+  </Localization>
+  <Localization>
+    <Key>err_invalid_day</Key>
+    <Value>Invalid day.</Value>
+  </Localization>
+  <Localization>
+    <Key>HelpPosteLabel_message</Key>
+    <Value>Please choose an existing job or type it directly in order to create a new one.</Value>
+  </Localization>
+  <Localization>
+    <Key>HelpPosteLabel_title</Key>
+    <Value>Help on the Jobs</Value>
+  </Localization>
+  <Localization>
+    <Key>btnSearch</Key>
+    <Value>&amp;Search</Value>
+  </Localization>
+  <Localization>
+    <Key>rdbPlage</Key>
+    <Value>Range</Value>
+  </Localization>
+  <Localization>
+    <Key>rdbDateUnique</Key>
+    <Value>Unique</Value>
+  </Localization>
+  <Localization>
+    <Key>lblDateDeb</Key>
+    <Value>From: </Value>
+  </Localization>
+  <Localization>
+    <Key>lblDateA</Key>
+    <Value>To:</Value>
+  </Localization>
+  <Localization>
+    <Key>lblAjoutType</Key>
+    <Value>New type: </Value>
+  </Localization>
+  <Localization>
+    <Key>lblDateT</Key>
+    <Value>Transaction date</Value>
+  </Localization>
+  <Localization>
+    <Key>ldlDesc</Key>
+    <Value>Description (optional)</Value>
+  </Localization>
+  <Localization>
+    <Key>btnSubmit</Key>
+    <Value>S&amp;ubmit</Value>
+  </Localization>
+  <Localization>
+    <Key>btnEdit</Key>
+    <Value>&amp;Edit</Value>
+  </Localization>
+  <Localization>
+    <Key>btnCancel</Key>
+    <Value>&amp;Cancel</Value>
+  </Localization>
+  <Localization>
+    <Key>ckbTtSelect</Key>
+    <Value>Selec&amp;t All</Value>
+  </Localization>
+  <Localization>
+    <Key>btnClear</Key>
+    <Value>C&amp;lear</Value>
+  </Localization>
+  <Localization>
+    <Key>lblPersonnesConcernees</Key>
+    <Value>Concerned Users:</Value>
+  </Localization>
+  <Localization>
+    <Key>btnAddPers</Key>
+    <Value>Add User</Value>
+  </Localization>
+  <Localization>
+    <Key>lblNom</Key>
+    <Value>Last Name</Value>
+  </Localization>
+  <Localization>
+    <Key>lblPrenom</Key>
+    <Value>First Name</Value>
+  </Localization>
+  <Localization>
+    <Key>lblTelephone</Key>
+    <Value>Phone</Value>
+  </Localization>
+  <Localization>
+    <Key>page_{0}_of_{1}</Key>
+    <Value>Page {0} of {1}</Value>
+  </Localization>
+  <Localization>
+    <Key>dd/MM/yyyy</Key>
+    <Value>MM/dd/yyyy</Value>
+  </Localization>
+  <Localization>
+    <Key>lblType</Key>
+    <Value>Type</Value>
+  </Localization>
+  <Localization>
+    <Key>sms_big_expense_msg_{0}</Key>
+    <Value>Automatic Message from BreakingBudget
+WARNING: A transaction with an abnormally high amount was entered ({0} EUR).</Value>
+  </Localization>
+  <Localization>
+    <Key>information_caption</Key>
+    <Value>Information</Value>
+  </Localization>
+  <Localization>
+    <Key>transaction_edit_confirmation_msg</Key>
+    <Value>Do you really want to edit this transaction?</Value>
+  </Localization>
+  <Localization>
+    <Key>transaction_edited_with_success_msg</Key>
+    <Value>Transaction successfully edited!</Value>
+  </Localization>
+  <Localization>
+    <Key>warning</Key>
+    <Value>Warning</Value>
+  </Localization>
+  <Localization>
+    <Key>Supprimer</Key>
+    <Value>Remove</Value>
+  </Localization>
+  <Localization>
+    <Key>Modifier</Key>
+    <Value>Edit</Value>
+  </Localization>
+  <Localization>
+    <Key>err_duplicate_value_Title</Key>
+    <Value>Duplicate Title</Value>
   </Localization>
 </root>

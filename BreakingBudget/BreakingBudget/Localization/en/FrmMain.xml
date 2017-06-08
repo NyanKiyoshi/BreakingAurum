@@ -2,7 +2,7 @@
 <root>
   <Localization>
     <Key>BreakingBudget</Key>
-    <Value>Los Pollos Hermanos</Value>
+    <Value>Breaking Aurum</Value>
   </Localization>
   <Localization>
     <Key>requires_restart</Key>
@@ -58,7 +58,7 @@
   </Localization>
   <Localization>
     <Key>BtnValiderBudgetFixe</Key>
-    <Value>Submit</Value>
+    <Value>S&amp;ubmit</Value>
   </Localization>
   <Localization>
     <Key>hebdomadaire</Key>
@@ -163,5 +163,185 @@
   <Localization>
     <Key>err_must_be_between_1_and_31</Key>
     <Value>Must be between 1 and 31.</Value>
+  </Localization>
+  <Localization>
+    <Key>lblPosteRevenu</Key>
+    <Value>Job</Value>
+  </Localization>
+  <Localization>
+    <Key>placeholder_poste_revenu</Key>
+    <Value>Job name</Value>
+  </Localization>
+  <Localization>
+    <Key>lblBeneficiaireRevenu</Key>
+    <Value>Beneficiary</Value>
+  </Localization>
+  <Localization>
+    <Key>lblMontantRevenu</Key>
+    <Value>Amount</Value>
+  </Localization>
+  <Localization>
+    <Key>lblTousLesXDuMoisRevenu</Key>
+    <Value>Every</Value>
+  </Localization>
+  <Localization>
+    <Key>lblDuMoisRevenu</Key>
+    <Value>of the month</Value>
+  </Localization>
+  <Localization>
+    <Key>btnValiderRevenu</Key>
+    <Value>S&amp;ubmit</Value>
+  </Localization>
+  <Localization>
+    <Key>btnAjouterBeneficiairesRevenu</Key>
+    <Value>Add User</Value>
+  </Localization>
+  <Localization>
+    <Key>lblIntitulePonctuel</Key>
+    <Value>Title</Value>
+  </Localization>
+  <Localization>
+    <Key>lblCommentairePonctuelOptionnel</Key>
+    <Value>Comment (optional)</Value>
+  </Localization>
+  <Localization>
+    <Key>placeholder_commentaire_optionnel</Key>
+    <Value>Short payment description</Value>
+  </Localization>
+  <Localization>
+    <Key>lblNbPrelevementsPonctuel</Key>
+    <Value>Deadline count</Value>
+  </Localization>
+  <Localization>
+    <Key>lblMontantTotalPonctuelOptionnel</Key>
+    <Value>Final Sum (optional)</Value>
+  </Localization>
+  <Localization>
+    <Key>placeholder_total_prelevements_optionnel</Key>
+    <Value>Sum of every deadline</Value>
+  </Localization>
+  <Localization>
+    <Key>btnValiderBudgetPonctuel</Key>
+    <Value>S&amp;ubmit</Value>
+  </Localization>
+  <Localization>
+    <Key>help_montant_ponctuel_optionnel_caption</Key>
+    <Value>Ponctual amount help</Value>
+  </Localization>
+  <Localization>
+    <Key>help_montant_ponctuel_optionnel</Key>
+    <Value>Type the sum and the deadline count then click the green button to confirm your input. The software will take care of dividing the given sum by the number of deadlines.</Value>
+  </Localization>
+  <Localization>
+    <Key>should_I_override_the_deadlines_to_{0}</Key>
+    <Value>Do you want to override the deadlines by {0}?</Value>
+  </Localization>
+  <Localization>
+    <Key>deadline_no_{0:00}</Key>
+    <Value>Deadline {0:00}</Value>
+  </Localization>
+  <Localization>
+    <Key>placeholder_intitule</Key>
+    <Value>Purchase Name</Value>
+  </Localization>
+  <Localization>
+    <Key>placeholder_nb_prelevements</Key>
+    <Value>Number of projected monthly payments</Value>
+  </Localization>
+  <Localization>
+    <Key>Nouvelle transaction</Key>
+    <Value>Transaction Addition</Value>
+  </Localization>
+  <Localization>
+    <Key>Modifier une transaction</Key>
+    <Value>Transaction Edition</Value>
+  </Localization>
+  <Localization>
+    <Key>lblPeriodiciteFixe</Key>
+    <Value>Postes à périodicité fixe : </Value>
+  </Localization>
+  <Localization>
+    <Key>lblPosteRevenus</Key>
+    <Value>Jobs Earnings</Value>
+  </Localization>
+  <Localization>
+    <Key>lblPosteAEchances</Key>
+    <Value>Payment Deadlines</Value>
+  </Localization>
+  <Localization>
+    <Key>btnClearSearch</Key>
+    <Value>Clear</Value>
+  </Localization>
+  <Localization>
+    <Key>btnPremier</Key>
+    <Value>First</Value>
+  </Localization>
+  <Localization>
+    <Key>btnPrecedent</Key>
+    <Value>Previous</Value>
+  </Localization>
+  <Localization>
+    <Key>btnSuivant</Key>
+    <Value>Next</Value>
+  </Localization>
+  <Localization>
+    <Key>btnDernier</Key>
+    <Value>Last</Value>
+  </Localization>
+  <Localization>
+    <Key>lblTitrePersonnes</Key>
+    <Value>Individuals: </Value>
+  </Localization>
+  <Localization>
+    <Key>lblTitreType</Key>
+    <Value>Type: </Value>
+  </Localization>
+  <Localization>
+    <Key>lblTitreDate</Key>
+    <Value>Date: </Value>
+  </Localization>
+  <Localization>
+    <Key>lblTitreMontant</Key>
+    <Value>Amount: </Value>
+  </Localization>
+  <Localization>
+    <Key>lblTitreDescription</Key>
+    <Value>Description: </Value>
+  </Localization>
+  <Localization>
+    <Key>ckbRecette</Key>
+    <Value>Income</Value>
+  </Localization>
+  <Localization>
+    <Key>ckbPercu</Key>
+    <Value>Earned</Value>
+  </Localization>
+  <Localization>
+    <Key>chkRecette</Key>
+    <Value>Income</Value>
+  </Localization>
+  <Localization>
+    <Key>chkPercu</Key>
+    <Value>Earned</Value>
+  </Localization>
+  <Localization>
+    <Key>ckbMontant</Key>
+    <Value>Amount: </Value>
+  </Localization>
+  <Localization>
+    <Key>ckbLib</Key>
+    <Value>Title: </Value>
+  </Localization>
+  <Localization>
+    <Key>ckbDate</Key>
+    <Value>Date: </Value>
+  </Localization>
+  <Localization>
+    <Key>delete_confirmation_msg</Key>
+    <Value>Do you really want to remove the selected transaction?</Value>
+  </Localization>
+  <Localization>
+    <Key>transactions_successfully_removed_msg</Key>
+    <Value>Transactions successfully removed!</Value>
   </Localization>
 </root>

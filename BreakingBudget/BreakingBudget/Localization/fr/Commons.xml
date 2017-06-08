@@ -121,6 +121,11 @@
     <Value>SMS envoyé !</Value>
   </Localization>
   <Localization>
+    <Key>msg_sms_successfully_sent_response_{0}_msg</Key>
+    <Value>SMS envoyé !
+Réponse du serveur : "{0}"</Value>
+  </Localization>
+  <Localization>
     <Key>msg_success_caption</Key>
     <Value>Succès</Value>
   </Localization>
@@ -197,7 +202,136 @@
     <Value>Transactions</Value>
   </Localization>
   <Localization>
+    <Key>ModifierEntreePosteFixe</Key>
+    <Value>Modifier Poste</Value>
+  </Localization>
+  <Localization>
+    <Key>ModifierEntreePosteRevenu</Key>
+    <Value>Modifier Revenu</Value>
+  </Localization>
+  <Localization>
     <Key>err_invalid_day</Key>
     <Value>Le jour est invalide.</Value>
+  </Localization>
+  <Localization>
+    <Key>HelpPosteLabel_message</Key>
+    <Value>Choisissez un poste existant ou tapez-le directement à l'intérieur du champ pour en créer un nouveau.</Value>
+  </Localization>
+  <Localization>
+    <Key>HelpPosteLabel_title</Key>
+    <Value>Aide sur les postes</Value>
+  </Localization>
+  <Localization>
+    <Key>btnSearch</Key>
+    <Value>Rechercher</Value>
+  </Localization>
+  <Localization>
+    <Key>rdbPlage</Key>
+    <Value>Plage</Value>
+  </Localization>
+  <Localization>
+    <Key>rdbDateUnique</Key>
+    <Value>Unique</Value>
+  </Localization>
+  <Localization>
+    <Key>lblDateDeb</Key>
+    <Value>De : </Value>
+  </Localization>
+  <Localization>
+    <Key>lblDateA</Key>
+    <Value>A :</Value>
+  </Localization>
+  <Localization>
+    <Key>lblAjoutType</Key>
+    <Value>Nouveau type : </Value>
+  </Localization>
+  <Localization>
+    <Key>lblDateT</Key>
+    <Value>Date de la transaction</Value>
+  </Localization>
+  <Localization>
+    <Key>ldlDesc</Key>
+    <Value>Description (facultatif)</Value>
+  </Localization>
+  <Localization>
+    <Key>btnSubmit</Key>
+    <Value>Valider</Value>
+  </Localization>
+  <Localization>
+    <Key>btnEdit</Key>
+    <Value>Modifier</Value>
+  </Localization>
+  <Localization>
+    <Key>btnCancel</Key>
+    <Value>Annuler</Value>
+  </Localization>
+  <Localization>
+    <Key>ckbTtSelect</Key>
+    <Value>Tout sélectionner</Value>
+  </Localization>
+  <Localization>
+    <Key>btnClear</Key>
+    <Value>Clear</Value>
+  </Localization>
+  <Localization>
+    <Key>lblPersonnesConcernees</Key>
+    <Value>Personne(s) concernées :</Value>
+  </Localization>
+  <Localization>
+    <Key>btnAddPers</Key>
+    <Value>Ajouter une personne</Value>
+  </Localization>
+  <Localization>
+    <Key>lblNom</Key>
+    <Value>Nom</Value>
+  </Localization>
+  <Localization>
+    <Key>lblPrenom</Key>
+    <Value>Prénom</Value>
+  </Localization>
+  <Localization>
+    <Key>lblTelephone</Key>
+    <Value>Téléphone</Value>
+  </Localization>
+  <Localization>
+    <Key>page_{0}_of_{1}</Key>
+    <Value>Page {0} sur {1}</Value>
+  </Localization>
+  <Localization>
+    <Key>dd/MM/yyyy</Key>
+    <Value>dd/MM/yyyy</Value>
+  </Localization>
+  <Localization>
+    <Key>lblType</Key>
+    <Value>Type</Value>
+  </Localization>
+  <Localization>
+    <Key>sms_big_expense_msg_{0}</Key>
+    <Value>Message automatique de BreakingBudget
+ATTENTION : une transaction ayant un montant anormalement élevé a été saisie ({0} EUR).</Value>
+  </Localization>
+  <Localization>
+    <Key>information_caption</Key>
+    <Value>Information</Value>
+  </Localization>
+  <Localization>
+    <Key>transaction_edit_confirmation_msg</Key>
+    <Value>Voulez-vous vraiment modifier cette transaction ?</Value>
+  </Localization>
+  <Localization>
+    <Key>transaction_edited_with_success_msg</Key>
+    <Value>Transaction modifiée avec succès !</Value>
+  </Localization>
+  <Localization>
+    <Key>warning</Key>
+    <Value>Attention</Value>
+  </Localization>
+  <Localization>
+    <Key>Supprimer</Key>
+    <Value>Supprimer</Value>
+  </Localization>
+  <Localization>
+    <Key>Modifier</Key>
+    <Value>Modifier</Value>
   </Localization>
 </root>

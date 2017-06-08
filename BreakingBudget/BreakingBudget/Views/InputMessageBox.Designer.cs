@@ -68,7 +68,7 @@
             this.textBoxInput.Lines = new string[0];
             this.textBoxInput.Location = new System.Drawing.Point(20, 79);
             this.textBoxInput.MaximumSize = new System.Drawing.Size(0, 21);
-            this.textBoxInput.MaxLength = 32767;
+            this.textBoxInput.MaxLength = 30;
             this.textBoxInput.Name = "textBoxInput";
             this.textBoxInput.PasswordChar = '\0';
             this.textBoxInput.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -135,6 +135,7 @@
             this.Name = "InputMessageBox";
             this.Resizable = false;
             this.Text = "InputMessageBox";
+            this.Icon = global::BreakingBudget.Properties.Resources.icon;
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             this.ResumeLayout(false);

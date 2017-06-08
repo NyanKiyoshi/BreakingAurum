@@ -80,4 +80,258 @@
     <Key>err_missing_fields_caption</Key>
     <Value>Datos perdidos</Value>
   </Localization>
+  <Localization>
+    <Key>msg_entries_successfully_added_msg</Key>
+    <Value>Las entradas han sido añadidas.</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_entries_successfully_added_caption</Key>
+    <Value>¡Éxito!</Value>
+  </Localization>
+  <Localization>
+    <Key>nothing</Key>
+    <Value>Nada</Value>
+  </Localization>
+  <Localization>
+    <Key>AcceptButton</Key>
+    <Value>Validar</Value>
+  </Localization>
+  <Localization>
+    <Key>CancelButton</Key>
+    <Value>Cancelar</Value>
+  </Localization>
+  <Localization>
+    <Key>Year</Key>
+    <Value>Año</Value>
+  </Localization>
+  <Localization>
+    <Key>UserCreation</Key>
+    <Value>Añadido de una persona</Value>
+  </Localization>
+  <Localization>
+    <Key>err_already_used_{0}</Key>
+    <Value>¡"{0}" es ya utilizado!</Value>
+  </Localization>
+  <Localization>
+    <Key>err_already_used_caption</Key>
+    <Value>No está disponible</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_sms_successfully_sent_msg</Key>
+    <Value>¡SMS enviado!</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_sms_successfully_sent_response_{0}_msg</Key>
+    <Value>¡SMS enviado!
+Respuesta del servidor web: "{0}"</Value>
+  </Localization>
+  <Localization>
+    <Key>msg_success_caption</Key>
+    <Value>Éxito</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_1</Key>
+    <Value>Enero</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_2</Key>
+    <Value>Febrero</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_3</Key>
+    <Value>Marzo</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_4</Key>
+    <Value>Abril</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_5</Key>
+    <Value>Mayo</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_6</Key>
+    <Value>Junio</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_7</Key>
+    <Value>Julio</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_8</Key>
+    <Value>Agosto</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_9</Key>
+    <Value>Septiembre</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_10</Key>
+    <Value>Octubre</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_11</Key>
+    <Value>Noviembre</Value>
+  </Localization>
+  <Localization>
+    <Key>month_id_12</Key>
+    <Value>Diciembre</Value>
+  </Localization>
+  <Localization>
+    <Key>err_message_not_sent_err_code_{0}</Key>
+    <Value>Mensaje no enviado (código de error : {0})</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmAjoutType</Key>
+    <Value>Añadir un tipo</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmCalendrierPrev</Key>
+    <Value>Calendario Previsto</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmTableauDeBordPostes</Key>
+    <Value>Panel de control de los puestos</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmAffichDetailsPoste</Key>
+    <Value>Detalles de los puestos a vencimientos</Value>
+  </Localization>
+  <Localization>
+    <Key>FrmAffichage1par1</Key>
+    <Value>Transacciones</Value>
+  </Localization>
+  <Localization>
+    <Key>ModifierEntreePosteFixe</Key>
+    <Value>Modificar un puesto</Value>
+  </Localization>
+  <Localization>
+    <Key>ModifierEntreePosteRevenu</Key>
+    <Value>Modificar una renta</Value>
+  </Localization>
+  <Localization>
+    <Key>err_invalid_day</Key>
+    <Value>El día es inválido.</Value>
+  </Localization>
+  <Localization>
+    <Key>HelpPosteLabel_message</Key>
+    <Value>Escoja un puesto existente o directamente golpéelo dentro del campo para crear un nuevo.</Value>
+  </Localization>
+  <Localization>
+    <Key>HelpPosteLabel_title</Key>
+    <Value>Ayuda sobre los puestos</Value>
+  </Localization>
+  <Localization>
+    <Key>btnSearch</Key>
+    <Value>Buscar</Value>
+  </Localization>
+  <Localization>
+    <Key>rdbPlage</Key>
+    <Value>Rango</Value>
+  </Localization>
+  <Localization>
+    <Key>rdbDateUnique</Key>
+    <Value>Singular</Value>
+  </Localization>
+  <Localization>
+    <Key>lblDateDeb</Key>
+    <Value>De:</Value>
+  </Localization>
+  <Localization>
+    <Key>lblDateA</Key>
+    <Value>A:</Value>
+  </Localization>
+  <Localization>
+    <Key>lblAjoutType</Key>
+    <Value>Nuevo tipo: </Value>
+  </Localization>
+  <Localization>
+    <Key>lblDateT</Key>
+    <Value>Momento de la transacción</Value>
+  </Localization>
+  <Localization>
+    <Key>ldlDesc</Key>
+    <Value>Descripción (facultativo)</Value>
+  </Localization>
+  <Localization>
+    <Key>btnSubmit</Key>
+    <Value>Validar</Value>
+  </Localization>
+  <Localization>
+    <Key>btnEdit</Key>
+    <Value>Modificar</Value>
+  </Localization>
+  <Localization>
+    <Key>btnCancel</Key>
+    <Value>Cancelar</Value>
+  </Localization>
+  <Localization>
+    <Key>ckbTtSelect</Key>
+    <Value>Seleccionar todo</Value>
+  </Localization>
+  <Localization>
+    <Key>btnClear</Key>
+    <Value>Para limpiar</Value>
+  </Localization>
+  <Localization>
+    <Key>lblPersonnesConcernees</Key>
+    <Value>Personas afectadas:</Value>
+  </Localization>
+  <Localization>
+    <Key>btnAddPers</Key>
+    <Value>Añadir una persona</Value>
+  </Localization>
+  <Localization>
+    <Key>lblNom</Key>
+    <Value>Nombre</Value>
+  </Localization>
+  <Localization>
+    <Key>lblPrenom</Key>
+    <Value>Nombre de pila</Value>
+  </Localization>
+  <Localization>
+    <Key>lblTelephone</Key>
+    <Value>Teléfono</Value>
+  </Localization>
+  <Localization>
+    <Key>page_{0}_of_{1}</Key>
+    <Value>Página {0} en {1}</Value>
+  </Localization>
+  <Localization>
+    <Key>lblType</Key>
+    <Value>Tipo</Value>
+  </Localization>
+  <Localization>
+    <Key>sms_big_expense_msg_{0}</Key>
+    <Value>Mensaje automático de BreakingBudget
+ADVERTENCIA: Se ingresó una transacción con una cantidad anormalmente alta ({0} EUR).</Value>
+  </Localization>
+  <Localization>
+    <Key>information_caption</Key>
+    <Value>Información</Value>
+  </Localization>
+  <Localization>
+    <Key>transaction_edit_confirmation_msg</Key>
+    <Value>¿Realmente desea editar esta transacción?</Value>
+  </Localization>
+  <Localization>
+    <Key>transaction_edited_with_success_msg</Key>
+    <Value>¡La transacción se ha editado correctamente!</Value>
+  </Localization>
+  <Localization>
+    <Key>warning</Key>
+    <Value>Advertencia</Value>
+  </Localization>
+  <Localization>
+    <Key>Supprimer</Key>
+    <Value>Retirar</Value>
+  </Localization>
+  <Localization>
+    <Key>Modifier</Key>
+    <Value>Editar</Value>
+  </Localization>
+  <Localization>
+    <Key>err_duplicate_value_Title</Key>
+    <Value>Título duplicado</Value>
+  </Localization>
 </root>

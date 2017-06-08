@@ -1,4 +1,4 @@
-﻿namespace BreakingBudget
+﻿namespace BreakingBudget.Views
 {
     partial class FrmAjoutType
     {
@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new MetroFramework.Controls.MetroLabel();
+            this.lblAjoutType = new MetroFramework.Controls.MetroLabel();
             this.txtType = new MetroFramework.Controls.MetroTextBox();
-            this.btnOK = new MetroFramework.Controls.MetroButton();
+            this.btnSubmit = new MetroFramework.Controls.MetroButton();
             this.btnCancel = new MetroFramework.Controls.MetroButton();
             this.metroStyleExtender = new MetroFramework.Components.MetroStyleExtender(this.components);
             this.metroStyleManager = new MetroFramework.Components.MetroStyleManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblAjoutType
             // 
-            this.label1.AutoSize = true;
-            this.label1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.label1.Location = new System.Drawing.Point(23, 75);
-            this.label1.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 19);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nouveau type : ";
+            this.lblAjoutType.AutoSize = true;
+            this.lblAjoutType.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblAjoutType.Location = new System.Drawing.Point(23, 75);
+            this.lblAjoutType.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.lblAjoutType.Name = "lblAjoutType";
+            this.lblAjoutType.Size = new System.Drawing.Size(106, 19);
+            this.lblAjoutType.TabIndex = 0;
+            this.lblAjoutType.Text = "Nouveau type : ";
             // 
             // txtType
             // 
@@ -66,7 +66,7 @@
             this.txtType.Lines = new string[0];
             this.txtType.Location = new System.Drawing.Point(23, 98);
             this.txtType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtType.MaxLength = 32767;
+            this.txtType.MaxLength = 30;
             this.txtType.Name = "txtType";
             this.txtType.PasswordChar = '\0';
             this.txtType.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -82,16 +82,16 @@
             this.txtType.TextChanged += new System.EventHandler(this.txtType_TextChanged);
             this.txtType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtType_KeyPress);
             // 
-            // btnOK
+            // btnSubmit
             // 
-            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(271, 151);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 2;
-            this.btnOK.Text = "Ajouter";
-            this.btnOK.UseSelectable = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.btnSubmit.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSubmit.Location = new System.Drawing.Point(271, 151);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 2;
+            this.btnSubmit.Text = "Ajouter";
+            this.btnSubmit.UseSelectable = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -111,15 +111,16 @@
             // 
             this.ClientSize = new System.Drawing.Size(369, 186);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtType);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblAjoutType);
             this.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "FrmAjoutType";
             this.Resizable = false;
             this.Text = "Ajouter un type";
+            this.Icon = global::BreakingBudget.Properties.Resources.icon;
             ((System.ComponentModel.ISupportInitialize)(this.metroStyleManager)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -128,9 +129,9 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroLabel label1;
+        private MetroFramework.Controls.MetroLabel lblAjoutType;
         private MetroFramework.Controls.MetroTextBox txtType;
-        private MetroFramework.Controls.MetroButton btnOK;
+        private MetroFramework.Controls.MetroButton btnSubmit;
         private MetroFramework.Controls.MetroButton btnCancel;
         private MetroFramework.Components.MetroStyleExtender metroStyleExtender;
         private MetroFramework.Components.MetroStyleManager metroStyleManager;

@@ -141,7 +141,7 @@
             this.txtNom.CustomButton.Visible = false;
             this.txtNom.Lines = new string[0];
             this.txtNom.Location = new System.Drawing.Point(3, 3);
-            this.txtNom.MaxLength = 32767;
+            this.txtNom.MaxLength = 30;
             this.txtNom.Name = "txtNom";
             this.txtNom.PasswordChar = '\0';
             this.txtNom.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -193,7 +193,7 @@
             this.txtPrenom.CustomButton.Visible = false;
             this.txtPrenom.Lines = new string[0];
             this.txtPrenom.Location = new System.Drawing.Point(3, 3);
-            this.txtPrenom.MaxLength = 32767;
+            this.txtPrenom.MaxLength = 20;
             this.txtPrenom.Name = "txtPrenom";
             this.txtPrenom.PasswordChar = '\0';
             this.txtPrenom.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -244,7 +244,7 @@
             this.txtTel.CustomButton.Visible = false;
             this.txtTel.Lines = new string[0];
             this.txtTel.Location = new System.Drawing.Point(3, 3);
-            this.txtTel.MaxLength = 32767;
+            this.txtTel.MaxLength = 15;
             this.txtTel.Name = "txtTel";
             this.txtTel.PasswordChar = '\0';
             this.txtTel.PromptText = "06 .. .. .. ..";

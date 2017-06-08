@@ -14,7 +14,7 @@ using MetroFramework.Forms;
 using BreakingBudget.Services.Lang;
 using BreakingBudget.Services.SQL;
 
-namespace BreakingBudget
+namespace BreakingBudget.Views
 {
     public partial class FrmAjoutType : MetroForm
     {
@@ -28,6 +28,7 @@ namespace BreakingBudget
             this.StyleManager.Theme = Program.settings.styleManager.Theme;
             this.StyleManager.Style = Program.settings.styleManager.Style;
 
+            Program.settings.localize.ImportResourceLocalization("FrmAjoutType");
             Program.settings.localize.ControlerTranslator(this);
             this.Text = Program.settings.localize.Translate(this.Name);
             this.Refresh();
@@ -42,7 +43,7 @@ namespace BreakingBudget
         {
             if (char.IsLetter(e.KeyChar) || e.KeyChar == '\'' || e.KeyChar == '-' || char.IsDigit(e.KeyChar) ||e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Space)
                 e.Handled = false;
-            else if (e.KeyChar == (char)Keys.Enter && btnOK.Enabled)
+            else if (e.KeyChar == (char)Keys.Enter && btnSubmit.Enabled)
             {
                 this.ajouterType(null, null);
             }
@@ -54,11 +55,11 @@ namespace BreakingBudget
         {
             if (!string.IsNullOrWhiteSpace(txtType.Text) && !string.IsNullOrWhiteSpace(txtType.Text))
             {
-                btnOK.Enabled = true;
+                btnSubmit.Enabled = true;
             }
             else
             {
-                btnOK.Enabled = false;
+                btnSubmit.Enabled = false;
             }
         }
 
@@ -66,7 +67,7 @@ namespace BreakingBudget
         {
             //recuperation des valeurs des textbox 
             string type = txtType.Text.Trim();
-            OleDbConnection connec = DatabaseManager.CreateConnection();
+            OleDbConnection connec = DatabaseManager.GetConnection();
 
             try
             {
@@ -95,15 +96,17 @@ namespace BreakingBudget
                     cmd.Parameters.AddWithValue("@libType", type);
                     cmd.ExecuteNonQuery();
 
-                    // TODO: translate
-                    MessageBox.Show("Le type " + type + " a bien ete ajoute !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(Program.settings.localize.Translate("info_type_{0}_successfully_created_msg", type),
+                        Program.settings.localize.Translate("information_caption"),
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-                    // TODO: translate
-                    MessageBox.Show("Attention ce type existe déjà !", "Erreur ajout type", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(Program.settings.localize.Translate("err_duplicate_type_msg"),
+                        Program.settings.localize.Translate("err_type_creation_caption"),
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtType.Text = string.Empty;
                 }
             }

@@ -49,7 +49,7 @@ namespace BreakingBudget.Views
 
             EnableStyling();
 
-            this.dbConn = DatabaseManager.CreateConnection();
+            this.dbConn = DatabaseManager.GetConnection();
 
 
             this.commitBtn.Text    = Program.settings.localize.Translate("Co&mmit");
@@ -207,7 +207,6 @@ namespace BreakingBudget.Views
                     return;
                 }
                 
-                // TODO: refactor this to the repository's model (.Create(...))
                 // create a new Poste model,
                 // add the user's input to it
                 PosteRepository.PosteModel newPoste = new PosteRepository.PosteModel();

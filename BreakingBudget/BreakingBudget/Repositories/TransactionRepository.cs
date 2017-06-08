@@ -11,13 +11,13 @@ namespace BreakingBudget.Repositories
 
         public class TransactionModel
         {
-            public int      codeTransaction { get; set; }
+            public int codeTransaction      { get; set; }
             public DateTime dateTransaction { get; set; }
-            public string   description     { get; set; }
-            public double   montant         { get; set; }
-            public bool     recetteON       { get; set; }
-            public bool     percuON         { get; set; }
-            public int      type            { get; set; }
+            public string description       { get; set; }
+            public decimal montant          { get; set; }
+            public bool recetteON           { get; set; }
+            public bool percuON             { get; set; }
+            public int type                 { get; set; }
 
             // from the table TypeTransaction
             public string typeTransaction_s { get; set; }
@@ -50,20 +50,20 @@ namespace BreakingBudget.Repositories
                 dbConn, dbTransaction
             );
 
-            cmd.Parameters.AddWithValue("@codeTransaction",   codeTransaction);
-            cmd.Parameters.AddWithValue("@dateTransaction",   OleDbType.Date).Value = dt.Date;
-            cmd.Parameters.AddWithValue("@description",       title);
-            cmd.Parameters.AddWithValue("@montant",           amount);
-            cmd.Parameters.AddWithValue("@recetteON",         false);
-            cmd.Parameters.AddWithValue("@percuON",           false);
-            cmd.Parameters.AddWithValue("@type",              transactionTypeCode);
+            cmd.Parameters.AddWithValue("@codeTransaction", codeTransaction);
+            cmd.Parameters.AddWithValue("@dateTransaction", OleDbType.Date).Value = dt.Date;
+            cmd.Parameters.AddWithValue("@description",     title);
+            cmd.Parameters.AddWithValue("@montant",         amount.ToString());
+            cmd.Parameters.AddWithValue("@recetteON",       false);
+            cmd.Parameters.AddWithValue("@percuON",         false);
+            cmd.Parameters.AddWithValue("@type",            transactionTypeCode);
 
             Console.WriteLine("<- INSERT INTO Transaction");
 
             cmd.ExecuteNonQuery();
         }
 
-        public static void CreateBeneficiare(OleDbConnection dbConn, OleDbTransaction dbTransaction, 
+        public static void CreateBeneficiare(OleDbConnection dbConn, OleDbTransaction dbTransaction,
             int codeTransaction, int codePersonne)
         {
             OleDbCommand cmd = new OleDbCommand(
@@ -101,7 +101,7 @@ namespace BreakingBudget.Repositories
 
         public static TransactionModel[] GetByMonth(int month, int year)
         {
-            using (OleDbConnection conn = DatabaseManager.CreateConnection())
+            using (OleDbConnection conn = DatabaseManager.GetConnection())
             {
                 OleDbCommand cmd = conn.CreateCommand();
 

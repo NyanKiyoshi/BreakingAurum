@@ -1,10 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Data.OleDb;
 using System.Windows.Forms;
 using BreakingBudget.Views;
 using BreakingBudget.Views.FrmMain;
 using BreakingBudget.Repositories;
-using BreakingBudget.Services.SQL;
 using BreakingBudget.Services.Lang;
 using BreakingBudget.Services;
 
@@ -52,6 +52,10 @@ namespace BreakingBudget
             catch (OleDbException ex)
             {
                 ErrorManager.HandleOleDBError(ex);
+            }
+            catch (Exception ex)
+            {
+                ErrorManager.HandleBaseException(ex);
             }
         }
 

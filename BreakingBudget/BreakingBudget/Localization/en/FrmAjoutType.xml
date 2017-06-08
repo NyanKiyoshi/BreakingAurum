@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <Localization>
+    <Key>err_duplicate_type_msg</Key>
+    <Value>Warning! This type already exists!</Value>
+  </Localization>
+  <Localization>
+    <Key>err_type_creation_caption</Key>
+    <Value>Failed to create</Value>
+  </Localization>
+  <Localization>
+    <Key>info_type_{0}_successfully_created_msg</Key>
+    <Value>The type "{0}" has been successfully added!</Value>
+  </Localization>
+  <Localization>
+    <Key>err_no_transaction_found_msg</Key>
+    <Value>No transaction found.</Value>
+  </Localization>
+</root>

@@ -35,7 +35,6 @@ namespace BreakingBudget.Views
         private bool _UserCancelled;
         public bool UserCancelled { get { return this._UserCancelled;  } }
 
-        // TODO: Implement Me
         private void AcceptButton_Click(object sender, EventArgs e)
         {
 
@@ -44,7 +43,7 @@ namespace BreakingBudget.Views
             string prenom = txtPrenom.Text;
             string tel = txtTel.Text.Replace(" ", "");
 
-            OleDbConnection connec = DatabaseManager.CreateConnection();
+            OleDbConnection connec = DatabaseManager.GetConnection();
 
             //requete SQL pour recuperer le code personne le plus grand
             string sqlCodePersonne = "SELECT MAX(codePersonne) FROM Personne";

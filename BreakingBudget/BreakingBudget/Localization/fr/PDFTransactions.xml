@@ -29,6 +29,26 @@
     <Value>Exporter</Value>
   </Localization>
   <Localization>
+    <Key>transaction_date</Key>
+    <Value>Date de Transaction</Value>
+  </Localization>
+  <Localization>
+    <Key>amount</Key>
+    <Value>Montant</Value>
+  </Localization>
+  <Localization>
+    <Key>income</Key>
+    <Value>Recette</Value>
+  </Localization>
+  <Localization>
+    <Key>received</Key>
+    <Value>Perçu</Value>
+  </Localization>
+  <Localization>
+    <Key>description</Key>
+    <Value>Description</Value>
+  </Localization>
+  <Localization>
     <Key>of_the_month_id_1</Key>
     <Value>de janvier</Value>
   </Localization>

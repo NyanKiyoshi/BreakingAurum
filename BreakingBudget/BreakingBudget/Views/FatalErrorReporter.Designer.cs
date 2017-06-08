@@ -137,6 +137,7 @@
             this.Name = "FatalErrorReporter";
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Fatal Error";
+            this.Icon = global::BreakingBudget.Properties.Resources.icon;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

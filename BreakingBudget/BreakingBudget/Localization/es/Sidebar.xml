@@ -40,4 +40,20 @@
     <Key>sidebar_page_licenses</Key>
     <Value>Licencias</Value>
   </Localization>
+  <Localization>
+    <Key>sidebar_page_exporter_transactions</Key>
+    <Value>Exportar</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_dashboard</Key>
+    <Value>Resumen</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_calendrier_previsionnel</Key>
+    <Value>Calendario</Value>
+  </Localization>
+  <Localization>
+    <Key>sidebar_page_lister_postes</Key>
+    <Value>Lista los puestos</Value>
+  </Localization>
 </root>

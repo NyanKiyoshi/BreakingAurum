@@ -20,7 +20,7 @@ namespace BreakingBudget.Views.FrmMain
         private void InitializePostesFixes()
         {
             FillPostesComboBox();
-            FillePeriodicitesComboBox();
+            FillPeriodicitesComboBox();
             this.HelpPosteLabel.Font = this.IconFont;
             this.HelpPosteLabel.Text = Encoding.UTF8.GetString(ICON_HELP_MARK);
         }
@@ -44,7 +44,7 @@ namespace BreakingBudget.Views.FrmMain
             }
         }
 
-        private void FillePeriodicitesComboBox()
+        private void FillPeriodicitesComboBox()
         {
             // empty the ComboBox
             this.ComboxBoxListePeriodicites.Items.Clear();
@@ -61,6 +61,20 @@ namespace BreakingBudget.Views.FrmMain
             {
                 ErrorManager.HandleOleDBError(e);
             }
+        }
+
+        private void ClearPosteFixeForm()
+        {
+            this.TxtBoxTousLesXMois.Text = string.Empty;
+            this.TxtBoxMontantPosteFixe.Text = string.Empty;
+
+            // Reset the selected poste
+            this.ComboxBoxListePostes.ResetText();
+            this.ComboxBoxListePostes.Refresh();
+
+            // Reset the selected period
+            this.ComboxBoxListePeriodicites.ResetText();
+            this.ComboxBoxListePeriodicites.Refresh();
         }
 
         private void BtnValiderBudgetFixe_Click(object _s, EventArgs e)
@@ -103,7 +117,7 @@ namespace BreakingBudget.Views.FrmMain
                 SelectedPeriode = (PeriodiciteRepository.PeriodiciteModel)this.ComboxBoxListePeriodicites.SelectedItem;
 
                 OleDbCommand cmd = DatabaseManager.InsertInto("PostePeriodique",
-                    DatabaseManager.CreateConnection(),
+                    DatabaseManager.GetConnection(),
                     new KeyValuePair<string, object>("codePoste", SelectedPoste.codePoste),
                     new KeyValuePair<string, object>("typePer", SelectedPeriode.codePer),
                     new KeyValuePair<string, object>("montant", montant),
@@ -118,6 +132,7 @@ namespace BreakingBudget.Views.FrmMain
                         cmd.ExecuteNonQuery();  // insert data
 
                         ErrorManager.EntriesSuccessfullyAdded(this);
+                        ClearPosteFixeForm();
                     }
                     else
                     {

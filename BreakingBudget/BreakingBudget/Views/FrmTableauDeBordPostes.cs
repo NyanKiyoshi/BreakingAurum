@@ -9,7 +9,7 @@ using BreakingBudget.Services.SQL;
 using BreakingBudget.Services.Lang;
 using BreakingBudget.Repositories;
 
-namespace BreakingBudget
+namespace BreakingBudget.Views
 {
     public partial class FrmTableauDeBordPostes : MetroForm
     {
@@ -23,14 +23,14 @@ namespace BreakingBudget
 
             /////////// POSTES A ECHEANCES FIXES ///////////////////////////////////////////////
             // Créer la table qui nous intéresse pour l'affichage des Postes à périodicité fixe
-            string requetePFixes = "SELECT p.codePoste as Code, p.libPoste as Description, pp.montant as Montant, "
-                                    + "per.libPer as Périodicité "
+            string requetePFixes = "SELECT p.codePoste as Code, p.libPoste as Description, pp.jourDuMois as [Jour du mois], pp.montant as Montant, "
+                                    + "per.codePer as [Code Périodicité], per.libPer as Périodicité "
                                     + "FROM ((PostePeriodique pp "
                                     + "INNER JOIN Periodicite per ON pp.typePer = per.codePer) "
                                     + "INNER JOIN Poste p ON pp.codePoste = p.codePoste) "
                                     + "ORDER BY p.codePoste";
 
-            OleDbCommand cmd = new OleDbCommand(requetePFixes, DatabaseManager.CreateConnection());
+            OleDbCommand cmd = new OleDbCommand(requetePFixes, DatabaseManager.GetConnection());
 
             // Création du dataAdapter pour remplir le dataset local
             // avec les informations du SELECT
@@ -52,8 +52,10 @@ namespace BreakingBudget
                 cmd.CommandText = requetePEcheances;
                 da.Fill(ds, "PosteEcheances");
 
-                /////////// POSTES A ECHEANCES ///////////////////////////////////////////////
-                string requetePRevenus = "SELECT p.codePoste as Code, p.libPoste as Description, pers.nomPersonne+\" \"+pers.pnPersonne as Bénéficiaire, pr.montant "
+                /////////// POSTES REVENUS ///////////////////////////////////////////////
+                string requetePRevenus = "SELECT p.codePoste as Code, p.libPoste as Description, pr.jourDuMois as [Jour du mois], "
+                                       + "pers.codePersonne as [Code Bénéficiaire], "
+                                       + "pers.nomPersonne+\" \"+pers.pnPersonne as Bénéficiaire, pr.montant "
                                        + "FROM ((Poste p "
                                        + "INNER JOIN PosteRevenu pr ON p.codePoste = pr.codePoste) "
                                        + "INNER JOIN Personne pers ON pers.codePersonne = pr.codePersonne) "
@@ -84,6 +86,11 @@ namespace BreakingBudget
             this.StyleManager.Style = Program.settings.styleManager.Style;
 
             Program.settings.localize.ControlerTranslator(this);
+
+            this.supprimerRevenuToolStripItem.Text = Program.settings.localize.Translate(this.supprimerRevenuToolStripItem.Text);
+            this.modifierRevenuToolStripItem.Text = Program.settings.localize.Translate(this.modifierRevenuToolStripItem.Text);
+            this.supprimerPosteFixesToolStripItem.Text = Program.settings.localize.Translate(this.supprimerPosteFixesToolStripItem.Text);
+            this.modifierPosteFixesToolStripItem.Text = Program.settings.localize.Translate(this.modifierPosteFixesToolStripItem.Text);
         }
 
         private void FrmTableauDeBordPostes_Load(object sender, EventArgs e)
@@ -127,7 +134,7 @@ namespace BreakingBudget
                                            + "FROM Echeances "
                                            + "WHERE codePoste = @codePoste";
 
-                OleDbCommand cmd = new OleDbCommand(requeteDetailPostes, DatabaseManager.CreateConnection());
+                OleDbCommand cmd = new OleDbCommand(requeteDetailPostes, DatabaseManager.GetConnection());
                 cmd.Parameters.AddWithValue("@codePoste", codePoste);
                 cmd.Connection.Open();
 
@@ -196,11 +203,6 @@ namespace BreakingBudget
             }
         }
 
-        private void modifierRevenuToolStripItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void DeleteSelectedPoste(MetroFramework.Controls.MetroGrid controler)
         {
             OleDbConnection dbConn;
@@ -210,15 +212,42 @@ namespace BreakingBudget
             DataGridViewCellCollection cells = this.GetSelectedRowData(controler);
             if (cells != null)
             {
-                dbConn = DatabaseManager.CreateConnection();
+                dbConn = DatabaseManager.GetConnection();
                 dbConn.Open();
                 dbTransaction = dbConn.BeginTransaction();
 
                 try
                 {
                     // delete the selected poste in cascade then commit the changes
-                    PosteRepository.Delete(dbConn, dbTransaction, (int)cells[0].Value);
+                    int indice = (int)cells[0].Value;
+                    PosteRepository.Delete(dbConn, dbTransaction, indice);
                     dbTransaction.Commit();
+
+                    // update Dataset
+                    if (controler == dgvRevenus)
+                    {
+                        indice = dgvRevenus.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+                        ds.Tables["PosteRevenus"].Rows.RemoveAt(indice);
+                    }
+                    else
+                    {
+                        indice = dgvPostesFixes.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+                        ds.Tables["PostesPerFixes"].Rows.RemoveAt(indice);
+                    }
+
+                    SaveTablesEnLocal();
+                    // Affichage des postes à périodicité fixe
+                    dgvPostesFixes.DataSource = ds.Tables["PostesPerFixes"];
+                    dgvPostesFixes.ClearSelection();
+
+                    // Affichage des postes à échéances
+                    dgvPostesEcheances.DataSource = ds.Tables["PosteEcheances"];
+                    dgvPostesEcheances.ClearSelection();
+
+                    // Affichage des postes revenus
+                    dgvRevenus.DataSource = ds.Tables["PosteRevenus"];
+                    dgvRevenus.ClearSelection();
+
                 }
                 catch (OleDbException ex)
                 {
@@ -232,12 +261,112 @@ namespace BreakingBudget
             }
         }
 
-        private void modifierPosteFixesToolStripItem_Click(object sender, EventArgs e)
+        private void modifierRevenuToolStripItem_Click(object sender, EventArgs e)
         {
+            OleDbConnection dbConn;
+            OleDbTransaction dbTransaction;
 
+            // delete a whole Poste if and only if a row was selected
+            DataGridViewCellCollection cells = this.GetSelectedRowData(dgvRevenus);
+            if (cells != null)
+            {
+                ModifierEntreePosteRevenu formEntry =
+                    new ModifierEntreePosteRevenu(new PosteRevenuRepository.PosteRevenu()
+                    {
+                        codePoste = (int)cells[0].Value,
+                        libPoste_s = cells[1].Value.ToString(),
+                        jourDuMois = (int)cells[2].Value,
+                        codePersonne = (int)cells[3].Value,
+                        montant = decimal.Parse(cells[5].Value.ToString()),
+                    }
+                );
+
+                if (formEntry.ShowDialog() == DialogResult.OK)
+                {
+                    dbConn = DatabaseManager.GetConnection();
+                    dbConn.Open();
+
+                    dbTransaction = dbConn.BeginTransaction();
+
+                    try {
+                        PosteRevenuRepository.Update(dbConn, dbTransaction,
+                            formEntry.originalData, formEntry.editedData);
+                        dbTransaction.Commit();
+                        // update dgv 
+                        int rowToModify = dgvRevenus.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+                        dgvRevenus.Rows[rowToModify].SetValues(formEntry.originalData.codePoste,
+                                                               formEntry.editedData.libPoste_s,
+                                                               formEntry.editedData.jourDuMois,
+                                                               formEntry.editedData.codePersonne,
+                                                               formEntry.editedData.personne_s,
+                                                               formEntry.editedData.montant);
+                    }
+                    catch (OleDbException ex)
+                    {
+                        ErrorManager.HandleOleDBError(ex);
+                    }
+                    finally
+                    {
+                        dbConn.Close();
+                    }
+                }
+            }
         }
 
-        private void supprimerPosteFixesToolStripItem_Click(object sender, EventArgs e)
+        private void modifierPosteFixeToolStripItem_Click(object sender, EventArgs e)
+        {
+            OleDbConnection dbConn;
+            OleDbTransaction dbTransaction;
+
+            // delete a whole Poste if and only if a row was selected
+            DataGridViewCellCollection cells = this.GetSelectedRowData(dgvPostesFixes);
+            if (cells != null)
+            {
+                ModifierEntreePosteFixe formEntry =
+                    new ModifierEntreePosteFixe(new PostePeriodiqueRepository.PostePeriodiqueModel()
+                    {
+                        codePoste = (int)cells[0].Value,
+                        libPoste_s = cells[1].Value.ToString(),
+                        jourDuMois = (int)cells[2].Value,
+                        montant = decimal.Parse(cells[3].Value.ToString()),
+                        typePer = (int)cells[4].Value
+                    }
+                );
+
+                if (formEntry.ShowDialog() == DialogResult.OK)
+                {
+                    dbConn = DatabaseManager.GetConnection();
+                    dbConn.Open();
+
+                    dbTransaction = dbConn.BeginTransaction();
+
+                    try
+                    {
+                        PostePeriodiqueRepository.Update(dbConn, dbTransaction,
+                            formEntry.originalData, formEntry.editedData);
+                        dbTransaction.Commit();
+                        //update dgv
+                        int rowToModify = dgvPostesFixes.Rows.GetFirstRow(DataGridViewElementStates.Selected);
+                        dgvPostesFixes.Rows[rowToModify].SetValues(formEntry.originalData.codePoste,
+                                                               formEntry.editedData.libPoste_s,
+                                                               formEntry.editedData.jourDuMois,
+                                                               formEntry.editedData.montant,
+                                                               formEntry.editedData.typePer,
+                                                               formEntry.editedData.libPer_s);
+                    }
+                    catch (OleDbException ex)
+                    {
+                        ErrorManager.HandleOleDBError(ex);
+                    }
+                    finally
+                    {
+                        dbConn.Close();
+                    }
+                }
+            }
+        }
+
+        private void supprimerPosteFixeToolStripItem_Click(object sender, EventArgs e)
         {
             DeleteSelectedPoste(dgvPostesFixes);
         }

@@ -44,7 +44,6 @@ namespace BreakingBudget.Repositories
             );
 
             // increment the number while the name is not available
-            // TODO: async timeout?
             int i = 0;
             while (!IsUnique(libType, dbConn, dbTransaction))
             {

@@ -197,7 +197,8 @@ namespace BreakingBudget.Services.Lang
                         || subCtrl is Button
                         || subCtrl is MetroFramework.Controls.MetroButton
                         || subCtrl is RadioButton
-                        || subCtrl is MetroFramework.Controls.MetroRadioButton)
+                        || subCtrl is MetroFramework.Controls.MetroRadioButton
+                        || subCtrl is MetroFramework.Controls.MetroCheckBox)
                     {
                         // try to get a value/ translation for the label
                         TranslatedText = Translate(subCtrl.Name);
