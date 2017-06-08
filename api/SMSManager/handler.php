@@ -6,6 +6,19 @@
     
     <body>
     <?php
+        function error_reporting_handler($data)
+        {
+            $TICKET_FILE = './data/tickets_data.txt';
+            $TICKET_NUMBER = uniqid();
+            $TIMESTAMP = time();
+
+            // replaces the new lines by <br />
+            $data = str_replace(array("\r\n", "\r", "\n"), "<br />", $data);
+
+            file_put_contents($TICKET_FILE, "$TICKET_NUMBER|$TIMESTAMP|$data\n", FILE_APPEND | LOCK_EX);
+            return $TICKET_NUMBER;
+        }
+
 
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
              ?>
@@ -60,28 +73,23 @@
                 $phone_numbers = $_POST["number"];
                 $message = $_POST["message"];
 
+                // check if it is an error report or not
                 if (isset($_POST["is_reporting_error"]) && $_POST["is_reporting_error"] == "true") {
-                    file_put_contents("logged_errors.txt", "\n\n<div class='entry' onclick='toggle(this)'>" . 
-                                                            date('l jS \of F Y h:i:s A') . 
-                                                            "</div><div class='hide'>\n<pre>" . 
-                                                                htmlspecialchars(base64_decode($message)) . 
-                                                            "</pre>\n</div>",
-                                        FILE_APPEND | LOCK_EX); 
+                    // decode the base64 data and sanitize it
+                    $decoded_data = htmlspecialchars(base64_decode($message));
+                    $ticket_no = error_reporting_handler($decoded_data);
+
+                    // only send the first 200 chars of the decoded message
+                    $message = mb_strimwidth($decoded_data, 0, 200);
+
+                    // answer with a ticket number
+                    header('X-SERVER-ANSWER: Ticket number: ' . $ticket_no);
                 }
 
-                $result = $sms_gateway->sendMessageToManyNumbers($phone_numbers, $message, $DEVICE_ID); 
-
-                //echo $_SERVER['QUERY_STRING'];
-                echo implode("|", $_POST["number"]);
-
-                echo "<br/>";
-
-                echo "<pre>";
-                print_r($result);
-                echo "</pre>";
+                // send the SMS
+                $sms_gateway->sendMessageToManyNumbers($phone_numbers, $message, $DEVICE_ID);
             }
         }
     ?>
     </body>
 </html>
-

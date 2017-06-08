@@ -4,7 +4,13 @@
 	<title>Logs</title>
 	<meta charset="utf-8"/>
 	<style type="text/css">
-	@font-face{font-family: 'Open Sans';font-style: normal;font-weight: 400;src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');}
+	@font-face{
+		font-family: 'Open Sans';
+		font-style: normal;
+		font-weight: 400;
+		src: local('Open Sans'), local('OpenSans'),
+			 url(http://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+	}
 
 	html, body, div, span, applet, object, iframe,
 	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -115,6 +121,21 @@
 	    margin-bottom: 15px;
 	}
 
+	span.info {
+	    padding: 5px;
+	    border-radius: 10px;
+	    color: #fff;
+	    font-size: small;
+	}
+
+	.date {
+	    background: #61a6d7;
+	}
+
+	.ticket-no {
+	    background: #be474d;
+	}
+
 	.big.icon {
 	    display: block;
 	    float: right;
@@ -165,10 +186,6 @@
 	    require $tfp;
 	    $tres=$GLOBALS['success'];
 
-		//if (!empty($tres[$ip]) && ($tres[$ip]+3600>=time())) {
-		//return true;
-		//}
-
         $tres[$ip]=time();
         file_put_contents($tfp, "<?php\n\$GLOBALS['success']=".var_export($tres,true).";\n?>", LOCK_EX);
     }
@@ -197,7 +214,8 @@
 		?>
 			<form method="post" style="text-align: center">
 				<h2 align="center">Please enter your password for access</h2>
-				<input name="password" type="text" size="25" maxlength="100"><input value="go" type="submit">
+				<input name="password" type="password" size="25" maxlength="100" />
+				<input value="go" type="submit">
 			</form>
 			</body>
 			</html>
@@ -248,15 +266,29 @@ if (!hasValidSuccess($_SERVER['REMOTE_ADDR'])) {
 
 
 ?>
-	<?php echo file_get_contents("logged_errors.txt"); ?>
+	<?php
+    $TICKET_FILE = './data/tickets_data.txt';
+	$fp=fopen($TICKET_FILE,"r");
 
-	<script type="text/javascript">
-		document.querySelectorAll(".entry").forEach(function(e) {
-			var span_add_icon = document.createElement("span");
-			span_add_icon.className = "big icon";
-			console.log(e);
-			e.appendChild(span_add_icon);
-		});
-	</script>
+	while (($line = fgets($fp)) !== false) {
+		$data = explode("|", $line);
+
+		if (count($data) < 3) {
+			continue;
+		}
+		?>
+
+		<div class="entry" onclick="toggle(this)">
+			<span class="info date"><?php echo gmdate("d-n-Y @ H:i", $data[1]); ?></span>
+			<span class="info ticket-no">#<?php echo $data[0]; ?></span>
+			<span class="big icon"></span>
+		</div><div class="hide">
+			<pre><?php echo $data[2]; ?></pre></div>
+
+		<?php
+	}
+	$data = file_get_contents("logged_errors.txt");
+
+	?>
 </body>
 </html>
