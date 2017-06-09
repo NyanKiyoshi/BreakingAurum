@@ -83,7 +83,7 @@ namespace BreakingBudget.Services.Lang
         {
             return ErrorManager.ShowSuccess(owner,
                 Program.settings.localize.Translate("msg_success_caption"),
-                Program.settings.localize.Translate("msg_sms_successfully_sent_msg")
+                Program.settings.localize.Translate("msg_sms_request_successfully_sent_msg")
             );
         }
 

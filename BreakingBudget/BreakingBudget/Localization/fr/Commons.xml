@@ -117,8 +117,8 @@
     <Value>Indisponible</Value>
   </Localization>
   <Localization>
-    <Key>msg_sms_successfully_sent_msg</Key>
-    <Value>SMS envoyé !</Value>
+    <Key>msg_sms_request_successfully_sent_msg</Key>
+    <Value>Requête SMS envoyée avec succès !</Value>
   </Localization>
   <Localization>
     <Key>msg_sms_successfully_sent_response_{0}_msg</Key>

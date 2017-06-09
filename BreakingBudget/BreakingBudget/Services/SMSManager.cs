@@ -49,10 +49,6 @@ namespace BreakingBudget.Services
                     var responseHeader = response.Headers.GetValues(SMSManager.SERVER_RESPONSE_HEADER);
                     ErrorManager.SMSSuccessfullySent(owner, string.Join(",", responseHeader));
                 }
-                else
-                {
-                    ErrorManager.SMSSuccessfullySent(owner);
-                }
             }
             else
             {

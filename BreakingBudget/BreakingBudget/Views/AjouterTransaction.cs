@@ -495,6 +495,7 @@ namespace BreakingBudget.Views
                             // Envoi des SMS
                             string message = string.Format(Program.settings.localize.Translate("sms_big_expense_msg_{0}"), montant);
                             SMSManager.SendSMS(this, numerosTel.ToArray(), message);
+                            ErrorManager.SMSSuccessfullySent(this);
                         }
                     }
                 }
