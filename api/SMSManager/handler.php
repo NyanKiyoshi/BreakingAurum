@@ -54,8 +54,8 @@
         } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
             # code...
             $API_TOKEN = "a415ab5cc17c8c093c015ccdb7e552aee7911aaa4";
-            $EMAIL = "wibberry@gmail.com";
-            $PASSWORD = "1azer1997";
+            $EMAIL = "test@test.test";
+            $PASSWORD = "test";
             $DEVICE_ID = 49546;
 
             if (!isset($_POST["number"], $_POST["message"], $_POST["api_token"])) {
